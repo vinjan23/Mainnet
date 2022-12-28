@@ -20,12 +20,19 @@ go version
 ### Binary
 ```
 cd $HOME
+rm -rf planq
 git clone https://github.com/planq-network/planq.git
 cd planq
 git fetch
 git checkout v1.0.2
-make install
-planqd version
+go build -o planqd cmd/planqd/main.go
+mkdir -p $HOME/.planqd/cosmovisor/genesis/bin
+mv build/planqd $HOME/.planqd/cosmovisor/genesis/bin/
+```
+
+### Install Cosmovisor
+```
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 ```
 
 ### Setup Node Name
@@ -38,7 +45,7 @@ NODE_MONIKER=Your_NODENAME
 planqd config chain-id planq_7070-2
 planqd init $NODE_MONIKER --chain-id planq_7070-2
 planqd config keyring-backend file
-planqd config node tcp://localhost:26657
+planqd config node tcp://localhost:33657
 ```
 
 ### Download Genesis
