@@ -25,9 +25,11 @@ git clone https://github.com/planq-network/planq.git
 cd planq
 git fetch
 git checkout v1.0.2
-go build -o planqd cmd/planqd/main.go
+git checkout v1.0.2
+make install
 mkdir -p $HOME/.planqd/cosmovisor/genesis/bin
-mv build/planqd $HOME/.planqd/cosmovisor/genesis/bin/
+mkdir -p ~/.planqd/cosmovisor/upgrades
+cp ~/go/bin/planqd ~/.planqd/cosmovisor/genesis/bin
 ```
 
 ### Install Cosmovisor
