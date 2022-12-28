@@ -90,5 +90,16 @@ sudo systemctl enable planqd.service && sudo systemctl daemon-reload
 sudo systemctl restart planqd && sudo journalctl -u planqd -f -o cat
 ```
 
+### Delete Node
+```
+sudo systemctl stop planqd && \
+sudo systemctl disable planqd && \
+rm /etc/systemd/system/planqd.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf planq && \
+rm -rf .planqd && \
+rm -rf $(which planqd)
+```
 
 
