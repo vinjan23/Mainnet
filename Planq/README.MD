@@ -30,13 +30,13 @@ planqd version
 
 ### Setup Node Name
 ```
-NODENAME=Your_Node_Name
+NODE_MONIKER=Your_NODENAME 
 ```
 
 ### Set Vars
 ```
 planqd config chain-id planq_7070-2
-planqd init $NODENAME --chain-id planq_7070-2
+planqd init $NODE_MONIKER --chain-id planq_7070-2
 planqd config keyring-backend file
 planqd config node tcp://localhost:26657
 ```
