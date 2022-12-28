@@ -89,18 +89,19 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:333
 
 ### Create Service File
 ```
-sudo tee /etc/systemd/system/planqd.service > /dev/null <<EOF  
+sudo tee /etc/systemd/system/planqd.service > /dev/null << EOF
 [Unit]
-Description=Planq Daemon
+Description=planq-mainnet node service
 After=network-online.target
+
 [Service]
 User=$USER
 ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
-Environment="DAEMON_NAME=planqd"
 Environment="DAEMON_HOME=$HOME/.planqd"
+Environment="DAEMON_NAME=planqd"
 Environment="UNSAFE_SKIP_BACKUP=true"
 
 [Install]
@@ -110,7 +111,7 @@ EOF
 
 ### Start
 ```
-sudo systemctl enable planqd.service && sudo systemctl daemon-reload
+sudo systemctl enable planqd && sudo systemctl daemon-reload
 sudo systemctl restart planqd && sudo journalctl -u planqd -f -o cat
 ```
 
