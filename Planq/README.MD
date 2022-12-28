@@ -37,6 +37,7 @@ NODENAME=Your_Node_Name
 ```
 planqd config chain-id planq_7070-2
 planqd init $NODENAME --chain-id planq_7070-2
+planqd config keyring-backend file
 planqd config node tcp://localhost:26657
 ```
 
