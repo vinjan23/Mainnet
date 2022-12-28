@@ -6,9 +6,15 @@
   <img height="400" height="auto" src="https://user-images.githubusercontent.com/108977419/209762643-3663ef27-d729-4653-aa4d-e70ad386a8c0.jpg">
 </p>
 
-
-
 ### ✅️ Explorer > [Explorer Planq](https://explorer.planq.network/)
+
+#   PLANQ
+
+4x CPU
+
+RAM 8 GB
+
+STORAGE 200GB (SSD atau NVME)
 
 ### Update Tool
 ```
