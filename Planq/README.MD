@@ -63,7 +63,7 @@ PEER="96557e26aabf3b23e8ff5282d03196892a7776fc@bd-evmos-mainnet-state-sync-us-01
 sed -i -e "s%^indexer *=.*%indexer = \"null\"%; " $HOME/.planqd/config/config.toml
 sed -i -e "s%^persistent_peers *=.*%persistent_peers = \"$PEER\"%; " $HOME/.planqd/config/config.toml
 planqd tendermint unsafe-reset-all --home $HOME/.planqd
-
+```
 
 
 ### Create Service File
