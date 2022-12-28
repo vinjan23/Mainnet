@@ -50,7 +50,6 @@ planqd validate-genesis
 ```
 SEEDS=`curl -sL https://raw.githubusercontent.com/planq-network/networks/main/mainnet/seeds.txt | awk '{print $1}' | paste -s -d, -`
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.planqd/config/config.toml
-PEERS=`curl -sL https://raw.githubusercontent.com/planq-network/networks/main/mainnet/peers.txt | sort -R | head -n 10 | awk '{print $1}' | paste -s -d, -`
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.planqd/config/config.toml
 sed -i -e "s%^moniker *=.*%moniker = \"$moniker\"%; " $HOME/.planqd/config/config.toml
 sed -i -e "s%^indexer *=.*%indexer = \"null\"%; " $HOME/.planqd/config/config.toml
@@ -62,31 +61,34 @@ CHAIN_ID="planq_7070-2"
 PEER="96557e26aabf3b23e8ff5282d03196892a7776fc@bd-evmos-mainnet-state-sync-us-01.bdnodes.net,dec587d55ff38827ebc6312cedda6085c59683b6@bd-evmos-mainnet-state-sync-eu-01.bdnodes.net"
 sed -i -e "s%^indexer *=.*%indexer = \"null\"%; " $HOME/.planqd/config/config.toml
 sed -i -e "s%^persistent_peers *=.*%persistent_peers = \"$PEER\"%; " $HOME/.planqd/config/config.toml
-planqd tendermint unsafe-reset-all --home $HOME/.planqd
+planqd tendermint unsafe-reset-all --home $HOME/.planqd --keep-addr-book
 ```
 
 
 ### Create Service File
 ```
-echo "[Unit]
-Description=Planqd Node
-After=network.target
-#
+sudo tee /etc/systemd/system/planqd.service > /dev/null <<EOF
+[Unit]
+Description=planqd
+After=network-online.target
+
 [Service]
 User=$USER
-Type=simple
 ExecStart=$(which planqd) start
 Restart=on-failure
+RestartSec=3
 LimitNOFILE=65535
-#
+
 [Install]
-WantedBy=multi-user.target" > $HOME/planqd.service; sudo mv $HOME/planqd.service /etc/systemd/system/
+WantedBy=multi-user.target
+EOF
 ```
 
 ### Start
 ```
 sudo systemctl enable planqd.service && sudo systemctl daemon-reload
-sudo sytemctl restart planqd && journalctl -u planqd -f
+sudo systemctl restart planqd && sudo journalctl -u planqd -f -o cat
+```
 
 
 
