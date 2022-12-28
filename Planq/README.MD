@@ -133,6 +133,100 @@ sudo systemctl enable planqd && sudo systemctl daemon-reload
 sudo systemctl restart planqd && sudo journalctl -u planqd -f -o cat
 ```
 
+### Sync Info
+```
+planqd status 2>&1 | jq .SyncInfo
+```
+
+### Create Wallet
+```
+planqd keys add <Wallet>
+```
+
+### Recover Wallet
+```
+planqd keys add wallet --recover
+```
+
+### List Wallet
+```
+planqd keys list
+```
+
+### Check Balances
+ ```
+ planqd query bank balances <wallet_address>
+ ```
+ 
+### Create Validator
+```
+planqd tx staking create-validator \
+  --amount=1000000000aplanq \
+  --pubkey=$(planqd tendermint show-validator) \
+  --chain-id=planq_7070-2 \
+  --commission-rate="0.05" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation="1000000" \
+  --from=<Wallet>
+  --moniker=$NODE_MONIKER \
+  --identity=B9FD76B74CE3CA7D \
+  --details=satsetsatseterror \
+  --gas-adjustment="1.15" \
+  --gas=auto \
+  --fees="1000aplanq" \
+  -y
+  ```
+ ### Edit Validator
+ ```
+planqd tx staking edit-validator \
+--new-moniker=$NODE_MONIKER \
+--identity= \
+--details= \
+--chain-id=planq_7070-2 \
+--commission-rate=0.1 \
+--from=<Wallet> \
+--gas-prices=0.1unibi \
+--gas-adjustment=1.5 \
+--gas=auto \
+-y
+```
+
+### Unjail
+```
+planqd tx slashing unjail --from <Wallet> --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Delegate & Staking
+```
+planqd tx staking delegate <YOUR_TO_Validator_ADDRESS> 1000000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Transfer Fund
+```
+planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y
+```
+
+### Withdraw All Reward
+```
+planqd tx distribution withdraw-all-rewards --from wallet --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Check Log
+```
+journalctl -fu planqd -o cat
+```
+
+### Node Info
+```
+planqd status 2>&1 | jq .NodeInfo
+```
+
+### Validator Info
+```
+planqd status 2>&1 | jq .ValidatorInfo
+```
+
 ### Delete Node
 ```
 sudo systemctl stop planqd && \
