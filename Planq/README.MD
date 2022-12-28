@@ -1,3 +1,10 @@
+
+
+
+
+
+### ✅️ Explorer > [Explorer Planq](https://explorer.planq.network/)
+
 ### Update Tool
 ```
 sudo apt update && sudo apt upgrade -y
