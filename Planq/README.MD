@@ -19,6 +19,7 @@ go version
 
 ### Binary
 ```
+cd $HOME
 git clone https://github.com/planq-network/planq.git
 cd planq
 git fetch
