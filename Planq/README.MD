@@ -173,9 +173,8 @@ planqd tx staking create-validator \
   --identity=B9FD76B74CE3CA7D \
   --details=satsetsatseterror \
   --gas-adjustment="1.15" \
-  --gas=auto \
-  --fees="1000aplanq" \
-  -y
+  --gas-prices 30000000000aplanq \
+  --gas 1000000 \
   ```
  ### Edit Validator
  ```
@@ -186,29 +185,30 @@ planqd tx staking edit-validator \
   --details=satsetsatseterror \
   --chain-id=planq_7070-2 \
   --from=vj \
-  --gas="1000000" \
+  --gas 1000000 \
   --gas-adjustment="1.15" \
   --gas-prices="30000000000aplanq" \
 ```
 
 ### Unjail
 ```
-planqd tx slashing unjail --from <Wallet> --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y 
+planqd tx slashing unjail --from <Wallet> --chain-id planq_7070-2 --gas 1000000 --gas-adjustment 1.15 --gas-prices="30000000000aplanq
 ```
 
 ### Delegate & Staking
 ```
-planqd tx staking delegate <YOUR_TO_Validator_ADDRESS> 1000000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y 
+planqd tx staking delegate <YOUR_TO_Validator_ADDRESS> 1000000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-adjustment 1.15 --gas=1000000 --gas-prices=30000000000aplanq 
+ 
 ```
 
 ### Transfer Fund
 ```
-planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y
+planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-adjustment 1.15 --gas-prices 30000000000aplanq --gas 1000000
 ```
 
 ### Withdraw All Reward
 ```
-planqd tx distribution withdraw-all-rewards --from <WalletName> --chain-id planq_7070-2 --gas-prices 30000000000aplanq --gas-adjustment 1.5 --gas 1000000 
+planqd tx distribution withdraw-all-rewards --from <WalletName> --chain-id planq_7070-2 --gas-prices 30000000000aplanq --gas-adjustment 1.15 --gas 1000000 
 ```
 
 ### Check Log
