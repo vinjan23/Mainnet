@@ -153,6 +153,11 @@ planqd keys add <Wallet>
 planqd keys add wallet --recover
 ```
 
+### Import Wallet
+```
+planqd keys unsafe-import-eth-key <Wallet> <PK> --keyring-backend file
+```
+
 ### List Wallet
 ```
 planqd keys list
