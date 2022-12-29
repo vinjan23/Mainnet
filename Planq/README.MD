@@ -8,7 +8,7 @@
 
 ### ✅️ Explorer > [Explorer Planq](https://explorer.planq.network/)
 
-#   PLANQ
+#   PLANQ MAINNET
 
 4x CPU
 
