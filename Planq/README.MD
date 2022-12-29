@@ -180,16 +180,15 @@ planqd tx staking create-validator \
  ### Edit Validator
  ```
 planqd tx staking edit-validator \
---new-moniker=$NODE_MONIKER \
---identity= \
---details= \
---chain-id=planq_7070-2 \
---commission-rate=0.1 \
---from=<Wallet> \
---gas-prices=0.1unibi \
---gas-adjustment=1.5 \
---gas=auto \
--y
+  --new-moniker=<Your_Moniker> \
+  --identity=B9FD76B74CE3CA7D \
+  --website="<your_website>" \
+  --details=satsetsatseterror \
+  --chain-id=planq_7070-2 \
+  --from=vj \
+  --gas="1000000" \
+  --gas-adjustment="1.15" \
+  --gas-prices="30000000000aplanq" \
 ```
 
 ### Unjail
@@ -209,7 +208,7 @@ planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain
 
 ### Withdraw All Reward
 ```
-planqd tx distribution withdraw-all-rewards --from wallet --chain-id planq_7070-2 --gas-prices 0.1aplanq --gas-adjustment 1.5 --gas auto -y 
+planqd tx distribution withdraw-all-rewards --from <WalletName> --chain-id planq_7070-2 --gas-prices 30000000000aplanq --gas-adjustment 1.5 --gas 1000000 
 ```
 
 ### Check Log
