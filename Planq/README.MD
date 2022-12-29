@@ -74,6 +74,11 @@ mv genesis.json ~/.planqd/config/
 planqd validate-genesis
 ```
 
+### Download addrbook
+```
+wget -O $HOME/.planqd/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Planq/addrbook.json"
+```
+
 ### Setup Seed
 ```
 SEEDS=`curl -sL https://raw.githubusercontent.com/planq-network/networks/main/mainnet/seeds.txt | awk '{print $1}' | paste -s -d, -`
