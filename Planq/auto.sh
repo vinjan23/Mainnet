@@ -16,7 +16,7 @@ read -p "Enter node moniker: " NODE_MONIKER
 
 
 CHAIN_ID="planq_7070-2"
-CHAIN_DENOM="aplangq"
+CHAIN_DENOM="aplanq"
 BINARY="planqd"
 
 echo -e "Node moniker: ${CYAN}$NODE_MONIKER${NC}"
