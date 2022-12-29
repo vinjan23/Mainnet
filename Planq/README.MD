@@ -181,6 +181,7 @@ planqd tx staking create-validator \
   --gas-prices 30000000000aplanq \
   --gas 1000000 \
   ```
+  
  ### Edit Validator
  ```
 planqd tx staking edit-validator \
