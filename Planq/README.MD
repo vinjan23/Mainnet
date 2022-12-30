@@ -211,6 +211,11 @@ planqd tx slashing unjail --from <Wallet> --chain-id planq_7070-2 --gas 1000000 
 planqd tx staking delegate <YOUR_TO_Validator_ADDRESS> 1000000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-adjustment 1.15 --gas=1000000 --gas-prices=30000000000aplanq 
  
 ```
+##$ Check Your Voting Power
+```
+apt install jq -y
+curl -s localhost:<PORT>657/status | jq .result.validator_info.voting_power
+```
 
 ### Transfer Fund
 ```
@@ -222,6 +227,15 @@ planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain
 planqd tx distribution withdraw-all-rewards --from <WalletName> --chain-id planq_7070-2 --gas-prices 30000000000aplanq --gas-adjustment 1.15 --gas 1000000 
 ```
 
+### Check Your Own Peer
+```
+echo $(planqd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.planqd/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+
+### Check Your Connected Peer
+```
+curl -sS http://localhost:<$PORT>657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
 ### Check Log
 ```
 journalctl -fu planqd -o cat
@@ -235,6 +249,10 @@ planqd status 2>&1 | jq .NodeInfo
 ### Validator Info
 ```
 planqd status 2>&1 | jq .ValidatorInfo
+```
+### Check Your Validator
+```
+planqd query staking validator $(planqd keys show $(planqd keys list --output json| jq -r ".[] .address" | tail -n1) --bech val -a) --chain-id planq_7070-2
 ```
 
 ### Delete Node
