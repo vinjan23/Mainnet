@@ -8,6 +8,8 @@
 
 ### ✅️ Explorer > [Explorer Planq](https://explorer.planq.network/)
 
+### ✅️ Docs > [Docs Planq](https://docs.planq.network/validators/mainnet.html)
+
 #   PLANQ MAINNET
 
 4x CPU
