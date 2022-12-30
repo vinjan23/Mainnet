@@ -195,7 +195,7 @@ planqd tx staking edit-validator \
   --website="<your_website>" \
   --details=satsetsatseterror \
   --chain-id=planq_7070-2 \
-  --from=vj \
+  --from=<WalletName> \
   --gas 1000000 \
   --gas-adjustment="1.15" \
   --gas-prices="30000000000aplanq" \
