@@ -257,6 +257,11 @@ planqd status 2>&1 | jq .ValidatorInfo
 planqd query staking validator $(planqd keys show $(planqd keys list --output json| jq -r ".[] .address" | tail -n1) --bech val -a) --chain-id planq_7070-2
 ```
 
+### Check validator Matches
+```
+[[ $(planqd q staking validator VALOPER_ADDRESS -oj | jq -r .consensus_pubkey.key) = $(planqd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\nYou win\n" || echo -e "\nYou lose\n"
+```
+
 ### Delete Node
 ```
 sudo systemctl stop planqd && \
