@@ -51,20 +51,20 @@ planqd keys list
 ### Create Validator
 ```
 planqd tx staking create-validator \
-  --amount=1000000000aplanq \
+  --amount=3000000000000000000aplanq \
   --pubkey=$(planqd tendermint show-validator) \
   --chain-id=planq_7070-2 \
   --commission-rate="0.05" \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.01" \
   --min-self-delegation="1000000" \
-  --from=<Wallet>
+  --from=jb
   --moniker=$NODE_MONIKER \
   --identity=B9FD76B74CE3CA7D \
   --details=satsetsatseterror \
   --gas-adjustment="1.15" \
   --gas-prices 30000000000aplanq \
-  --gas 1000000 \
+  --gas 3000000 \
   ```
   
   ### Edit Validator
