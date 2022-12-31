@@ -261,6 +261,9 @@ planqd query staking validator $(planqd keys show $(planqd keys list --output js
 ```
 [[ $(planqd q staking validator VALOPER_ADDRESS -oj | jq -r .consensus_pubkey.key) = $(planqd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\nYou win\n" || echo -e "\nYou lose\n"
 ```
+```
+[[ $(planqd q staking validator $(planqd keys show <Wallet_Name> --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(planqd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
 
 ### Delete Node
 ```
