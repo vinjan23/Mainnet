@@ -50,21 +50,19 @@ planqd keys list
  
 ### Create Validator
 ```
-planqd tx staking create-validator \
-  --amount=3000000000000000000aplanq \
-  --pubkey=$(planqd tendermint show-validator) \
-  --chain-id=planq_7070-2 \
-  --commission-rate="0.05" \
-  --commission-max-rate="0.20" \
-  --commission-max-change-rate="0.01" \
-  --min-self-delegation="1000000" \
-  --from=jb
-  --moniker=$NODE_MONIKER \
-  --identity=B9FD76B74CE3CA7D \
-  --details=satsetsatseterror \
-  --gas-adjustment="1.15" \
-  --gas-prices 30000000000aplanq \
-  --gas 3000000 \
+planqd tx staking create-validator 
+--amount 3000000000000000000aplanq 
+--commission-max-change-rate "0.01" 
+--commission-max-rate "0.20" 
+--commission-rate "0.05" 
+--min-self-delegation "1" 
+--pubkey  $(planqd tendermint show-validator) 
+--moniker $NODE_MONIKER 
+--gas="1000000" 
+--gas-prices="30000000000aplanq" 
+--gas-adjustment="1.15" 
+--chain-id planq_7070-2 
+--from <Wallet>
   ```
   
   ### Edit Validator
@@ -75,7 +73,7 @@ planqd tx staking edit-validator \
   --website="<your_website>" \
   --details=satsetsatseterror \
   --chain-id=planq_7070-2 \
-  --from=vj \
+  --from=<Wallet> \
   --gas 1000000 \
   --gas-adjustment="1.15" \
   --gas-prices="30000000000aplanq" \
