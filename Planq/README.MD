@@ -229,6 +229,21 @@ planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain
 planqd tx distribution withdraw-all-rewards --from <WalletName> --chain-id planq_7070-2 --gas-prices 30000000000aplanq --gas-adjustment 1.15 --gas 1000000 
 ```
 
+### Withdraw with Commission
+```
+planqd tx distribution withdraw-rewards $(planqd keys show <key_name> --bech val -a) --commission --gas="1000000" --gas-adjustment="1.15" --gas-prices="30000000000aplanq" --chain-id planq_7070-2 --from <key_name>
+```
+
+### Checj Your Valoper Address
+```
+planqd keys show <key_name> --bech val -a
+```
+
+### Check Planq Address
+```
+planqd keys show <key_name> -a
+```
+
 ### Check Your Own Peer
 ```
 echo $(planqd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.planqd/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
