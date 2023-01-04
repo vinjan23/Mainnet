@@ -143,6 +143,7 @@ sudo systemctl restart planqd && sudo journalctl -u planqd -f -o cat
 ```
 planqd status 2>&1 | jq .SyncInfo
 ```
+
 ### State Sync `Optional`
 ```
 sudo systemctl stop planqd
