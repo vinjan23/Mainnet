@@ -111,6 +111,11 @@ sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:33317\"%; s%^address = \":8080\"%address = \":33080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:33090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:33091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:33545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:33546\"%" $HOME/.planqd/config/app.toml
 ```
 
+### Disable Indexing
+```
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.planqd/config/config.toml
+```
+
 ### Create Service File
 ```
 sudo tee /etc/systemd/system/planqd.service > /dev/null << EOF
