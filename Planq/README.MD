@@ -126,12 +126,14 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which cosmovisor) run start
-Restart=on-failure
-RestartSec=10
+Restart=always
+RestartSec=3
 LimitNOFILE=65535
 Environment="DAEMON_HOME=$HOME/.planqd"
 Environment="DAEMON_NAME=planqd"
 Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 
 [Install]
 WantedBy=multi-user.target
