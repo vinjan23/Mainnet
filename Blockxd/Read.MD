@@ -18,10 +18,87 @@ source ~/.bash_profile
 go version
 ```
 
-# Configure GO
+# Binary
 ```
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export GO111MODULE=on
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+curl -#L https://github.com/defi-ventures/blockx-node-public-compiled/raw/main/blockxd -o /usr/local/bin/blockxd
+chmod +x /usr/local/bin/blockxd
 ```
+
+# Init
+```
+blockxd init moniker --chain-id blockx_12345-1
+```
+# Config
+```
+blockxd config chain-id blockx_12345-1
+blockxd config node tcp://localhost:${PORT}657
+blockxd config keyring-backend test
+```
+
+# Custom Port
+```
+PORT=19
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.blockxd/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}091\"%" $HOME/.blockxd/config/app.toml
+```
+
+# Genesis
+```
+curl -L# https://raw.githubusercontent.com/defi-ventures/blockx-node-public-compiled/main/genesis.json -o $HOME/.blockxd/genesis.json
+```
+
+# Peer
+```
+peers=$(curl -sS https://rpc.blockx.nodexcapital.com:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | paste -sd,)
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.blockxd/config/config.toml
+```
+
+# Statesync
+```
+SNAP_RPC=https://rpc.blockx.nodexcapital.com:443
+
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.blockxd/config/config.toml
+```
+
+# Reset Chain
+```
+blockxd tendermint unsafe-reset-all --home $HOME/.blockxd
+```
+
+# Create Servive
+```
+sudo cat <<EOF > /etc/systemd/system/blockxd.service
+[Unit]
+Description=Blockxd node
+After=network-online.target
+
+[Service]
+User=root
+ExecStart=$(which blockxd) start --home $HOME/.blockxd
+Restart=always
+RestartSec=1
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+# Start
+```
+systemctl daemon-reload
+systemctl enable blockxd
+systemctl restart blockxd
+journalctl -fu blockxd -ocat
+```
+
