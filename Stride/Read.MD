@@ -82,6 +82,11 @@ sudo systemctl start strided
 sudo journalctl -u strided -f -o cat
 ```
 
+### Snapshot
+```
+wget -O snap.sh https://raw.githubusercontent.com/vinjan23/Mainnet/main/Stride/snap.sh && chmod +x snap.sh && ./snap.sh
+```
+
 ### Check Sync
 ```
 strided status 2>&1 | jq .SyncInfo
