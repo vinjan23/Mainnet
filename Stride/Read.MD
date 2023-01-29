@@ -1,3 +1,8 @@
+### Auto Install
+```
+wget -O auto.sh https://raw.githubusercontent.com/vinjan23/Mainnet/main/Stride/auto.sh && chmod +x auto.sh && ./auto.sh
+```
+
 ### Update
 ```
 sudo apt update && sudo apt upgrade -y
