@@ -29,13 +29,6 @@ chmod +x /usr/local/bin/blockxd
 MONIKER=Your_NODENAME 
 ```
 
-### Set Vars
-```
-echo export MONIKER=${MONIKER} >> $HOME/.bash_profile
-echo "export BLOCKXD_CHAIN_ID=blockxd_12345-1" >> $HOME/.bash_profile
-source ~/.bash_profile
-```
-
 ### Config
 ```
 blockxd init $MONIKER --chain-id blockx_12345-1
