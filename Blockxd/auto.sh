@@ -16,7 +16,7 @@ read -p "Enter node moniker: " MONIKER
 
 
 CHAIN_ID="blockx_12345-1"
-CHAIN_DENOM=""
+CHAIN_DENOM="abcx"
 BINARY="blockxd"
 
 echo -e "Moniker: ${CYAN}$NODE_MONIKER${NC}"
