@@ -128,6 +128,11 @@ blockxd keys add wallet --recover
 blockxd keys list
 ```
 
+### Check Balance
+```
+blockxd query bank balances $WALLET_ADDRESS
+```
+
 ### Create Validator
 ```
 blockxd tx staking create-validator \
