@@ -128,6 +128,24 @@ blockxd keys add wallet --recover
 blockxd keys list
 ```
 
-
+### Create Validator
+```
+blockxd tx staking create-validator \
+  --amount  abcx \
+  --from <walletName> \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "0.2" \
+  --commission-rate "0.1" \
+  --min-self-delegation "1" \
+  --pubkey  $(blockxd tendermint show-validator) \
+  --moniker ${MONIKER} \
+  --chain-id blockx_12345-1 \
+  --identity="7C66E36EA2B71F68" \
+  --details="satsetsatset" \
+  --website="" \
+  --gas=auto \
+  -y
+  ```
+  
 
 
