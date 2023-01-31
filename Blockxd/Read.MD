@@ -159,7 +159,7 @@ blockxd tx staking edit-validator \
  --identity=7C66E36EA2B71F68 \
  --website= \
  --details=satsetsatseterror \
- --chain-id=blockxd_12345-1 \
+ --chain-id=blockx_12345-1 \
  --from=vj \
  --gas=auto \
  -y
