@@ -151,6 +151,19 @@ blockxd tx staking create-validator \
   --gas=auto \
   -y
   ```
-  
+
+### Edit
+```
+blockxd tx staking edit-validator \
+ --new-moniker=vinjan \
+ --identity=7C66E36EA2B71F68 \
+ --website= \
+ --details=satsetsatseterror \
+ --chain-id=blockxd_12345-1 \
+ --from=vj \
+ --gas=auto \
+ -y
+ ```
+ 
 
 
