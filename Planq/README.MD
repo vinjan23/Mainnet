@@ -319,5 +319,20 @@ rm -rf planq && \
 rm -rf .planqd && \
 rm -rf $(which planqd)
 ```
-
+```
+planqd tx staking edit-validator \
+  --new-moniker=vinjan \
+  --identity=7C66E36EA2B71F68 \
+  --website=vinjan.xyz \
+  --details=satsetsatseterror \
+  --chain-id=planq_7070-2 \
+  --from=vj 
+  --commission-rate "0.06" \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "0.2" \ 
+  --gas="1000000" 
+  --gas-adjustment="1.15" 
+  --gas-prices="30000000000aplanq"
+  ```
+  
 
