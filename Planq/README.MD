@@ -172,6 +172,17 @@ mv $HOME/.planqd/priv_validator_state.json.backup $HOME/.planqd/data/priv_valida
 sudo systemctl restart planqd
 sudo journalctl -u planqd -f -o cat
 ```
+### Snapshot
+```
+sudo apt update 
+sudo apt install snapd -y 
+sudo snap install lz4 
+sudo systemctl stop planqd
+planqd tendermint unsafe-reset-all --home $HOME/.planqd --keep-addr-book
+curl -L https://snap.planq.jepe.biz.id/planq/planq-snapshot-20230131.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.planqd
+sudo systemctl start planqd
+journalctl -fu planqd -o cat
+```
 
 ### Create Wallet
 ```
