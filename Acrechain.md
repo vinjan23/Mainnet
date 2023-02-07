@@ -103,6 +103,18 @@ sudo systemctl restart acred
 sudo journalctl -u acred -f -o cat
 ```
 
+## Snapshot
+```
+sudo apt update 
+sudo apt install snapd -y 
+sudo snap install lz4 
+sudo systemctl stop acred
+acred tendermint unsafe-reset-all --home $HOME/.acred --keep-addr-book
+curl -L https://snapshots.nodestake.top/acre/${SNAP_NAME}  | lz4 -c -d - | tar -x -C $HOME/.acred
+sudo systemctl restart acred
+journalctl -fu acred -o cat
+```
+
 ## Sync Info
 ```
 acred status 2>&1 | jq .SyncInfo
