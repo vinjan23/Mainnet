@@ -44,7 +44,7 @@ wget https://raw.githubusercontent.com/ArableProtocol/acrechain/main/networks/ma
 
 ## Download Addrbook
 ```
-
+wget -O $HOME/.planqd/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Acrechain/addrbook.json"
 ```
 
 ## Set Peers & Seed
@@ -134,7 +134,7 @@ acred query bank balances <wallet-address> --chain-id acre_9052-1
 ```
 acred tx staking create-validator -y \
   --chain-id acre_9052-1 \
-  --moniker vinjan \
+  --moniker <moniker> \
   --pubkey "$(acred tendermint show-validator)" \
   --amount 10000000000000000000000aacre \
   --identity 7C66E36EA2B71F68 \
