@@ -132,21 +132,21 @@ acred query bank balances <wallet-address> --chain-id acre_9052-1
 
 ## Create Validator
 ```
-acred tx staking create-validator \
-  --moniker=<moniker-name> \
-  --chain-id=acre_9052-1 \
-  --pubkey="$(acred tendermint show-validator)" \
-  --amount=5000000000000000000aacre \
-  --identity="<Keybase.io ID>" \
-  --website="<website-address>" \
-  --details="Some description" \
-  --from=<wallet-name> \
-  --commission-rate=0.1 \
+acred tx staking create-validator -y \
+  --chain-id acre_9052-1 \
+  --moniker vinjan \
+  --pubkey "$(acred tendermint show-validator)" \
+  --amount 10000000000000000000000aacre \
+  --identity 7C66E36EA2B71F68 \
+  --website nodes.vinjan.xyz \
+  --details xplorer.vinjan.xyz \
+  --from wallet \
+  --commission-rate=0.07 \
   --commission-max-rate=0.20 \
   --commission-max-change-rate=0.01 \
-  --min-self-delegation=1
-  --gas=auto \
-  -y 
+  --min-self-delegation 1 \
+  --gas auto \
+  --gas-adjustment 1.4
   ```
   
 ## Edit Validator
