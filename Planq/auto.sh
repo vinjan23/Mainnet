@@ -51,7 +51,7 @@ rm -rf planq
 git clone https://github.com/planq-network/planq.git
 cd planq || return
 git fetch
-git checkout v1.0.2
+git checkout v1.0.3
 make install
 mkdir -p $HOME/.planqd/cosmovisor/genesis/bin
 mkdir -p ~/.planqd/cosmovisor/upgrades
@@ -105,8 +105,8 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which cosmovisor) run start
-Restart=on-failure
-RestartSec=10
+Restart=always
+RestartSec=3
 LimitNOFILE=65535
 Environment="DAEMON_HOME=$HOME/.planqd"
 Environment="DAEMON_NAME=planqd"
