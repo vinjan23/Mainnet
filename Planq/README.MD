@@ -179,7 +179,7 @@ sudo apt install snapd -y
 sudo snap install lz4 
 sudo systemctl stop planqd
 planqd tendermint unsafe-reset-all --home $HOME/.planqd --keep-addr-book
-curl -L https://snap.planq.jepe.biz.id/planq/planq-snapshot-20230131.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.planqd
+curl -L https://snap.nodexcapital.com/planq/planq-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.planqd
 sudo systemctl restart planqd
 journalctl -fu planqd -o cat
 ```
