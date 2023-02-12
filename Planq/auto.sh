@@ -53,11 +53,6 @@ cd planq || return
 git fetch
 git checkout v1.0.3
 make install
-mkdir -p $HOME/.planqd/cosmovisor/genesis/bin
-mkdir -p ~/.planqd/cosmovisor/upgrades
-cp ~/go/bin/planqd ~/.planqd/cosmovisor/genesis/bin
-
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
 
 planqd config chain-id $CHAIN_ID
 planqd init $NODE_MONIKER  --chain-id $CHAIN_ID
@@ -104,13 +99,10 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which planqd) start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.planqd"
-Environment="DAEMON_NAME=planqd"
-Environment="UNSAFE_SKIP_BACKUP=true"
 
 [Install]
 WantedBy=multi-user.target
