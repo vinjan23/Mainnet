@@ -125,7 +125,9 @@ systemctl restart 8ball && journalctl -fu 8ball -o cat
  -y
  ```
  
-  
+```
+8ball tx staking delegate 8ballvaloper1jf02c7l9ezy30eflx0kgp54d0tpsj2zz3zmn8h 888000000uebl --from wallet --chain-id eightball-1 --gas auto -y
+``` 
   
   
   
