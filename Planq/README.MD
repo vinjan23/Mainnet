@@ -244,7 +244,7 @@ planqd tx staking edit-validator \
 
 ### Unjail
 ```
-planqd tx slashing unjail --from <Wallet> --chain-id planq_7070-2 --gas 1000000 --gas-adjustment 1.15 --gas-prices="20000000000aplanq
+planqd tx slashing unjail --gas="1000000" --gas-adjustment="1.15" --gas-prices="30000000000aplanq" --chain-id planq_7070-2 --from vj
 ```
 
 ### Delegate & Staking
