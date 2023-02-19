@@ -58,7 +58,7 @@ PORT=25
 # download genesis
 curl -L "https://8ball.info/8ball-genesis.json" > genesis.json
 mv genesis.json ~/.8ball/config/
-wget -O $HOME/.planqd/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/8ball/addrbook.json"
+wget -O $HOME/.8ball/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/8ball/addrbook.json"
 
 # Set peers and seeds
 SEEDS=
