@@ -18,6 +18,8 @@ RAM 8 GB
 
 STORAGE 200GB (SSD atau NVME)
 
+`PORT=33`
+
 ### Update Tool
 ```
 sudo apt update && sudo apt upgrade -y
