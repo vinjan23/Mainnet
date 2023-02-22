@@ -134,11 +134,10 @@ sudo journalctl -fu 8ball -o cat
 --commission-max-rate="0.20" \
 --commission-max-change-rate="0.01" \
 --min-self-delegation="100" \
---from=wallet
+--from=wallet \
 --identity=7C66E36EA2B71F68 \
 --details=node.vinjan.xyz \
---gas=auto \
--Y
+--fees=5000uebl
 ```
 ### Edit Validator
 ```
@@ -149,8 +148,7 @@ sudo journalctl -fu 8ball -o cat
  --details=satsetsatseterror \
  --chain-id=eightball-1 \
  --from=wallet \
- --gas=auto \
- -y
+ --fees=5000uebl
  ```
  ### Unjail
  ```
