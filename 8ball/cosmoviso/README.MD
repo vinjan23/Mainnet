@@ -183,7 +183,7 @@ sudo journalctl -fu 8ball -o cat
 ```
 
 ```
-8ball tx bank send wallet 8ball1xhflczu877d38vhg9z4n9890gjv0xpksegfmv3 888000000uebl --from wallet --chain-id eightball-1 --fees 5000uebl
+8ball tx bank send address to-address 888000000uebl --from wallet --chain-id eightball-1 --fees 5000uebl
 ```
 
 ```
