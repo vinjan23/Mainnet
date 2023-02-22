@@ -152,6 +152,11 @@ sudo journalctl -fu 8ball -o cat
  --gas=auto \
  -y
  ```
+ ### Unjail
+ ```
+ 8ball tx slashing unjail --broadcast-mode=block --from wallet --chain-id eightball-1 --fees=5000uebl
+ ```
+ 
 ### Delegate 
 ```
 8ball tx staking delegate 8ballvaloper1jf02c7l9ezy30eflx0kgp54d0tpsj2zz3zmn8h 888000000uebl --from wallet --chain-id eightball-1 --gas auto -y
