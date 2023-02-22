@@ -170,6 +170,10 @@ sudo journalctl -fu 8ball -o cat
 ```
 8ball tx distribution withdraw-rewards $(8ball keys show wallet --bech val -a) --commission --chain-id eightball-1 --gas auto -y
 ```
+### Transfer
+```
+8ball tx bank send address to-address 888000000uebl --from wallet --chain-id eightball-1 --fees 5000uebl
+```
 
 ### Check Validator Match with Wallet
 ```
