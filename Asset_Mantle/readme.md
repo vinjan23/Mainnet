@@ -99,3 +99,7 @@ sudo systemctl start mantleNode
 sudo journalctl -fu mantleNode -o cat
 ```
 
+### Sync
+```
+mantleNode status 2>&1 | jq .SyncInfo
+```
