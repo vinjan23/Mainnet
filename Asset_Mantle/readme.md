@@ -16,16 +16,16 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
 ### Binary
 ```
 cd $HOME
-rm -rf node
+rm -rf AssetMantle
 git clone https://github.com/AssetMantle/node.git
-cd node
+cd AssetMantle
 git checkout v0.3.1
 make build
-mkdir -p $HOME/.node/cosmovisor/genesis/bin
-mv build/mantleNode $HOME/.node/cosmovisor/genesis/bin/
+mkdir -p $HOME/.AssetMantle/cosmovisor/genesis/bin
+mv build/mantleNode $HOME/.AssetMantle/cosmovisor/genesis/bin/
 rm -rf build
-ln -s $HOME/.node/cosmovisor/genesis $HOME/.node/cosmovisor/current
-sudo ln -s $HOME/.node/cosmovisor/current/bin/mantleNode /usr/local/bin/mantleNode
+ln -s $HOME/.AssetMantle/cosmovisor/genesis $HOME/.AssetMantle/cosmovisor/current
+sudo ln -s $HOME/.AssetMantle/cosmovisor/current/bin/mantleNode /usr/local/bin/mantleNode
 ```
 
 # Cosmovisor
