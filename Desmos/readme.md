@@ -48,28 +48,35 @@ EOF
 ```
 
 ```
-desmos tendermint unsafe-reset-all --home $HOME/.desmos --keep-addr-book
-
-SNAP_RPC="https://desmos.nodejumper.io:443"
-
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-
-echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-
-sed -i 's|^enable *=.*|enable = true|' $HOME/.desmos/config/config.toml
-sed -i 's|^rpc_servers *=.*|rpc_servers = "'$SNAP_RPC,$SNAP_RPC'"|' $HOME/.desmos/config/config.toml
-sed -i 's|^trust_height *=.*|trust_height = '$BLOCK_HEIGHT'|' $HOME/.desmos/config/config.toml
-sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $HOME/.desmos/config/config.toml
-```
-
-```
 sudo systemctl daemon-reload
 sudo systemctl enable desmosd
 sudo systemctl restart desmosd
 sudo journalctl -fu desmosd -o cat
 ```
+```
+peers="d2b9e735329a1addb7090b1509bc018eea32d691@desmos.statesync.nodersteam.com:23656"
+sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.desmos/config/config.toml
+
+SNAP_RPC=http://desmos.statesync.nodersteam.com:23657
+
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 500)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.desmos/config/config.toml
+
+sudo systemctl restart desmosd
+desmos tendermint unsafe-reset-all --home /root/.desmos --keep-addr-book
+
+sudo systemctl restart desmosd && journalctl -u desmosd -f -o cat
+```
+
 
 ```
 desmos status 2>&1 | jq .SyncInfo
