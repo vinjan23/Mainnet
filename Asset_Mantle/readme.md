@@ -21,10 +21,10 @@ git clone https://github.com/AssetMantle/node.git
 cd node
 git checkout v0.3.1
 make build
-mkdir -p $HOME/.nodeode/cosmovisor/genesis/bin
+mkdir -p $HOME/.node/cosmovisor/genesis/bin
 mv build/mantleNode $HOME/.node/cosmovisor/genesis/bin/
 rm -rf build
-ln -s $HOME/.nodeode/cosmovisor/genesis $HOME/.nodeode/cosmovisor/current
+ln -s $HOME/.node/cosmovisor/genesis $HOME/.node/cosmovisor/current
 sudo ln -s $HOME/.node/cosmovisor/current/bin/mantleNode /usr/local/bin/mantleNode
 ```
 
