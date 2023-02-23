@@ -58,8 +58,6 @@ sed -i 's|^prometheus *=.*|prometheus = true|' $HOME/.mantleNode/config/config.t
 
 ### Custom Port
 ```
-PORT=42
-mantleNode config node tcp://localhost:${PORT}657
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://0.0.0.0:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.mantleNode/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.mantleNode/config/app.toml
 ```
@@ -102,7 +100,7 @@ sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $HOME/.mantleNode/conf
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable mantleNode
-sudo systemctl start mantleNode
+sudo systemctl restart mantleNode
 sudo journalctl -fu mantleNode -o cat
 ```
 
@@ -110,3 +108,124 @@ sudo journalctl -fu mantleNode -o cat
 ```
 mantleNode status 2>&1 | jq .SyncInfo
 ```
+### Log
+```
+sudo journalctl -fu mantleNode -o cat
+```
+
+### Create Wallet
+```
+mantleNode keys add wallet
+```
+### Recover
+```
+mantleNode keys add wallet --recover
+```
+### List Wallet
+```
+mantleNode keys list
+```
+
+### Check Balance
+```
+mantleNode q bank balances $(mantleNode keys show wallet -a)
+```
+
+### Create Validator
+```
+mantleNode tx staking create-validator \
+--amount=1000000umntl \
+--pubkey=$(mantleNode tendermint show-validator) \
+--moniker="vinjan" \
+--identity=7C66E36EA2B71F68 \
+--website=nodes.vinjan.xyz \
+--details="https://explorer.vinjan.xyz" \
+--chain-id=mantle-1 \
+--commission-rate=0.10 \
+--commission-max-rate=0.20 \
+--commission-max-change-rate=0.01 \
+--min-self-delegation=1 \
+--from=wallet \
+--gas-prices=0.1umntl \
+--gas-adjustment=1.5 \
+--gas=auto \
+-y 
+```
+
+### Edit
+```
+mantleNode tx staking edit-validator \
+--new-moniker="Moniker" \
+--identity= \
+--details= \
+--chain-id=mantle-1 \
+--from=wallet \
+--gas-prices=0.1umntl \
+--gas-adjustment=1.5 \
+--gas=auto \
+-y 
+```
+
+### Unjail
+```
+mantleNode tx slashing unjail --from wallet --chain-id mantle-1 --gas-prices 0.1umntl --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Delegate
+```
+mantleNode tx staking delegate YOUR_TO_VALOPER_ADDRESS 1000000umntl --from wallet --chain-id mantle-1 --gas-prices 0.1umntl --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Withdraw Reward
+```
+mantleNode tx distribution withdraw-all-rewards --from wallet --chain-id mantle-1 --gas-prices 0.1umntl --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Withdraw with Commision
+```
+mantleNode tx distribution withdraw-rewards $(mantleNode keys show wallet --bech val -a) --commission --from wallet --chain-id mantle-1 --gas-prices 0.1umntl --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Transfer
+```
+mantleNode tx bank send wallet YOUR_TO_WALLET_ADDRESS 1000000umntl --from wallet --chain-id mantle-1 --gas-prices 0.1umntl --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Unbond/Unstake
+```
+mantleNode tx staking unbond $(mantleNode keys show wallet --bech val -a) 1000000umntl --from wallet --chain-id mantle-1 --gas-prices 0.1umntl --gas-adjustment 1.5 --gas auto -y 
+```
+
+### Validator Info
+```
+mantleNode status 2>&1 | jq .ValidatorInfo
+```
+
+### Stop 
+```
+sudo systemctl stop mantleNode
+```
+
+### Restart
+```
+sudo systemctl restart mantleNode
+```
+### Check Validator Match with Wallet
+```
+[[ $(mantleNode q staking validator $(mantleNode keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(mantleNode status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+
+### Delete Node
+```
+sudo systemctl stop mantleNode
+sudo systemctl disable mantleNode
+sudo rm /etc/systemd/system/mantleNode.service
+sudo systemctl daemon-reload
+rm -rf $HOME/.mantleNode
+rm -rf $HOME/node
+sudo rm $(which mantleNode)
+```
+
+
+
+
