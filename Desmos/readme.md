@@ -30,16 +30,18 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${P
 ```
 
 ```
-sudo tee /etc/systemd/system/desmosd.service > /dev/null << EOF
+sudo tee /etc/systemd/system/desmos.service > /dev/null <<EOF
 [Unit]
-Description=Desmos Node
+Description=desmos mainnet
 After=network-online.target
+
 [Service]
 User=$USER
 ExecStart=$(which desmos) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
+
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -47,9 +49,9 @@ EOF
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable desmosd
-sudo systemctl restart desmosd
-sudo journalctl -fu desmosd -o cat
+sudo systemctl enable desmos
+sudo systemctl restart desmos
+sudo journalctl -fu desmos -o cat
 ```
 ```
 peers="d2b9e735329a1addb7090b1509bc018eea32d691@desmos.statesync.nodersteam.com:23656"
@@ -72,7 +74,7 @@ s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.desmos/config/config.toml
 sudo systemctl restart desmosd
 desmos tendermint unsafe-reset-all --home /root/.desmos --keep-addr-book
 
-sudo systemctl restart desmosd && journalctl -u desmosd -f -o cat
+sudo systemctl restart desmos && journalctl -u desmos -f -o cat
 ```
 
 
@@ -111,6 +113,74 @@ desmos tx staking create-validator \
 --gas=auto \
 -y
 ```
+```
+desmos tx staking edit-validator \
+--new-moniker="YOUR_MONIKER_NAME" \
+--identity="YOUR_KEYBASE_ID" \
+--details="YOUR_DETAILS" \
+--website="YOUR_WEBSITE_URL"
+--chain-id=desmos-mainnet \
+--from=<WALLET> \
+--fees 200udsm \
+-y
+```
+```
+desmos tx slashing unjail --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
+```
+
+```
+desmos tx staking delegate <validator> 1000000udsm --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
+```
+```
+desmos tx distribution withdraw-all-rewards --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
+```
+```
+desmos tx distribution withdraw-rewards <VALOPER> --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
+```
+### Unbond/Unstake
+```
+desmos tx staking unbond $(desmos keys show <WALLET> --bech val -a) 1000000udsm --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
+```
+
+### Transfer
+```
+desmos tx bank send <WALLET> <TO_WALLET_ADDRESS> 1000000udsm --from <WALLET> --fees 200udsm --chain-id desmos-mainnet
+```
+### Validator Info
+```
+desmos status 2>&1 | jq .ValidatorInfo
+```
+
+### Check Validator match with wallet
+```
+[[ $(desmos q staking validator $(desmos keys show <WALLET> --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(desmos status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+
+### Stop 
+```
+sudo systemctl stop desmos
+```
+### Restart
+```
+sudo systemctl restart desmos
+```
+
+### Delete Node
+```
+cd $HOME
+sudo systemctl stop desmos
+sudo systemctl disable desmos
+sudo rm /etc/systemd/system/desmos.service
+sudo systemctl daemon-reload
+rm -rf $(which desmos) 
+rm -rf $HOME/.desmos
+rm -rf $HOME/rebus.core
+```
+
+
+
+
+
 
 
 
