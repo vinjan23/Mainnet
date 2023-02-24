@@ -1,4 +1,21 @@
-###
+### Update
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
+```
+### GO
+```
+ver="1.19.3"
+cd $HOME
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+rm "go$ver.linux-amd64.tar.gz"
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+```
+
+### Build
 ```
 cd $HOME
 git clone https://github.com/desmos-labs/desmos.git
@@ -6,11 +23,11 @@ cd desmos
 git checkout v4.7.0
 make install
 ```
-
+### Setup Moniker
 ```
 MONIKER=
 ```
-
+### Init
 ```
 PORT=43
 desmos init $MONIKER --chain-id desmos-mainnet
@@ -18,17 +35,23 @@ desmos config chain-id desmos-mainnet
 desmos config keyring-backend file
 desmos config node tcp://localhost:${PORT}657
 ```
-
+### Genesis & Addrbook
 ```
 curl -s https://raw.githubusercontent.com/desmos-labs/mainnet/main/genesis.json > $HOME/.desmos/config/genesis.json
-curl -s https://snapshots1.nodejumper.io/desmos/addrbook.json > $HOME/.desmos/config/addrbook.json
+wget -O $HOME/.desmos/config/addrbook.json "https://raw.githubusercontent.com/nodersteam/cosmos-adrbook/main/desmos/addrbook.json"
 ```
-
+### Gas & Seed & Peer
+```
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.01udsm\"/;" ~/.desmos/config/app.toml
+external_address=$(wget -qO- eth0.me)
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.desmos/config/config.toml
+```
+### Custom Port
 ```
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://0.0.0.0:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.desmos/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.desmos/config/app.toml
 ```
-
+### Create Service
 ```
 sudo tee /etc/systemd/system/desmos.service > /dev/null <<EOF
 [Unit]
@@ -46,13 +69,14 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
-
+### Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable desmos
 sudo systemctl restart desmos
 sudo journalctl -fu desmos -o cat
 ```
+### Statesync
 ```
 peers="d2b9e735329a1addb7090b1509bc018eea32d691@desmos.statesync.nodersteam.com:23656"
 sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.desmos/config/config.toml
@@ -77,23 +101,27 @@ desmos tendermint unsafe-reset-all --home /root/.desmos --keep-addr-book
 sudo systemctl restart desmos && journalctl -u desmos -f -o cat
 ```
 
-
+### Sync Info
 ```
 desmos status 2>&1 | jq .SyncInfo
 ```
-
+### Create Wallet
+```
+desmos keys add <WALLET>
+```
+### Recover Wallet
 ```
 desmos keys add wallet --recover
 ```
-
+### List all wallet
 ```
 desmos keys list
 ```
-
+### Check Balances
 ```
 desmos q bank balances desmos1a59zedna28qj6p0yx3x9fxu920ffx3m7dfr8ju
 ```
-
+### Create Validator
 ```
 desmos tx staking create-validator \
 --amount=557000000udsm \
@@ -113,6 +141,7 @@ desmos tx staking create-validator \
 --gas=auto \
 -y
 ```
+### Editing
 ```
 desmos tx staking edit-validator \
 --new-moniker="YOUR_MONIKER_NAME" \
@@ -124,16 +153,19 @@ desmos tx staking edit-validator \
 --fees 200udsm \
 -y
 ```
+### Unjail
 ```
 desmos tx slashing unjail --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
 ```
-
+### Delegate
 ```
 desmos tx staking delegate <validator> 1000000udsm --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
 ```
+### Withdraw All
 ```
 desmos tx distribution withdraw-all-rewards --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
 ```
+### Withdraw with commission
 ```
 desmos tx distribution withdraw-rewards <VALOPER> --from <WALLET> --chain-id desmos-mainnet --fees 200udsm -y
 ```
