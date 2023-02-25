@@ -14,7 +14,7 @@ arkhd q bank balances arkh1caclqqep2jprjn0evwyt3jkn6q3zxx4ckkguef
 ```
 ```
 arkhd tx staking create-validator \
---amount=557000000arkh \
+--amount=30000000arkh \
 --pubkey=$(arkhd tendermint show-validator) \
 --moniker="vinjan" \
 --identity=7C66E36EA2B71F68 \
