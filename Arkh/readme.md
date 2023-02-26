@@ -38,8 +38,13 @@ arkhd config keyring-backend file
 ```
 ### Genesis
 ```
-curl -Ls https://raw.githubusercontent.com/vincadian/arkh-blockchain/master/genesis/genesis.json > $HOME/.8ball/config/genesis.json
+curl -Ls https://raw.githubusercontent.com/vincadian/arkh-blockchain/master/genesis/genesis.json > $HOME/.arkh/config/genesis.json
 ```
+### Addrbook
+```
+wget -O $HOME/.arkh/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Arkh/addrbook.json"
+```
+
 ### Seed
 ```
 sed -i -e "s|^seeds *=.*|seeds = \"808f01d4a7507bf7478027a08d95c575e1b5fa3c@asc-dataseed.arkhadian.com:26656 \"|" $HOME/.arkh/config/config.toml
