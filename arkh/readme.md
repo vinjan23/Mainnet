@@ -50,12 +50,12 @@ arkhd tx slashing unjail --from <wallet> --chain-id --chain-id arkh --fees 5000a
 
 ### WD All
 ```
-arkhd tx distribution withdraw-all-rewards --from wallet --chain-id arkh --fees 5000arkh  -y
+arkhd tx distribution withdraw-all-rewards --from wallt --chain-id arkh --fees 5000arkh  -y
 ```
 
 ### WD with commission
 ```
-arkhd tx distribution withdraw-rewards $(arkhd keys show wallet --bech val -a) --commission --from wallet --chain-id arkh --fees 5000arkh  -y
+arkhd tx distribution withdraw-rewards $(arkhd keys show wallet --bech val -a) --commission --from wallt --chain-id arkh --fees 5000arkh  -y
 ```
 ### Delegate
 ```
