@@ -55,7 +55,7 @@ arkhd tx distribution withdraw-all-rewards --from wallt --chain-id arkh --fees 5
 
 ### WD with commission
 ```
-arkhd tx distribution withdraw-rewards $(arkhd keys show wallet --bech val -a) --commission --from wallt --chain-id arkh --fees 5000arkh  -y
+arkhd tx distribution withdraw-rewards $(arkhd keys show wallt --bech val -a) --commission --from wallt --chain-id arkh --fees 5000arkh  -y
 ```
 ### Delegate
 ```
