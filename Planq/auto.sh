@@ -33,24 +33,21 @@ echo -e "\e[1m\e[32m2. Installing dependencies... \e[0m" && sleep 1
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 
 # install go
-if ! [ -x "$(command -v go)" ]; then
-ver="1.19.1"
+ver="1.19.5"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
-source $HOME/.bash_profile
-fi
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+go version
 
 echo -e "\e[1m\e[32m3. Downloading and building binaries... \e[0m" && sleep 1
 # download and build binaries
-cd || return
-rm -rf planq
+cd $HOME
 git clone https://github.com/planq-network/planq.git
-cd planq || return
-git fetch
+cd planq
 git checkout v1.0.3
 make install
 
@@ -89,6 +86,8 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 # custom port
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:33658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:33657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:33060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:33656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":33660\"%" $HOME/.planqd/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:33317\"%; s%^address = \":8080\"%address = \":33080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:33090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:33091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:33545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:33546\"%" $HOME/.planqd/config/app.toml
+
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.planqd/config/config.toml
 
 echo -e "\e[1m\e[32m4. Starting service... \e[0m" && sleep 1
 # create service
