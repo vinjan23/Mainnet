@@ -4,9 +4,8 @@ sudo apt update && sudo apt upgrade -y && sudo apt install curl tar wget clang p
 ```
 ### Install GO
 ```
-ver="1.19.3"
+ver="1.19.5"
 cd $HOME
-rm -rf go
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
@@ -27,7 +26,7 @@ sudo mv ./8ball /usr/local/bin/
 8ball init $MONIKER --chain-id eightball-1
 8ball config chain-id eightball-1
 8ball config keyring-backend file
-PORT=25
+PORT=28
 8ball config node tcp://localhost:${PORT}657
 ```
 
