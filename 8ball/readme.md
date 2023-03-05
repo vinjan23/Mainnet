@@ -156,16 +156,16 @@ sudo journalctl -fu 8ball -o cat
  
 ### Delegate 
 ```
-8ball tx staking delegate 8ballvaloper1jf02c7l9ezy30eflx0kgp54d0tpsj2zz3zmn8h 888000000uebl --from wallet --chain-id eightball-1 --gas auto -y
+8ball tx staking delegate 8ballvaloper1jf02c7l9ezy30eflx0kgp54d0tpsj2zz3zmn8h 888000000uebl --from wallet --chain-id eightball-1 --fees=5000uebl
 ``` 
  
 ### Withdraw All Reward
 ```
-8ball tx distribution withdraw-all-rewards --from wallet --chain-id eightball-1 --gas auto -y
+8ball tx distribution withdraw-all-rewards --from wallet --chain-id eightball-1 --fees=5000uebl
 ```
 ### Withdraw With Commission
 ```
-8ball tx distribution withdraw-rewards $(8ball keys show wallet --bech val -a) --commission --chain-id eightball-1 --gas auto -y
+8ball tx distribution withdraw-rewards $(8ball keys show wallet --bech val -a) --commission --chain-id eightball-1 --from wallet --fees=5000uebl
 ```
 ### Transfer
 ```
