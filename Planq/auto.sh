@@ -48,7 +48,7 @@ echo -e "\e[1m\e[32m3. Downloading and building binaries... \e[0m" && sleep 1
 cd $HOME
 git clone https://github.com/planq-network/planq.git
 cd planq
-git checkout v1.0.3
+git checkout v1.0.4
 make install
 
 planqd config chain-id $CHAIN_ID
