@@ -48,14 +48,15 @@ cd planq
 git fetch
 git checkout v1.0.3
 make install
-mkdir -p $HOME/.planqd/cosmovisor/genesis/bin
-mkdir -p ~/.planqd/cosmovisor/upgrades
-cp ~/go/bin/planqd ~/.planqd/cosmovisor/genesis/bin
 ```
 
-### Install Cosmovisor
+### Update
 ```
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
+cd planq
+git fetch --all
+git checkout v1.0.4 
+make install
+systemctl restart planqd && journalctl -fu planqd -o cat
 ```
 
 ### Setup Node Name
@@ -124,19 +125,12 @@ sudo tee /etc/systemd/system/planqd.service > /dev/null << EOF
 [Unit]
 Description=planq-mainnet node service
 After=network-online.target
-
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which planqd) start
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.planqd"
-Environment="DAEMON_NAME=planqd"
-Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-
 [Install]
 WantedBy=multi-user.target
 EOF
