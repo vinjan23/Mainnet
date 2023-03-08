@@ -144,7 +144,7 @@ arkhd tx staking edit-validator \
 ``` 
 ### Unjail
 ```
-arkhd tx slashing unjail --from <wallet> --chain-id --chain-id arkh --fees 5000arkh -y
+arkhd tx slashing unjail --broadcast-mode=block --from wallt --chain-id arkh --fees=5000arkh
 ```
 
 ### WD All
