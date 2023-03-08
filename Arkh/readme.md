@@ -18,17 +18,12 @@ go version
 ```
 cd $HOME
 rm -rf arkh-blockchain
-git clone https://github.com/vincadian/arkh-blockchain
+git clone https://github.com/vincadian/arkh-blockchain.git
 cd arkh-blockchain
 git checkout v2.0.0
 go build -o arkhd ./cmd/arkhd
 ```
-```
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
-mkdir -p $HOME/.arkh/cosmovisor/genesis/bin
-mv arkhd $HOME/.arkh/cosmovisor/genesis/bin/
-ln -s $HOME/.arkh/cosmovisor/genesis $HOME/.arkh/cosmovisor/current
-sudo ln -s $HOME/.arkh/cosmovisor/current/bin/arkhd /usr/bin/arkhd
+
 ```
 ### Init
 ```
@@ -72,26 +67,19 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 ### Create Service
 ```
-sudo tee /etc/systemd/system/arkhd.service > /dev/null << EOF
+sudo tee /etc/systemd/system/arkhd.service > /dev/null <<EOF
 [Unit]
-Description=arkhadian node service
+Description=arkhd Daemon
 After=network-online.target
-
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
-Restart=on-failure
+ExecStart=$(which arkhd) start
+Restart=always
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.arkh"
-Environment="DAEMON_NAME=arkhd"
-Environment="UNSAFE_SKIP_BACKUP=true"
-
 [Install]
 WantedBy=multi-user.target
 EOF
-```
-### Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable arkhd
