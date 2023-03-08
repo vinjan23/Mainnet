@@ -24,7 +24,6 @@ git checkout v2.0.0
 go build -o arkhd ./cmd/arkhd
 ```
 
-```
 ### Init
 ```
 arkhd init <MONIKER> --chain-id arkh
