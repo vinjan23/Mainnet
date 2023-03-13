@@ -46,7 +46,7 @@ rm -rf planq
 git clone https://github.com/planq-network/planq.git
 cd planq
 git fetch
-git checkout v1.0.3
+git checkout v1.0.5
 make install
 ```
 
