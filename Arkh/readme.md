@@ -21,7 +21,8 @@ rm -rf arkh-blockchain
 git clone https://github.com/vincadian/arkh-blockchain.git
 cd arkh-blockchain
 git checkout v2.0.0
-go build -o arkhd ./cmd/arkhd
+go install ./...
+arkhd version
 ```
 
 ### Init
