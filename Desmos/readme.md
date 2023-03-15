@@ -39,6 +39,7 @@ desmos config node tcp://localhost:${PORT}657
 ### Genesis & Addrbook
 ```
 curl -s https://raw.githubusercontent.com/desmos-labs/mainnet/main/genesis.json > $HOME/.desmos/config/genesis.json
+wget -O $HOME/.desmos/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Desmos/addrbook.json"
 ```
 ### Gas & Seed & Peer
 ```
