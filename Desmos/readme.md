@@ -39,7 +39,6 @@ desmos config node tcp://localhost:${PORT}657
 ### Genesis & Addrbook
 ```
 curl -s https://raw.githubusercontent.com/desmos-labs/mainnet/main/genesis.json > $HOME/.desmos/config/genesis.json
-curl -s https://snapshots1.nodejumper.io/desmos/addrbook.json > $HOME/.desmos/config/addrbook.json
 ```
 ### Gas & Seed & Peer
 ```
@@ -94,10 +93,20 @@ sudo journalctl -fu desmos -o cat
 ### Statesync
 ```
 sudo systemctl stop desmos
-cp $HOME/.desmos/data/priv_validator_state.json $HOME/.desmos/priv_validator_state.json.backup 
-desmos tendermint unsafe-reset-all --home $HOME/.desmos --keep-addr-book 
-curl https://snapshots1.nodejumper.io/desmos/desmos-mainnet_2023-03-15.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.desmos
-mv $HOME/.desmos/priv_validator_state.json.backup $HOME/.desmos/data/priv_validator_state.json 
+cp $HOME/.desmos/data/priv_validator_state.json $HOME/.desmos/priv_validator_state.json.backup
+desmos tendermint unsafe-reset-all --home $HOME/.desmos --keep-addr-book
+SNAP_RPC="https://desmos.nodejumper.io:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+PEERS="f090ead239426219d605b392314bdd73d16a795f@desmos.nodejumper.io:32656"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.desmos/config/config.toml
+sed -i 's|^enable *=.*|enable = true|' $HOME/.desmos/config/config.toml
+sed -i 's|^rpc_servers *=.*|rpc_servers = "'$SNAP_RPC,$SNAP_RPC'"|' $HOME/.desmos/config/config.toml
+sed -i 's|^trust_height *=.*|trust_height = '$BLOCK_HEIGHT'|' $HOME/.desmos/config/config.toml
+sed -i 's|^trust_hash *=.*|trust_hash = "'$TRUST_HASH'"|' $HOME/.desmos/config/config.toml
+mv $HOME/.desmos/priv_validator_state.json.backup $HOME/.desmos/data/priv_validator_state.json
 sudo systemctl restart desmos && journalctl -u desmos -f -o cat
 ```
 
