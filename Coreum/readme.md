@@ -40,7 +40,7 @@ curl -Ls https://raw.githubusercontent.com/CoreumFoundation/coreum/master/genesi
 ```
 
 ```
-PEERS=8cedd961a72c183686e9b0b67b6e54fccd6471c3@35.194.10.107:26656,81e76bc013acbb2048e7acfb2ab04d80732a3699@34.122.166.246:26656,55cec213e8f3738d2642147d857afab93b1a4ef6@34.172.192.61:26656,62b207017a272a1452ebe7e67018a4f6be1146d8@34.172.201.60:26656,094189cad7921baf44c280ee8efed959869f3a22@34.66.215.21:26656,d65085259afd2065796bba7430d61fe85042e1c3@190.92.219.25:26656,eeb17ff4b1dad8d20fdafc339c277f7a624bb84a@35.238.253.76:26656,92b67a34dbda739a92cd04561ac8c33bfa858477@34.67.59.88:26656,2505072cc9586c0c4fafa092a2352123d8c12936@34.28.225.76:26656
+PEERS=57d728e6cd0b614c4d705a96ec4753297798ee69@94.16.120.57:46656,8cedd961a72c183686e9b0b67b6e54fccd6471c3@35.194.10.107:26656,81e76bc013acbb2048e7acfb2ab04d80732a3699@34.122.166.246:26656,55cec213e8f3738d2642147d857afab93b1a4ef6@34.172.192.61:26656,62b207017a272a1452ebe7e67018a4f6be1146d8@34.172.201.60:26656,094189cad7921baf44c280ee8efed959869f3a22@34.66.215.21:26656,d65085259afd2065796bba7430d61fe85042e1c3@190.92.219.25:26656,eeb17ff4b1dad8d20fdafc339c277f7a624bb84a@35.238.253.76:26656,92b67a34dbda739a92cd04561ac8c33bfa858477@34.67.59.88:26656,2505072cc9586c0c4fafa092a2352123d8c12936@34.28.225.76:26656
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.core/coreum-mainnet-1/config/config.toml
 ```
 
@@ -109,23 +109,59 @@ cored q bank balances <Wallet_Address>
 cored tx staking create-validator \
 --amount=20000000000ucore \
 --pubkey="$(cored tendermint show-validator)" \
---moniker="$VALIDATOR_NAME" \
---website="" \
---identity="" \
+--moniker=vinjan \
+--website="https://nodes.vinjan.xyz" \
+--identity="7C66E36EA2B71F68" \
 --commission-rate="0.05" \
 --commission-max-rate="0.2" \
 --commission-max-change-rate="0.01" \
 --min-self-delegation=20000000000 \
+--chain-id=coreum-testnet-1 \
+--from=wallet \
 --gas auto \
---chain-id="coreum-testnet-1" \
---from=<WALLET> \
+-y
 ```
 
+```
+cored tx staking edit-validator \
+--new-moniker=<Your_Moniker> \
+--identity= \
+--website="" \
+--details=satsetsatseterror \
+--chain-id=coreum-testnet-1 \
+--from=wallet \
+--gas auto \
+-y
+```
 
+```
+cored tx slashing unjail --from wallet --chain-id coreum-mainnet-1 --gas-adjustment 1.4  --gas auto -y
+```
 
+```
+cored tx staking delegate <TO_VALOPER_ADDRESS> 1000000ucore --from wallet --chain-id coreum-mainnet-1 --gas-adjustment 1.4 --gas auto -y
+```
 
+```
+cored tx distribution withdraw-all-rewards --from wallet --chain-id coreum-mainnet-1 --gas-adjustment 1.4 --gas auto -y
+```
 
+```
+cored tx distribution withdraw-rewards $(cored keys show wallet --bech val -a) --commission --from wallet --chain-id coreum-mainnet-1 --gas-adjustment 1.4 --gas auto -y
+```
 
+```
+[[ $(cored q staking validator $(cored keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(cored status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
 
+```
+sudo systemctl stop cored
+sudo systemctl disable cored
+sudo rm /etc/systemd/system/cored.service
+sudo systemctl daemon-reload
+rm -f $(which cored)
+rm -rf .core
+rm -rf coreum
+```
 
   
