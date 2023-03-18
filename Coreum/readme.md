@@ -81,7 +81,7 @@ EOF
 ```
 sudo systemctl daemon-reload && \
 sudo systemctl enable cored && \
-sudo systemctl start cored && \
+sudo systemctl restart cored && \
 sudo journalctl -u cored -f -o cat
 ```
 
@@ -148,6 +148,10 @@ cored tx distribution withdraw-all-rewards --from wallet --chain-id coreum-mainn
 
 ```
 cored tx distribution withdraw-rewards $(cored keys show wallet --bech val -a) --commission --from wallet --chain-id coreum-mainnet-1 --gas-adjustment 1.4 --gas auto -y
+```
+
+```
+sudo systemctl restart cored
 ```
 
 ```
