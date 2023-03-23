@@ -129,15 +129,15 @@ decentrd tx staking create-validator -y \
   --min-self-delegation 1 \
   --gas auto \
   --gas-adjustment="1.4" \
-  --gas-prices 0udec
+  --fees 250udec
 ```
   
 ```
-decentrd tx slashing unjail --from <wallet> --chain-id --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --gas-prices 0udec -y
+decentrd tx slashing unjail --from <wallet> --chain-id --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
 ```
   
 ```
-decentrd tx distribution withdraw-all-rewards --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --gas-prices 0udec -y
+decentrd tx distribution withdraw-all-rewards --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
 ```
 
 ```
