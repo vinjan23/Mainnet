@@ -114,7 +114,7 @@ cored tx staking create-validator \
 --moniker=vinjan \
 --website="https://nodes.vinjan.xyz" \
 --identity="7C66E36EA2B71F68" \
---commission-rate="0.05" \
+--commission-rate="0.02" \
 --commission-max-rate="0.2" \
 --commission-max-change-rate="0.01" \
 --min-self-delegation=20000000000 \
