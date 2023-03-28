@@ -141,7 +141,7 @@ decentrd tx distribution withdraw-all-rewards --from wallet --chain-id mainnet-3
 ```
 
 ```
-decentrd tx distribution withdraw-rewards $(decentrd keys show wallet --bech val -a) --commission --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --gas-prices 0udec -y
+decentrd tx distribution withdraw-rewards $(decentrd keys show wallet --bech val -a) --commission --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --gas-prices 200udec -y
 ```
 
 ```
