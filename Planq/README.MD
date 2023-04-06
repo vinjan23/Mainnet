@@ -116,7 +116,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 
-### Disable Indexing
+###  Indexing=ON
 ```
 sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.planqd/config/config.toml
 ```
