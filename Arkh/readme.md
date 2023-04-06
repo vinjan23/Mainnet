@@ -131,20 +131,17 @@ arkhd tx staking create-validator \
 --from=wallt \
 --gas-prices=0.1arkh \
 --gas-adjustment=1.5 \
---gas=auto \
--y
+--fees 5000arkh
 ```
 ### Edit
 ```
 arkhd tx staking edit-validator \
---new-moniker=vinjan \
- --identity=7C66E36EA2B71F68 \
- --website=nodes.vinjan.xyz \
- --details=satsetsatseterror \
- --chain-id=arkh \
- --from=wallt \
- --fees 5000arkh 
- -y
+--moniker=vinjan \
+--identity=7C66E36EA2B71F68 \
+--commission-rate=0.04 \
+--chain-id=arkh \
+--from=wallt \
+--fees 5000arkh
 ``` 
 ### Unjail
 ```
