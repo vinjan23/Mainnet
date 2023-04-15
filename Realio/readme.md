@@ -139,6 +139,65 @@ realio-networkd tx staking create-validator \
   --from=wallet
   ```
   
+### Unjail
+```
+realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+```
+
+### Delegate
+```
+realio-networkd tx staking delegate realiovaloper1csj5g5j4r682apvjckdk3qldkup4y07472gtkh 7000000000000000000000ario --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+```
+
+### Withdraw all
+```
+realio-networkd tx distribution withdraw-all-rewards --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+```
+
+### Withdraw with comission
+```
+realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+```
+
+### Stop
+```
+sudo systemctl stop realio-networkd
+```
+
+### Restart
+```
+sudo systemctl restart realio-networkd
+```
+
+### Check Validator
+```
+[[ $(realio-networkd q staking validator realiovaloper1csj5g5j4r682apvjckdk3qldkup4y07472gtkh -oj | jq -r .consensus_pubkey.key) = $(realio-networkd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\nYou win\n" || echo -e "\nYou lose\n"
+```
+```
+[[ $(realio-networkd q staking validator $(realio-networkd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(realio-networkd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+
+### Own peer
+```
+echo $(realio-networkd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.realio-network/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+
+### Connected Peer
+```
+curl -sS http://localhost:22657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
+
+### Delete
+```
+sudo systemctl stop realio-networkd && \
+sudo systemctl disable realio-networkd && \
+rm /etc/systemd/system/realio-networkd.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf realio-network && \
+rm -rf .realio-network && \
+rm -rf $(which realio-networkd)
+```
 
 
 
