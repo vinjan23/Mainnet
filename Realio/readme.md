@@ -89,7 +89,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 sudo tee /etc/systemd/system/realio-networkd.service > /dev/null <<EOF
 [Unit]
 Description=realio
-After=network.target
+After=network-online.target
 
 [Service]
 User=$USER
