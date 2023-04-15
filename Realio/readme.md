@@ -93,9 +93,9 @@ After=network.target
 
 [Service]
 User=$USER
-Type=simple
 ExecStart=$(which realio-networkd) start
 Restart=on-failure
+RestartSec=3
 LimitNOFILE=65535
 
 [Install]
