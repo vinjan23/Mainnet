@@ -118,7 +118,7 @@ realio-networkd keys add wallet --recover
 
 ### Balances
 ```
-realio-networkd q bank balances <address>
+realio-networkd q bank balances realio1csj5g5j4r682apvjckdk3qldkup4y07427t383
 ```
 
 ### Validator
