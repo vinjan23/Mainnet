@@ -20,7 +20,7 @@ go version
 ### Binary
 ```
 cd $HOME
-git clone https://github.com/realiotech/realio-network.git realio
+git clone https://github.com/realiotech/realio-network.git
 cd realio-network
 git checkout v0.8.0-rc4
 make install
