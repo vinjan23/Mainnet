@@ -40,7 +40,7 @@ realio-networkd config keyring-backend file
 
 ### Custom Port
 ```
-PORT=22
+PORT=46
 realio-networkd config node tcp://localhost:${PORT}657
 ```
 ```
@@ -94,7 +94,7 @@ After=network-online.target
 [Service]
 User=$USER
 ExecStart=$(which realio-networkd) start
-Restart=on-failure
+Restart=always
 RestartSec=3
 LimitNOFILE=65535
 
