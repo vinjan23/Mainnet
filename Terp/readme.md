@@ -55,7 +55,7 @@ curl -s https://raw.githubusercontent.com/terpnetwork/mainnet/main/morocco-1/gen
 
 ### Addrbook
 ```
-curl -s https://snapshots2.nodejumper.io/terpnetwork/addrbook.json > $HOME/.terp/config/addrbook.json
+wget -O $HOME/.terp/config/addrbook.json https://raw.githubusercontent.com/vinjan23/Mainnet/main/Terp/addrbook.json
 ```
 
 ### Seed & Peers & Gas
