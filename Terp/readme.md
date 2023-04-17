@@ -143,6 +143,6 @@ terpd tx staking create-validator \
 --from=wallet \
 --gas auto \
 --gas-adjustment 1.3 \
---fees 4000uthiol
+--fees 70000uthiol
 ```
 
