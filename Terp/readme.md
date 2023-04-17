@@ -116,4 +116,31 @@ terpd status 2>&1 | jq .SyncInfo
 sudo journalctl -u terpd -f -o cat
 ```
 
+### Wallet
+```
+terpd keys add wallet --recover
+```
 
+### Balances
+```
+terpd q bank balances 
+```
+
+### Validator
+```
+terpd tx staking create-validator \
+  --amount="1000000"uterp \
+  --pubkey=$(terpd tendermint show-validator) \
+  --moniker="vinjan" \
+  --details="" \
+  --website="https://nodes.vinjan.xyz" \
+  --identity "7C66E36EA2B71F68" \
+  --chain-id="morocco-1" \
+  --commission-rate="0.04" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.1" \
+  --min-self-delegation="1" \
+  --from=wallet \
+  -y
+  ```
+  
