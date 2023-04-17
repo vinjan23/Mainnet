@@ -106,4 +106,14 @@ sudo systemctl restart terpd
 sudo journalctl -u terpd -f -o cat
 ```
 
+### Sync
+```
+terpd status 2>&1 | jq .SyncInfo
+```
+
+### Log
+```
+sudo journalctl -u terpd -f -o cat
+```
+
 
