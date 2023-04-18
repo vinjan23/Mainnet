@@ -63,7 +63,7 @@ wget -O $HOME/.terp/config/addrbook.json https://raw.githubusercontent.com/vinja
 SEEDS="c71e63b5da517984d55d36d00dc0dc2413d0ce03@seed.terp.network:26656"
 PEERS=""
 sed -i 's|^seeds *=.*|seeds = "'$SEEDS'"|; s|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.terp/config/config.toml
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.001uterp"|g' $HOME/.terp/config/app.toml
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.000uterp"|g' $HOME/.terp/config/app.toml
 sed -i 's|^prometheus *=.*|prometheus = true|' $HOME/.terp/config/config.toml
 ```
 
