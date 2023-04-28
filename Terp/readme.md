@@ -146,3 +146,52 @@ terpd tx staking create-validator \
 --fees 70000uthiol
 ```
 
+### Unjail
+```
+terpd tx slashing unjail --from wallet --chain-id --chain-id morocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+```
+
+### Withdraw All
+```
+terpd tx distribution withdraw-all-rewards --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+```
+
+### Withdraw with comission
+```
+terpd tx distribution withdraw-rewards $(terpd keys show wallet --bech val -a) --commission --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+```
+
+### Delegate
+```
+terpd tx staking delegate $(terpd keys show wallet --bech val -a) 1000000uterp --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+```
+
+### Stop
+```
+sudo systemctl stop terpd
+```
+
+### Restart
+```
+sudo systemctl restart terpd
+```
+
+### Check Match
+```
+[[ $(terpd q staking validator $(terpd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(terpd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+
+### Delete
+```
+sudo systemctl stop terpd && \
+sudo systemctl disable terpd && \
+rm /etc/systemd/system/terpd.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf terp && \
+rm -rf .terpd && \
+rm -rf $(which terpd)
+```
+
+
+
