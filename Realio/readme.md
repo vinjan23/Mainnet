@@ -40,7 +40,7 @@ realio-networkd config keyring-backend file
 
 ### Custom Port
 ```
-PORT=46
+PORT=22
 realio-networkd config node tcp://localhost:${PORT}657
 ```
 ```
