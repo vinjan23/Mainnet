@@ -144,11 +144,24 @@ realio-networkd tx staking create-validator \
   --commission-max-rate="0.20" \
   --commission-max-change-rate="0.1" \
   --min-self-delegation="1" \
-  --fees 5000000000000000ario \
-  --gas 800000
-  --from=wallet
+  --gas-prices 30000000000ario \
+  --gas 1000000 \
+  --from=wallet \
+  -y
   ```
-  
+### Edit
+```
+realio-networkd tx staking edit-validator \
+--new-moniker "vinjan" \
+--identity "7C66E36EA2B71F68" \
+--details "🎉Proffesional Stake & Node Validator🎉" \
+--chain-id "realionetwork_3301-1" \
+--from wallet \
+--gas-prices 30000000000ario \
+--gas 1000000 \
+-y
+```
+
 ### Unjail
 ```
 realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
