@@ -68,6 +68,11 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 \"$PRUNING_INTERVAL\"/" $HOME/.arkh/config/app.toml
 ```
+### Indexer Null
+```
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.arkh/config/config.toml
+```
+
 ### Create Service
 ```
 sudo tee /etc/systemd/system/arkhd.service > /dev/null <<EOF
