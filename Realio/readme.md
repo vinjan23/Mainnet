@@ -84,6 +84,11 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.realio-network/config/app.toml
 ```
 
+### Indexer Null
+```
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.realio-network/config/config.toml
+```
+
 ### Service
 ```
 sudo tee /etc/systemd/system/realio-networkd.service > /dev/null <<EOF
