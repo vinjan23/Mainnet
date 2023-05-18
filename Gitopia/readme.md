@@ -62,7 +62,7 @@ sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0ulore\"/" $HOME/.g
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/.gitopia/config/config.toml
 external_address=$(wget -qO- eth0.me) 
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.gitopia/config/config.toml
-peers="4cf66531681c92f15c95c25bd1bff524f9dca35e@65.109.154.181:26656,b2f764694d52e09793d68259d584ece0c194b6fe@65.108.229.93:26656"
+peers="4cf66531681c92f15c95c25bd1bff524f9dca35e@65.109.154.181:26656,b2f764694d52e09793d68259d584ece0c194b6fe@65.108.229.93:26656,11879f38e16e1723ef70950f5222ec78dde7e62f@65.109.17.23:56240,70e0603c1557681ee5d749b82c27468aecc862f1@185.246.85.5:26656,23c825fd57b6c893503157a637b92e1eaf46da71@65.108.200.40:26656,33e2390bfd693a8f2b27d5d646e0f081d717a81f@135.181.73.57:26656,082e95b5d5351e68dcfb24dff802f9064cfd5a4c@65.109.92.241:51056"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.gitopia/config/config.toml
 seeds=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.gitopia/config/config.toml
