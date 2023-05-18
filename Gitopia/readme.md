@@ -136,7 +136,7 @@ gitopiad query bank balances gitopia...address1yjgn7z09ua9vms259j
 #### Validator
 ```
 gitopiad tx staking create-validator \
---amount 1000000ulore \
+--amount 210000000ulore \
 --from wallet \
 --commission-max-change-rate "0.1" \
 --commission-max-rate "0.2" \
@@ -148,6 +148,8 @@ gitopiad tx staking create-validator \
 --identity="7C66E36EA2B71F68" \
 --details="🎉Proffesional Stake & Node Validator🎉" \
 --website="https://nodes.vinjan.xyz" \
+--gas-adjustment 1.4 \
+--gas auto \
 -y
 ```
   
