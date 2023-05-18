@@ -69,6 +69,7 @@ sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.gitop
 ```
 
 ### Prunning
+```
 pruning="custom" && \
 pruning_keep_recent="100" && \
 pruning_keep_every="0" && \
