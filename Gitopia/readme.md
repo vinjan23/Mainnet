@@ -182,7 +182,7 @@ gitopiad tx distribution withdraw-rewards $(gitopiad keys show wallet --bech val
 
 ### Delegate
 ```
-gitopiad tx staking delegate $(gitopiad keys show wallet --bech val -a) 1000000udec --from wallet --chain-id gitopia --gas-adjustment="1.4" --gas auto -y
+gitopiad tx staking delegate $(gitopiad keys show wallet --bech val -a) 1000000ulore --from wallet --chain-id gitopia --gas-adjustment="1.4" --gas auto -y
 ```
 ### Check Match Validator
 ```
