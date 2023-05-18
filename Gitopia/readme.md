@@ -18,6 +18,7 @@ go version
 ```
 
 ### Binary
+```
 cd $HOME
 git clone https://github.com/gitopia/gitopia.git
 cd gitopia
