@@ -132,7 +132,7 @@ gitopiad keys add wallet --recover
 
 ### Balances
 ```
-gitopiad query bank balances gitopia...address1yjgn7z09ua9vms259j
+gitopiad query bank balances 
 ```
 
 #### Validator
