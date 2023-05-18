@@ -154,7 +154,69 @@ gitopiad tx staking create-validator \
 --gas auto \
 -y
 ```
-  
+### Edit
+```
+gitopiad tx staking edit-validator \
+--new-moniker <> \
+--from wallet \
+---identity <> \
+--chain-id gitopia \
+--commission-rate "0.1" \
+--gas-adjustment 1.4 \
+--gas auto \
+-y
+```
+
+### Unjail
+```
+gitopiad tx slashing unjail --from wallet --chain-id --chain-id gitopia --gas-adjustment="1.4" --gas auto -y
+```
+
+### Withdraw 
+```
+gitopiad tx distribution withdraw-all-rewards --from wallet --chain-id gitopia --gas-adjustment="1.4" --gas auto -y
+```
+```
+gitopiad tx distribution withdraw-rewards $(gitopiad keys show wallet --bech val -a) --commission --from wallet --chain-id gitopia --gas-adjustment="1.4" --gas auto -y
+```
+
+### Delegate
+```
+gitopiad tx staking delegate $(gitopiad keys show wallet --bech val -a) 1000000udec --from wallet --chain-id gitopia --gas-adjustment="1.4" --gas auto -y
+```
+### Check Match Validator
+```
+[[ $(gitopiad q staking validator $(gitopiad keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(gitopiad status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+### Check Own Peer
+```
+echo $(gitopiad tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.gitopia/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+### Connected Peer
+```
+curl -sS http://localhost:44657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
+
+### Node Info
+```
+gitopiad status 2>&1 | jq .NodeInfo
+```
+### Validator Info
+```
+gitopiad status 2>&1 | jq .ValidatorInfo
+```
+### Delete Node
+```
+sudo systemctl stop gitopiad && \
+sudo systemctl disable gitopiad && \
+rm /etc/systemd/system/gitopiad.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf gitopia && \
+rm -rf .gitopiad && \
+rm -rf $(which gitopiad)
+```
+
 
 
 
