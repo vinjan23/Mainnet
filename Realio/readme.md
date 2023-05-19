@@ -157,9 +157,9 @@ realio-networkd tx staking create-validator \
   
   ```
 realio-networkd tx staking create-validator \
-  --amount=4500000000000000000arst \
+  --amount=4800000000000000000arst \
   --pubkey=$(realio-networkd tendermint show-validator) \
-  --new-moniker="vinjan" \
+  --new-moniker="vinjan | RST" \
   --website="https://nodes.vinjan.xyz" \
   --identity="7C66E36EA2B71F68" \
   --chain-id=realionetwork_3301-1 \
