@@ -47,7 +47,9 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}
 
 #### Genesis
 ```
-
+cd && git clone https://github.com/gitopia/mainnet && cd mainnet
+tar -xzf genesis.tar.gz
+cp genesis.json ~/.gitopia/config/genesis.json
 ```
 
 ### Addrbook
