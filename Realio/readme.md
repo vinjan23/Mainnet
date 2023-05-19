@@ -135,6 +135,9 @@ realio-networkd keys add wallet --recover
 ```
 realio-networkd q bank balances realio1csj5g5j4r682apvjckdk3qldkup4y07427t383
 ```
+```
+realio-networkd q bank balances realio1sw2n4v32puxcneg9kyz7z7v82mnad909p7g99s
+```
 
 ### Validator
 ```
@@ -155,7 +158,7 @@ realio-networkd tx staking create-validator \
   -y
   ```
   
-  ```
+```
 realio-networkd tx staking create-validator \
   --amount=5000000000000000000arst \
   --pubkey=$(realio-networkd tendermint show-validator) \
@@ -168,19 +171,23 @@ realio-networkd tx staking create-validator \
   --commission-max-change-rate="0.1" \
   --min-self-delegation="1" \
   --from=wallet \
-  --gas=auto \
+  --gas-prices 30000000000ario \
+  --gas 1000000 \
   -y
-  ```
-  
+```
+```
+realio-networkd tx bank send wallet realio1sw2n4v32puxcneg9kyz7z7v82mnad909p7g99s 50000000000000000ario --from wallet --chain-id realionetwork_3301-1 --gas-prices 30000000000ario --gas 1000000 -y 
+```
+
 ### Edit
 ```
 realio-networkd tx staking edit-validator \
---new-moniker "vinjan" \
+--new-moniker "vinjan | RST" \
 --identity "7C66E36EA2B71F68" \
 --details "🎉Proffesional Stake & Node Validator🎉" \
 --chain-id "realionetwork_3301-1" \
 --from wallet \
---gas-prices 30000000000ario \
+--gas-prices 20000000000ario \
 --gas 1000000 \
 -y
 ```
