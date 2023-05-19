@@ -182,7 +182,7 @@ realio-networkd tx bank send wallet realio1sw2n4v32puxcneg9kyz7z7v82mnad909p7g99
 ### Edit
 ```
 realio-networkd tx staking edit-validator \
---new-moniker "vinjan | RST" \
+--new-moniker "vinjan | RIO" \
 --identity "7C66E36EA2B71F68" \
 --details "🎉Proffesional Stake & Node Validator🎉" \
 --chain-id "realionetwork_3301-1" \
