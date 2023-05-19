@@ -154,6 +154,25 @@ realio-networkd tx staking create-validator \
   --from=wallet \
   -y
   ```
+  
+  ```
+realio-networkd tx staking create-validator \
+  --amount=4500000000000000000arst \
+  --pubkey=$(realio-networkd tendermint show-validator) \
+  --new-moniker="vinjan" \
+  --website="https://nodes.vinjan.xyz" \
+  --identity="7C66E36EA2B71F68" \
+  --chain-id=realionetwork_3301-1 \
+  --commission-rate="0.01" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.1" \
+  --min-self-delegation="1" \
+  --gas-prices 30000000000arst \
+  --gas 1000000 \
+  --from=wallet \
+  -y
+  ```
+  
 ### Edit
 ```
 realio-networkd tx staking edit-validator \
