@@ -157,11 +157,12 @@ gitopiad tx staking create-validator \
 ### Edit
 ```
 gitopiad tx staking edit-validator \
---new-moniker <> \
+--new-moniker vinjan \
 --from wallet \
----identity <> \
+--identity 7C66E36EA2B71F68 \
+--details="🎉Stake Here Berhadiah MiChat🎉" \
 --chain-id gitopia \
---commission-rate "0.1" \
+--commission-rate "0.09" \
 --gas-adjustment 1.4 \
 --gas auto \
 -y
