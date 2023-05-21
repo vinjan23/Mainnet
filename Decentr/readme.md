@@ -113,7 +113,7 @@ decentrd keys add wallet --recover
 ```
 ### Balance
 ```
-decentrd q bank balances 
+decentrd q bank balances decentr18yze7cvnep7d2yj3cs4zfpvd4juphxrwwzezd4
 ```
 ### Validator
 ```
@@ -142,9 +142,9 @@ decentrd tx slashing unjail --from <wallet> --chain-id --chain-id mainnet-3 --ga
 ```
 decentrd tx distribution withdraw-all-rewards --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
 ```
-
+### Withdraw with commission
 ```
-decentrd tx distribution withdraw-rewards $(decentrd keys show wallet --bech val -a) --commission --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --gas-prices 200udec -y
+decentrd tx distribution withdraw-rewards decentrvaloper18yze7cvnep7d2yj3cs4zfpvd4juphxrw3djwsz --commission --from wallet --chain-id mainnet-3  --gas-prices "0.002udec" -y
 ```
 ### Staking
 ```
