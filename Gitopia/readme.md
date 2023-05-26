@@ -22,7 +22,14 @@ go version
 cd $HOME
 git clone https://github.com/gitopia/gitopia.git
 cd gitopia
-git checkout 
+git checkout v2.0.0
+make install
+```
+### Update
+```
+cd $HOME/gitopia
+git fetch --all
+git checkout v2.1.0
 make install
 ```
 
