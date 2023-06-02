@@ -29,7 +29,7 @@ make install
 ```
 cd $HOME/realio-network
 git fetch --all
-git checkout v2.3.3-testnet2fork
+git checkout v0.8.1
 make install
 sudo systemctl restart realio-networkd
 sudo journalctl -u realio-networkd -f -o cat
