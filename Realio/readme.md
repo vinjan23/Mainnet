@@ -22,8 +22,17 @@ go version
 cd $HOME
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.8.0-rc4
+git checkout v0.8.1
 make install
+```
+### Update
+```
+cd $HOME/realio-network
+git fetch --all
+git checkout v2.3.3-testnet2fork
+make install
+sudo systemctl restart realio-networkd
+sudo journalctl -u realio-networkd -f -o cat
 ```
 
 ### Moniker
