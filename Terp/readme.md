@@ -169,6 +169,10 @@ terpd tx distribution withdraw-rewards $(terpd keys show wallet --bech val -a) -
 ```
 terpd tx staking delegate $(terpd keys show wallet --bech val -a) 1000000uterp --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
 ```
+### Vote
+```
+terpd tx gov vote 10 yes --from wallet --chain-id morocco-1 --gas-adjustment 1.5 --gas auto --fees 7000uthiol
+```
 
 ### Stop
 ```
@@ -197,5 +201,6 @@ rm -rf .terpd && \
 rm -rf $(which terpd)
 ```
 
-
+`542F7DD38308B9DB91947FBEBA6018B29468C30C3992CF35005D2311C167EE8E`
+`E5621929BB4059A3FA7242F8D7CD1023AA272EF9E87434065014F108DFB374B6`
 
