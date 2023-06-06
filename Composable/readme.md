@@ -33,7 +33,7 @@ MONIKER=
 ```
 banksyd init $MONIKER --chain-id centauri-1
 banksyd config chain-id centauri-1
-banksyd config keyring-backend test
+banksyd config keyring-backend file
 ```
 
 ### Genesis
