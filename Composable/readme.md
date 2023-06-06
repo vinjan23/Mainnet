@@ -41,6 +41,11 @@ banksyd config keyring-backend file
 wget -O ~/.banksy/config/genesis.json https://raw.githubusercontent.com/notional-labs/composable-networks/main/mainnet/genesis.json
 ```
 
+### Addrbook
+```
+wget -O ~/.banksy/config/addrbook.json https://raw.githubusercontent.com/vinjan23/Mainnet/main/Composable/addrbook.json
+```
+
 ### Seed & Peer & Gas
 ```
 peers="4cb008db9c8ae2eb5c751006b977d6910e990c5d@65.108.71.163:2630,63559b939442512ed82d2ded46d02ab1021ea29a@95.214.55.138:53656"
