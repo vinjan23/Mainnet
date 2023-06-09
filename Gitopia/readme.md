@@ -27,9 +27,10 @@ make install
 ```
 ### Update
 ```
-cd $HOME/gitopia
-git fetch --all
-git checkout v2.1.0
+cd $HOME
+cd gitopia
+git fetch --tag
+git checkout v2.1.1
 make install
 ```
 
