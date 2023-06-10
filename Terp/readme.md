@@ -25,6 +25,13 @@ cd terp-core
 git checkout v1.0.0-stable
 make install
 ```
+### Update
+```
+cd terp-core 
+git fetch 
+git checkout barberry
+make install
+```
 
 ### Moniker
 ```
