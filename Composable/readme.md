@@ -159,7 +159,7 @@ banksyd tx distribution withdraw-all-rewards --from wallet --chain-id centauri-1
 
 ### WD with commission
 ```
-banksyd tx distribution withdraw-rewards $(banksyd keys show wallet --bech val -a) --commission --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0upica -y
+banksyd tx distribution withdraw-rewards $(banksyd keys show wallet --bech val -a) --commission --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
 ```
 
 ### Check Match
