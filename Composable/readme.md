@@ -166,6 +166,10 @@ banksyd tx distribution withdraw-rewards $(banksyd keys show wallet --bech val -
 ```
 [[ $(banksyd q staking validator $(banksyd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(banksyd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
+### Vote
+```
+banksyd tx gov vote 3 yes --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
+```
 
 ### Stop
 ```
