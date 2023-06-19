@@ -134,8 +134,8 @@ centaurid keys add wallet --recover
 
 ### Validator
 ```
-centaurid add-genesis-account wallet 50000000000000ppica
-centaurid gentx wallet 50000000000000ppica \
+centaurid tx staking create-validator \
+--amount 1000000ppica \
 --moniker="vinjan" \
 --identity="7C66E36EA2B71F68" \
 --details="🎉Proffesional Stake & Node Validator🎉" \
