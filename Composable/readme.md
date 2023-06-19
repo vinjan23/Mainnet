@@ -83,14 +83,14 @@ $HOME/.banksy/config/app.toml
 
 ### Service
 ```
-sudo tee /etc/systemd/system/banksyd.service > /dev/null << EOF
+tee /etc/systemd/system/centaurid.service > /dev/null <<EOF
 [Unit]
-Description=composable
+Description=centaurid
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which banksyd) start
+ExecStart=$(which centaurid) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -103,45 +103,45 @@ EOF
 ### Start
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable banksyd
-sudo systemctl restart banksyd
-sudo journalctl -u banksyd -f -o cat
+sudo systemctl enable centaurid
+sudo systemctl restart centaurid
+sudo journalctl -u centaurid -f -o cat
 ```
 
 ### Sync
 ```
-banksyd status 2>&1 | jq .SyncInfo
+centaurid status 2>&1 | jq .SyncInfo
 ```
 
 ### Log
 ```
-sudo journalctl -u banksyd -f -o cat
+sudo journalctl -u centaurid -f -o cat
 ```
 
 ### Balance
 ```
-banksyd q bank balances $(banksyd keys show wallet -a)
+centaurid q bank balances $(centaurid keys show wallet -a)
 ```
 
 ### Wallet
 ```
-banksyd keys add wallet
+centaurid keys add wallet
 ```
 ### Recover
 ```
-banksyd keys add wallet --recover
+centaurid keys add wallet --recover
 ```
 
 ### Validator
 ```
-banksyd add-genesis-account wallet 50000000000000ppica
-banksyd gentx wallet 50000000000000ppica \
+centaurid add-genesis-account wallet 50000000000000ppica
+centaurid gentx wallet 50000000000000ppica \
 --moniker="vinjan" \
 --identity="7C66E36EA2B71F68" \
 --details="🎉Proffesional Stake & Node Validator🎉" \
 --website="https://service.vinjan.xyz" \
 --security-contact="" \
---pubkey $(banksyd tendermint show-validator) \
+--pubkey $(centaurid tendermint show-validator) \
 --chain-id centauri-1
 --commission-rate 0.1 \
 --commission-max-rate 0.20 \
@@ -156,54 +156,54 @@ banksyd gentx wallet 50000000000000ppica \
 
 ### Unjail
 ```
-banksyd tx slashing unjail --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
+centaurid tx slashing unjail --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
 ```
 ### Reason
 ```
-banksyd query slashing signing-info $(banksyd tendermint show-validator)
+centaurid query slashing signing-info $(banksyd tendermint show-validator)
 ```
 
 ### Delegate
 ```
-banksyd tx staking delegate <TO_VALOPER_ADDRESS> 1000000ppica --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
+centaurid tx staking delegate <TO_VALOPER_ADDRESS> 1000000ppica --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
 ```
 
 ### WD
 ```
-banksyd tx distribution withdraw-all-rewards --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas 55000 --gas-prices 0ppica -y
+centaurid tx distribution withdraw-all-rewards --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas 55000 --gas-prices 0ppica -y
 ```
 
 ### WD with commission
 ```
-banksyd tx distribution withdraw-rewards $(banksyd keys show wallet --bech val -a) --commission --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
+centaurid tx distribution withdraw-rewards $(centaurid keys show wallet --bech val -a) --commission --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
 ```
 
 ### Check Match
 ```
-[[ $(banksyd q staking validator $(banksyd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(banksyd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+[[ $(centaurid q staking validator $(centaurid keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(centaurid status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
 ### Vote
 ```
-banksyd tx gov vote 3 yes --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
+centaurid tx gov vote 3 yes --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
 ```
 
 ### Stop
 ```
-sudo systemctl stop banksyd
+sudo systemctl stop centaurid
 ```
 
 ### Restart
 ```
-sudo systemctl restart banksyd
+sudo systemctl restart centaurid
 ```
 
 ### Delete
 ```
-sudo systemctl stop banksyd
-sudo systemctl disable banksyd
-sudo rm /etc/systemd/system/banksyd.service
+sudo systemctl stop centaurid
+sudo systemctl disable centaurid
+sudo rm /etc/systemd/system/centaurid.service
 sudo systemctl daemon-reload
-rm -f $(which banksyd)
-rm -rf $HOME/.banksy
+rm -f $(which centaurid)
+rm -rf $HOME/.centaurid
 rm -rf $HOME/composable-centauri
 ```
