@@ -25,6 +25,13 @@ cd composable-centauri
 git checkout v2.3.5
 make install
 ```
+### Update
+```
+cd $HOME/composable-centauri
+git fetch --all
+git checkout v3.1.0
+make install
+```
 
 ### Init
 ```
