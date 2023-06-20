@@ -28,7 +28,7 @@ make install
 ### Update
 ```
 cd $HOME/composable-centauri
-git fetch --all
+git pull
 git checkout v3.1.0
 make install
 ```
