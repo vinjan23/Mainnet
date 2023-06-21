@@ -41,6 +41,14 @@ git checkout v3.1.1
 make install
 sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
 ```
+### Update
+```
+cd $HOME/composable-centauri
+git pull
+git checkout v3.1.2
+make install
+sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
+```
 
 ### Init
 ```
