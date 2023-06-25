@@ -263,15 +263,19 @@ planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain
 
 ### Withdraw All Reward
 ```
-planqd tx distribution withdraw-all-rewards --from <WalletName> --chain-id planq_7070-2 --gas-prices 20000000000aplanq --gas-adjustment 1.15 --gas 1000000 
+planqd tx distribution withdraw-all-rewards --from wallet --chain-id planq_7070-2 --gas-prices 20000000000aplanq --gas-adjustment 1.15 --gas 1000000 
 ```
 
 ### Withdraw with Commission
 ```
-planqd tx distribution withdraw-rewards $(planqd keys show <key_name> --bech val -a) --commission --gas="1000000" --gas-adjustment="1.15" --gas-prices="20000000000aplanq" --chain-id planq_7070-2 --from <key_name>
+planqd tx distribution withdraw-rewards $(planqd keys show wallet --bech val -a) --commission --gas="1000000" --gas-adjustment="1.15" --gas-prices="20000000000aplanq" --chain-id planq_7070-2 --from <key_name>
+```
+### Vote
+```
+planqd tx gov vote 1 yes --from wallet --chain-id planq_7070-2 --gas-adjustment 1.15 --gas="1000000" --gas-prices="20000000000aplanq" -y
 ```
 
-### Checj Your Valoper Address
+### Check Your Valoper Address
 ```
 planqd keys show <key_name> --bech val -a
 ```
