@@ -155,16 +155,16 @@ arkhd tx slashing unjail --broadcast-mode=block --from wallt --chain-id arkh --f
 
 ### WD All
 ```
-arkhd tx distribution withdraw-all-rewards --from wallt --chain-id arkh --fees 5000arkh  -y
+arkhd tx distribution withdraw-all-rewards --from wallt --chain-id arkh --gas auto
 ```
 
 ### WD with commission
 ```
-arkhd tx distribution withdraw-rewards $(arkhd keys show wallt --bech val -a) --commission --from wallt --chain-id arkh --fees 5000arkh  -y
+arkhd tx distribution withdraw-rewards $(arkhd keys show wallt --bech val -a) --commission --from wallt --chain-id arkh --gas auto
 ```
 ### Delegate
 ```
-arkhd tx staking redelegate $(arkhd keys show wallet --bech val -a) <TO_VALOPER_ADDRESS> 1000000arkh --from wallet --chain-id arkh  --fees 5000arkh  -y
+arkhd tx staking delegate <TO_VALOPER_ADDRESS> 1000000arkh --from wallt --chain-id arkh  --gas auto
 ```
 
 ### Transfer
@@ -174,7 +174,7 @@ arkhd tx bank send wallet <TO_WALLET_ADDRESS> 1000000arkh --from wallet --chain-
 
 ### Unbond
 ```
-arkhd tx staking unbond $(arkhd keys show wallet --bech val -a) 1000000arkh --from wallet --chain-id arkh --fees 5000arkh  -y
+arkhd tx staking unbond $(arkhd keys show wallet --bech val -a) 1000000arkh --from wallet --chain-id arkh --gas auto
 ```
 
 ### Check Reward
