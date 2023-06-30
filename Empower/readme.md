@@ -148,7 +148,6 @@ empowerd tx staking create-validator \
 --identity="7C66E36EA2B71F68" \
 --from wallet \
 --pubkey=$(empowerd tendermint show-validator) \
---gas-prices 0.025umpwr \
 --gas-adjustment=1.5 \
 --gas=auto 
 ```
@@ -165,12 +164,52 @@ empowerd tx staking edit-validator \
 ```
 ### Unjail
 ```
-empowerd tx slashing unjail --from wallet --chain-id empowerchain-1 --fees 5000umpwr
+empowerd tx slashing unjail --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+```
+### Jail reason
+```
+empowerd query slashing signing-info $(empowerd tendermint show-validator)
 ```
 
 ### Delegate
 ```
-empowerd tx staking delegate <Val_address> 900000umpwr --from wallet --chain-id empowerchain-1 --fees 5000umpwr
+empowerd tx staking delegate <Val_address> 900000umpwr --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+```
+### Delegate to Another Validator
+```
+empowerd tx staking redelegate $(empowerd keys show wallet --bech val -a) <TO_VALOPER_ADDRESS> 1000000umpwr --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+```
+
+### Withdraw
+```
+empowerd tx distribution withdraw-all-rewards --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+```
+### Withdraw with Commission
+```
+empowerd tx distribution withdraw-rewards $(empowerd keys show wallet --bech val -a) --commission --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+```
+
+### Transfer
+```
+empowerd tx bank send wallet <TO_WALLET_ADDRESS> 1000000umpwr --from wallet --chain-id empowerchain-1
+```
+
+### Vote 
+```
+empowerd tx gov vote 1 yes --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+```
+
+### Check Matches
+```
+[[ $(empowerd q staking validator $(empowerd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(empowerd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+### Stop
+```
+sudo systemctl stop empowerd
+```
+### Restart
+```
+sudo systemctl restart empowerd
 ```
 
 ### Delete
