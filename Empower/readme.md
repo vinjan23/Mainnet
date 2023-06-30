@@ -49,7 +49,8 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${P
 
 ### Genesis
 ```
-wget -O $HOME/.empowerchain/config/genesis.json "https://services.empowerchain-1.empower.aviaone.com/genesis.json"
+URL=https://github.com/EmpowerPlastic/empowerchain/raw/main/mainnet/empowerchain-1/genesis.tar.gz
+curl -L $URL | tar -xz -C $HOME/.empowerchain/config/
 ```
 
 ### Addrbook
@@ -203,6 +204,11 @@ empowerd tx gov vote 1 yes --from wallet --chain-id empowerchain-1 --gas-adjustm
 ```
 [[ $(empowerd q staking validator $(empowerd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(empowerd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
+### Own Peer
+```
+echo $(empowerd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.empowerd/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+
 ### Stop
 ```
 sudo systemctl stop empowerd
