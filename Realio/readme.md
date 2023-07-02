@@ -134,6 +134,21 @@ realio-networkd status 2>&1 | jq .SyncInfo
 ```
 sudo journalctl -u realio-networkd -f -o cat
 ```
+### Statesync
+```
+sudo systemctl stop realio-networkd
+realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
+SNAP_RPC=http://realio.rpc.m.stavr.tech:21097
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.realio-network/config/config.toml
+sudo systemctl restart realio-networkd && journalctl -u realio-networkd -f -o cat
+```
 
 ### Wallet
 ```
