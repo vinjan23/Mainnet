@@ -33,7 +33,7 @@ MONIKER=
 ```
 archwayd init $MONIKER --chain-id archway-1
 archwayd config chain-id archway-1
-archwayd config keyring-backend FILE
+archwayd config keyring-backend file
 ```
 
 ### pORT
