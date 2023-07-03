@@ -125,7 +125,7 @@ archwayd q bank balances $(archwayd keys show wallet -a)
 ### Validator
 ```
 archwayd tx staking create-validator \
---amount 4500000000000000000aarch \
+--amount 1000000000000000000aarch \
 --pubkey $(archwayd tendermint show-validator) \
 --moniker "vinjan" \
 --identity "7C66E36EA2B71F68" \
