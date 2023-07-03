@@ -99,7 +99,7 @@ sudo journalctl -fu arkhd -o cat
 ```
 sudo systemctl stop arkhd
 cp $HOME/.arkh/data/priv_validator_state.json $HOME/.arkh/priv_validator_state.json.backup
-arkhd tendermint unsafe-reset-all --home $HOME/.arkh --keep-addr-book
+arkhd unsafe-reset-all --home ~/.arkh/
 
 SNAP_RPC="https://rpc-arkh.sxlzptprjkt.xyz:443"
 STATESYNC_PEERS="b0786057a6bcc1313477fcceaea9c78356078c6d@46.101.144.90:25656"
