@@ -55,7 +55,8 @@ mv genesis.json ~/.archway/config
 ### Seed Peer Gas
 ```
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0aarch\"|" $HOME/.archway/config/app.toml
-sed -i -e "s|^seeds *=.*|seeds = \"ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11556\"|" $HOME/.archway/config/config.toml
+SEEDS="3ba7bf08f00e228026177e9cdc027f6ef6eb2b39@35.232.234.58:26656"
+sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.archway/config/config.toml
 PEERS=
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.archway/config/config.toml
 ```
