@@ -36,7 +36,7 @@ archwayd config chain-id archway-1
 archwayd config keyring-backend file
 ```
 
-### pORT
+### Port
 ```
 PORT=34
 archwayd config node tcp://localhost:${PORT}657
@@ -46,7 +46,7 @@ sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.
 sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.archway/config/app.toml
 ```
 
-### gENESIS
+### Genesis
 ```
 wget -O genesis.json https://snapshots.polkachu.com/genesis/archway/genesis.json --inet4-only
 mv genesis.json ~/.archway/config
@@ -142,5 +142,36 @@ archwayd tx staking create-validator \
 --fees ‎900000000000aarch \
 -y
 ```
-‎900000000000
-1500000000000
+`1500000000000`
+
+### Unjail
+```
+archwayd tx slashing unjail --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎900000000000aarch
+```
+
+### Delegate
+```
+archwayd tx staking delegate <TO_VALOPER_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎900000000000aarch
+```
+
+### Stop
+```
+sudo systemctl stop archwayd
+```
+
+### Restart
+```
+sudo systemctl restart archwayd
+```
+
+### Delete
+```
+sudo systemctl stop archwayd
+sudo systemctl disable archwayd
+sudo rm /etc/systemd/system/archwayd.service
+sudo systemctl daemon-reload
+rm -f $(which archwayd)
+rm -rf .archway
+rm -rf archway
+```
+
