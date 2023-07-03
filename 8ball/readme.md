@@ -100,10 +100,10 @@ systemctl stop 8ball
 STATE_SYNC_RPC="https://8ball-rpc.genznodes.dev:443"
 
 LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height)
-SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - 1000))
+SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - 100))
 SYNC_BLOCK_HASH=$(curl -s "$STATE_SYNC_RPC/block?height=$SYNC_BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 
-PEERS=fb1aa0a42ceadeafaecb6dfa07215006b21ea1c1@154.26.138.73:28656
+PEERS=66addcf8d1fa666ef75f811c81ce2ea86a6486c1@95.214.55.138:31656
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.8ball/config/config.toml
 
 sed -i.bak -e "s|^enable *=.*|enable = true|" $HOME/.8ball/config/config.toml
@@ -116,6 +116,12 @@ sed -i.bak -e "s|^trust_hash *=.*|trust_hash = \"$SYNC_BLOCK_HASH\"|" \
 
 systemctl restart 8ball && journalctl -fu 8ball -o cat
 ```
+### Disab;e statesync
+```
+sed -i.bak -e "s|^enable *=.*|enable = false|" $HOME/.8ball/config/config.toml
+sudo systemctl restart 8ball && journalctl -fu 8ball -o cat
+```
+
 ### Check Sync
 ```
 8ball status 2>&1 | jq .SyncInfo
