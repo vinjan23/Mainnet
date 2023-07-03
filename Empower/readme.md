@@ -62,6 +62,8 @@ wget -O $HOME/.empowerchain/config/addrbook.json "https://services.empowerchain-
 ```
 seeds="a1427b456513ab70967a2a5c618d347bc89e8848@seed.empowerchain.io:26656,6740fa259552a628266a85de8c2a3dee7702b8f9@empower-mainnet-seed.itrocket.net:14656,e16668ddd526f4e114ebb6c4714f0c18c0add8f8@empower-seed.zenscape.one:26656,f2ed98cf518b501b6d1c10c4a16d0dfbc4a9cc98@tenderseed.ccvalidators.com:27001,258f523c96efde50d5fe0a9faeea8a3e83be22ca@seed.empowerchain-1.empower.aviaone.com:10274"
 sed -i -e 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.empowerchain/config/config.toml
+peers="192d6c396fe0f9da1b1b700aab8bdd1ce6a49490@empw-m.peers.stavr.tech:22056,9c2aaafb8b9be8cb74705aaf95f4d51506244e3f@65.109.96.189:26656"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.empowerchain/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0umpwr\"|" $HOME/.empowerchain/config/app.toml
 ```
 
