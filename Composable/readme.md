@@ -51,7 +51,7 @@ sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
 ```
 ### Update
 ```
-cd composable-centauri
+cd $HOME/composable-centauri
 git fetch --all 
 git checkout v3.2.2
 make install
