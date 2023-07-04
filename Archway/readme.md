@@ -48,8 +48,7 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}
 
 ### Genesis
 ```
-wget -O genesis.json https://snapshots.polkachu.com/genesis/archway/genesis.json --inet4-only
-mv genesis.json ~/.archway/config
+wget -qO $HOME/.archway/config/genesis.json https://snapshots.theamsolutions.info/arch-genesis.json
 ```
 
 ### Seed Peer Gas
