@@ -84,12 +84,12 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${P
 
 ### Genesis
 ```
-wget -O ~/.banksy/config/genesis.json https://raw.githubusercontent.com/notional-labs/composable-networks/main/mainnet/genesis.json
+wget -O ~/.banksy/config/genesis.json "https://raw.githubusercontent.com/notional-labs/composable-networks/main/mainnet/genesis.json"
 ```
 
 ### Addrbook
 ```
-wget -O ~/.banksy/config/addrbook.json https://raw.githubusercontent.com/vinjan23/Mainnet/main/Composable/addrbook.json
+wget -O ~/.banksy/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Composable/addrbook.json"
 ```
 
 ### Seed & Peer & Gas
