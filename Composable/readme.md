@@ -60,7 +60,7 @@ cd ~/.banksy
 rm -rf wasm_client_data
 wget https://github.com/notional-labs/notional/raw/master/infrastructure/archive/wasmclient.tar.gz
 tar -xzvf wasmclient.tar.gz
-centaurid start
+centaurid restart
 ```
 
 ### Init
