@@ -49,6 +49,19 @@ git checkout v3.1.2
 make install
 sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
 ```
+### Update
+```
+cd composable-centauri
+git fetch --all 
+git checkout v3.2.2
+make install
+centaurid rollback
+cd ~/.banksy
+rm -rf wasm_client_data
+wget https://github.com/notional-labs/notional/raw/master/infrastructure/archive/wasmclient.tar.gz
+tar -xzvf wasmclient.tar.gz
+centaurid start
+```
 
 ### Init
 ```
