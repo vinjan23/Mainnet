@@ -138,19 +138,65 @@ archwayd tx staking create-validator \
 --min-self-delegation 1 \
 --from wallet \
 --gas-adjustment 1.4 \
---fees ‎900000000000aarch \
+--fees ‎180000000000000000aarch \
 -y
 ```
-`1500000000000`
+### Edit
+```
+archwayd tx staking edit-validator \
+--new-moniker="" \
+--identity="YOUR_KEYBASE_ID" \
+--details="YOUR_DETAILS" \
+--website="YOUR_WEBSITE_URL"
+--chain-id archway-1 \
+--from=<wallet> \
+--gas-adjustment=1.4 \
+--gas auto \
+--fees ‎‎180000000000000000aarch \
+-y
+```
+
 
 ### Unjail
 ```
-archwayd tx slashing unjail --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎900000000000aarch
+archwayd tx slashing unjail --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎180000000000000000aarch
 ```
 
 ### Delegate
 ```
-archwayd tx staking delegate <TO_VALOPER_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎900000000000aarch
+archwayd tx staking delegate <TO_VALOPER_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎180000000000000000aarch
+```
+### WD All
+```
+archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch
+```
+### WD with commission
+```
+archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch
+```
+### Transfer
+```
+archwayd tx bank send wallet <TO_WALLET_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1
+```
+### Vote
+```
+archwayd tx gov vote 1 yes --from wallet --chain-id archway-1 --gas-adjustment 1.4 --gas auto --fees 180000000000000000aarch -y
+```
+### Validator Info
+```
+archwayd status 2>&1 | jq .ValidatorInfo
+```
+### Check Validator Matchs
+```
+[[ $(archwayd q staking validator $(archwayd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(archwayd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+### Own Peer
+```
+echo $(archwayd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.archway/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+### Connected Peer
+```
+curl -sS http://localhost:34657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
 ```
 
 ### Stop
