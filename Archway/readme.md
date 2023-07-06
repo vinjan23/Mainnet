@@ -159,20 +159,23 @@ archwayd tx staking edit-validator \
 
 ### Unjail
 ```
-archwayd tx slashing unjail --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎180000000000000000aarch
+archwayd tx slashing unjail --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎180000000000000000aarch -y
 ```
-
+Check Jailed Reason
+```
+archwayd query slashing signing-info $(archwayd tendermint show-validator)
+```
 ### Delegate
 ```
-archwayd tx staking delegate <TO_VALOPER_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎180000000000000000aarch
+archwayd tx staking delegate <TO_VALOPER_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎180000000000000000aarch -y
 ```
 ### WD All
 ```
-archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch
+archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch -y
 ```
 ### WD with commission
 ```
-archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch
+archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch -y
 ```
 ### Transfer
 ```
