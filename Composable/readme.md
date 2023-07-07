@@ -78,7 +78,7 @@ centaurid config keyring-backend file
 ```
 ### Port
 ```
-PORT=23
+PORT=36
 centaurid config node tcp://localhost:${PORT}657
 ```
 ```
