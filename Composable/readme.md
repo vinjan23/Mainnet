@@ -25,6 +25,10 @@ cd composable-centauri
 git checkout v3.2.2
 make install
 ```
+```
+centaurid version --long | grep -e commit -e version
+```
+
 ### Update
 ```
 cd $HOME/composable-centauri
