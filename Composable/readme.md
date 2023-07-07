@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/notional-labs/composable-centauri.git
 cd composable-centauri
-git checkout v2.3.5
+git checkout v3.2.2
 make install
 ```
 ### Update
