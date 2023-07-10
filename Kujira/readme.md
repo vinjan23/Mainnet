@@ -19,7 +19,7 @@ go version
 ```
 cd $HOME
 git clone https://github.com/Team-Kujira/core.git
-cd kujira-core
+cd core
 git checkout v0.8.7
 make install
 ```
