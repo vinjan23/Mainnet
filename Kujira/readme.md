@@ -43,7 +43,7 @@ wget -O $HOME/.kujira/config/genesis.json "https://snapshots.polkachu.com/genesi
 ```
 ### Seed
 ```
-seeds ="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11856"
+seeds="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:11856"
 sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.kujira/config/config.toml
 ```
 ### Prunning
