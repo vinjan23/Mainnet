@@ -64,7 +64,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which kujirad) run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
