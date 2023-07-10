@@ -94,3 +94,6 @@ sudo journalctl -u kujirad -f -o cat
 ```
 kujirad keys add wallet --recover
 ```
+```
+kujirad keys add KUJIRA_REL_WALLET --recover
+```
