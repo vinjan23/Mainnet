@@ -59,7 +59,7 @@ $HOME/.kujira/config/app.toml
 ```
 sudo tee /etc/systemd/system/kujirad.service > /dev/null << EOF
 [Unit]
-Description=kujira node service
+Description=kujirad
 After=network-online.target
 
 [Service]
