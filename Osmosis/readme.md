@@ -5,7 +5,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 ```
 ### GO
 ```
-ver="1.20.4"
+ver="1.19.3"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
@@ -38,11 +38,11 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}
 ```
 ### Genesis
 ```
-wget -O $HOME/.osmosisd/config/genesis.json  "https://snapshots.polkachu.com/genesis/osmosis/genesis.json --inet4-only"
+curl -Ls https://snapshots.kjnodes.com/osmosis/genesis.json > $HOME/.osmosisd/config/genesis.json
 ```
 ### Addrbook
 ```
-wget -O $HOME/.osmosisd/config/addrbook.json "https://snapshots.polkachu.com/addrbook/osmosis/addrbook.json --inet4-only"
+curl -Ls https://snapshots.kjnodes.com/osmosis/addrbook.json > $HOME/.osmosisd/config/addrbook.json
 ```
 ### Seed
 ```
