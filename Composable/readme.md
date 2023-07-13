@@ -230,6 +230,14 @@ sudo systemctl stop centaurid
 ```
 sudo systemctl restart centaurid
 ```
+### Validator Info
+```
+centaurid status 2>&1 | jq .ValidatorInfo
+```
+### Node Info
+```
+centaurid status 2>&1 | jq .NodeInfo
+```
 
 ### Delete
 ```
