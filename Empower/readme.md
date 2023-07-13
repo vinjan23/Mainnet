@@ -219,6 +219,14 @@ sudo systemctl stop empowerd
 ```
 sudo systemctl restart empowerd
 ```
+### Node Info
+```
+empowerd status 2>&1 | jq .NodeInfo
+```
+### Validator Info
+```
+empowerd status 2>&1 | jq .ValidatorInfo
+```
 
 ### Delete
 ```
