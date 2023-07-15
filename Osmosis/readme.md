@@ -20,9 +20,19 @@ go version
 cd $HOME
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v15.2.0
+git checkout v16.1.0
 make install
 ```
+```
+cd $HOME/osmosis
+git fetch --all
+git checkout v16.1.0
+make install
+```
+```
+systemctl restart osmosisd && journalctl -fu osmosisd -o cat
+```
+
 ### Init
 ```
 osmosisd config chain-id osmosis-1
