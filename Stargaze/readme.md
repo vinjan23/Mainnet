@@ -99,5 +99,19 @@ lz4 -c -d stargaze_9129773.tar.lz4  | tar -x -C $HOME/.starsd
 sudo systemctl restart starsd
 sudo journalctl -u starsd -f -o cat
 ```
+### Add wallet
+```
+starsd keys add ibc-star
+```
 
+### Delete
+```
+sudo systemctl stop starsd
+sudo systemctl disable starsd
+sudo rm /etc/systemd/system/starsd.service
+sudo systemctl daemon-reload
+rm -f $(which starsd)
+rm -rf $HOME/.starsd
+rm -rf $HOME/stargaze
+```
 
