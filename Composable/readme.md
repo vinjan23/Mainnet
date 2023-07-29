@@ -66,6 +66,17 @@ wget https://github.com/notional-labs/notional/raw/master/infrastructure/archive
 tar -xzvf wasmclient.tar.gz
 centaurid restart
 ```
+### Update
+```
+cd $HOME/composable-centauri
+git pull
+git checkout v4.0.2
+make install
+sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
+```
+```
+centaurid version --long | grep -e commit -e version
+```
 
 ### Init
 ```
