@@ -205,7 +205,7 @@ centaurid tx slashing unjail --from wallet --chain-id centauri-1 --gas-adjustmen
 ```
 ### Reason
 ```
-centaurid query slashing signing-info $(banksyd tendermint show-validator)
+centaurid query slashing signing-info $(centaurid tendermint show-validator)
 ```
 
 ### Delegate
