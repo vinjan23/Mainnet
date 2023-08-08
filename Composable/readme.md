@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/notional-labs/composable-centauri.git
 cd composable-centauri
-git checkout v3.2.2
+git checkout v4.5.0
 make install
 ```
 ```
@@ -30,47 +30,12 @@ centaurid version --long | grep -e commit -e version
 ```
 
 ### Update
-```
-cd $HOME/composable-centauri
-git pull
-git checkout v3.1.0
-make install
-sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
-```
+
 ### Update
 ```
 cd $HOME/composable-centauri
 git pull
-git checkout v3.1.1
-make install
-sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
-```
-### Update
-```
-cd $HOME/composable-centauri
-git pull
-git checkout v3.1.2
-make install
-sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
-```
-### Update
-```
-cd $HOME/composable-centauri
-git fetch --all 
-git checkout v3.2.2
-make install
-centaurid rollback
-cd ~/.banksy
-rm -rf wasm_client_data
-wget https://github.com/notional-labs/notional/raw/master/infrastructure/archive/wasmclient.tar.gz
-tar -xzvf wasmclient.tar.gz
-centaurid restart
-```
-### Update
-```
-cd $HOME/composable-centauri
-git pull
-git checkout v4.0.2
+git checkout v4.5.0
 make install
 sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
 ```
