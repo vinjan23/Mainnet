@@ -6,7 +6,7 @@ sudo apt install git build-essential curl jq libclang-dev clang cmake gcc -y
 
 ### GO
 ```
-ver="1.20.2"
+ver="1.20.4"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
@@ -22,14 +22,14 @@ go version
 cd $HOME
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.8.1
+git checkout v0.8.3
 make install
 ```
 ### Update
 ```
 cd $HOME/realio-network
 git fetch --all
-git checkout v0.8.1
+git checkout v0.8.3
 make install
 sudo systemctl restart realio-networkd
 sudo journalctl -u realio-networkd -f -o cat
