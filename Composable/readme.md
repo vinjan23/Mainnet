@@ -90,7 +90,10 @@ sed -i \
 -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
 $HOME/.banksy/config/app.toml
 ```
-
+### Indexer
+```
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.banksy/config/config.toml
+```
 ### Service
 ```
 tee /etc/systemd/system/centaurid.service > /dev/null <<EOF
