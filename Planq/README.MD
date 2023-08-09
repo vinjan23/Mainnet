@@ -114,9 +114,9 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 
-###  Indexing=ON
+###  Indexing=Of
 ```
-sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.planqd/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.planqd/config/config.toml
 ```
 
 ### Create Service File
