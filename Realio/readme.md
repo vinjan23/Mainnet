@@ -64,7 +64,7 @@ curl https://raw.githubusercontent.com/realiotech/mainnet/master/realionetwork_3
 
 ### Addrbook
 ```
-wget -O $HOME/.realio-network/config/addrbook.json https://snapshot.genznodes.dev/addrbook/realio/addrbook.json
+wget -O $HOME/.realio-network/config/addrbook.json "https://snapshot.genznodes.dev/realio/addrbook.json"
 ```
 
 ### Seed & Peer & Gas
