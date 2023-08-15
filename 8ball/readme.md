@@ -200,6 +200,11 @@ sudo journalctl -fu 8ball -o cat
 ```
 `True=Good`
 
+### Vote
+```
+8ball tx gov vote 2 yes --from wallet --chain-id eightball-1 --gas-adjustment="1.15" --fees 5000uebl
+```
+
 ### Delete Node
 ```
 sudo systemctl stop 8ball && \
