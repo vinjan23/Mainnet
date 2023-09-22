@@ -185,7 +185,7 @@ arkhd tx distribution withdraw-rewards arkhvaloper1caclqqep2jprjn0evwyt3jkn6q3zx
 ```
 ### Delegate
 ```
-arkhd tx staking delegate <TO_VALOPER_ADDRESS> 1000000arkh --from wallt --chain-id arkh  --gas auto
+arkhd tx staking delegate $(arkhd keys show wallt --bech val -a) 1000000arkh --from wallt --chain-id arkh  --fees 1000arkh
 ```
 
 ### Transfer
