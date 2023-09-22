@@ -181,7 +181,7 @@ arkhd tx distribution withdraw-all-rewards --from wallt --chain-id arkh --gas au
 
 ### WD with commission
 ```
-arkhd tx distribution withdraw-rewards arkhvaloper1caclqqep2jprjn0evwyt3jkn6q3zxx4c80rzcj --commission --from wallt --chain-id arkh --fees 1000arkh
+arkhd tx distribution withdraw-rewards $(arkhd keys show wallt --bech val -a) --commission --from wallt --chain-id arkh --fees 1000arkh
 ```
 ### Delegate
 ```
