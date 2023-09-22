@@ -178,7 +178,7 @@ centaurid query slashing signing-info $(centaurid tendermint show-validator)
 
 ### Delegate
 ```
-centaurid tx staking delegate <TO_VALOPER_ADDRESS> 1000000ppica --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
+centaurid tx staking delegate $(centaurid keys show wallet --bech val -a) 1000000ppica --from wallet --chain-id centauri-1 --gas-adjustment 1.4 --gas auto --gas-prices 0ppica -y
 ```
 
 ### WD
