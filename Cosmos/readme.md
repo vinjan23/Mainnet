@@ -95,4 +95,14 @@ sudo journalctl -u gaiad -f -o cat
 gaiad status 2>&1 | jq .SyncInfo
 ```
 
-
+### Delete
+```
+sudo systemctl stop gaiad && \
+sudo systemctl disable gaiad && \
+rm /etc/systemd/system/gaiad.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf gaia && \
+rm -rf .gaia && \
+rm -rf $(which gaiad)
+```
