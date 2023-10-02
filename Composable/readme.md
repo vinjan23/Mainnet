@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/notional-labs/composable-centauri.git
 cd composable-centauri
-git checkout v5.2.0
+git checkout v5.2.2-client-fix
 make install
 ```
 ```
@@ -35,7 +35,7 @@ centaurid version --long | grep -e commit -e version
 ```
 cd $HOME/composable-centauri
 git pull
-git checkout v5.2.0
+git checkout v5.2.2-client-fix
 make install
 sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
 ```
