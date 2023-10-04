@@ -54,7 +54,7 @@ PEERS=2921ba8e860bae932aef48d0d60d177c9890a656@54.39.28.226:14956,caa07c2c08da83
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.gaia/config/config.toml
 sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' $HOME/.gaia/config/config.toml
 sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.gaia/config/config.toml
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0uatom\"/;" ~/.gaia/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uatom\"/;" ~/.gaia/config/app.toml
 ```
 ### Prunning
 ```
