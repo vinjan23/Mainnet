@@ -28,8 +28,8 @@ make install
 ### Update
 ```
 cd terp-core 
-git fetch 
-git checkout barberry
+git fetch --tags
+git checkout v2-pigeonfall
 make install
 ```
 
