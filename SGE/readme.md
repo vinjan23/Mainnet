@@ -47,15 +47,10 @@ wget -O $HOME/.sge/config/genesis.json "https://raw.githubusercontent.com/sge-ne
 ```
 ### Seed & Peer & Gas
 ```
-seeds="6a727128f427d166d90a1185c7965b178235aaee@rpc.sge.nodestake.top:666,babc3f3f7804933265ec9c40ad94f4da8e9e0017@seed.rhinostake.com:17756,20e1000e88125698264454a884812746c2eb4807@seeds.lavenderfive.com:17756,df949a46ae6529ae1e09b034b49716468d5cc7e9@seeds.stakerhouse.com:11156"
+seeds=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.sge/config/config.toml
-peers="4980b478f91de9be0564a547779e5c6cb07eb995@3.239.15.80:26656,0e7042be1b77707aaf0597bb804da90d3a606c08@3.88.40.53:26656"
+peers="55f83e1872c482caa102f54e3a73da6c6a146a3f@190.124.251.30:26656,8cb8fecf6470ceaba3f2e7b7c3442b19bd692dea@34.168.149.213:26656,be9721fb11f2ace5b59d26710b4a0d5467ddc8c9@136.243.67.44:17756,d09a5df7a13c758928ab1de0dc7342cab2e7b686@74.50.74.98:36656,401a4986e78fe74dd7ead9363463ba4c704d8759@38.146.3.183:17756,6aa15d14b1e7dadb1923e5701b22c6e370612c29@136.243.67.189:17756,033d3698baf8488429cf2af86ce7d7ad81780a39@[2001:bc8:702:1841::226]:26656,6e0bfbf0c69e60158b310783d129141f88a3c228@5.181.190.81:26656,af9d9bd15ca597eb77dab73c56b0ae51bafcbb28@142.132.202.86:16656,88f341a9670494c3d529934dc578eec1b00f4aa1@141.94.168.85:26656,a44284e563c31676f1c06ff08315d9642e0a6f59@103.230.87.171:26656,17da9d2fea9d6d431d390c3b9575547d8881da2b@185.16.39.190:11156"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.sge/config/config.toml
-sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/.sge/config/config.toml
-external_address=$(wget -qO- eth0.me) 
-sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.sge/config/config.toml
-sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' $HOME/.sge/config/config.toml
-sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.sge/config/config.toml
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0usge\"/" $HOME/.sge/config/app.toml
 ```
 ### Prunning
