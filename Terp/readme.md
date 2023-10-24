@@ -29,7 +29,7 @@ make install
 ```
 cd terp-core 
 git fetch --tags
-git checkout v2-pigeonfall
+git checkout v3-pigeonfall
 make install
 ```
 
