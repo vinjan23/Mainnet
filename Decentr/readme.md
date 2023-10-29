@@ -68,7 +68,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 ```
 ### Indexer
 ```
-sed -i 's|^indexer *=.*|indexer = "kv"|' $HOME/.decentr/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.decentr/config/config.toml
 ```
 ### Service
 ```
