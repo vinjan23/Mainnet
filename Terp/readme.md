@@ -32,6 +32,12 @@ git fetch --tags
 git checkout v3-pigeonfall
 make install
 ```
+```
+cd terp-core
+git fetch --all
+git checkout v3.1.0
+make install
+```
 
 ### Moniker
 ```
