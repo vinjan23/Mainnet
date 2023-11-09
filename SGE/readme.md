@@ -168,6 +168,11 @@ sged tx distribution withdraw-all-rewards --from wallet --chain-id sgenet-1 --ga
 ```
 sged tx distribution withdraw-rewards $(sged keys show wallet --bech val -a) --commission --from wallet --chain-id sgenet-1 --gas-adjustment 1.2 --gas auto -y
 ```
+### Vote
+```
+sged tx gov vote 1 yes --from wallet --chain-id sgenet-1 --gas-adjustment 1.2 --gas auto -y
+```
+
 ### Delete
 ```
 sudo systemctl stop sged
