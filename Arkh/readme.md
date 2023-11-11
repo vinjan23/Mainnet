@@ -93,7 +93,7 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable arkhd
 sudo systemctl restart arkhd
-sudo journalctl -fu arkhd -o cat
+journalctl -u arkhd -f -o cat
 ```
 ### Statesync
 ```
