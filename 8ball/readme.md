@@ -173,7 +173,7 @@ sudo journalctl -fu 8ball -o cat
  ```
  ### Unjail
  ```
- 8ball tx slashing unjail --broadcast-mode=block --from wallet --chain-id eightball-1 --fees=5000uebl
+ 8ball tx slashing unjail --from wallet --chain-id eightball-1 --fees=5000uebl
  ```
  
 ### Delegate 
