@@ -136,7 +136,7 @@ decentrd tx staking create-validator -y \
 ```
 ### Unjail  
 ```
-decentrd tx slashing unjail --from <wallet> --chain-id --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
+decentrd tx slashing unjail --from <wallet> --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
 ```
 ### Withdraw  
 ```
