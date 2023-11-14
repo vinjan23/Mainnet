@@ -144,12 +144,17 @@ decentrd tx distribution withdraw-all-rewards --from wallet --chain-id mainnet-3
 ```
 ### Withdraw with commission
 ```
-decentrd tx distribution withdraw-rewards decentrvaloper18yze7cvnep7d2yj3cs4zfpvd4juphxrw3djwsz --commission --from wallet --chain-id mainnet-3  --gas-prices "0.002udec" -y
+decentrd tx distribution withdraw-rewards decentrvaloper18yze7cvnep7d2yj3cs4zfpvd4juphxrw3djwsz --commission --from wallet --chain-id mainnet-3  --fees 250udec -y
 ```
 ### Staking
 ```
-decentrd tx staking delegate $(decentrd keys show wallet --bech val -a) 1000000udec --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --gas-prices 0udec -y
+decentrd tx staking delegate $(decentrd keys show wallet --bech val -a) 1000000udec --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
 ```
+### Vote
+```
+decentrd tx gov vote 29 yes --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
+```
+
 ### Delete 
 ```
 sudo systemctl stop decentrd && \
