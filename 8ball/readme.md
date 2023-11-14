@@ -19,7 +19,7 @@ go version
 curl -L "https://8ball.info/8ball.tar.gz" > 8ball.tar.gz && \
 tar -C ./ -vxzf 8ball.tar.gz && \
 rm -f 8ball.tar.gz  && \
-sudo mv ./8ball /usr/local/bin/
+mv 8ball $HOME/go/bin
 ```
 ### Init
 ```
