@@ -26,7 +26,7 @@ make install
 ### Update
 ```
 cd $HOME/sge
-git fetch --all
+git pull
 git checkout v1.1.1
 make install
 ```
