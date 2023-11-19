@@ -24,6 +24,17 @@ git checkout v1.6.2
 cd decentr
 make install
 ```
+### Update
+```
+cd decentr
+git fetch --all
+git checkout v1.6.3
+make install
+```
+```
+sudo systemctl restart decentrd
+sudo journalctl -fu decentrd -o cat
+```
 ### Init
 ```
 MONIKER=
