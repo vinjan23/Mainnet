@@ -26,8 +26,9 @@ make install
 ### Update
 ```
 cd $HOME/sge
-git pull
+git fetch --tags --force 
 git checkout v1.1.1
+go mod tidy
 make install
 ```
 ### Init
