@@ -48,7 +48,7 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}
 
 ### Genesis
 ```
-wget -qO $HOME/.archway/config/genesis.json https://snapshots.theamsolutions.info/arch-genesis.json
+curl -Ls https://ss.archway.nodestake.top/genesis.json > $HOME/.archway/config/genesis.json
 ```
 ### Addrbook
 ```
