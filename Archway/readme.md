@@ -6,7 +6,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 
 ### GO
 ```
-ver="1.20.4"
+ver="1.20.6"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/archway-network/archway.git
 cd archway
-git checkout v1.0.0
+git checkout v4.0.2
 make install
 ```
 
@@ -53,11 +53,11 @@ wget -qO $HOME/.archway/config/genesis.json https://snapshots.theamsolutions.inf
 
 ### Seed Peer Gas
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0aarch\"|" $HOME/.archway/config/app.toml
 SEEDS="3ba7bf08f00e228026177e9cdc027f6ef6eb2b39@35.232.234.58:26656"
 sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.archway/config/config.toml
-PEERS=
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.archway/config/config.toml
+PEERS="47dc5221ee5e1bdd1a8d51093be5d25c4c0c8e95@51.195.6.227:26662,bd55b5f6d58013f2b14453de63510a06e5949b14@167.235.180.97:11556,b96b188c049814c0c848d285ebbfa5af77396387@65.108.238.219:11556,996a4e60bea02401787178cac264fddf23301921@65.109.20.54:11556,dec4f5b15f44dd1c1a35084e4d2da7e05fa7a9da@95.216.46.125:31656,f1b210360e2df8242cbbd9a54662abfd1d6a9faf@136.243.67.189:11556,3ba7bf08f00e228026177e9cdc027f6ef6eb2b39@35.232.234.58:26656"
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$peers\"|" $HOME/.archway/config/config.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"1000000000000aarch\"|" $HOME/.archway/config/app.toml
 ```
 
 ### Prunning
