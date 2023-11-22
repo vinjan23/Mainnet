@@ -167,23 +167,23 @@ archwayd query slashing signing-info $(archwayd tendermint show-validator)
 ```
 ### Delegate
 ```
-archwayd tx staking delegate <TO_VALOPER_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment=1.4 --fees ‎180000000000000000aarch -y
+archwayd tx staking delegate $(archwayd keys show wallet --bech val -a) 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment 1.4 --gas auto --gas-prices 1000000000000aarch -y
 ```
 ### WD All
 ```
-archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch -y
+archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --gas auto --gas-prices 1000000000000aarch -y
 ```
 ### WD with commission
 ```
-archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --fees 180000000000000000aarch -y
+archwayd tx distribution withdraw-rewards $(archwayd keys show wallet --bech val -a) --commission --from wallet --chain-id archway-1 --gas-adjustment="1.4" --gas auto --gas-prices 1000000000000aarch -y
 ```
 ### Transfer
 ```
-archwayd tx bank send wallet <TO_WALLET_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1
+archwayd tx bank send wallet <TO_WALLET_ADDRESS> 1000000000000000000aarch --from wallet --chain-id archway-1 --gas-adjustment="1.4" --gas auto --gas-prices 1000000000000aarch -y
 ```
 ### Vote
 ```
-archwayd tx gov vote 1 yes --from wallet --chain-id archway-1 --gas-adjustment 1.4 --gas auto --fees 180000000000000000aarch -y
+archwayd tx gov vote 1 yes --from wallet --chain-id archway-1 --gas-adjustment="1.4" --gas auto --gas-prices 1000000000000aarch -y
 ```
 ### Validator Info
 ```
