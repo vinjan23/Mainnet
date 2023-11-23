@@ -15,7 +15,7 @@ go version
 cd $HOME
 git clone https://github.com/public-awesome/stargaze.git
 cd stargaze
-git checkout v11.0.0
+git checkout v12.1.0
 make install
 ```
 ### Init
