@@ -1,6 +1,6 @@
 ### GO
 ```
-ver="1.20.6"
+ver="1.21.1"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
