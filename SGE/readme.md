@@ -166,7 +166,7 @@ sged query slashing signing-info $(sged tendermint show-validator)
 ```
 ### Delegate
 ```
-sged tx staking delegate $(sged keys show wallet --bech val -a) 1000000usge --from wallet --chain-id sgenet-` --gas-adjustment 1.1 --gas auto -y
+sged tx staking delegate $(sged keys show wallet --bech val -a) 1000000usge --from wallet --chain-id sgenet-1 --gas-adjustment 1.1 --gas auto -y
 ```
 ### Withdraw
 ```
