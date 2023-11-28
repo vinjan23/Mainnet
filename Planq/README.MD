@@ -243,7 +243,7 @@ planqd tx slashing unjail --gas="1000000" --gas-adjustment="1.15" --gas-prices="
 
 ### Delegate & Staking
 ```
-planqd tx staking delegate $(planqd keys show wallet --bech val -a) 1000000aplanq --from wallet --chain-id planq_7070-2 --gas-adjustment 1.15 --gas=1000000 --gas-prices=20000000000aplanq 
+planqd tx staking delegate $(planqd keys show wallet --bech val -a) 10000000000000000000aplanq --from wallet --chain-id planq_7070-2 --gas-adjustment 1.15 --gas=1000000 --gas-prices=20000000000aplanq 
  
 ```
 ##$ Check Your Voting Power
