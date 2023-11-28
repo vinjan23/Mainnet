@@ -238,12 +238,12 @@ planqd tx staking edit-validator \
 
 ### Unjail
 ```
-planqd tx slashing unjail --gas="1000000" --gas-adjustment="1.15" --gas-prices="30000000000aplanq" --chain-id planq_7070-2 --from vj
+planqd tx slashing unjail --gas="1000000" --gas-adjustment="1.15" --gas-prices="30000000000aplanq" --chain-id planq_7070-2 --from wallet
 ```
 
 ### Delegate & Staking
 ```
-planqd tx staking delegate <YOUR_TO_Validator_ADDRESS> 1000000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-adjustment 1.15 --gas=1000000 --gas-prices=20000000000aplanq 
+planqd tx staking delegate $(planqd keys show wallet --bech val -a) 1000000aplanq --from wallet --chain-id planq_7070-2 --gas-adjustment 1.15 --gas=1000000 --gas-prices=20000000000aplanq 
  
 ```
 ##$ Check Your Voting Power
@@ -254,7 +254,7 @@ curl -s localhost:<PORT>657/status | jq .result.validator_info.voting_power
 
 ### Transfer Fund
 ```
-planqd tx bank send <Wallet> <To_Address> 19950000aplanq --from <Wallet> --chain-id planq_7070-2 --gas-adjustment 1.15 --gas-prices 20000000000aplanq --gas 1000000
+planqd tx bank send wallet <To_Address> 19950000aplanq --from wallet --chain-id planq_7070-2 --gas-adjustment 1.15 --gas-prices 20000000000aplanq --gas 1000000
 ```
 
 ### Withdraw All Reward
@@ -264,7 +264,7 @@ planqd tx distribution withdraw-all-rewards --from wallet --chain-id planq_7070-
 
 ### Withdraw with Commission
 ```
-planqd tx distribution withdraw-rewards $(planqd keys show wallet --bech val -a) --commission --gas="1000000" --gas-adjustment="1.15" --gas-prices="20000000000aplanq" --chain-id planq_7070-2 --from <key_name>
+planqd tx distribution withdraw-rewards $(planqd keys show wallet --bech val -a) --commission --gas="1000000" --gas-adjustment="1.15" --gas-prices="20000000000aplanq" --chain-id planq_7070-2 --from wallet
 ```
 ### Vote
 ```
