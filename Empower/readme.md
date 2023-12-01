@@ -176,7 +176,7 @@ empowerd query slashing signing-info $(empowerd tendermint show-validator)
 
 ### Delegate
 ```
-empowerd tx staking delegate <Val_address> 900000umpwr --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+empowerd tx staking delegate $(empowerd keys show wallet --bech val -a) 900000umpwr --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
 ```
 ### Delegate to Another Validator
 ```
