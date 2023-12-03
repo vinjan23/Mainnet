@@ -165,26 +165,26 @@ terpd tx staking create-validator \
 
 ### Unjail
 ```
-terpd tx slashing unjail --from wallet --chain-id --chain-id morocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+terpd tx slashing unjail --from wallet --chain-id --chain-id morocco-1 --gas-adjustment="1.3" --gas auto -y
 ```
 
 ### Withdraw All
 ```
-terpd tx distribution withdraw-all-rewards --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+terpd tx distribution withdraw-all-rewards --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto -y
 ```
 
 ### Withdraw with comission
 ```
-terpd tx distribution withdraw-rewards $(terpd keys show wallet --bech val -a) --commission --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+terpd tx distribution withdraw-rewards $(terpd keys show wallet --bech val -a) --commission --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto -y
 ```
 
 ### Delegate
 ```
-terpd tx staking delegate $(terpd keys show wallet --bech val -a) 1000000uterp --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto --fees 7000uthiol
+terpd tx staking delegate $(terpd keys show wallet --bech val -a) 1000000uterp --from wallet --chain-id marocco-1 --gas-adjustment="1.3" --gas auto -y
 ```
 ### Vote
 ```
-terpd tx gov vote 10 yes --from wallet --chain-id morocco-1 --gas-adjustment 1.5 --gas auto --fees 7000uthiol
+terpd tx gov vote 10 yes --from wallet --chain-id morocco-1 --gas-adjustment 1.5 --gas auto -y
 ```
 
 ### Stop
