@@ -41,6 +41,10 @@ wget -O $HOME/.blockxd/config/genesis.json "https://raw.githubusercontent.com/Bl
 ```
 
 ### Peer Seed Gas
+```
+seeds="cd462b62d54296ab4550d7c1ed5baafe5653faa6@137.184.7.64:26656,fbaf65d8f2732cb19269569763de4b75d84f5f52@147.182.238.235:26656,5f21477b66cce124fc61167713243d8de30a9572@137.184.38.212:26656,abddf4491980d5e6c31b44e3640610c77d475d89@146.190.153.165:26656"
+sed -i.bak -e "s/^seed *=.*/seed = \"$seed\"/" ~/.blockxd/config/config.toml
+```
 
 ### Prunning
 ```
