@@ -14,8 +14,9 @@ go version
 ```
 cd $HOME
 git clone https://github.com/BlockXLabs/BlockX-Genesis-Mainnet1.git
-chmod +x blockxd
-mv blockxd $HOME/go/bin/
+export PATH=/root/go/bin:$PATH
+source ~/.bashrc
+make install
 ```
 ### Init
 ```
