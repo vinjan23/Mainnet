@@ -26,9 +26,8 @@ make install
 ### Update
 ```
 cd $HOME/sge
-git fetch --tags --force 
-git checkout v1.1.1
-go mod tidy
+git pull
+git checkout v1.3.0
 make install
 ```
 ### Init
@@ -99,7 +98,11 @@ EOF
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable sged
+```
+```
 sudo systemctl restart sged
+```
+```
 sudo journalctl -u sged -f -o cat
 ```
 ### Sync
