@@ -35,7 +35,7 @@ make install
 ```
 cd terp-core
 git fetch --all
-git checkout v3.1.0
+git checkout v4.1.1
 make install
 ```
 
