@@ -14,8 +14,7 @@ go version
 ```
 cd $HOME
 git clone https://github.com/BlockXLabs/BlockX-Genesis-Mainnet1.git
-export PATH=/root/go/bin:$PATH
-source ~/.bashrc
+cd BlockX-Genesis-Mainnet1
 make install
 ```
 ### Init
@@ -104,7 +103,16 @@ blockxd keys list
 ```
 blockxd q bank balances $(blockxd keys show wallet -a)
 ```
-
+### Delete
+```
+sudo systemctl stop blockxd
+sudo systemctl disable blockxd
+sudo rm /etc/systemd/system/blockxd.service
+sudo systemctl daemon-reload
+rm -f $(which blockxd)
+rm -rf $HOME/.blockxd
+rm -rf $HOME/BlockX-Genesis-Mainnet1
+```
 
 
 
