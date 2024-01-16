@@ -120,4 +120,3 @@ rm -rf $HOME/BlockX-Genesis-Mainnet1
 ```
 
 
-
