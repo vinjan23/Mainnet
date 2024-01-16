@@ -91,6 +91,11 @@ blockxd status 2>&1 | jq .SyncInfo
 ```
 journalctl -fu blockxd -ocat
 ```
+### Reset Data
+```
+blockxd tendermint unsafe-reset-all --home ~/.blockxd/ --keep-addr-book
+```
+
 ### Wallet
 ```
 blockxd keys add wallet
