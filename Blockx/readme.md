@@ -108,6 +108,25 @@ blockxd keys list
 ```
 blockxd q bank balances $(blockxd keys show wallet -a)
 ```
+###
+```
+blockxd tx staking create-validator \
+  --amount 9999999999999999990000abcx \
+  --from wallet \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "0.2" \
+  --commission-rate "0.1" \
+  --min-self-delegation "1" \
+  --pubkey  $(blockxd tendermint show-validator) \
+  --moniker vinjan \
+  --chain-id blockx_100-1 \
+  --identity="7C66E36EA2B71F68" \
+  --details="🎉 Stake & Node Operator 🎉" \
+  --website="https://service.vinjan.xyz/" \
+  --gas=auto \
+  -y
+```
+
 ### Delete
 ```
 sudo systemctl stop blockxd
@@ -118,5 +137,6 @@ rm -f $(which blockxd)
 rm -rf $HOME/.blockxd
 rm -rf $HOME/BlockX-Genesis-Mainnet1
 ```
+
 
 
