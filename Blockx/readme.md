@@ -44,6 +44,9 @@ wget -O $HOME/.blockxd/config/genesis.json "https://raw.githubusercontent.com/Bl
 ```
 seeds="cd462b62d54296ab4550d7c1ed5baafe5653faa6@137.184.7.64:26656,fbaf65d8f2732cb19269569763de4b75d84f5f52@147.182.238.235:26656,5f21477b66cce124fc61167713243d8de30a9572@137.184.38.212:26656,abddf4491980d5e6c31b44e3640610c77d475d89@146.190.153.165:26656"
 sed -i.bak -e "s/^seed *=.*/seed = \"$seed\"/" ~/.blockxd/config/config.toml
+peers="dfc2886dd41cc063ac0e962df490e94bc4aa6e43@65.108.206.74:19656,85d0069266e78896f9d9e17915cdfd271ba91dfd@146.190.153.165:26656,adcd9c90cc9fba509fb283e365ecd31bd5c37ff5@49.13.166.213:26656,9b84b33d44a880a520006ae9f75ef030b259cbaf@137.184.38.212:26656,3045517c28ad1965f68c47fa04f08b042834f2f8@143.198.130.3:26656,e15f4d31281036c69fa17269d9b26ff8733511c6@147.182.238.235:26656,34d08633547fc406095ff6d730fdfe65d34b96d0@158.69.125.73:11356,8ebf5e70dad7268a66a9198dbe9006f9140415b6@217.182.211.81:26656,dc240d568509fa275cb870b93de4db1869d7187a@5.78.103.187:26656,72639ce4ce7e0260d7ae129e6acc07dcb54d6af1@167.235.102.45:20656,bc152258668e673a3b63f964fa75afdd478078c7@185.246.85.48:39656,bbe679ddc774dc91b962985c7339a2e7934b8451@207.180.250.5:26656,724b268dbb274e7d4b26503129604a968c9e226b@37.120.189.81:26656"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.blockxd/config/config.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0abcx\"|" $HOME/.blockxd/config/app.toml
 ```
 
 ### Prunning
@@ -111,20 +114,61 @@ blockxd q bank balances $(blockxd keys show wallet -a)
 ###
 ```
 blockxd tx staking create-validator \
-  --amount 9999999999999999990000abcx \
-  --from wallet \
-  --commission-max-change-rate "0.01" \
-  --commission-max-rate "0.2" \
-  --commission-rate "0.1" \
-  --min-self-delegation "1" \
-  --pubkey  $(blockxd tendermint show-validator) \
-  --moniker vinjan \
-  --chain-id blockx_100-1 \
-  --identity="7C66E36EA2B71F68" \
-  --details="🎉 Stake & Node Operator 🎉" \
-  --website="https://service.vinjan.xyz/" \
-  --gas=auto \
-  -y
+--amount 9999999999999999990000abcx \
+--from wallet \
+--commission-max-change-rate "0.01" \
+--commission-max-rate "0.2" \
+--commission-rate "0.1" \
+--min-self-delegation "1" \
+--pubkey  $(blockxd tendermint show-validator) \
+--moniker vinjan \
+--chain-id blockx_100-1 \
+--identity="7C66E36EA2B71F68" \
+--details="🎉 Stake & Node Operator 🎉" \
+--website="https://service.vinjan.xyz/" \
+--gas=auto \
+-y
+```
+### Edit
+```
+blockxd tx staking edit-validator \
+--new-moniker= \
+--identity= \
+--website= \
+--details=satsetsatseterror \
+--chain-id=blockx_100-1 \
+--from=<wallet> \
+--gas=auto \
+-y
+```
+### Unjail
+```
+blockxd tx slashing unjail --from wallet --chain-id blockx_100-1 --gas auto -y
+```
+### Reason
+```
+blockxd query slashing signing-info $(blockxd tendermint show-validator)
+```
+### Withdraw
+```
+blockxd tx distribution withdraw-all-rewards --from wallet --chain-id blockx_100-1 --gas auto -y
+```
+### Withdraw with Commission
+```
+blockxd tx distribution withdraw-rewards $(blockxd keys show wallet --bech val -a) --commission --from wallet --chain-id blockx_100-1 --gas auto -y
+```
+### Delegate
+```
+blockxd tx staking delegate $(blockxd keys show wallet --bech val -a) 1000000000000000000abcx --from wallet --chain-id blockx_100-1 --gas auto -y
+```
+
+### Own Peer
+```
+echo $(blockxd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.blockxd/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+### Conected Peer
+```
+curl -sS http://localhost:19657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
 ```
 
 ### Delete
