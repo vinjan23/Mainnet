@@ -35,8 +35,10 @@ centaurid version --long | grep -e commit -e version
 ```
 cd $HOME/composable-centauri
 git pull
-git checkout v5.2.2-client-fix
+git checkout v6.4.2
 make install
+```
+```
 sudo systemctl restart centaurid && sudo journalctl -u centaurid -f -o cat
 ```
 ```
