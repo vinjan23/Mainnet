@@ -170,17 +170,17 @@ terpd tx slashing unjail --from wallet --chain-id morocco-1 --gas-prices 0.05uth
 
 ### Withdraw All
 ```
-terpd tx distribution withdraw-all-rewards --from wallet --chain-id marocco-1 --gas-prices 0.05uthiol --gas-adjustment="1.3" --gas auto -y
+terpd tx distribution withdraw-all-rewards --from wallet --chain-id morocco-1 --gas-prices 0.05uthiol --gas-adjustment="1.3" --gas auto -y
 ```
 
 ### Withdraw with comission
 ```
-terpd tx distribution withdraw-rewards $(terpd keys show wallet --bech val -a) --commission --from wallet --chain-id marocco-1 --gas-prices 0.05uthiol --gas-adjustment="1.3" --gas auto -y
+terpd tx distribution withdraw-rewards $(terpd keys show wallet --bech val -a) --commission --from wallet --chain-id morocco-1 --gas-prices 0.05uthiol --gas-adjustment="1.3" --gas auto -y
 ```
 
 ### Delegate
 ```
-terpd tx staking delegate $(terpd keys show wallet --bech val -a) 1000000uterp --from wallet --chain-id marocco-1 --gas-prices 0.05uthiol --gas-adjustment="1.3" --gas auto -y
+terpd tx staking delegate $(terpd keys show wallet --bech val -a) 1000000uterp --from wallet --chain-id morocco-1 --gas-prices 0.05uthiol --gas-adjustment="1.3" --gas auto -y
 ```
 ### Vote
 ```
