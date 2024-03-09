@@ -63,7 +63,7 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}
 
 ### Genesis
 ```
-curl -s https://raw.githubusercontent.com/terpnetwork/mainnet/main/morocco-1/genesis.json > $HOME/.terp/config/genesis.json
+curl -L https://snapshots.nodejumper.io/terpnetwork/genesis.json > $HOME/.terp/config/genesis.json
 ```
 
 ### Addrbook
