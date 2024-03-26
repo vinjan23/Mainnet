@@ -36,7 +36,7 @@ make install
 ```
 cd $HOME/sge
 git pull
-git checkout v1.5.2
+git checkout v1.5.3
 make install
 ```
 ### Init
