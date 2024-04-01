@@ -22,15 +22,20 @@ go version
 cd $HOME
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.8.3
+git checkout v0.9.0
 make install
 ```
 ### Update
 ```
 cd $HOME/realio-network
 git fetch --all
-git checkout v0.8.3
+git checkout v0.9.0
 make install
+```
+```
+realio-networkd version --long | grep -e commit -e version
+```
+```
 sudo systemctl restart realio-networkd
 sudo journalctl -u realio-networkd -f -o cat
 ```
