@@ -22,14 +22,14 @@ go version
 cd $HOME
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.9.0
+git checkout v0.9.2
 make install
 ```
 ### Update
 ```
 cd $HOME/realio-network
 git fetch --all
-git checkout v0.9.0
+git checkout v0.9.2
 make install
 ```
 ```
