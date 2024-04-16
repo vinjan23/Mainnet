@@ -20,7 +20,7 @@ go version
 cd $HOME
 rm -rf decentr
 git clone https://github.com/Decentr-net/decentr.git
-git checkout v1.6.2
+git checkout v1.6.3
 cd decentr
 make install
 ```
