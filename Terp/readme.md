@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/terpnetwork/terp-core.git
 cd terp-core
-git checkout v4.1.1
+git checkout v4.2.0
 make install
 ```
 ### Update
