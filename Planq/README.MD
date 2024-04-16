@@ -45,7 +45,7 @@ cd $HOME
 rm -rf planq
 git clone https://github.com/planq-network/planq.git
 cd planq
-git checkout v1.0.7
+git checkout v1.1.0
 make install
 ```
 
@@ -53,7 +53,7 @@ make install
 ```
 cd planq
 git fetch --all
-git checkout v1.0.4 
+git checkout v1.0.7
 make install
 systemctl restart planqd && journalctl -fu planqd -o cat
 ```
