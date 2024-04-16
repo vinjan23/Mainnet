@@ -29,7 +29,7 @@ go version
 cd $HOME
 git clone https://github.com/sge-network/sge
 cd sge
-git checkout v1.1.0
+git checkout v1.5.3
 make install
 ```
 ### Update
