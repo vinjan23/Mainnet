@@ -165,7 +165,7 @@ terpd tx staking create-validator \
 
 ### Unjail
 ```
-terpd tx slashing unjail --from wallet --chain-id morocco-1 --gas-prices 0.05uthiol --gas-adjustment 1.3 --gas auto -y
+terpd tx slashing unjail --from wallet --chain-id morocco-1 --gas-adjustment 1.3 --fees 70000uthiol
 ```
 
 ### Withdraw All
