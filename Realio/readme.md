@@ -274,8 +274,13 @@ echo $(realio-networkd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat
 ```
 curl -sS http://localhost:22657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
 ```
+### Vote
 ```
 realio-networkd tx gov vote 8 yes --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+```
+### Deposit
+```
+realio-networkd tx gov deposit 8 5000000000000000000ario --from wallet --chain-id realionetwork_3301-1 --fees 70000000000ario
 ```
 ### Delete
 ```
