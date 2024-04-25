@@ -135,12 +135,11 @@ blockxd tx staking create-validator \
 ### Edit
 ```
 blockxd tx staking edit-validator \
---new-moniker= \
---identity= \
---website= \
---details=satsetsatseterror \
+--new-moniker=vinjan \
+--identity=7C66E36EA2B71F68 \
 --chain-id=blockx_100-1 \
---from=<wallet> \
+--from=wallet \
+--commission-rate "0.15" \
 --gas=auto \
 -y
 ```
