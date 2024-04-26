@@ -216,12 +216,11 @@ realio-networkd tx bank send wallet realio1sw2n4v32puxcneg9kyz7z7v82mnad909p7g99
 realio-networkd tx staking edit-validator \
 --new-moniker "vinjan | RIO" \
 --identity "7C66E36EA2B71F68" \
---details "🎉Proffesional Stake & Node Validator🎉" \
 --chain-id "realionetwork_3301-1" \
+--commission-rate="0.05" \
 --from wallet \
---gas-prices 20000000000ario \
---gas 1000000 \
--y
+--gas 800000 \
+--fees 5000000000000000ario
 ```
 
 ### Unjail
