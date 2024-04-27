@@ -1,9 +1,4 @@
-```
 
-```
-```
-
-```
 ```
 sudo apt install lz4 -y
 sudo systemctl stop entangled
