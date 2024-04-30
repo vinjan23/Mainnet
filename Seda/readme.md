@@ -77,7 +77,7 @@ sudo journalctl -u sedad -f -o cat
 ```
 ### Sync
 ```
-wardend status 2>&1 | jq .sync_info
+sedad status 2>&1 | jq .sync_info
 ```
 ### Add Wallet
 ```
