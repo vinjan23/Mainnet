@@ -81,7 +81,7 @@ sedad status 2>&1 | jq .sync_info
 ```
 ### Add Wallet
 ```
-sedad keys add wallet
+sedad keys add wallet --recover
 ```
 ### Balances
 ```
@@ -102,11 +102,11 @@ nano $HOME/validator.json
 {
   "pubkey": {"#pubkey"},
   "amount": "1000000000000000000aseda",
-  "moniker": "",
-  "identity": "",
-  "website": "",
+  "moniker": "vinjan",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://service.vinjan.xyz",
   "security": "",
-  "details": "",
+  "details": "Stakibg Provider-IBC Relayer",
   "commission-rate": "0.05",
   "commission-max-rate": "0.2",
   "commission-max-change-rate": "0.2",
