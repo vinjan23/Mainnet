@@ -100,16 +100,16 @@ nano $HOME/validator.json
 ```
 ```
 {
-  "pubkey": {"#pubkey"},
-  "amount": "1000000000000000000aseda",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"EjBO6Jrc7CjGCHBG3KcniVaNHcsuVQKyWo8gm2qASTA="},
+  "amount": "105000000000000000000aseda",
   "moniker": "vinjan",
   "identity": "7C66E36EA2B71F68",
   "website": "https://service.vinjan.xyz",
   "security": "",
   "details": "Stakibg Provider-IBC Relayer",
-  "commission-rate": "0.05",
+  "commission-rate": "0.02",
   "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.2",
+  "commission-max-change-rate": "0.02",
   "min-self-delegation": "1"
 }
 ```
@@ -117,7 +117,7 @@ nano $HOME/validator.json
 sedad tx staking create-validator validator.json \
     --from=wallet \
     --chain-id=seda-1 \
-    --fees=10000000000aseda
+    --fees=2000000000000000aseda
 ```
 ### Unjail
 ```
