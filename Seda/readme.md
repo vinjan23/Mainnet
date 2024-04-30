@@ -29,7 +29,7 @@ wget -O $HOME/.sedad/config/genesis.json "https://raw.githubusercontent.com/seda
 ### Seed Peer Gas
 ```
 seeds="31f54fbcf445a9d9286426be59a17a811dd63f84@18.133.231.208:26656"
-sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.warden/config/config.toml
+sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.sedad/config/config.toml
 peers="770ff46af89cd0ca4f6cd7bc532648826f7995f5@62.169.30.154:26656,58c919e7b89b8c5b5a3024f5e7cec07d2e3b28d3@78.47.163.48:26656,8d887e7007696439a955e839d786532af746f697@94.130.13.186:25856,d4b0af2651d980d1a12267b8b936689120f39aef@195.201.10.252:17356,fc319e170aea3e99c75eb411505bd0a6d938b4e2@109.199.127.16:25856"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.sedad/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"10000000000aseda\"|" $HOME/.sedad/config/app.toml
