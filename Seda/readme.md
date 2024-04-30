@@ -143,6 +143,21 @@ curl -sS http://localhost:11657/net_info | jq -r '.result.peers[] | "\(.node_inf
 ```
 sedad tx bank send wallet <TO_WALLET_ADDRESS> 1000000aseda --from wallet --chain-id seda-1 --fees=10000000000aseda -y
 ```
+### Statesync
+```
+sudo systemctl stop sedad
+sedad tendermint unsafe-reset-all --home $HOME/.sedad --keep-addr-book
+SNAP_RPC="https://seda-rpc.polkachu.com:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.sedad/config/config.toml
+sudo systemctl restart sedad
+sudo journalctl -u sedad -f -o cat
+```
 
 ### Delete
 ```
@@ -155,5 +170,6 @@ rm -f $(which sedad)
 rm -rf $HOME/.sedad
 rm -rf $HOME/seda-chain
 ```
+
 
 
