@@ -25,6 +25,10 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:113
 ```
 wget -O $HOME/.sedad/config/genesis.json "https://raw.githubusercontent.com/sedaprotocol/seda-networks/main/mainnet/genesis.json"
 ```
+### Addrbook.json
+```
+wget -O $HOME/.sedad/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Seda/addrbook.json"
+```
 
 ### Seed Peer Gas
 ```
