@@ -27,7 +27,7 @@ wget -O $HOME/.sedad/config/genesis.json "https://raw.githubusercontent.com/seda
 ```
 ### Addrbook.json
 ```
-wget -O $HOME/.sedad/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Seda/addrbook.json"
+wget -O $HOME/.sedad/config/addrbook.json https://snapshots.polkachu.com/addrbook/seda/addrbook.json --inet4-only
 ```
 
 ### Seed Peer Gas
