@@ -129,15 +129,15 @@ sedad tx slashing unjail --from wallet --chain-id seda-1 --fees=10000000000aseda
 ```
 ### Delegate
 ```
-sedad tx staking delegate $(sedad keys show wallet --bech val -a) 1000000aseda --from wallet --chain-id seda-1 --fees=10000000000aseda -y
+sedad tx staking delegate $(sedad keys show wallet --bech val -a) 1000000aseda --from wallet --chain-id seda-1 --fees=2000000000000000aseda -y
 ```
 ### Withdraw Commission
 ```
-sedad tx distribution withdraw-rewards $(sedad keys show wallet --bech val -a) --commission --from wallet --chain-id seda-1 --fees=10000000000aseda -y
+sedad tx distribution withdraw-rewards $(sedad keys show wallet --bech val -a) --commission --from wallet --chain-id seda-1 --fees=2000000000000000aseda -y
 ```
 ### Withdraw
 ```
-sedad tx distribution withdraw-all-rewards --from wallet --chain-id seda-1 --fees=10000000000aseda -y
+sedad tx distribution withdraw-all-rewards --from wallet --chain-id seda-1 --fees=2000000000000000aseda -y
 ```
 ### Connected Peer
 ```
