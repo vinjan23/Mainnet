@@ -164,6 +164,15 @@ sedad tx staking redelegate $(sedad keys show wallet --bech val -a) <val_address
 ```
 [[ $(sedad q staking validator $(sedad keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(sedad status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
+### Validator Info
+```
+sedad status 2>&1 | jq .validator_info
+```
+### Node Info
+```
+sedad status 2>&1 | jq .node_info
+```
+
 ### Connected Peer
 ```
 curl -sS http://localhost:11657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
