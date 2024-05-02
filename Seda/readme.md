@@ -82,6 +82,20 @@ sudo systemctl enable sedad
 sudo systemctl restart sedad
 sudo journalctl -u sedad -f -o cat
 ```
+### Statesync
+```
+SNAP_RPC="https://seda-rpc.polkachu.com:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.sedad/config/config.toml
+sudo systemctl restart sedad
+sudo journalctl -u sedad -f -o cat
+```
+
 ### Sync
 ```
 sedad status 2>&1 | jq .sync_info
@@ -128,7 +142,7 @@ sedad tx staking create-validator validator.json \
 ```
 ### Unjail
 ```
-sedad tx slashing unjail --from wallet --chain-id seda-1 --fees=10000000000aseda -y
+sedad tx slashing unjail --from wallet --chain-id seda-1 --fees=20000000000aseda -y
 ```
 ### Delegate
 ```
@@ -136,11 +150,19 @@ sedad tx staking delegate $(sedad keys show wallet --bech val -a) 1000000aseda -
 ```
 ### Withdraw Commission
 ```
-sedad tx distribution withdraw-rewards $(sedad keys show wallet --bech val -a) --commission --from wallet --chain-id seda-1 --fees=2000000000000000aseda -y
+sedad tx distribution withdraw-rewards $(sedad keys show wallet --bech val -a) --commission --from wallet --chain-id seda-1 --gas auto --gas-prices 10000000000aseda -y
 ```
 ### Withdraw
 ```
-sedad tx distribution withdraw-all-rewards --from wallet --chain-id seda-1 --fees=2000000000000000aseda -y
+sedad tx distribution withdraw-all-rewards --from wallet --chain-id seda-1 --gas auto --gas-prices 10000000000aseda -y
+```
+### Redelegate
+```
+sedad tx staking redelegate $(sedad keys show wallet --bech val -a) <val_address> 1900000000000000000aseda --from wallet --chain-id seda-1 --gas-adjustment 1.4 --gas auto --gas-prices 10000000000aseda -y
+```
+### Cek Validator
+```
+[[ $(sedad q staking validator $(sedad keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(sedad status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
 ### Connected Peer
 ```
