@@ -127,7 +127,7 @@ nano $HOME/validator.json
   "identity": "7C66E36EA2B71F68",
   "website": "https://service.vinjan.xyz",
   "security": "",
-  "details": "Stakibg Provider-IBC Relayer",
+  "details": "Staking Provider-IBC Relayer",
   "commission-rate": "0.02",
   "commission-max-rate": "0.2",
   "commission-max-change-rate": "0.02",
@@ -140,6 +140,18 @@ sedad tx staking create-validator validator.json \
     --chain-id=seda-1 \
     --fees=2000000000000000aseda
 ```
+### Edit
+```
+sedad tx staking edit-validator \
+--new-moniker="vinjan" \
+--identity="7C66E36EA2B71F68" \
+--details="Staking Provider-IBC Relayer" \
+--website="" \
+--chain-id=seda-1 \
+--from=wallet \
+--fees=2000000000000000aseda
+```
+
 ### Unjail
 ```
 sedad tx slashing unjail --from wallet --chain-id seda-1 --fees=20000000000aseda -y
