@@ -147,7 +147,7 @@ entangled q bank balances $(entangled keys show wallet -a)
 entangled tx staking create-validator \
 --amount="9990000000000000000aNGL" \
 --pubkey=$(entangled tendermint show-validator) \
---moniker="" \
+--moniker="vinjan_research" \
 --identity="" \
 --details="" \
 --website="" \
