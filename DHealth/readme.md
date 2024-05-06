@@ -98,7 +98,25 @@ dhealthd q bank balances $(dhealthd keys show wallet -a)
 ```
 dhealthd keys convert-bech32-to-hex $(dhealthd keys show wallet -a)
 ```
+```
+dhealthd tx staking create-validator \
+--amount=2000000000udhp \
+--pubkey=$(dhealthd tendermint show-validator) \
+--moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="Stake Provider & IBC Relayer" \
+--chain-id=dhealth \
+--commission-rate="0.05" \
+--commission-max-rate="0.20" \
+--commission-max-change-rate="0.02" \
+--min-self-delegation=1 \
+--from=wallet \
+--gas=auto \
+--gas-adjustment=1.5 \
+--gas-prices="0.025udhp"
 
+```
 
 
 
