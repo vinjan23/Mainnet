@@ -115,9 +115,7 @@ dhealthd tx staking create-validator \
 --gas=auto \
 --gas-adjustment=1.5 \
 --gas-prices="0.025udhp"
-
 ```
-
 
 
 
