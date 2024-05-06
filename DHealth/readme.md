@@ -22,6 +22,9 @@ dhealthd init Vinjan.Inc --chain-id dhealth --recover
 wget -O $HOME/.dhealth/config/genesis.json "https://raw.githubusercontent.com/dhealthproject/mainnet/main/genesis.json"
 ```
 ```
+wget -O $HOME/.dhealth/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/DHealth/addrbook.json"
+```
+```
 peers="67243a0ed11567250aa02d5e47f6c4a0b8313975@142.93.174.93:26656,69d16d1147e90cdfb8ed066331a0abb9c71c3ae2@162.19.223.89:26656"
 sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$peers\"|" $HOME/.dhealth/config/config.toml
 ```
