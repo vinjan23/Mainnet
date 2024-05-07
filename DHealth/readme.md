@@ -16,7 +16,7 @@ dhealthd version --long
 ```
 
 ```
-dhealthd init Vinjan.Inc --chain-id dhealth --recover
+dhealthd init Vinjan.Inc --chain-id dhealth
 ```
 ```
 wget -O $HOME/.dhealth/config/genesis.json "https://raw.githubusercontent.com/dhealthproject/mainnet/main/genesis.json"
