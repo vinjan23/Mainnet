@@ -38,22 +38,15 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${P
 ```
 
 ```
-pruning="custom"
-pruning_keep_recent="100"
-pruning_keep_every="2000"
-pruning_interval="19"
-sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.dhealth/config/app.toml
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.dhealth/config/app.toml
-sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.dhealth/config/app.toml
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.dhealth/config/app.toml
-```
-```
 sed -i \
+-e 's|^pruning *=.*|pruning = "custom"|' \
+-e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
+-e 's|^pruning-keep-every *=.*|pruning-keep-every = "2000"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
 -e 's|^snapshot-interval *=.*|snapshot-interval = "2000"|' \
 -e 's|^snapshot-keep-recent *=.*|snapshot-keep-recent = "5"|' \
 $HOME/.dhealth/config/app.toml
 ```
-
 
 ```
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.dhealth/config/config.toml
@@ -81,21 +74,7 @@ sudo systemctl enable dhealthd
 sudo systemctl restart dhealthd
 sudo journalctl -u dhealthd -f -o cat
 ```
-```
-SNAP_RPC="https://rpc.dhealth.com:443"
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-# BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - LATEST_HEIGHT % 1000)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" ~/.dhealth/config/config.toml
-more ~/.dhealth/config/config.toml | grep 'rpc_servers'
-more ~/.dhealth/config/config.toml | grep 'trust_height'
-more ~/.dhealth/config/config.toml | grep 'trust_hash'
-```
+
 ```
 SNAP_RPC="https://rpc-dhealth.vinjan.xyz:443"
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
