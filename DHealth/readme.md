@@ -90,8 +90,8 @@ sudo journalctl -u dhealthd -f -o cat
 ```
 sudo apt install lz4 -y
 sudo systemctl stop dhealthd
-sedad tendermint unsafe-reset-all --home $HOME/.sedad --keep-addr-book
-curl -L https://snapshot.vinjan.xyz./seda/seda-snapshot-20240507.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.dhealth
+dhealthd tendermint unsafe-reset-all --home $HOME/.dhealth --keep-addr-book
+curl -L https://snapshot.vinjan.xyz./dhealth/dhealth-snapshot-20240507.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.dhealth
 sudo systemctl restart dhealthd
 journalctl -fu dhealthd -o cat
 ```
