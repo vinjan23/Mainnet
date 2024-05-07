@@ -42,15 +42,19 @@ pruning="custom"
 pruning_keep_recent="100"
 pruning_keep_every="2000"
 pruning_interval="19"
-snapshot_interval ="2000"
-snapshot_keep_recent ="5"
 sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.dhealth/config/app.toml
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.dhealth/config/app.toml
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.dhealth/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.dhealth/config/app.toml
-sed -i -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" $HOME/.dhealth/config/app.toml
-sed -i -e "s/^snapshot-keep-recent *=.*/snapshot-keep-recent = \"$snapshot_keep_recent\"/" $HOME/.dhealth/config/app.toml
 ```
+```
+sed -i \
+-e 's|^snapshot-interval *=.*|snapshot-interval = "2000"|' \
+-e 's|^snapshot-keep-recent *=.*|snapshot-keep-recent = "5"|' \
+$HOME/.dhealth/config/app.toml
+```
+
+
 ```
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.dhealth/config/config.toml
 ```
