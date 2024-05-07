@@ -87,6 +87,7 @@ s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.dhealth/c
 sudo systemctl restart dhealthd
 sudo journalctl -u dhealthd -f -o cat
 ```
+### Snapshot 785753
 ```
 sudo apt install lz4 -y
 sudo systemctl stop dhealthd
