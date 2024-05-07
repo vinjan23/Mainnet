@@ -107,11 +107,11 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable entangled
 ```
-### Snapshot
+### Snapshot 504713
 ```
 sudo apt install lz4 -y
 SNAP_NAME=$(curl -s https://ss-t.entangle.nodestake.top/ | egrep -o ">20.*\.tar.lz4" | tr -d ">")
-curl -o - -L https://ss-t.entangle.nodestake.top/${SNAP_NAME}  | lz4 -c -d - | tar -x -C $HOME/.entangled
+curl -L https://snapshot.vinjan.xyz/entangle/entangle-snapshot-20240507.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.entangled
 sudo systemctl restart entangled
 journalctl -fu entangled -o cat
 ```
