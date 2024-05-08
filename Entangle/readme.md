@@ -164,10 +164,10 @@ entangled tx staking create-validator \
 ### Edit
 ```
 entangled tx staking edit-validator \
---new-moniker="" \
---identity="" \
---details="" \
---website="" \
+--new-moniker="Vinjan.Inc" \
+--identity="	7C66E36EA2B71F68" \
+--details="Staking Provider" \
+--website="https://service.vinjan.xyz" \
 --chain-id=entangle_33033-1 \
 --from=wallet \
 --gas-adjustment 1.4 \
