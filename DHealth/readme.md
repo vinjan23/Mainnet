@@ -87,12 +87,12 @@ s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.dhealth/c
 sudo systemctl restart dhealthd
 sudo journalctl -u dhealthd -f -o cat
 ```
-### Snapshot 785753
+### Snapshot 815832
 ```
 sudo apt install lz4 -y
 sudo systemctl stop dhealthd
 dhealthd tendermint unsafe-reset-all --home $HOME/.dhealth --keep-addr-book
-curl -L https://snapshot.vinjan.xyz./dhealth/dhealth-snapshot-20240507.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.dhealth
+curl -L https://snapshot.vinjan.xyz./dhealth/dhealth-snapshot-20240509.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.dhealth
 sudo systemctl restart dhealthd
 journalctl -fu dhealthd -o cat
 ```
