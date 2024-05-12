@@ -130,6 +130,20 @@ dhealthd tx staking create-validator \
 --gas-adjustment=1.5 \
 --gas-prices="0.025udhp"
 ```
+```
+dhealthd tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="Stake Provider & IBC Relayer" \
+--chain-id=dhealth \
+--commission-rate="0.03" \
+--from=wallet \
+--gas=auto \
+--gas-adjustment=1.5 \
+--gas-prices="0.025udhp"
+```
+
 
 
 
