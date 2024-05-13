@@ -143,6 +143,25 @@ dhealthd tx staking edit-validator \
 --gas-adjustment=1.5 \
 --gas-prices="0.025udhp"
 ```
+```
+dhealthd tx slashing unjail --from wallet --chain-id dhealth --gas-adjustment=1.5 --gas=auto --gas-prices="0.025udhp"
+```
+```
+dhealthd tx distribution withdraw-rewards $(dhealthd keys show wallet --bech val -a) --commission --from wallet --chain-id dhealth --gas-adjustment=1.5 --gas=auto --gas-prices="0.025udhp"
+```
+```
+dhealthd tx staking delegate $(dhealthd keys show wallet --bech val -a) 1000000udhp --from wallet --chain-id dhealth --gas-adjustment=1.5 --gas=auto --gas-prices="0.025udhp"
+```
+
+```
+sudo systemctl stop dhealthd
+sudo systemctl disable dhealthd
+sudo rm /etc/systemd/system/dhealthd.service
+sudo systemctl daemon-reload
+rm -f $(which dhealthd)
+rm -rf .dhealth
+rm -rf dhealth
+```
 
 
 
