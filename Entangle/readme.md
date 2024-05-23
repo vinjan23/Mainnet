@@ -37,6 +37,7 @@ git clone https://github.com/Entangle-Protocol/entangle-blockchain
 cd entangle-blockchain
 git checkout v1.1.1
 make install
+```
 ### Init
 ```
 MONIKER=
@@ -97,7 +98,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which entangled) start 
+ExecStart=$(which entangled) start --chain-id entangle_33033-1
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
