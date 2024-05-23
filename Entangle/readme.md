@@ -32,7 +32,11 @@ cd entangle-blockchain
 git checkout main
 make install
 ```
-
+```
+git clone https://github.com/Entangle-Protocol/entangle-blockchain
+cd entangle-blockchain
+git checkout v1.1.1
+make install
 ### Init
 ```
 MONIKER=
