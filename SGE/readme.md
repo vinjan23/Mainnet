@@ -36,7 +36,7 @@ make install
 ```
 cd $HOME/sge
 git pull
-git checkout v1.7.0
+git checkout v1.7.0-tmfix
 make install
 ```
 ### Init
