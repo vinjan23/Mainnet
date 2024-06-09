@@ -170,11 +170,12 @@ entangled tx staking create-validator \
 ```
 entangled tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
---identity="	7C66E36EA2B71F68" \
+--identity="7C66E36EA2B71F68" \
 --details="Staking Provider" \
 --website="https://service.vinjan.xyz" \
 --chain-id=entangle_33033-1 \
 --from=wallet \
+--commission-rate="0.05" \
 --gas-adjustment 1.4 \
 --gas=500000 \
 --gas-prices=10aNGL
