@@ -1,13 +1,16 @@
 ```
 
-wget -O https://1501792788-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FcIZFCZY4EPKDYaPcDZLG%2Fuploads%2FOlvUYiHbP9ljhSEkXUpK%2Fselfchaind-linux-amd64?alt=media&token=8c3b22b7-dfaf-4310-95e9-e54113f18b18
-
-wget -O selfchaind https://docs.selfchain.xyz/nodes-and-validators/releases/download/Self Chain Mainnet v1.0.0/selfchaind-linux-amd64
-chmod +x selfchaind-linux-amd64
-sudo mv selfchaind-linux-amd64 $HOME/go/bin/selfchaind
 ```
 ```
-wget -O $HOME/.selfchain/config/genesis.json  https://gist.githubusercontent.com/pratikbin/656a18f371e7a970afd63e2da2890c81/raw/3876268b2d07ce65aece8455c67f98cf557c6e40/selfchain-mainnet-self-1.json
+selfchaind init $MONIKER --chain-id self-1
+selfchaind config chain-id self-1
+selfchaind config keyring-backend test
+```
+```
+wget -O $HOME/.selfchain/config/genesis.json https://raw.githubusercontent.com/vinjan23/Mainnet/main/Selfchain/genesis.json
+```
+```
+wget -O $HOME/.selfchain/config/addrbook.json https://raw.githubusercontent.com/vinjan23/Mainnet/main/Selfchain/addrbook.json
 ```
 ```
 PORT=20
