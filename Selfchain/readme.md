@@ -117,7 +117,7 @@ selfchaind tx staking create-validator \
 --commission-rate="0.04" \
 --commission-max-rate="0.2" \
 --commission-max-change-rate="0.02" \
---min-self-delegation="1000000000" \
+--min-self-delegation="1" \
 --broadcast-mode sync \
 --gas-adjustment="1.2" \
 --gas=auto
