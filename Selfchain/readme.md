@@ -106,15 +106,15 @@ selfchaind q bank balances $(selfchaind keys show wallet -a)
 ### Validator
 ```
 selfchaind tx staking create-validator \
---amount=1000000000uslf \
---pubkey=$(selfchaind tendermint show-validator --home $SELF_CHAIN_HOME) \
+--amount=3000000uslf \
+--pubkey=$(selfchaind tendermint show-validator) \
 --moniker="Vinjan.Inc" \
 --identity=7C66E36EA2B71F68 \
 --from=wallet \
 --website="https://service.vinjan.xyz" \
 --details="Staking & IBC Relayer" \
 --chain-id=self-1 \
---commission-rate="0.06" \
+--commission-rate="0.04" \
 --commission-max-rate="0.2" \
 --commission-max-change-rate="0.02" \
 --min-self-delegation="1000000000" \
