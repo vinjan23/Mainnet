@@ -22,9 +22,13 @@ make install
 MONIKER=
 ```
 ```
-blockxd init $MONIKER --chain-id blockx_100-1
-blockxd config chain-id blockx_100-1
+blockxd init $MONIKER --chain-id blockx_190-1
+blockxd config chain-id blockx_190-1
 blockxd config keyring-backend file
+```
+```
+mkdir $HOME/chain_id-change-backup
+cp -rp $HOME/.blockxd $HOME/chain_id-change-backup/blockxd_home_backup
 ```
 ### Custom Port
 ```
@@ -39,6 +43,8 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}
 ```
 wget -O $HOME/.blockxd/config/genesis.json "https://raw.githubusercontent.com/BlockXLabs/networks/master/chains/blockx_100-1/genesis.json"
 ```
+
+
 ### Addrbook
 ```
 wget -O $HOME/.blockxd/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/main/Blockx/addrbook.json"
@@ -125,7 +131,7 @@ blockxd tx staking create-validator \
 --min-self-delegation "1" \
 --pubkey  $(blockxd tendermint show-validator) \
 --moniker vinjan \
---chain-id blockx_100-1 \
+--chain-id blockx_190-1 \
 --identity="7C66E36EA2B71F68" \
 --details="🎉 Stake & Node Operator 🎉" \
 --website="https://service.vinjan.xyz/" \
@@ -137,7 +143,7 @@ blockxd tx staking create-validator \
 blockxd tx staking edit-validator \
 --new-moniker=vinjan \
 --identity=7C66E36EA2B71F68 \
---chain-id=blockx_100-1 \
+--chain-id=blockx_190-1 \
 --from=wallet \
 --commission-rate "0.15" \
 --gas=auto \
@@ -145,7 +151,7 @@ blockxd tx staking edit-validator \
 ```
 ### Unjail
 ```
-blockxd tx slashing unjail --from wallet --chain-id blockx_100-1 --gas auto -y
+blockxd tx slashing unjail --from wallet --chain-id blockx_190-1 --gas auto -y
 ```
 ### Reason
 ```
@@ -153,15 +159,15 @@ blockxd query slashing signing-info $(blockxd tendermint show-validator)
 ```
 ### Withdraw
 ```
-blockxd tx distribution withdraw-all-rewards --from wallet --chain-id blockx_100-1 --gas auto -y
+blockxd tx distribution withdraw-all-rewards --from wallet --chain-id blockx_190-1 --gas auto -y
 ```
 ### Withdraw with Commission
 ```
-blockxd tx distribution withdraw-rewards $(blockxd keys show wallet --bech val -a) --commission --from wallet --chain-id blockx_100-1 --gas auto -y
+blockxd tx distribution withdraw-rewards $(blockxd keys show wallet --bech val -a) --commission --from wallet --chain-id blockx_190-1 --gas auto -y
 ```
 ### Delegate
 ```
-blockxd tx staking delegate $(blockxd keys show wallet --bech val -a) 1000000000000000000abcx --from wallet --chain-id blockx_100-1 --gas auto -y
+blockxd tx staking delegate $(blockxd keys show wallet --bech val -a) 1000000000000000000abcx --from wallet --chain-id blockx_190-1 --gas auto -y
 ```
 
 ### Own Peer
