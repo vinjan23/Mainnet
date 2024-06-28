@@ -29,7 +29,7 @@ make install
 ```
 cd $HOME/realio-network
 git fetch --all
-git checkout v0.9.2
+git checkout v0.9.3
 make install
 ```
 ```
