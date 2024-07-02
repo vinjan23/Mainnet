@@ -22,7 +22,7 @@ go version
 cd $HOME
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.9.2
+git checkout v0.9.3
 make install
 ```
 ### Update
@@ -143,7 +143,7 @@ sudo journalctl -u realio-networkd -f -o cat
 ```
 sudo systemctl stop realio-networkd
 realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
-SNAP_RPC=http://realio.rpc.m.stavr.tech:21097
+SNAP_RPC=https://realio.rpc.m.stavr.tech:443
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
