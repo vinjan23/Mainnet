@@ -145,7 +145,7 @@ sudo systemctl stop realio-networkd
 realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
 SNAP_RPC=https://realio.rpc.m.stavr.tech:443
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 100)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
@@ -154,7 +154,10 @@ s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.realio-network/config/config.toml
 sudo systemctl restart realio-networkd && journalctl -u realio-networkd -f -o cat
 ```
-
+### Turnoff Statesync
+```
+sed -i -e "s|^enable *=.*|enable = false|" $HOME/.realio-network/config/config.toml
+```
 ### Wallet
 ```
 realio-networkd keys add wallet --recover
