@@ -43,7 +43,9 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}
 ```
 wget -O $HOME/.blockxd/config/genesis.json "https://raw.githubusercontent.com/BlockXLabs/networks/master/chains/blockx_100-1/genesis.json"
 ```
-
+```
+wget -O $HOME/.blockxd/config/genesis.json https://raw.githubusercontent.com/BlockXLabs/blockx-gov-chainID-change/main/exported-state-29-July-2024/exported_genesis_2024-07-29_21-07-04.json 
+```
 
 ### Addrbook
 ```
