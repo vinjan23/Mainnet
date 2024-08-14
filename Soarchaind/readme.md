@@ -10,7 +10,7 @@ tar -xvf $HOME/soarchaind.tar.gz
 sudo mv soarchaind /usr/local/go/bin
 ```
 ```
-soarchaind init Vinjan.Inc --chain-id soarchaintestnet --default-denom utsoar
+soarchaind init Vinjan.Inc --chain-id soarchaintestnet-1 --default-denom utsoar
 ```
 ```
 soarchaind keys add wallet --keyring-backend test --algo secp256k1 --recover
