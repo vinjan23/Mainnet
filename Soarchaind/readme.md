@@ -32,7 +32,7 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 ```
 ### Peer
 ```
-peers="d46d55ccff4033b9e20e568e739d769c73f50cbb@188.165.226.46:26776"
+peers="d46d55ccff4033b9e20e568e739d769c73f50cbb@188.165.226.46:26776,9f3fd78074710c1bbe065b360099a7eba77b6239@34.141.178.93:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.soarchain/config/config.toml
 ```
 ### Prunning
