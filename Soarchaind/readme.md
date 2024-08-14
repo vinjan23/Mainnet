@@ -20,7 +20,7 @@ soarchaind keys add wallet --keyring-backend test --algo secp256k1 --recover
 wget -O $HOME/.soarchain/config/genesis.json https://raw.githubusercontent.com/soar-robotics/mainnet-rehearsal/main/network/pregenesis.json
 ```
 ```
-wget -O $HOME/.soarchain/config/genesis.json 
+wget -O $HOME/.soarchain/config/genesis.json https://raw.githubusercontent.com/soar-robotics/mainnet-rehearsal/main/network/genesis.json
 ```
 ### Port
 ```
