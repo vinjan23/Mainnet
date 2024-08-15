@@ -77,3 +77,39 @@ sudo journalctl -u soarchaind -f -o cat
 ```
 soarchaind start
 ```
+### Sync
+```
+soarchaind status 2>&1 | jq .sync_info
+```
+### Balances
+```
+soarchaind q bank balances $(soarchaind keys show wallet -a)
+```
+###
+```
+soarchaind tendermint show-validator
+```
+```
+nano /root/.soarchain/validator.json
+```
+```
+{
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"EjBO6Jrc7CjGCHBG3KcniVaNHcsuVQKyWo8gm2qASTA="},
+  "amount": "",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://service.vinjan.xyz",
+  "security": "",
+  "details": "Staking Provider-IBC Relayer",
+  "commission-rate": "0.05",
+  "commission-max-rate": "0.2",
+  "commission-max-change-rate": "0.05",
+  "min-self-delegation": "1"
+}
+```
+```
+fiammad --home $HOME/.fiamma tx staking create-validator $HOME/.fiamma/validator.json --from WAlletName  --chain-id fiamma-testnet-1 -y
+soarchaind tx staking create-validator $HOME/soarchain/validator.json \
+    --from=wallet \
+    --chain-id=soarchaintestnet-1 \
+    --gas auto
