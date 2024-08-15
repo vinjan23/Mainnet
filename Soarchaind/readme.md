@@ -6,7 +6,7 @@ sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v1.5.
 cd $HOME
 git clone https://github.com/soar-robotics/mainnet-rehearsal.git
 cd mainnet-rehearsal/binary
-tar -xvf $HOME/soarchaind.tar.gz
+tar -xvf $HOME/mainnet-rehearsal/binary/ubuntu22.04/soarchaind.tar.gz
 sudo mv soarchaind /usr/local/go/bin
 ```
 ```
