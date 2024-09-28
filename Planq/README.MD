@@ -225,15 +225,14 @@ planqd tx staking create-validator \
  ### Edit Validator
  ```
 planqd tx staking edit-validator \
-  --new-moniker=<Your_Moniker> \
-  --identity=B9FD76B74CE3CA7D \
-  --website="<your_website>" \
-  --details=satsetsatseterror \
+  --new-moniker=Vinjan.Inc \
+  --identity=	7C66E36EA2B71F68 \
   --chain-id=planq_7070-2 \
-  --from=<WalletName> \
+  --from=wallet \
   --gas 1000000 \
   --gas-adjustment="1.15" \
   --gas-prices="20000000000aplanq" \
+  --gas=1000000
 ```
 
 ### Unjail
