@@ -143,7 +143,7 @@ sudo journalctl -u realio-networkd -f -o cat
 ```
 sudo systemctl stop realio-networkd
 realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
-SNAP_RPC=https://realio.rpc.m.stavr.tech:443
+SNAP_RPC=
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
@@ -162,7 +162,9 @@ sed -i -e "s|^enable *=.*|enable = false|" $HOME/.realio-network/config/config.t
 ```
 realio-networkd keys add wallet --recover
 ```
-
+```
+realio-networkd q bank balances $(realio-networkd keys show wallet -a)
+```
 ### Balances
 `RIO`
 ```
