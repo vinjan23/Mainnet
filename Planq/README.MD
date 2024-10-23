@@ -1,24 +1,3 @@
-<p align="right">
-  <img height="100" height="auto" src="https://user-images.githubusercontent.com/108977419/221791658-6384572c-ee76-4fbd-b904-0f582e6d3368.jpg">
-</p>
-
-<p align="centre">
-  <img height="400" height="auto" src="https://user-images.githubusercontent.com/108977419/209762643-3663ef27-d729-4653-aa4d-e70ad386a8c0.jpg">
-</p>
-
-### ✅️ Explorer > [Explorer Planq](https://explorer.planq.network/)
-
-### ✅️ Docs > [Docs Planq](https://docs.planq.network/validators/mainnet.html)
-
-#   PLANQ MAINNET
-
-4x CPU
-
-RAM 8 GB
-
-STORAGE 200GB (SSD atau NVME)
-
-`PORT=33`
 
 ### Update Tool
 ```
@@ -53,9 +32,18 @@ make install
 ```
 cd planq
 git fetch --all
-git checkout v1.0.7
+git checkout v2.0.4
 make install
-systemctl restart planqd && journalctl -fu planqd -o cat
+```
+```
+cd $HOME
+wget https://github.com/planq-network/planq/releases/download/v2.0.4/planq_2.0.4_linux_amd64.tar.gz
+tar -xvzf planq_2.0.4_linux_amd64.tar.gz
+rm -rf planq_2.0.4_linux_amd64.tar.gz
+mv $HOME/bin/planqd $(which planqd)
+```
+```
+sudo systemctl restart planqd && sudo journalctl -u planqd -f -o cat
 ```
 
 ### Setup Node Name
