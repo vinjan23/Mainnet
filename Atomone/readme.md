@@ -23,7 +23,7 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${P
 ```
 ### Genesis
 ```
-wget -O $HOME/.atomone/config/genesis.json https://snapshots.whenmoonwhenlambo.money/atomone-1/genesis.json
+wget -O $HOME/.atomone/config/genesis.json  https://atomone.fra1.digitaloceanspaces.com/genesis.json
 ```
 ### Addrbook
 ```
