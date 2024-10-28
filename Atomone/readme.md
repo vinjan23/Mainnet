@@ -23,7 +23,7 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${P
 ```
 ### Genesis
 ```
-wget -O ~/.atomone/config/genesis.json https://atomone.fra1.digitaloceanspaces.com/genesis.json
+wget -O ~/.atomone/config/genesis.json https://snapshots.whenmoonwhenlambo.money/atomone-1/genesis.json
 ```
 ### Seed Peers
 ```
@@ -73,9 +73,71 @@ sudo systemctl enable atomoned
 sudo systemctl restart atomoned
 sudo journalctl -u atomoned -f -o cat
 ```
+### Sync
+```
+atomoned status 2>&1 | jq .SyncInfo
+```
+### Add wallet
+```
+atomoned keys add wallet --recover
+```
+### Balances
+```
+atomoned q bank balances $(atomoned keys show wallet -a)
+```
+### Validator
+```
+atomoned tx staking create-validator \
+--amount=2000000000uatone \
+--pubkey=$(atomoned tendermint show-validator) \
+--moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="Stake Provider & IBC Relayer" \
+--chain-id=atomone-1 \
+--commission-rate="0.02" \
+--commission-max-rate="0.20" \
+--commission-max-change-rate="0.02" \
+--min-self-delegation=1 \
+--from=wallet \
+--gas=auto
+```
 
+### Delegate
+```
+atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000uatone --from wallet --chain-id atomone-1 --gas auto -y
+```
+### WD Commission
+```
+atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas auto -y
+```
+### Own Peer
+```
+echo $(atomoned tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.atomone/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+### Connect Peer
+```
+curl -sS http://localhost:15657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
 
+```
+sudo systemctl stop atomoned
+atomoned tendermint unsafe-reset-all --home $HOME/.atomone --keep-addr-book
+curl -L https://snapshots.whenmoonwhenlambo.money/atomone-1/atomone-1-snapshot-latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.atomone
+sudo systemctl restart atomoned
+journalctl -fu atomoned -o cat
+```
 
+### Delete
+```
+sudo systemctl stop atomoned
+sudo systemctl disable atomoned
+sudo rm /etc/systemd/system/atomoned.service
+sudo systemctl daemon-reload
+rm -f $(which atomoned)
+rm -rf .atomone
+rm -rf atomone
+```
 
 
 
