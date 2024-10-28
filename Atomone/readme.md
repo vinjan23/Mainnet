@@ -25,6 +25,11 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${P
 ```
 wget -O ~/.atomone/config/genesis.json https://snapshots.whenmoonwhenlambo.money/atomone-1/genesis.json
 ```
+### Addrbook
+```
+wget -O ~/.atomone/config/genesis.json https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Atomone/addrbook.json
+```
+
 ### Seed Peers
 ```
 seeds=""
