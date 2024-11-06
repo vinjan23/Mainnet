@@ -120,11 +120,11 @@ atomoned tx staking create-validator \
 
 ### Delegate
 ```
-atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000uatone --from wallet --chain-id atomone-1 --gas auto -y
+atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000uatone --from wallet --chain-id atomone-1 --fees 5000uatone
 ```
 ### WD Commission
 ```
-atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas auto -y
+atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --fees 5000uatone
 ```
 ### Own Peer
 ```
@@ -134,8 +134,10 @@ echo $(atomoned tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/
 ```
 curl -sS http://localhost:15657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
 ```
-
-
+### Send
+```
+atomoned tx bank send wallet atone14m0n559xdj00qwvp6ck0xesprrq26kgp75j0zw 10000uatone --from=wallet --chain-id=atomone-1 --fees 10000uatone
+```
 
 ### Delete
 ```
