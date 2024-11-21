@@ -3,9 +3,18 @@
 cd $HOME
 git clone https://github.com/sedaprotocol/seda-chain.git
 cd seda-chain
-git checkout v0.1.1
+git checkout v0.1.4
 make install
 ```
+#### update
+```
+cd $HOME
+rm -rf seda-chain
+git clone https://github.com/sedaprotocol/seda-chain.git
+cd seda-chain
+git checkout v0.1.4
+make install
+
 ### Init
 ```
 MONIKER=
