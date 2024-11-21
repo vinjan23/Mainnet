@@ -14,7 +14,7 @@ git clone https://github.com/sedaprotocol/seda-chain.git
 cd seda-chain
 git checkout v0.1.4
 make install
-
+```
 ### Init
 ```
 MONIKER=
