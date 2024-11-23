@@ -5,7 +5,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 ```
 ### GO
 ```
-ver="1.19.3"
+ver="1.22.5"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
@@ -18,49 +18,55 @@ go version
 ### Binary
 ```
 cd $HOME
-git clone https://github.com/osmosis-labs/osmosis.git
+git clone https://github.com/osmosis-labs/osmosis osmosis
 cd osmosis
-git checkout v16.1.0
+git checkout v27.0.1
 make install
 ```
+```
+osmosisd version --long | grep -e commit -e version
+```
+### Update
 ```
 cd $HOME/osmosis
 git fetch --all
 git checkout v16.1.0
 make install
 ```
+### Cosmo
 ```
-systemctl restart osmosisd && journalctl -fu osmosisd -o cat
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
+```
+```
+mkdir -p ~/.osmosisd/cosmovisor/genesis/bin
+mkdir -p ~/.osmosisd/cosmovisor/upgrades
+cp ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
 ```
 
 ### Init
 ```
-osmosisd config chain-id osmosis-1
-osmosisd config keyring-backend file
+osmosisd init Vinjan.Inc --chain-id osmosis-1
 ```
 ```
-PORT=35
-osmosisd config node tcp://localhost:${PORT}657
+sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:18657\"%" $HOME/.osmosisd/config/client.toml
 ```
 ```
-sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.osmosisd/config/config.toml
-sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:${PORT}545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:${PORT}546\"%" $HOME/.osmosisd/config/app.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:18658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://0.0.0.0:18657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:18060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:18656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":18660\"%" $HOME/.osmosisd/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:18317\"%; s%^address = \"localhost:9090\"%address = \"localhost:18090\"%" $HOME/.osmosisd/config/app.toml
 ```
 ### Genesis
 ```
-curl -Ls https://snapshots.kjnodes.com/osmosis/genesis.json > $HOME/.osmosisd/config/genesis.json
+wget -O genesis.json https://snapshots.polkachu.com/genesis/osmosis/genesis.json --inet4-only
+mv genesis.json ~/.osmosisd/config
 ```
 ### Addrbook
 ```
-curl -Ls https://snapshots.kjnodes.com/osmosis/addrbook.json > $HOME/.osmosisd/config/addrbook.json
+wget -O addrbook.json https://snapshots.polkachu.com/addrbook/osmosis/addrbook.json --inet4-only
+mv addrbook.json ~/.osmosisd/config
 ```
 ### Seed
 ```
-seeds="ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:12556"
-sed -i -e "s|^seeds *=.*|seeds = \"$SEEDS\"|" $HOME/.osmosisd/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.0025uosmo\"|" $HOME/.osmosisd/config/app.toml
-PEERS="913e9db0332df1152e5afe032ab81bdb65e3f91c@110.11.23.44:26656,834d65bab50dc073c61fa111b418799e51a88fc7@35.213.129.89:26656,5a09f294b096fdcb1acae813119fe7068bfb6e22@95.214.55.138:25656,68ab2cb506314492e3ecaae3f0d2870abcac8712@44.202.202.153:26656,45919dabb2690313cd1f9099bdf454ee4426226c@95.216.76.93:26656,3d2efd13a1d6b7ebd780d5c21b9d2c493f75aa40@142.132.209.151:56656,12f9113ec10e2cda7c0023a6de6c59ac1ba2ea16@100.26.5.185:26656,29ecd1a65ce2c244ca90a1d190b3b8e58eed1ada@51.81.106.237:26656,3e3f8f3a9ed941600550d090900aee639abb7906@93.159.134.158:56656,c257db7b3a7f61688c6452d1e9dcfb3034e54fe8@143.198.98.144:26656,39774c729f07f9564456e5fa8be006e747b21b6e@45.250.254.52:26656,d31d4fd70af04c53a8c9ebf55665494f72bbfd10@34.175.37.59:26656,d962af5e929b3ea026fc58b1dfcaff8220174f5d@193.34.212.166:27656,0419c998d6aac0afdb05808ad9a935670248e209@65.108.204.56:26656,94e69330d6f4cfe221cdd2ce49ee141e53e5f200@23.106.120.6:26656,13832193ba6d478e53b3887fd0452dca9f494acc@147.182.231.31:26656,7c5459ea4bbc41aa4d86ffe8126f0651155227c8@85.195.102.127:26656,ab4ea418db1c65c2517975988e2f35891637ff4a@185.111.159.235:2000,f1fe0a080d561d37a94bea6022cbc0972395a0f4@65.108.121.190:2000,ac9bdea2b76a40832223111c45ba764ee6f9cb89@65.109.68.185:2000,2f1ecfd274b892bd9bb12c8cd3e0b350e293a737@54.160.142.138:26656,5462597450ccd3aeef4dbaba8e692e9e530a7c90@148.251.183.254:12000,7d0e0410ee66fc54ea4bd4aa6443ebb66ad77b97@168.119.106.234:26656,82e224c9640048a6513c589e904c0d903bb99f32@74.118.140.23:26656,2cb8dd6195c65458e3c18505bb70ce2ff624f85c@89.58.61.223:2000,4cccbb26639559c39f44758d246c5ed928f7717f@176.9.19.66:26656,faf4f08d3b7f258d3f6962ec505ce111ce948ea7@35.214.76.192:26656,d215dbe3293656f0e56898d868e86f86263b0b3a@15.204.47.112:26756,9d2a0e58bb99ee650d2a92d76ea35afea3910454@116.202.224.210:56656,fc518fe67e6120b4e4896dacf66b96f1aee99383@65.109.32.148:26686,d0c050f33b7aa1032a3763da0e7eb8df0ac72a2c@162.55.92.114:12000,00b8417664577f3d66b27120523e7b6fd0d2e41f@54.214.82.222:26656,cd476528b52970012f9c4d4018d11bf33ced4ad1@74.96.207.61:26656,3243426ab56b67f794fa60a79cc7f11bc7aa752d@35.210.252.64:26656,2ff9bc1740a721a9baeda01abee181997bb65568@142.132.140.20:26656,ba90bda66b2436e42f07da1659c715aa1e7e98b3@15.235.14.240:26656,0813f61788331d5fdf66246b50cd417652194c27@23.106.120.19:26656,dee509648f608abccac9b705b99ee2fd35c23e60@85.10.197.58:12556,ac2fbcb5de633d136a942c28c3049e3edbc6e69a@85.239.233.61:2000,b94369665dfaeb79bf26d921c98e4f9f4d7cb61b@3.217.133.209:26656,e1b058e5cfa2b836ddaa496b10911da62dcf182e@138.201.8.248:26656,b37a3c92c039de2582edd120b16afa3f462ecf3e@23.88.69.22:27166,3197daa0ee5245b17a546be032ff0f6814e1d1db@148.251.191.239:26656,7eea530e720ca2e5ae2b4e6324d4f2a6303fc753@93.159.130.6:26656,9bdeb59c97c139187236b2ce92c229c3b9156d93@5.78.80.161:26656,2048e1bc1f020fa210fb475e7a0ec0948919609f@185.217.125.64:26656,dafac2cebccdf7222bef3e34ce197eb3261a3bdb@185.144.99.40:26656,fc590afe489a1b9ca8ff3f2fb396dbc20b1997a4@204.16.244.254:26656,471518432477e31ea348af246c0b54095d41352c@169.155.47.35:26656,8350d3910f2805fa5bca28f3a597f4781b9b5f0f@65.108.193.249:2000,31d2c86f7957e2db91297e54c3b0456ea06c2250@173.67.177.115:26656,f3262b9f490720920b0002fadd500af1cef3e6a6@51.222.40.84:26656,18a20131129230b9e66d1a1acc133e32bcfb8a4f@34.106.171.12:26656,f024eadf265f72f4240e5e3ea20eac22f6695ccb@159.65.100.92:26656,7c67d9031b6ebb4372a77f02e486bd12d2a3b506@204.16.244.149:26656,63e4dd6530bf4dc4c2202be256b262a27d661106@146.19.24.108:26656,a50c8dcd0e83032b5e29d5c5beef6e54ddafb508@35.83.253.164:26656,8a6d1179752c44d6cee9a900bbe88956486dd724@139.180.185.11:26619,65f51ebf46256d829ae5903e9faf31dae35bdf46@65.109.64.245:26656,004ce11e789d437ff74f7e6a6aebf12a7aa3e2b0@65.108.229.244:26656,4c927f93d430baf31e6d6418e62c56f442f092bc@46.4.28.42:26656,5550af699e55f6132acf15172575963989445b37@162.55.245.149:12000,d011c34ee72767d7a33d94b79ef158eb49c9a7bf@164.92.70.57:31316,3918d0e114ce819644e966141a5f5229d4248da8@135.181.138.95:2000,e726816f42831689eab9378d5d577f1d06d25716@23.88.22.10:26656,f225f8a168ec794d334d7100994b62e5e7648072@35.214.106.64:26656,fe7873a8c6c4e2bda68a53c83d35fbf52016441c@185.119.118.110:2000,6b1dd134b30aeaeb2f21f33bd2cd0370a2275501@138.68.6.165:26656,33cf290cc0cfec8c59e6af86f1a5579303d21087@138.68.14.64:26656,228672c88ca1a4d858d5ba7716769dc53308367a@65.21.205.225:3656,08ceabce6dadc0aa5d33dc2058b9eeeff6186116@142.132.248.253:27656,0b859e6004143ce8f629d636a5b2e53d681a72ec@88.198.35.12:56656,bad5234dab1ce51a860671c21922b2d930fd274d@65.109.101.177:26656,1bea2bb6afb2a51ab8fb820a03ee9f4fe219dbeb@52.50.12.143:26656,77bb5fb9b6964d6e861e91c1d55cf82b67d838b5@35.212.77.47:26656,4d659b7b244a68913bfbdc6c9e7aa1a64391238e@74.118.139.59:26656,32f05e935e1933592f2b2dce8ea36d1cf210db59@208.77.197.84:27656,79824a84c7bc35716839ac9c47dc05cceabf42c0@34.173.85.215:26656,63b4a45bb2276fe141e69ce83750a2c53f1ceeda@198.244.202.196:26656,d40d9763093fa618ce3adbdd0e6758a5b33e9ca4@173.215.85.171:20050,011dd13ae7e8c4d983395b8b6ec9793f99c227b4@15.235.53.78:26656,1c02ae0be21e3b08d9beadf91c26aec4193d2659@135.181.22.238:26656,663f79f1e646ed4a7b27f3f8ad7770323d76f06b@3.71.218.95:26656,aaa024e39034b4c3900153e8c560e85c8c8cf70a@178.211.139.24:26656,ef30bc7dbac63eb868e66bad497368f2cd0924e1@141.98.217.102:26656,616327f7ca045fb57827683e471ca472a232ef1f@89.33.8.233:26656,ed49ce10d8787011c03883846f5cccfcf184e3dc@202.182.125.232:26756,0e0f4c3be78da686dd84d0653427e6839e273a95@65.108.7.249:12556,752f393a2720a27caaebc35b600997491e8f8702@65.21.196.250:36656,1e77db4642bf0f399b72bc01620e015ec05e14ce@51.81.155.97:12556,96c6de7a716435d4def6a0e1b8772057e5f22a14@176.9.110.12:61356,ebc272824924ea1a27ea3183dd0b9ba713494f83@178.211.139.77:26716,d0d4b88110767c503baa8a618cfd7e284482f8dc@37.120.245.11:26656,807eda3abecff79df294d127cf58d6d5e07393ee@67.209.54.21:26656,6e9b0cf3ea78a9a540c75a4cfeb0c6a54b73fee4@65.108.127.166:26656,137ecc96e99587452b8e87374ef4a12b41e3a41a@148.251.88.145:10756,80e0c2e408f9c356a7663c83f0dc6d74511d5d87@65.21.201.244:26776,4e1c2471efb89239fb04a4b75f9f87177fd91d00@169.155.171.103:26656,f96947493f1edd08058afaeaef8f5830cc70b8f2@15.204.197.10:26656,d03e94c7ad1695ddd6145b187d10323991ec02f9@157.90.131.229:26656,95dbddda671081fb433871fa612ff5291242d93d@45.67.221.200:26656,2def96b97cab65a6a35f871f0ab3c384a1176869@35.210.137.157:26656,6313d95a539368410b18da009d3c3248ba61362d@66.172.36.140:36656,a5a4a5abe197153c9414e5fbf3a817305839aa84@35.79.41.69:26656,9f2df25f380a7e67a92c3dc5e7c33c08555b30dc@5.9.108.19:26656,30a7ced9df42a6811dcac6a5a0f948b391a081e1@51.91.152.102:16190,569aac51b04607a18696c63035586816dec85511@157.90.213.235:26656,8e1cf1149a5c16ad1733db8921581be99ddb7602@65.108.201.138:12556,c7fb97358712f447ca0689e814fe8c965a71b314@65.21.133.114:26656,677ef9606ea18a13b5dbfad19493d99d7ea068f5@149.56.24.130:26656,120908ac6e79df7ad48b3954474afeca0401682a@141.94.248.63:26656,95329462851ab676b314add69cb17c183f96965c@216.66.68.17:26656,a8bd0d96616dec191a306fa555b49d12eb8b9b03@210.218.165.116:26656,f95d9634ad68b8f0ac80ce308adb71d8c119ada5@141.98.219.104:26656,cdadf7f0984971ab78903f473366d0abb42df244@37.59.21.96:12556,af678c610cf37bf5d443efdba7ac1354f104415c@137.184.9.18:32644"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.osmosisd/config/config.toml
 ```
 ### Prunning
 ```
@@ -89,6 +95,27 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
+```
+sudo tee /etc/systemd/system/osmosisd.service > /dev/null << EOF
+[Unit]
+Description=osmosis
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=10000
+Environment="DAEMON_NAME=osmosisd"
+Environment="DAEMON_HOME=$HOME/.osmosisd"
+Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
+Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="UNSAFE_SKIP_BACKUP=true"
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
 ### Start
 ```
 sudo systemctl daemon-reload
