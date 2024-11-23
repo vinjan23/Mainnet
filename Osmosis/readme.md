@@ -125,7 +125,7 @@ sudo journalctl -u osmosisd -f -o cat
 ```
 ### Sync
 ```
-osmosisd status 2>&1 | jq .SyncInfo
+osmosisd status 2>&1 | jq .sync_info
 ```
 ### Log
 ```
