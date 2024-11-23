@@ -42,7 +42,10 @@ mkdir -p ~/.osmosisd/cosmovisor/genesis/bin
 mkdir -p ~/.osmosisd/cosmovisor/upgrades
 cp ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
 ```
-
+```
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v27/bin
+cp ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v27/bin
+```
 ### Init
 ```
 osmosisd init Vinjan.Inc --chain-id osmosis-1
