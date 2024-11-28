@@ -6,6 +6,10 @@ git clone --quiet --depth 1 --branch v0.6.5.1 https://github.com/kopi-money/kopi
 cd kopi
 make install
 ```
+```
+kopid version --long | grep -e commit -e version
+```
+
 ### Init
 ```
 kopid init Vinjan.Inc --chain-id luwak-1
