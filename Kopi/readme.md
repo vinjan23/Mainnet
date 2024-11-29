@@ -116,6 +116,14 @@ kopid tx staking create-validator $HOME/.kopid/validator.json \
 --from wallet \
 --chain-id luwak-1
 ```
+### Edit
+```
+kopid tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--commission-rate="0.1" \
+--chain-id=luwak-1 \
+--from=wallet
 
 ### Wd
 ```
