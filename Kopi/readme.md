@@ -124,7 +124,7 @@ kopid tx staking edit-validator \
 --commission-rate="0.1" \
 --chain-id=luwak-1 \
 --from=wallet
-
+```
 ### Wd
 ```
 kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) --commission --from wallet --chain-id luwak-1 --gas auto -y
@@ -133,7 +133,10 @@ kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) -
 ```
 kopid tx staking delegate $(kopid keys show wallet --bech val -a) 1000000ukopi --from wallet ---chain-id luwak-1 --gas auto -y
 ```
-
+### Vote
+```
+kopid tx gov vote 21 yes --from wallet --chain-id luwak-1 --gas auto -y
+```
 
 ### Delete
 ```
