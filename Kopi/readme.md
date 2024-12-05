@@ -131,7 +131,7 @@ kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) -
 ```
 ### Delegate
 ```
-kopid tx staking delegate $(kopid keys show wallet --bech val -a) 1000000ukopi --from wallet ---chain-id luwak-1 --gas auto -y
+kopid tx staking delegate $(kopid keys show wallet --bech val -a) 1000000ukopi --from wallet --chain-id luwak-1 --gas auto -y
 ```
 ### Vote
 ```
