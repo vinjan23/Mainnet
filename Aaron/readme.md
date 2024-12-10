@@ -100,7 +100,7 @@ nano /root/.aaronetwork/validator.json
 ```
 ```
 {
-  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"iqflKUFBCo0UTsQnU9OKlDaE/l/OtmBURNXa46T8Ung="},
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"hZS3O9BCLLwu6Qtg9cT89ipCGTqc/jLHcHNadKWFIVY="},
   "amount": "1000000uaaron",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
@@ -113,9 +113,14 @@ nano /root/.aaronetwork/validator.json
   "min-self-delegation": "1"
 }
 ```
-
-
-
-
+```
+aaronetworkd tx staking create-validator $HOME/.aaronetwork/validator.json \
+--from wallet \
+--chain-id aaronetwork
+```
+### Snapshot ( Height 271934 )
+```
+curl -L https://snapshot.vinjan.xyz./aaron/latest.tar.lz4  | lz4 -dc - | tar -xf - -C $HOME/.aaronetwork
+```
 
 
