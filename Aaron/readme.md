@@ -9,6 +9,10 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
 source ~/.bash_profile
 go version
 ```
+```
+sudo curl https://get.ignite.com/cli | sudo bash
+sudo mv ignite /usr/local/bin/
+```
 ### Binary
 ```
 cd $HOME
