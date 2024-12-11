@@ -143,7 +143,10 @@ aaronetworkd tx staking delegate $(aaronetworkd keys show wallet --bech val -a) 
 ```
 aaronetworkd tx staking delegate $(aaronetworkd keys show wallet --bech val -a) 1000000uaaron --from wallet --chain-id aaronetwork
 ```
-
+### Vote
+```
+aaronetworkd tx gov vote 2 yes --from wallet --chain-id aaronetwork
+```
 ### Snapshot ( Height 271934 )
 ```
 curl -L https://snapshot.vinjan.xyz./aaron/latest.tar.lz4  | lz4 -dc - | tar -xf - -C $HOME/.aaronetwork
