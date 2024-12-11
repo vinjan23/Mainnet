@@ -85,7 +85,10 @@ sudo journalctl -u aaronetworkd -f -o cat
 ```
 aaronetworkd status 2>&1 | jq .sync_info
 ```
-
+### Wallet
+```
+aaronetworkd keys add wallet --recover
+```
 ### Balances
 ```
 aaronetworkd q bank balances $(aaronetworkd keys show wallet -a)
@@ -118,9 +121,38 @@ aaronetworkd tx staking create-validator $HOME/.aaronetwork/validator.json \
 --from wallet \
 --chain-id aaronetwork
 ```
+### Edit
+```
+aaronetworkd tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--commission-rate="0.1" \
+--chain-id=aaronetwork \
+--from=wallet
+```
+### WD with Commission
+```
+aaronetworkd tx staking delegate $(aaronetworkd keys show wallet --bech val -a) 1000000uaaron --from wallet --chain-id aaronetwork 
+```
+### Staking
+```
+aaronetworkd tx staking delegate $(aaronetworkd keys show wallet --bech val -a) 1000000uaaron --from wallet --chain-id aaronetwork
+```
+
 ### Snapshot ( Height 271934 )
 ```
 curl -L https://snapshot.vinjan.xyz./aaron/latest.tar.lz4  | lz4 -dc - | tar -xf - -C $HOME/.aaronetwork
+```
+
+### Delete
+```
+sudo systemctl stop aaronetworkd
+sudo systemctl disable aaronetworkd
+sudo rm /etc/systemd/system/aaronetworkd.service
+sudo systemctl daemon-reload
+rm -f $(which aaronetworkd)
+rm -rf .aaronetwork
+rm -rf aaronetwork-chain
 ```
 
 
