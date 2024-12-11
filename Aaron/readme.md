@@ -29,6 +29,11 @@ aaronetworkd init Vinjan.Inc --chain-id aaronetwork
 ```
 wget -O $HOME/.aaronetwork/config/genesis.json https://raw.githubusercontent.com/aaronetwork/chain-genesis/refs/heads/main/genesis.json
 ```
+### Addrbook
+```
+wget -O $HOME/.aaronetwork/config/addrbook.json https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Aaron/addrbook.json
+```
+
 ### Port
 ```
 sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:14657\"%" $HOME/.aaronetwork/config/client.toml
