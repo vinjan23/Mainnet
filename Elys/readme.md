@@ -44,11 +44,11 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 
 ### Genesis
 ```
-wget -O $HOME/.elys/config/genesis.json
+wget -O $HOME/.elys/config/genesis.json https://raw.githubusercontent.com/elys-network/networks/refs/heads/main/mainnet/genesis.json
 ```
 ```
 curl -Ls https://github.com/elys-network/networks/blob/main/mainnet/genesis.json > $HOME/.elys/config/genesis.json  
-### Prunning
+
 ```
 ### Addrbook
 ```
