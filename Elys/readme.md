@@ -46,11 +46,20 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 ```
 wget -O $HOME/.elys/config/genesis.json
 ```
+```
+curl -Ls https://github.com/elys-network/networks/blob/main/mainnet/genesis.json > $HOME/.elys/config/genesis.json  
+### Prunning
+```
 ### Addrbook
 ```
 wget -O $HOME/.elys/config/addrbook.json 
 ```
-
+### Peer
+```
+peers="949ee3582bab917fc4dd89829871bd46c8b366d8@162.55.245.228:46656,ca1597da9e6864f2b3bab6ead76ee6093fac24ed@207.121.63.124:41656,d95bdf717eb751667586b5e31083770630742038@65.109.58.158:22156,380048bb45143b2b87c540c772886f5a08bae344@86.90.185.145:26156,1d079e8b757b21b390f3eca0880ca03f7f90d8f0@95.217.143.167:20656,303c2632596a00cdec34205ab612f33def631b49@195.154.100.227:56656,a0d2b6ed5911c830666cb5ff6df17a0438758e69@38.242.153.88:26656,d71d3bce45274bf8354298042674a08c778f6d27@202.61.243.56:22056,b279780f951eaf05d285a19e080f72fbb85eec11@88.218.224.57:26656,637077d431f618181597706810a65c826524fd74@148.251.68.103:22056"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.elys/config/config.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00025uelys\"|" $HOME/.elys/config/app.toml
+```
 ### Prunning
 ```
 sed -i \
