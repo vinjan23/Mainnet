@@ -23,14 +23,12 @@ cd osmosis
 git checkout v27.0.1
 make install
 ```
-```
-osmosisd version --long | grep -e commit -e version
-```
+
 ### Update
 ```
 cd $HOME/osmosis
 git fetch --all
-git checkout v16.1.0
+git checkout v28.0.0
 make install
 ```
 ### Cosmo
@@ -45,6 +43,24 @@ cp ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/genesis/bin
 ```
 mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v27/bin
 cp ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v27/bin
+```
+### Update Cosmovisor
+```
+cd $HOME
+rm -rf osmosis
+git clone https://github.com/osmosis-labs/osmosis.git
+cd osmosis
+git checkout v28.0.0
+make build
+```
+```
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28/bin
+mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/
+rm -rf build
+```
+
+```
+osmosisd version --long | grep -e commit -e version
 ```
 ### Init
 ```
