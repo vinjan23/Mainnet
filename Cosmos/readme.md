@@ -113,7 +113,7 @@ sudo journalctl -u gaiad -f -o cat
 ```
 ### Sync
 ```
-gaiad status 2>&1 | jq .SyncInfo
+gaiad status 2>&1 | jq .sync_info
 ```
 
 ### Delete
