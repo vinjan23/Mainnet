@@ -109,6 +109,39 @@ elysd keys add wallet --recover
 ```
 elysd q bank balances $(elysd keys show wallet -a)
 ```
+### Create Gov
+```
+elysd tendermint show-validator
+```
+```
+nano /root/.elys/validator.json
+```
+```
+{
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":""},
+  "amount": "25000000uelys",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://service.vinjan.xyz",
+  "security": "",
+  "details": "Staking Provider",
+  "commission-rate": "0.1",
+  "commission-max-rate": "0.2",
+  "commission-max-change-rate": "0.05",
+  "min-self-delegation": "1"
+}
+```
+```
+elysd tx staking create-validator $HOME/.elys/validator.json \
+--from wallet \
+--chain-id elys-1 \
+--gas auto \
+--gas-adjustment 1.2 \
+--fees 250uelys \
+```
+```
+--node https://rpc-elys.vinjan.xyz
+```
 
 ### Delete
 ```
