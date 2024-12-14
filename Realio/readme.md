@@ -20,16 +20,17 @@ go version
 ### Binary
 ```
 cd $HOME
+rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v0.9.3
+git checkout v1.0.1
 make install
 ```
 ### Update
 ```
 cd $HOME/realio-network
 git fetch --all
-git checkout v0.9.3
+git checkout v1.0.1
 make install
 ```
 ```
@@ -283,7 +284,7 @@ curl -sS http://localhost:22657/net_info | jq -r '.result.peers[] | "\(.node_inf
 ```
 ### Vote
 ```
-realio-networkd tx gov vote 8 yes --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+realio-networkd tx gov vote 14 yes --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
 ```
 ### Deposit
 ```
