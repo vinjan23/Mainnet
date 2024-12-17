@@ -28,18 +28,16 @@ cp ~/go/bin/elysd ~/.elys/cosmovisor/genesis/bin
 ```
 ### Update
 ```
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.2.0/bin
 cd $HOME
 rm -rf elys
 git clone https://github.com/elys-network/elys
 cd elys
 git checkout v1.2.0
-make build
+make install
+cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.2.0/bin/elysd
 ```
-```
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.2.0/bin
-mv build/elysd $HOME/.elys/cosmovisor/upgrades/v1.2.0/bin/
-rm -rf build
-```
+
 
 ```
 elysd version --long | grep -e commit -e version
