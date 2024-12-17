@@ -58,7 +58,16 @@ mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28/bin
 mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/
 rm -rf build
 ```
-
+```
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28/bin
+cd $HOME
+rm -rf osmosis
+git clone https://github.com/osmosis-labs/osmosis.git
+cd osmosis
+git checkout v28.0.0
+make install
+cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd
+```
 ```
 osmosisd version --long | grep -e commit -e version
 ```
