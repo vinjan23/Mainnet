@@ -28,14 +28,14 @@ cp ~/go/bin/elysd ~/.elys/cosmovisor/genesis/bin
 ```
 ### Update
 ```
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.2.0/bin
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.3.0/bin
 cd $HOME
 rm -rf elys
 git clone https://github.com/elys-network/elys
 cd elys
-git checkout v1.2.0
+git checkout v1.3.0
 make install
-cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.2.0/bin/elysd
+cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.3.0/bin/elysd
 ```
 ```
 sudo systemctl stop elysd
