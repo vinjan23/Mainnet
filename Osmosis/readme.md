@@ -148,7 +148,11 @@ EOF
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable osmosisd
+```
+```
 sudo systemctl restart osmosisd
+```
+```
 sudo journalctl -u osmosisd -f -o cat
 ```
 ### Sync
