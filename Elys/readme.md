@@ -42,11 +42,11 @@ sudo systemctl stop elysd
 git clone https://github.com/elys-network/elys.git
 cd elys
 git fetch
-git checkout fix/v1.2.0-patch-1
-git pull origin fix/v1.2.0-patch-1
-git tag -f v1.2.0
+git checkout fix/v1.3.0-patch-1
+git pull origin fix/v1.3.0-patch-1
+git tag -f v1.3.0
 make install
-cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.2.0/bin/elysd
+cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.3.0/bin/elysd
 ```
 ```
 elysd version --long | grep -e commit -e version
