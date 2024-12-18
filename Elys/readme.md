@@ -159,10 +159,7 @@ elysd tx staking create-validator $HOME/.elys/validator.json \
 --chain-id elys-1 \
 --gas auto \
 --gas-adjustment 1.2 \
---fees 250uelys \
-```
-```
---node https://rpc-elys.vinjan.xyz
+--fees 250uelys
 ```
 ### Edit
 ```
@@ -171,6 +168,7 @@ elysd tx staking edit-validator \
 --identity="7C66E36EA2B71F68" \
 --commission-rate="0.05" \
 --chain-id elys-1 \
+--from wallet \
 --gas auto \
 --gas-adjustment 1.2 \
 --fees 250uelys
