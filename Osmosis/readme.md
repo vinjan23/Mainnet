@@ -69,6 +69,9 @@ make install
 cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd
 ```
 ```
+cosmovisor add-upgrade v28.0.0 /root/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd --force --upgrade-height 25861100
+```
+```
 osmosisd version --long | grep -e commit -e version
 ```
 ### Init
