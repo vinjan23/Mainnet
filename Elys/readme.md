@@ -177,6 +177,10 @@ elysd tx staking edit-validator \
 ```
 elysd tx gov vote 11 yes --from wallet --chain-id elys-1 --gas auto --gas-adjustment 1.2 --fees 250uelys
 ```
+### WD
+```
+elysd tx distribution withdraw-rewards $(elysd keys show wallet --bech val -a) --commission --from wallet --chain-id elys-1 --gas auto --gas-adjustment 1.2 --fees 250uelys
+```
 
 ### Delete
 ```
