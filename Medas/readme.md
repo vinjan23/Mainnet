@@ -46,7 +46,7 @@ $HOME/.medasdigital/config/app.toml
 ```
 ### indexer
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.poktroll/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.medasdigital/config/config.toml
 ```
 ### service
 ```
@@ -72,6 +72,20 @@ sudo systemctl enable medasdigitald
 sudo systemctl restart medasdigitald
 sudo journalctl -u medasdigitald -f -o cat
 ```
+### Sync
+```
+medasdigitald status 2>&1 | jq .sync_info
+```
+### Wallet
+```
+medasdigitald keys add wallet
+```
+### Balances
+```
+medasdigitald  q bank balances $(medasdigitald keys show wallet -a)
+```
+
+
 
 
 
