@@ -84,7 +84,36 @@ medasdigitald keys add wallet
 ```
 medasdigitald  q bank balances $(medasdigitald keys show wallet -a)
 ```
-
+### Validator
+```
+medasdigitald tendermint show-validator
+```
+```
+nano /root/.medasdigital/validator.json
+```
+```
+{
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"GA51Y2oJZoWREzWrjUmnsw3gvB2qpMGH2X5rKtb/djM="},
+  "amount": "115000000umedas",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://service.vinjan.xyz",
+  "security": "",
+  "details": "Staking Provider-IBC Relayer",
+  "commission-rate": "0.05",
+  "commission-max-rate": "0.2",
+  "commission-max-change-rate": "0.05",
+  "min-self-delegation": "1"
+}
+```
+```
+medasdigitald tx staking create-validator $HOME/.medasdigital/validator.json \
+--from wallet \
+--chain-id medasdigital-2 \
+--gas-prices 0.025umedas \
+--gas-adjustment 1.5 \
+--gas auto
+```
 
 
 
