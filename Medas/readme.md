@@ -98,7 +98,7 @@ nano /root/.medasdigital/validator.json
 ```
 ```
 {
-  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"GA51Y2oJZoWREzWrjUmnsw3gvB2qpMGH2X5rKtb/djM="},
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":""},
   "amount": "115000000umedas",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
@@ -119,7 +119,37 @@ medasdigitald tx staking create-validator $HOME/.medasdigital/validator.json \
 --gas-adjustment 1.5 \
 --gas auto
 ```
+### Edit
+```
+medasdigitald tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--commission-rate="0.1" \
+--chain-id=medasdigital-2 \
+--from=wallet \
+--gas-prices 0.025umedas \
+--gas-adjustment 1.5 \
+--gas auto
+```
+### WD
+```
+medasdigitald tx staking delegate $(medasdigitald keys show wallet --bech val -a) --commission --from wallet --chain-id medasdigital-2 --gas-adjustment 1.5 --gas-prices 0.025umedas  --gas auto
+```
+### Stake
+```
+medasdigitald tx staking delegate $(medasdigitald keys show wallet --bech val -a) 1000000umedas --from wallet --chain-id medasdigital-2 --gas-adjustment 1.5 --gas-prices 0.025umedas  --gas auto
+```
 
+### Delete
+```
+sudo systemctl stop medasdigitald
+sudo systemctl disable medasdigitald
+sudo rm /etc/systemd/system/medasdigitald.service
+sudo systemctl daemon-reload
+rm -f $(which medasdigitald)
+rm -rf .medasdigital
+rm -rf medasdigital
+```
 
 
 
