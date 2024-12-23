@@ -74,7 +74,7 @@ curl -Ls https://github.com/elys-network/networks/blob/main/mainnet/genesis.json
 ```
 ### Addrbook
 ```
-wget -O $HOME/.elys/config/addrbook.json 
+wget -O $HOME/.elys/config/addrbook.json https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Elys/addrbook.json
 ```
 ### Peer
 ```
