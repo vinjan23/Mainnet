@@ -191,7 +191,7 @@ planqd keys list
 
 ### Check Balances
  ```
- planqd query bank balances <wallet_address>
+ planqd query bank balances $(planqd keys show wallet -a)
  ```
  
 ### Create Validator
