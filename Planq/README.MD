@@ -32,15 +32,18 @@ make install
 ```
 cd planq
 git fetch --all
-git checkout v2.0.4
+git checkout v2.0.5
 make install
 ```
 ```
 cd $HOME
-wget https://github.com/planq-network/planq/releases/download/v2.0.4/planq_2.0.4_linux_amd64.tar.gz
-tar -xvzf planq_2.0.4_linux_amd64.tar.gz
-rm -rf planq_2.0.4_linux_amd64.tar.gz
+wget https://github.com/planq-network/planq/releases/download/v2.0.5/planq_2.0.5_linux_amd64.tar.gz
+tar -xvzf planq_2.0.5_linux_amd64.tar.gz
+rm -rf planq_2.0.5_linux_amd64.tar.gz
 mv $HOME/bin/planqd $(which planqd)
+```
+```
+planqd version --long | grep -e commit -e version
 ```
 ```
 sudo systemctl restart planqd && sudo journalctl -u planqd -f -o cat
