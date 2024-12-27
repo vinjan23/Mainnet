@@ -15,6 +15,9 @@ zenrockd version --long | grep -e version -e commit
 ```
 zenrockd init Vinjan.inc --chain-id diamond-1
 ```
+```
+zenrockd config set client chain-id diamond-1
+```
 ### Genesis
 ```
 curl -Ls https://snapshot.vinjan.xyz./zenrock/genesis.json > $HOME/.zrchain/config/genesis.json
@@ -34,10 +37,9 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 ```
 ### Config
 ```
-zenrockd config set client chain-id diamond-1
-sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.01urock"|g' $HOME/.zrchain/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.01urock\"/" $HOME/.zrchain/config/app.toml
 peers=""
-sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$peers\"|" $HOME/.zrchain/config/config.toml
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.zrchain/config/config.toml
 seeds=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.zrchain/config/config.toml
 sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $HOME/.zrchain/config/config.toml
