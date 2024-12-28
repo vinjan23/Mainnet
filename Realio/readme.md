@@ -220,10 +220,10 @@ realio-networkd tx bank send wallet realio1sw2n4v32puxcneg9kyz7z7v82mnad909p7g99
 ### Edit
 ```
 realio-networkd tx staking edit-validator \
---new-moniker "vinjan | RIO" \
+--new-moniker "Vinjan.Inc | RIO" \
 --identity "7C66E36EA2B71F68" \
 --chain-id "realionetwork_3301-1" \
---commission-rate="0.05" \
+--commission-rate="0.06" \
 --from wallet \
 --gas 800000 \
 --fees 5000000000000000ario
