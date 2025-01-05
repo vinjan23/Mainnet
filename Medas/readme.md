@@ -133,7 +133,7 @@ medasdigitald tx staking edit-validator \
 ```
 ### WD
 ```
-medasdigitald tx staking delegate $(medasdigitald keys show wallet --bech val -a) --commission --from wallet --chain-id medasdigital-2 --gas-adjustment 1.5 --gas-prices 0.025umedas  --gas auto
+medasdigitald tx distribution withdraw-rewards $(medasdigitald keys show wallet --bech val -a) --commission --from wallet --chain-id medasdigital-2 --gas-adjustment 1.5 --gas-prices 0.025umedas  --gas auto
 ```
 ### Stake
 ```
