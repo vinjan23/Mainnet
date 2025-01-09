@@ -125,7 +125,7 @@ atomoned tx staking edit-validator \
 --website="https://service.vinjan.xyz" \
 --details="Stake Provider & IBC Relayer" \
 --chain-id=atomone-1 \
---commission-rate="0.06" \
+--commission-rate="0.07" \
 --from=wallet \
 --gas=auto
 ```
