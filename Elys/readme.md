@@ -28,14 +28,14 @@ cp ~/go/bin/elysd ~/.elys/cosmovisor/genesis/bin
 ```
 ### Update
 ```
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.6.0/bin
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v1.6/bin
 cd $HOME
 rm -rf elys
 git clone https://github.com/elys-network/elys
 cd elys
 git checkout v1.6.0
 make install
-cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.6.0/bin/elysd
+cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.6/bin/elysd
 ```
 ```
 sudo systemctl stop elysd
@@ -116,7 +116,11 @@ EOF
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable elysd
+```
+```
 sudo systemctl restart elysd
+```
+```
 sudo journalctl -u elysd -f -o cat
 ```
 ### Sync
