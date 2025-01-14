@@ -183,10 +183,7 @@ sged query slashing signing-info $(sged tendermint show-validator)
 ```
 sged tx staking delegate $(sged keys show wallet --bech val -a) 1000000usge --from wallet --chain-id sgenet-1 --gas-adjustment 1.1 --gas auto -y
 ```
-### Withdraw
-```
-sged tx distribution withdraw-all-rewards --from wallet --chain-id sgenet-1 --gas-adjustment 1.2 --gas auto -y
-```
+
 ### Withdraw with Commission
 ```
 sged tx distribution withdraw-rewards $(sged keys show wallet --bech val -a) --commission --from wallet --chain-id sgenet-1 --gas-adjustment 1.2 --gas auto -y
