@@ -228,7 +228,7 @@ realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1
 
 ### Delegate
 ```
-realio-networkd tx staking delegate realiovaloper1csj5g5j4r682apvjckdk3qldkup4y07472gtkh 7000000000000000000000ario --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech val -a) 470000000000000000almx --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
 ```
 
 ### Withdraw with comission
