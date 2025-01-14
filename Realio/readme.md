@@ -163,17 +163,9 @@ sed -i -e "s|^enable *=.*|enable = false|" $HOME/.realio-network/config/config.t
 ```
 realio-networkd keys add wallet --recover
 ```
+### Balances
 ```
 realio-networkd q bank balances $(realio-networkd keys show wallet -a)
-```
-### Balances
-`RIO`
-```
-realio-networkd q bank balances realio1csj5g5j4r682apvjckdk3qldkup4y07427t383
-```
-`RST`
-```
-realio-networkd q bank balances realio1sw2n4v32puxcneg9kyz7z7v82mnad909p7g99s
 ```
 
 ### Validator
