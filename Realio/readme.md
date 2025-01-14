@@ -239,18 +239,7 @@ realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1
 realio-networkd tx staking delegate realiovaloper1csj5g5j4r682apvjckdk3qldkup4y07472gtkh 7000000000000000000000ario --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
 ```
 
-### Withdraw all
-```
-realio-networkd tx distribution withdraw-all-rewards --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
-```
-
 ### Withdraw with comission
-```
-realio-networkd tx distribution withdraw-rewards realiovaloper1csj5g5j4r682apvjckdk3qldkup4y07472gtkh --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
-```
-```
-realio-networkd tx distribution withdraw-rewards realiovaloper1sw2n4v32puxcneg9kyz7z7v82mnad90942tl5k --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
-```
 ```
 realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
 ```
