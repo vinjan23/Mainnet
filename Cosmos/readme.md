@@ -43,6 +43,10 @@ mkdir -p $HOME/.gaia/cosmovisor/upgrades/v21/bin
 mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v21/bin/
 rm -rf build
 ```
+### Cek version
+```
+$HOME/.gaia/cosmovisor/upgrades/v21/bin/gaiad version --long | grep -e commit -e version
+```
 
 ### Init
 ```
