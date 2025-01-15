@@ -52,6 +52,11 @@ mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28/bin
 mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/
 rm -rf build
 ```
+### Cek version
+```
+$HOME/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd version --long | grep -e commit -e version
+```
+
 ```
 mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28/bin
 cd $HOME
