@@ -13,16 +13,35 @@ go version
 ### Binary
 ```
 cd $HOME
+rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v21.0.0
-make install
+git checkout v21.0.1
+make build
 ```
 ### Cosmovisor
 ```
-mkdir -p ~/.gaia/cosmovisor/genesis/bin
-mkdir -p ~/.gaia/cosmovisor/upgrades
-cp ~/go/bin/gaiad ~/.gaia/cosmovisor/genesis/bin
+mkdir -p $HOME/.gaia/cosmovisor/genesis/bin
+mv build/gaiad $HOME/.gaia/cosmovisor/genesis/bin/
+rm -rf build
+```
+```
+ln -s $HOME/.gaia/cosmovisor/genesis $HOME/.gaia/cosmovisor/current -f
+sudo ln -s $HOME/.gaia/cosmovisor/current/bin/gaiad /usr/local/bin/gaiad -f
+```
+### Upgrade
+```
+cd $HOME
+rm -rf gaia
+git clone https://github.com/cosmos/gaia.git
+cd gaia
+git checkout v21.0.1
+make build
+```
+```
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v21/bin
+mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v21/bin/
+rm -rf build
 ```
 
 ### Init
@@ -77,33 +96,16 @@ User=$USER
 ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=3
-LimitNOFILE=10000
-Environment="DAEMON_NAME=gaiad"
-Environment="DAEMON_HOME=$HOME/.gaia"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-Environment="UNSAFE_SKIP_BACKUP=true"
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-```
-sudo tee /etc/systemd/system/gaiad.service > /dev/null <<EOF
-[Unit]
-Description=gaia
-After=network-online.target
-
-[Service]
-User=$USER
-ExecStart=$(which gaiad) start
-Restart=on-failure
-RestartSec=3
 LimitNOFILE=65535
-
+Environment="DAEMON_HOME=$HOME/.gaia"
+Environment="DAEMON_NAME=gaiad"
+Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.gaia/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
 ```
+
 ### Start
 ```
 sudo systemctl daemon-reload
