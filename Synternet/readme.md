@@ -1,8 +1,8 @@
 ### Bianry
 ```
-curl -LO https://github.com/Synternet/synternet-chain-releases/releases/download/v0.19.1/syntd-linux-amd64-v0.19.1
-mv syntd-linux-amd64-v0.19.1 ~/go/bin/syntd
-chmod +x ~/go/bin/syntd
+curl -LO https://github.com/Synternet/synternet-chain-releases/releases/download/v0.21.0/syntd-linux-amd64-v0.21.0
+mv syntd-linux-amd64-v0.21.0 ~/go/bin/syntd
+chmod u+x ~/go/bin/syntd
 ```
 ### Init
 ```
