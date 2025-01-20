@@ -103,6 +103,11 @@ syntd tx staking create-validator \
 --gas-prices="0.01usynt" \
 --from=wallet
 ```
+### Unjail
+```
+syntd tx slashing unjail --from wallet --chain-id synternet-1 --gas-adjustment=1.3 --gas-prices=0.01usynt --gas=auto
+```
+
 ### Wd
 ```
 syntd tx distribution withdraw-rewards $(syntd keys show wallet --bech val -a) --commission --from wallet --chain-id synternet-1 --gas-adjustment=1.3 --gas-prices=0.01usynt --gas=auto
