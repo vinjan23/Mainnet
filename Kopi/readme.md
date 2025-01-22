@@ -93,7 +93,11 @@ EOF
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable kopid
+```
+```
 sudo systemctl restart kopid
+```
+```
 sudo journalctl -u kopid -f -o cat
 ```
 
