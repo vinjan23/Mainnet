@@ -1,14 +1,34 @@
+### GO
+```
+ver="1.23.5"
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+rm "go$ver.linux-amd64.tar.gz"
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
+go version
+```
+
+### Wasm
+```
+rm /usr/lib/libwasmvm.x86_64.so
+wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v2.1.4/libwasmvm.x86_64.so
+sudo ldconfig
+```
+
 ### Binary
 ```
 cd $HOME
 rm -rf kopi
-git clone --quiet --depth 1 --branch v0.6.5.2 https://github.com/kopi-money/kopi.git
+git clone --quiet --depth 1 --branch v7 https://github.com/kopi-money/kopi.git
 cd kopi
 make install
 ```
 ```
 kopid version --long | grep -e commit -e version
 ```
+`28eed77`
 
 ### Init
 ```
