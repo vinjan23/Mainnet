@@ -21,14 +21,14 @@ sudo ldconfig
 ```
 cd $HOME
 rm -rf kopi
-git clone --quiet --depth 1 --branch v9 https://github.com/kopi-money/kopi.git
+git clone --quiet --depth 1 --branch v10 https://github.com/kopi-money/kopi.git
 cd kopi
 make install
 ```
 ```
 kopid version --long | grep -e commit -e version
 ```
-`2b2123a`
+
 
 ### Init
 ```
