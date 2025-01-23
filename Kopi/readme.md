@@ -21,14 +21,14 @@ sudo ldconfig
 ```
 cd $HOME
 rm -rf kopi
-git clone --quiet --depth 1 --branch v7 https://github.com/kopi-money/kopi.git
+git clone --quiet --depth 1 --branch v8 https://github.com/kopi-money/kopi.git
 cd kopi
 make install
 ```
 ```
 kopid version --long | grep -e commit -e version
 ```
-`28eed77`
+`2b2123a`
 
 ### Init
 ```
@@ -151,15 +151,15 @@ kopid tx staking edit-validator \
 ```
 ### Wd
 ```
-kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) --commission --from wallet --chain-id luwak-1 --gas auto -y
+kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) --commission --from wallet --chain-id luwak-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.05ukopi
 ```
 ### Delegate
 ```
-kopid tx staking delegate $(kopid keys show wallet --bech val -a) 1000000ukopi --from wallet --chain-id luwak-1 --gas auto -y
+kopid tx staking delegate $(kopid keys show wallet --bech val -a) 1000000ukopi --from wallet --chain-id luwak-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.05ukopi
 ```
 ### Vote
 ```
-kopid tx gov vote 21 yes --from wallet --chain-id luwak-1 --gas auto -y
+kopid tx gov vote 30 yes --from wallet --chain-id luwak-1 --fees 60000ukopi
 ```
 
 ### Delete
