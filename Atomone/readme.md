@@ -143,11 +143,11 @@ atomoned tx staking edit-validator \
 
 ### Delegate
 ```
-atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000uatone --from wallet --chain-id atomone-1 --fees 5000uatone
+atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000uatone --from wallet --chain-id atomone-1 --gas=auto -y
 ```
 ### WD Commission
 ```
-atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --fees 5000uatone
+atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas=auto -y
 ```
 ### Own Peer
 ```
@@ -159,7 +159,7 @@ curl -sS http://localhost:15657/net_info | jq -r '.result.peers[] | "\(.node_inf
 ```
 ### Send
 ```
-atomoned tx bank send wallet atone14m0n559xdj00qwvp6ck0xesprrq26kgp75j0zw 10000uatone --from=wallet --chain-id=atomone-1 --fees 10000uatone
+atomoned tx bank send wallet atone14m0n559xdj00qwvp6ck0xesprrq26kgp75j0zw 10000uatone --from=wallet --chain-id=atomone-1 --gas=auto -y
 ```
 
 ### Delete
