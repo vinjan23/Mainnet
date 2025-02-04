@@ -157,6 +157,10 @@ kopid tx staking edit-validator \
 --chain-id=luwak-1 \
 --from=wallet
 ```
+### Unjail
+```
+kopid tx slashing unjail --from wallet --chain-id luwak-1 --gas auto --gas-adjustment=1.5 --gas=auto --gas-prices=0.001ukopi
+```  
 ### Wd
 ```
 kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) --commission --from wallet --chain-id luwak-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.001ukopi
