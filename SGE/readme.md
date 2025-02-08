@@ -33,6 +33,7 @@ make install
 cd $HOME
 rm -rf sge
 git clone https://github.com/sge-network/sge
+cd sge
 git checkout v1.7.6
 make install
 ```
