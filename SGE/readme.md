@@ -5,17 +5,13 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 ```
 ### GO
 ```
-ver="1.19" &&
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" &&
-sudo rm -rf /usr/local/go &&
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" &&
-rm "go$ver.linux-amd64.tar.gz" &&
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile &&
-source $HOME/.bash_profile &&
-go version
+sudo rm -rf /usr/local/go
+curl -Ls https://go.dev/dl/go1.22.5.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
+eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
 ```
 ```
-ver="1.21.7"
+ver="1.22.5"
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
@@ -29,14 +25,15 @@ go version
 cd $HOME
 git clone https://github.com/sge-network/sge
 cd sge
-git checkout v1.7.4
+git checkout v1.7.6
 make install
 ```
 ### Update
 ```
-cd $HOME/sge
-git pull
-git checkout v1.7.5
+cd $HOME
+rm -rf sge
+git clone https://github.com/sge-network/sge
+git checkout v1.7.6
 make install
 ```
 ```
