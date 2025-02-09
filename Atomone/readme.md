@@ -18,9 +18,10 @@ eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
 ### Binary
 ```
 cd $HOME
-git clone https://github.com/atomone-hub/atomone.git
+rm -rf atomone
+git clone https://github.com/atomone-hub/atomone
 cd atomone
-git checkout v1.0.0
+git checkout v1.0.1
 make install
 ```
 ### Init
