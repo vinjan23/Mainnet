@@ -39,8 +39,8 @@ git checkout v22.1.0
 make build
 ```
 ```
-mkdir -p $HOME/.gaia/cosmovisor/upgrades/v22/bin
-mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v22/bin/
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v22.1/bin
+mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v22.1/bin/
 rm -rf build
 ```
 ```
