@@ -58,7 +58,7 @@ sudo cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v22.1/bin/
 ```
 ls -l $HOME/.gaia/cosmovisor/current
 rm $HOME/.gaia/cosmovisor/current
-ln -s $HOME/.gaia/cosmovisor/upgrades/v22.1 6$HOME/.gaia/cosmovisor/current
+ln -s $HOME/.gaia/cosmovisor/upgrades/v22.1 $HOME/.gaia/cosmovisor/current
 ```
 
 ### Cek version
