@@ -48,6 +48,27 @@ git tag -f v1.3.0
 make install
 cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.3.0/bin/elysd
 ```
+### 
+```
+ln -s $HOME/.elys/cosmovisor/genesis $HOME/.elys/cosmovisor/current -f
+sudo ln -s $HOME/.elys/cosmovisor/current/bin/elysd /usr/local/bin/elysd -f
+```
+```
+cd $HOME
+rm -rf elys
+git clone https://github.com/elys-network/elys
+cd elys
+git checkout v2.0.0
+make build
+```
+```
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v2/bin
+mv build/elysd $HOME/.elys/cosmovisor/upgrades/v2/bin/
+rm -rf build
+```
+```
+$HOME/.elys/cosmovisor/upgrades/v2/bin/elysd version --long | grep -e commit -e version
+```
 ```
 elysd version --long | grep -e commit -e version
 ```
