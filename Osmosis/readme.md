@@ -21,7 +21,7 @@ cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.0
+git checkout v28.0.4
 make build
 ```
 
@@ -44,7 +44,7 @@ cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.0
+git checkout v28.0.4
 make build
 ```
 ```
@@ -58,15 +58,21 @@ $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd version --long | grep -e co
 ```
 
 ```
-mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28/bin
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28.0.4/bin
 cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.0
+git checkout v28.0.4
 make install
-cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd
+cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v28.0.4/bin/osmosisd
 ```
+```
+ls -l $HOME/.osmosisd/cosmovisor/current
+rm $HOME/.osmosisd/cosmovisor/current
+ln -s $HOME/.osmosisd/cosmovisor/upgrades/v28.0.4 $HOME/.osmosisd/cosmovisor/current
+```
+
 ```
 cosmovisor add-upgrade v28.0.0 /root/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd --force --upgrade-height 25861100
 ```
