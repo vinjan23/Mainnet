@@ -21,7 +21,7 @@ sudo ldconfig
 ```
 cd $HOME
 rm -rf kopi
-git clone --quiet --depth 1 --branch v14 https://github.com/kopi-money/kopi.git
+git clone --quiet --depth 1 --branch v15 https://github.com/kopi-money/kopi.git
 cd kopi
 make install
 ```
@@ -30,7 +30,7 @@ cd $HOME
 rm -rf kopi
 git clone https://github.com/kopi-money/kopi.git
 cd kopi
-git checkout v13
+git checkout v15
 make install
 ```
 ```
