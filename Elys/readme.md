@@ -14,7 +14,7 @@ go version
 cd $HOME
 git clone https://github.com/elys-network/elys
 cd elys
-git checkout v1.0.0
+git checkout v2.1.0
 make install
 ```
 ### Cosmovisor
@@ -58,12 +58,12 @@ cd $HOME
 rm -rf elys
 git clone https://github.com/elys-network/elys
 cd elys
-git checkout v2.0.0
+git checkout v2.1.0
 make build
 ```
 ```
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v2/bin
-mv build/elysd $HOME/.elys/cosmovisor/upgrades/v2/bin/
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v2.1.0/bin
+mv build/elysd $HOME/.elys/cosmovisor/upgrades/v2.1.0/bin/
 rm -rf build
 ```
 ```
@@ -200,7 +200,7 @@ elysd tx staking edit-validator \
 ```
 ### Vote
 ```
-elysd tx gov vote 11 yes --from wallet --chain-id elys-1 --gas auto --gas-adjustment 1.2 --fees 250uelys
+elysd tx gov vote 26 yes --from wallet --chain-id elys-1 --gas auto --gas-adjustment 1.2 --fees 250uelys
 ```
 ### WD
 ```
