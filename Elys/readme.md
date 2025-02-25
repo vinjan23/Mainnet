@@ -12,47 +12,44 @@ go version
 ### Binary
 ```
 cd $HOME
+rm -rf elys
 git clone https://github.com/elys-network/elys
 cd elys
 git checkout v2.1.0
-make install
+make build
 ```
 ### Cosmovisor
 ```
 go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.5.0
 ```
 ```
-mkdir -p ~/.elys/cosmovisor/genesis/bin
-mkdir -p ~/.elys/cosmovisor/upgrades
-cp ~/go/bin/elysd ~/.elys/cosmovisor/genesis/bin
+mkdir -p $HOME/.elys/cosmovisor/genesis/bin
+mv build/elysd $HOME/.elys/cosmovisor/genesis/bin/
+rm -rf build
+```
+```
+ln -s $HOME/.elys/cosmovisor/genesis $HOME/.elys/cosmovisor/current -f
+sudo ln -s $HOME/.elys/cosmovisor/current/bin/elysd /usr/local/bin/elysd -f
 ```
 ### Update
 ```
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v2.1.0/bin
 cd $HOME
 rm -rf elys
 git clone https://github.com/elys-network/elys
 cd elys
 git checkout v2.1.0
 make install
-cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v2.1.0/bin/elysd
 ```
 ```
-sudo systemctl stop elysd
-git clone https://github.com/elys-network/elys.git
-cd elys
-git fetch
-git checkout fix/v1.3.0-patch-2
-git pull origin fix/v1.3.0-patch-2
-git tag -f v1.3.0
-make install
-cp -a ~/go/bin/elysd ~/.elys/cosmovisor/upgrades/v1.3.0/bin/elysd
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v2.1.0/bin
+sudo cp $HOME/go/bin/elysd $HOME/.elys/cosmovisor/upgrades/v2.1.0/bin/
 ```
-### 
 ```
-ln -s $HOME/.elys/cosmovisor/genesis $HOME/.elys/cosmovisor/current -f
-sudo ln -s $HOME/.elys/cosmovisor/current/bin/elysd /usr/local/bin/elysd -f
+ls -l $HOME/.elys/cosmovisor/current
+rm $HOME/.elys/cosmovisor/current
+ln -s $HOME/.elys/cosmovisor/upgrades/v2.1.0 $HOME/.elys/cosmovisor/current
 ```
+
 ```
 cd $HOME
 rm -rf elys
@@ -67,10 +64,20 @@ mv build/elysd $HOME/.elys/cosmovisor/upgrades/v2.1.0/bin/
 rm -rf build
 ```
 ```
-$HOME/.elys/cosmovisor/upgrades/v2/bin/elysd version --long | grep -e commit -e version
+$HOME/.elys/cosmovisor/upgrades/v2.1.0/bin/elysd version --long | grep -e commit -e version
 ```
 ```
 elysd version --long | grep -e commit -e version
+```
+```
+sudo systemctl stop elysd
+git clone https://github.com/elys-network/elys.git
+cd elys
+git fetch
+git checkout fix/v1.3.0-patch-2
+git pull origin fix/v1.3.0-patch-2
+git tag -f v1.3.0
+make install
 ```
 ### Init
 ```
