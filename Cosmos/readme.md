@@ -63,7 +63,7 @@ ln -s $HOME/.gaia/cosmovisor/upgrades/v22.3.0 $HOME/.gaia/cosmovisor/current
 
 ### Cek version
 ```
-$HOME/.gaia/cosmovisor/upgrades/v22.2.0/bin/gaiad version --long | grep -e commit -e version
+$HOME/.gaia/cosmovisor/upgrades/v22.3.0/bin/gaiad version --long | grep -e commit -e version
 ```
 `cc8fa2b`
 
