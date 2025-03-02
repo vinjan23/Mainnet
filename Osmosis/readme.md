@@ -72,7 +72,9 @@ ls -l $HOME/.osmosisd/cosmovisor/current
 rm $HOME/.osmosisd/cosmovisor/current
 ln -s $HOME/.osmosisd/cosmovisor/upgrades/v28.0.4 $HOME/.osmosisd/cosmovisor/current
 ```
-
+```
+cp $HOME/.osmosisd/cosmovisor/current/bin/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/
+```
 ```
 cosmovisor add-upgrade v28.0.0 /root/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd --force --upgrade-height 25861100
 ```
