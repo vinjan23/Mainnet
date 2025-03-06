@@ -151,16 +151,18 @@ atomoned tx staking edit-validator \
 --chain-id=atomone-1 \
 --commission-rate="0.07" \
 --from=wallet \
+--gas-adjustment=1.2 \
+--gas-prices="0.025uatone" \
 --gas=auto
 ```
 
 ### Delegate
 ```
-atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000uatone --from wallet --chain-id atomone-1 --gas=auto -y
+atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000uatone --from wallet --chain-id atomone-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025uatone"
 ```
 ### WD Commission
 ```
-atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas=auto -y
+atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025uatone"
 ```
 ### Own Peer
 ```
@@ -172,7 +174,7 @@ curl -sS http://localhost:15657/net_info | jq -r '.result.peers[] | "\(.node_inf
 ```
 ### Send
 ```
-atomoned tx bank send wallet atone14m0n559xdj00qwvp6ck0xesprrq26kgp75j0zw 10000uatone --from=wallet --chain-id=atomone-1 --gas=auto -y
+atomoned tx bank send wallet atone14m0n559xdj00qwvp6ck0xesprrq26kgp75j0zw 10000uatone --from=wallet --chain-id=atomone-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025uatone"
 ```
 
 ### Delete
