@@ -6,6 +6,15 @@ wget https://snapshot.vinjan.xyz./zenrock/zenrockd
 chmod +x zenrockd
 mv zenrockd /root/go/bin/
 ```
+### Update
+```
+cd $HOME
+rm -rf zrchain
+git clone https://github.com/Zenrock-Foundation/zrchain
+cd zrchain
+git checkout v5.16.18
+make install
+```
 ```
 zenrockd version --long | grep -e version -e commit
 ```
