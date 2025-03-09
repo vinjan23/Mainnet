@@ -37,9 +37,9 @@ make install
 ```
 ```
 cd $HOME
-wget https://github.com/planq-network/planq/releases/download/v2.0.5/planq_2.0.5_linux_amd64.tar.gz
-tar -xvzf planq_2.0.5_linux_amd64.tar.gz
-rm -rf planq_2.0.5_linux_amd64.tar.gz
+wget https://github.com/planq-network/planq/releases/download/v2.1.0/planq_2.1.0_linux_amd64.tar.gz
+tar -xvzf planq_2.1.0_linux_amd64.tar.gz
+rm -rf planq_2.1.0_linux_amd64.tar.gz
 mv $HOME/bin/planqd $(which planqd)
 ```
 ```
