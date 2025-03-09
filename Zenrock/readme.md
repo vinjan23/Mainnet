@@ -142,7 +142,10 @@ zenrockd tx staking delegate $(zenrockd keys show wallet --bech val -a) 1000000u
 ```
 zenrockd tx staking delegate $(zenrockd keys show wallet --bech val -a) 1000000urock --from wallet --chain-id  diamond-1 --gas-adjustment 1.5 --gas-prices 27urock --gas auto
 ```
-
+### Unjail
+```
+zenrockd tx slashing unjail --from wallet --chain-id diamond-1 --gas-adjustment 1.5 --gas-prices 27urock --gas auto
+```
 
 ### Delete
 ```
