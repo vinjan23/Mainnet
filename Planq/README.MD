@@ -24,17 +24,10 @@ cd $HOME
 rm -rf planq
 git clone https://github.com/planq-network/planq.git
 cd planq
-git checkout v2.0.4
+git checkout v2.1.0
 make install
 ```
 
-### Update
-```
-cd planq
-git fetch --all
-git checkout v2.0.5
-make install
-```
 ```
 cd $HOME
 wget https://github.com/planq-network/planq/releases/download/v2.1.0/planq_2.1.0_linux_amd64.tar.gz
