@@ -30,7 +30,7 @@ cd $HOME
 rm -rf kopi
 git clone https://github.com/kopi-money/kopi.git
 cd kopi
-git checkout v18.3
+git checkout v18.4
 make install
 ```
 ```
