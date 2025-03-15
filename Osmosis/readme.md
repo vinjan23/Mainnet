@@ -21,7 +21,7 @@ cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.4
+git checkout v28.0.5
 make build
 ```
 
@@ -44,7 +44,7 @@ cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.4
+git checkout v28.0.5
 make build
 ```
 ```
@@ -56,21 +56,22 @@ rm -rf build
 ```
 $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd version --long | grep -e commit -e version
 ```
-
 ```
-mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28.0.4/bin
 cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.4
+git checkout v28.0.5
 make install
-cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v28.0.4/bin/osmosisd
+```
+```
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28.0.5/bin
+cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v28.0.5/bin/
 ```
 ```
 ls -l $HOME/.osmosisd/cosmovisor/current
 rm $HOME/.osmosisd/cosmovisor/current
-ln -s $HOME/.osmosisd/cosmovisor/upgrades/v28.0.4 $HOME/.osmosisd/cosmovisor/current
+ln -s $HOME/.osmosisd/cosmovisor/upgrades/v28.0.5 $HOME/.osmosisd/cosmovisor/current
 ```
 ```
 cp $HOME/.osmosisd/cosmovisor/current/bin/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/
