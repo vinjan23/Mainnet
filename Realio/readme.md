@@ -26,6 +26,14 @@ cd realio-network
 git checkout v1.0.2
 make install
 ```
+```
+mkdir -p $HOME/.realio-network/cosmovisor/genesis/bin
+cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/genesis/bin/
+```
+```
+ln -s $HOME/.realio-network/cosmovisor/genesis $HOME/.realio-network/cosmovisor/current -f
+sudo ln -s $HOME/.realio-network/cosmovisor/current/bin/realio-networkd /usr/local/bin/gaiad -f
+```
 ### Update
 ```
 cd $HOME/realio-network
@@ -60,7 +68,7 @@ realio-networkd config node tcp://localhost:${PORT}657
 ```
 ```
 sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.realio-network/config/config.toml
-sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${PORT}091\"%; s%^address = \"127.0.0.1:8545\"%address = \"127.0.0.1:${PORT}545\"%; s%^ws-address = \"127.0.0.1:8546\"%ws-address = \"127.0.0.1:${PORT}546\"%" $HOME/.realio-network/config/app.toml
+sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:22317\"%; s%^address = \"localhost:9090\"%address = \"localhost:22090\"%; s%^address = \"127.0.0.1:8545\"%address = \"127.0.0.1:22545\"%; s%^ws-address = \"127.0.0.1:8546\"%ws-address = \"127.0.0.1:22546\"%; s%^metrics-address = \"127.0.0.1:6065\"%metrics-address = \"127.0.0.1:22065\" $HOME/.realio-network/config/app.toml
 ```
 
 ### Genesis
@@ -278,8 +286,8 @@ sudo systemctl disable realio-networkd && \
 rm /etc/systemd/system/realio-networkd.service && \
 sudo systemctl daemon-reload && \
 cd $HOME && \
-rm -rf realio-network && \
-rm -rf .realio-network && \
+rm -rf realio-network
+rm -rf .realio-network
 rm -rf $(which realio-networkd)
 ```
 
