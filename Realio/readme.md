@@ -158,7 +158,7 @@ sudo journalctl -u realio-networkd -f -o cat
 
 ### Sync
 ```
-realio-networkd status 2>&1 | jq .SyncInfo
+realio-networkd status 2>&1 | jq .sync_info
 ```
 
 ### Log
