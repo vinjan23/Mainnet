@@ -63,22 +63,21 @@ realio-networkd config keyring-backend file
 
 ### Custom Port
 ```
-PORT=22
-realio-networkd config node tcp://localhost:${PORT}657
+sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:22657\"%" $HOME/.realio-network/config/client.toml
 ```
 ```
-sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.realio-network/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:22317\"%; s%^address = \"localhost:9090\"%address = \"localhost:22090\"%; s%^address = \"127.0.0.1:8545\"%address = \"127.0.0.1:22545\"%; s%^ws-address = \"127.0.0.1:8546\"%ws-address = \"127.0.0.1:22546\"%; s%^metrics-address = \"127.0.0.1:6065\"%metrics-address = \"127.0.0.1:22065\" $HOME/.realio-network/config/app.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:22658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:22657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:22060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:22656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":22660\"%" $HOME/.realio-network/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:22317\"%; s%^address = \"localhost:9090\"%address = \"localhost:22090\"%; s%^address = \"127.0.0.1:8545\"%address = \"127.0.0.1:22545\"%; s%^ws-address = \"127.0.0.1:8546\"%ws-address = \"127.0.0.1:22546\"%; s%^metrics-address = \"127.0.0.1:6065\"%metrics-address = \"127.0.0.1:22065\"%" $HOME/.realio-network/config/app.toml
 ```
 
 ### Genesis
 ```
-curl https://raw.githubusercontent.com/realiotech/mainnet/master/realionetwork_3301-1/genesis.json > $HOME/.realio-network/config/genesis.json
+wget -O $HOME/.realio-network/config/genesis.json https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Realio/genesis.json
 ```
 
 ### Addrbook
 ```
-wget -O $HOME/.realio-network/config/addrbook.json "https://snapshot.genznodes.dev/realio/addrbook.json"
+wget -O $HOME/.realio-network/config/addrbook.json "https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Realio/addrbook.json"
 ```
 
 ### Seed & Peer & Gas
@@ -100,7 +99,7 @@ sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.reali
 pruning="custom" && \
 pruning_keep_recent="100" && \
 pruning_keep_every="0" && \
-pruning_interval="10" && \
+pruning_interval="19" && \
 sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.realio-network/config/app.toml && \
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.realio-network/config/app.toml && \
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.realio-network/config/app.toml && \
@@ -130,7 +129,25 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
-
+```
+sudo tee /etc/systemd/system/realio-networkd.service > /dev/null << EOF
+[Unit]
+Description=realio-network
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.realio-network"
+Environment="DAEMON_NAME=realio-networkd"
+Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.realio-network/cosmovisor/current/bin"
+[Install]
+WantedBy=multi-user.target
+EOF
+```
 ### Start
 ```
 sudo systemctl daemon-reload
@@ -152,7 +169,7 @@ sudo journalctl -u realio-networkd -f -o cat
 ```
 sudo systemctl stop realio-networkd
 realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
-SNAP_RPC=
+SNAP_RPC=https://rpc-realio.vinjan.xyz:443
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
