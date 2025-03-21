@@ -207,7 +207,7 @@ elysd tx staking edit-validator \
 ```
 ### Vote
 ```
-elysd tx gov vote 26 yes --from wallet --chain-id elys-1 --gas auto --gas-adjustment 1.2 --fees 250uelys
+elysd tx gov vote 31 yes --from wallet --chain-id elys-1 --gas auto --gas-adjustment 1.2 --fees 250uelys
 ```
 ### WD
 ```
