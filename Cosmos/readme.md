@@ -35,12 +35,12 @@ cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v22.3.1
+git checkout v23.0.0
 make build
 ```
 ```
-mkdir -p $HOME/.gaia/cosmovisor/upgrades/v22.3.1/bin
-mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v22.3.1/bin/
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v23/bin
+mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v23/bin/
 rm -rf build
 ```
 ```
@@ -48,17 +48,17 @@ cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v22.3.1
+git checkout v23.0.0
 make install
 ```
 ```
-mkdir -p $HOME/.gaia/cosmovisor/upgrades/v22.3.1/bin
-sudo cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v22.3.1/bin/
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v22/bin
+sudo cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v23/bin/
 ```
 ```
 ls -l $HOME/.gaia/cosmovisor/current
 rm $HOME/.gaia/cosmovisor/current
-ln -s $HOME/.gaia/cosmovisor/upgrades/v22.3.1 $HOME/.gaia/cosmovisor/current
+ln -s $HOME/.gaia/cosmovisor/upgrades/v23 $HOME/.gaia/cosmovisor/current
 ```
 
 ### Cek version
