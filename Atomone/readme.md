@@ -142,7 +142,7 @@ atomoned tx staking create-validator \
 --gas=auto
 ```
 ### Edit
-``
+```
 atomoned tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
