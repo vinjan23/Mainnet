@@ -177,7 +177,7 @@ curl -sS http://localhost:15657/net_info | jq -r '.result.peers[] | "\(.node_inf
 atomoned tx bank send wallet atone14m0n559xdj00qwvp6ck0xesprrq26kgp75j0zw 10000uatone --from=wallet --chain-id=atomone-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025uatone"
 ```
 ### Statesync
-``
+```
 sudo systemctl stop atomoned
 atomoned tendermint unsafe-reset-all --home $HOME/.atomone --keep-addr-book
 SNAP_RPC="https://rpc-atomone.vinjan.xyz:443"
