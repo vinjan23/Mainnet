@@ -39,7 +39,7 @@ ln -s $HOME/.osmosisd/cosmovisor/genesis $HOME/.osmosisd/cosmovisor/current -f
 sudo ln -s $HOME/.osmosisd/cosmovisor/current/bin/osmosisd /usr/local/bin/osmosisd -f
 ```
 ### Update Cosmovisor
-``
+```
 cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
