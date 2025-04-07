@@ -107,7 +107,7 @@ arkeod tendermint show-validator
 ```
 nano /root/.arkeo/validator.json
 ```
-``
+```
 {
   "pubkey": $(arkeod tendermint show-validator),
   "amount": "1800000000uarkeo",
