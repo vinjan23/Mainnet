@@ -107,18 +107,18 @@ arkeod tendermint show-validator
 ```
 nano /root/.arkeo/validator.json
 ```
-```
+``
 {
-  "pubkey": $(arkeod tendermint show-validator) ,
-  "amount": "1000000uarkeo",
+  "pubkey": $(arkeod tendermint show-validator),
+  "amount": "1800000000uarkeo",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
   "website": "https://service.vinjan.xyz",
   "security": "",
   "details": "Staking Provider-IBC Relayer",
-  "commission-rate": "0.05",
+  "commission-rate": "0.01",
   "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.05",
+  "commission-max-change-rate": "0.01",
   "min-self-delegation": "1"
 }
 ```
