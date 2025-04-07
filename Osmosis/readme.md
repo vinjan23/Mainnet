@@ -39,45 +39,45 @@ ln -s $HOME/.osmosisd/cosmovisor/genesis $HOME/.osmosisd/cosmovisor/current -f
 sudo ln -s $HOME/.osmosisd/cosmovisor/current/bin/osmosisd /usr/local/bin/osmosisd -f
 ```
 ### Update Cosmovisor
-```
+``
 cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.5
+git checkout v29.0.0
 make build
 ```
 ```
-mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28/bin
-mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v29/bin
+mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v29/bin/
 rm -rf build
 ```
 ### Cek version
 ```
-$HOME/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd version --long | grep -e commit -e version
+$HOME/.osmosisd/cosmovisor/upgrades/v29/bin/osmosisd version --long | grep -e commit -e version
 ```
 ```
 cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.5
+git checkout v29.0.0
 make install
 ```
 ```
-mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v28.0.5/bin
-cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v28.0.5/bin/
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v29/bin
+cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v29/bin/
 ```
 ```
 ls -l $HOME/.osmosisd/cosmovisor/current
 rm $HOME/.osmosisd/cosmovisor/current
-ln -s $HOME/.osmosisd/cosmovisor/upgrades/v28.0.5 $HOME/.osmosisd/cosmovisor/current
+ln -s $HOME/.osmosisd/cosmovisor/upgrades/v29 $HOME/.osmosisd/cosmovisor/current
 ```
 ```
 cp $HOME/.osmosisd/cosmovisor/current/bin/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v28/bin/
 ```
 ```
-cosmovisor add-upgrade v28.0.0 /root/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd --force --upgrade-height 25861100
+cosmovisor add-upgrade v29.0.0 /root/.osmosisd/cosmovisor/upgrades/v28/bin/osmosisd --force --upgrade-height 33187000
 ```
 ```
 osmosisd version --long | grep -e commit -e version
