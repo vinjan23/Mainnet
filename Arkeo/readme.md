@@ -40,6 +40,7 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 ```
 seeds="4d2c67a1d732679826b2f71c833e94b3718c2b50@seed2.arkeo.network:26656,416bd4379fa4fa3e76e59e4415396f727463142e@seed.arkeo.network:26656"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.arkeo/config/config.toml
+sed -i -e 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.01uarkeo"|' $HOME/.arkeo/config/app.toml
 ```
 ### Prunning
 ```
@@ -122,7 +123,10 @@ nano /root/.arkeo/validator.json
 ```
 arkeod tx staking create-validator $HOME/.arkeo/validator.json \
 --from wallet \
---chain-id arkeo-main-v1
+--chain-id arkeo-main-v1 \
+--gas-prices=0.01uarkeo \
+--gas-adjustment=1.5 \
+--gas=auto
 ```
 
 
