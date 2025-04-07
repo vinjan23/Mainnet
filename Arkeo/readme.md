@@ -31,7 +31,7 @@ sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.
 sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:24317\"%; s%^address = \"localhost:9090\"%address = \"0.0.0.0:24090\"%" $HOME/.arkeo/config/app.toml
 ```
 ### Genesis
-``
+```
 curl -L https://snapshot.vinjan.xyz./arkeo/genesis.json > $HOME/.arkeo/config/genesis.json
 ```
 ### Addrbook
