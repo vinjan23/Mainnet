@@ -107,7 +107,7 @@ nano /root/.arkeo/validator.json
 ```
 ```
 {
-  "pubkey": ,
+  "pubkey": $(arkeod tendermint show-validator) ,
   "amount": "1000000uarkeo",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
