@@ -32,7 +32,7 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 ```
 ### Genesis
 ```
-curl -L https://snapshot.vinjan.xyz./arkeo/genesis.json > $HOME/.arkeo/config/genesis.json
+curl -Ls https://ss.arkeo.nodestake.org/genesis.json > $HOME/.arkeo/config/genesis.json
 ```
 ### Addrbook
 ```
