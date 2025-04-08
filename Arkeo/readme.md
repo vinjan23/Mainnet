@@ -111,7 +111,7 @@ nano /root/.arkeo/validator.json
 {
   "pubkey": $(arkeod tendermint show-validator),
   "amount": "1800000000uarkeo",
-  "moniker": "Vinjan.Inc",
+  "moniker": "Low Fees | Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
   "website": "https://service.vinjan.xyz",
   "security": "",
