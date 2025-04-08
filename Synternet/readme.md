@@ -103,6 +103,19 @@ syntd tx staking create-validator \
 --gas-prices="0.01usynt" \
 --from=wallet
 ```
+```
+syntd tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id=synternet-1 \
+--commission-rate="0.03" \
+--gas="auto" \
+--gas-adjustment="1.3" \
+--gas-prices="0.01usynt" \
+--from=wallet
+```
 ### Unjail
 ```
 syntd tx slashing unjail --from wallet --chain-id synternet-1 --gas-adjustment=1.3 --gas-prices=0.01usynt --gas=auto
