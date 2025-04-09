@@ -32,11 +32,11 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 ```
 ### Genesis
 ```
-curl -Ls https://ss.arkeo.nodestake.org/genesis.json > $HOME/.arkeo/config/genesis.json
+curl -L https://snapshot-t.vinjan.xyz/arkeo/genesis.json > $HOME/.arkeo/config/genesis.json
 ```
 ### Addrbook
 ```
-curl -L https://snapshot.vinjan.xyz./arkeo/addrbook.json > $HOME/.arkeo/config/addrbook.json
+curl -L https://snapshot-t.vinjan.xyz/arkeo/addrbook.json > $HOME/.arkeo/config/addrbook.json
 ```
 ### Seed
 ```
