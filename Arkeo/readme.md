@@ -130,7 +130,33 @@ arkeod tx staking create-validator $HOME/.arkeo/validator.json \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
+### Delegate
+```
+arkeod tx staking delegate $(arkeod keys show wallet --bech val -a) 1000000uarkeo --from wallet --chain-id arkeo-main-v1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.01uarkeo
+```
+### WD
+```
+arkeod tx distribution withdraw-rewards $(arkeod keys show wallet --bech val -a) --commission --from wallet --chain-id arkeo-main-v1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.01uarkeo
+```
+### Own Peer
+```
+echo $(arkeod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.arkeo/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+### Move
+```
+sudo rm /var/www/snapshot-t/arkeo/addrbook.json && cp $HOME/.arkeo/config/addrbook.json /var/www/snapshot-t/arkeo/addrbook.json
+```
 
+### Delete
+```
+sudo systemctl stop arkeod
+sudo systemctl disable arkeod
+sudo rm /etc/systemd/system/arkeod.service
+sudo systemctl daemon-reload
+rm -f $(which arkeod)
+rm -rf .arkeo
+rm -rf arkeo
+```
 
 
 
