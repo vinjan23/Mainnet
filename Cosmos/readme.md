@@ -26,9 +26,14 @@ mv build/gaiad $HOME/.gaia/cosmovisor/genesis/bin/
 rm -rf build
 ```
 ```
+mkdir -p $HOME/.gaia/cosmovisor/genesis/bin
+cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/genesis/bin/
+```
+```
 ln -s $HOME/.gaia/cosmovisor/genesis $HOME/.gaia/cosmovisor/current -f
 sudo ln -s $HOME/.gaia/cosmovisor/current/bin/gaiad /usr/local/bin/gaiad -f
 ```
+
 ### Upgrade
 ```
 cd $HOME
@@ -91,13 +96,7 @@ mv genesis.cosmoshub-4.json ~/.gaia/config/genesis.json
 ```
 ### Seed Peer
 ```
-seeds=""
-sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.gaia/config/config.toml
-PEERS=
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.gaia/config/config.toml
-sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' $HOME/.gaia/config/config.toml
-sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.gaia/config/config.toml
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uatom\"/;" ~/.gaia/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.005uatom\"/;" ~/.gaia/config/app.toml
 ```
 ### Prunning
 ```
@@ -133,6 +132,8 @@ EOF
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable gaiad
+```
+```
 sudo systemctl restart gaiad
 sudo journalctl -u gaiad -f -o cat
 ```
