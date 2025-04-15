@@ -11,7 +11,7 @@ source ~/.bash_profile
 go version
 ```
 ### Binary
-``
+```
 cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
