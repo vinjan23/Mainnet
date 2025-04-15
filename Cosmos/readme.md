@@ -10,7 +10,7 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
 source ~/.bash_profile
 go version
 ```
-### Binary
+### Binary Build
 ```
 cd $HOME
 rm -rf gaia
@@ -26,6 +26,19 @@ mv build/gaiad $HOME/.gaia/cosmovisor/genesis/bin/
 rm -rf build
 ```
 ```
+ln -s $HOME/.gaia/cosmovisor/genesis $HOME/.gaia/cosmovisor/current -f
+sudo ln -s $HOME/.gaia/cosmovisor/current/bin/gaiad /usr/local/bin/gaiad -f
+```
+### Install
+```
+cd $HOME
+rm -rf gaia
+git clone https://github.com/cosmos/gaia.git
+cd gaia
+git checkout v23.1.1
+make install
+```
+```
 mkdir -p $HOME/.gaia/cosmovisor/genesis/bin
 cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/genesis/bin/
 ```
@@ -33,7 +46,6 @@ cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/genesis/bin/
 ln -s $HOME/.gaia/cosmovisor/genesis $HOME/.gaia/cosmovisor/current -f
 sudo ln -s $HOME/.gaia/cosmovisor/current/bin/gaiad /usr/local/bin/gaiad -f
 ```
-
 ### Upgrade
 ```
 cd $HOME
@@ -58,14 +70,17 @@ make install
 ```
 ```
 mkdir -p $HOME/.gaia/cosmovisor/upgrades/v23.1.1/bin
-sudo cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v23.1.1/bin/
+cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v23.1.1/bin/
 ```
 ```
 ls -l $HOME/.gaia/cosmovisor/current
 rm $HOME/.gaia/cosmovisor/current
 ln -s $HOME/.gaia/cosmovisor/upgrades/v23.1.1 $HOME/.gaia/cosmovisor/current
 ```
-
+```
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v23/bin
+cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v23/bin/
+```
 ### Cek version
 ```
 $HOME/.gaia/cosmovisor/upgrades/v23.1.1/bin/gaiad version --long | grep -e commit -e version
