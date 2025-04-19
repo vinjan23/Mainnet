@@ -34,6 +34,9 @@ rm $HOME/.arkeo/cosmovisor/current
 ln -s $HOME/.arkeo/cosmovisor/upgrades/v1.0.11 $HOME/.arkeo/cosmovisor/current
 ```
 ```
+$HOME/.arkeo/cosmovisor/upgrades/v1.0.11/bin/arkeod version --long | grep -e commit -e version
+```
+```
 arkeod version --long | grep -e commit -e version
 ```
 ### Init
