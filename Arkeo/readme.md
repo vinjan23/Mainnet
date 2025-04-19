@@ -22,12 +22,16 @@ rm -rf arkeo
 git clone https://github.com/arkeonetwork/arkeo.git
 cd arkeo
 git checkout v1.0.11
-make build
+make install
 ```
 ```
 mkdir -p $HOME/.arkeo/cosmovisor/upgrades/v1.0.11/bin
-mv build/arkeod $HOME/.arkeo/cosmovisor/upgrades/v1.0.11/bin/
-rm -rf build
+cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/upgrades/v1.0.11/bin/
+```
+```
+ls -l $HOME/.arkeo/cosmovisor/current
+rm $HOME/.arkeo/cosmovisor/current
+ln -s $HOME/.arkeo/cosmovisor/upgrades/v1.0.11 $HOME/.arkeo/cosmovisor/current
 ```
 ```
 arkeod version --long | grep -e commit -e version
