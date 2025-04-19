@@ -15,6 +15,20 @@ cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/genesis/bin/
 sudo ln -s $HOME/.arkeo/cosmovisor/genesis $HOME/.arkeo/cosmovisor/current -f
 sudo ln -s $HOME/.arkeo/cosmovisor/current/bin/arkeod /usr/local/bin/arkeod -f
 ```
+### Update
+```
+cd $HOME
+rm -rf arkeo
+git clone https://github.com/arkeonetwork/arkeo.git
+cd arkeo
+git checkout v1.0.11
+make build
+```
+```
+mkdir -p $HOME/.arkeo/cosmovisor/upgrades/v1.0.11/bin
+mv build/arkeod $HOME/.arkeo/cosmovisor/upgrades/v1.0.11/bin/
+rm -rf build
+```
 ```
 arkeod version --long | grep -e commit -e version
 ```
@@ -141,6 +155,10 @@ arkeod tx distribution withdraw-rewards $(arkeod keys show wallet --bech val -a)
 ### Own Peer
 ```
 echo $(arkeod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.arkeo/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+###Vote
+```
+arkeod tx staking delegate $(arkeod keys show wallet --bech val -a) 1000000uarkeo --from wallet --chain-id arkeo-main-v1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.01uarkeo
 ```
 ### Move
 ```
