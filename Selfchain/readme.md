@@ -20,6 +20,7 @@ wget https://snapshot.vinjan.xyz./selfchaind
 chmod +x selfchaind
 mv selfchaind $HOME/go/bin/
 ```
+
 ### Init
 ```
 selfchaind init $MONIKER --chain-id self-1
