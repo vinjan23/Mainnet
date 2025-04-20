@@ -1,5 +1,5 @@
 ### Binary
-``
+```
 cd $HOME
 rm -rf arkeo
 git clone https://github.com/arkeonetwork/arkeo.git
