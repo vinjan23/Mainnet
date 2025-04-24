@@ -213,6 +213,7 @@ elysd tx gov vote 31 yes --from wallet --chain-id elys-1 --gas auto --gas-adjust
 ```
 elysd tx distribution withdraw-rewards $(elysd keys show wallet --bech val -a) --commission --from wallet --chain-id elys-1 --gas auto --gas-adjustment 1.2 --fees 250uelys
 ```
+```
 sudo systemctl stop elysd
 cp $HOME/.elys/data/priv_validator_state.json $HOME/.elys/priv_validator_state.json.backup
 elysd tendermint unsafe-reset-all --home $HOME/.elys --keep-addr-book
@@ -226,7 +227,7 @@ s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.elys/config/config.toml
 mv $HOME/.elys/priv_validator_state.json.backup $HOME/.elys/data/priv_validator_state.json
 sudo systemctl restart elysd && sudo journalctl -u elysd -f -o cat
-
+```
 ### Delete
 ```
 sudo systemctl stop elysd
