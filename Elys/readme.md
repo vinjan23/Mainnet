@@ -32,7 +32,7 @@ ln -s $HOME/.elys/cosmovisor/genesis $HOME/.elys/cosmovisor/current -f
 sudo ln -s $HOME/.elys/cosmovisor/current/bin/elysd /usr/local/bin/elysd -f
 ```
 ### Update
-``
+```
 cd $HOME
 rm -rf elys
 git clone https://github.com/elys-network/elys
