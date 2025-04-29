@@ -209,8 +209,8 @@ sudo systemctl disable terpd && \
 rm /etc/systemd/system/terpd.service && \
 sudo systemctl daemon-reload && \
 cd $HOME && \
-rm -rf terp && \
-rm -rf .terpd && \
+rm -rf terp-core && \
+rm -rf .terp && \
 rm -rf $(which terpd)
 ```
 
