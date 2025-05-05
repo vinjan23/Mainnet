@@ -21,17 +21,17 @@ cd $HOME
 rm -rf arkeo
 git clone https://github.com/arkeonetwork/arkeo.git
 cd arkeo
-git checkout v1.0.12
+git checkout v1.0.13
 make install
 ```
 ```
-mkdir -p $HOME/.arkeo/cosmovisor/upgrades/ibc-v1.0.12/bin
-cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/upgrades/ibc-v1.0.12/bin/
+mkdir -p $HOME/.arkeo/cosmovisor/upgrades/v1.0.13/bin
+cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/upgrades/v1.0.13/bin/
 ```
 ```
 ls -l $HOME/.arkeo/cosmovisor/current
 rm $HOME/.arkeo/cosmovisor/current
-ln -s $HOME/.arkeo/cosmovisor/upgrades/ibc-v1.0.12 $HOME/.arkeo/cosmovisor/current
+ln -s $HOME/.arkeo/cosmovisor/upgrades/ibc-v1.0.13 $HOME/.arkeo/cosmovisor/current
 ```
 
 ```
