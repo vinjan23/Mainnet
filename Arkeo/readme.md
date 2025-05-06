@@ -4,17 +4,10 @@ cd $HOME
 rm -rf arkeo
 git clone https://github.com/arkeonetwork/arkeo.git
 cd arkeo
-git checkout v1.0.9
+git checkout v1.0.13
 make install
 ```
-```
-mkdir -p $HOME/.arkeo/cosmovisor/genesis/bin
-cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/genesis/bin/
-```
-```
-sudo ln -s $HOME/.arkeo/cosmovisor/genesis $HOME/.arkeo/cosmovisor/current -f
-sudo ln -s $HOME/.arkeo/cosmovisor/current/bin/arkeod /usr/local/bin/arkeod -f
-```
+
 ### Update
 ```
 cd $HOME
@@ -23,19 +16,6 @@ git clone https://github.com/arkeonetwork/arkeo.git
 cd arkeo
 git checkout v1.0.13
 make install
-```
-```
-mkdir -p $HOME/.arkeo/cosmovisor/upgrades/v1.0.13/bin
-cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/upgrades/v1.0.13/bin/
-```
-```
-ls -l $HOME/.arkeo/cosmovisor/current
-rm $HOME/.arkeo/cosmovisor/current
-ln -s $HOME/.arkeo/cosmovisor/upgrades/ibc-v1.0.13 $HOME/.arkeo/cosmovisor/current
-```
-
-```
-$HOME/.arkeo/cosmovisor/upgrades/ibc-v1.0.12/bin/arkeod version --long | grep -e commit -e version
 ```
 ```
 arkeod version --long | grep -e commit -e version
@@ -81,20 +61,18 @@ sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.arkeo/config/config.toml
 ```
 ### Service
 ```
-sudo tee /etc/systemd/system/arkeod.service > /dev/null << EOF
+sudo tee /etc/systemd/system/arkeod.service > /dev/null <<EOF
 [Unit]
 Description=arkeo
 After=network-online.target
+
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which arkeod) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.arkeo"
-Environment="DAEMON_NAME=arkeod"
-Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.arkeo/cosmovisor/current/bin"
+
 [Install]
 WantedBy=multi-user.target
 EOF
