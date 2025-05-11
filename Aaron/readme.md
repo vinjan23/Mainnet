@@ -131,13 +131,13 @@ aaronetworkd tx staking create-validator $HOME/.aaronetwork/validator.json \
 aaronetworkd tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
---commission-rate="0.1" \
+--commission-rate="0.15" \
 --chain-id=aaronetwork \
 --from=wallet
 ```
 ### WD with Commission
 ```
-aaronetworkd tx staking delegate $(aaronetworkd keys show wallet --bech val -a) 1000000uaaron --from wallet --chain-id aaronetwork 
+aaronetworkd tx distribution withdraw-rewards $(aaronetworkd keys show wallet --bech val -a) --commission  --from wallet --chain-id aaronetwork 
 ```
 ### Staking
 ```
