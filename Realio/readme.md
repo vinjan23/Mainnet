@@ -32,17 +32,35 @@ cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/genesis/bin/
 ```
 ```
 ln -s $HOME/.realio-network/cosmovisor/genesis $HOME/.realio-network/cosmovisor/current -f
-sudo ln -s $HOME/.realio-network/cosmovisor/current/bin/realio-networkd /usr/local/bin/gaiad -f
+sudo ln -s $HOME/.realio-network/cosmovisor/current/bin/realio-networkd /usr/local/bin/realio-networkd -f
 ```
 ### Update
 ```
-cd $HOME/realio-network
-git fetch --all
-git checkout v1.0.2
+cd $HOME
+rm -rf realio-network
+git clone https://github.com/realiotech/realio-network.git
+cd realio-network
+git checkout v1.2.0
 make install
 ```
 ```
+cd $HOME
+rm -rf realio-network
+git clone https://github.com/realiotech/realio-network.git
+cd realio-network
+git checkout v1.2.0
+make build
+```
+```
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.2.0/bin
+mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.2.0/bin/
+rm -rf build
+```
+```
 realio-networkd version --long | grep -e commit -e version
+```
+```
+$HOME/.realio-network/cosmovisor/upgrades/v1.2.0/bin/realio-networkd version --long | grep -e commit -e version
 ```
 ```
 sudo systemctl restart realio-networkd
