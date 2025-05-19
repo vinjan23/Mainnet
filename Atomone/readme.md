@@ -24,6 +24,38 @@ cd atomone
 git checkout v1.1.2
 make install
 ```
+```
+mkdir -p $HOME/.atomone/cosmovisor/genesis/bin
+cp $HOME/go/bin/atomoned $HOME/.atomone/cosmovisor/genesis/bin/
+```
+```
+sudo ln -s $HOME/.atomone/cosmovisor/genesis $HOME/.atomone/cosmovisor/current -f
+sudo ln -s $HOME/.atomone/cosmovisor/current/bin/atomoned /usr/local/bin/atomoned -f
+```
+### Update
+```
+cd $HOME
+rm -rf atomone
+git clone https://github.com/atomone-hub/atomone.git
+cd atomone
+git checkout v2.0.0
+make build
+```
+```
+mkdir -p $HOME/.atomone/cosmovisor/upgrades/v2/bin
+mv build/atomoned $HOME/.atomone/cosmovisor/upgrades/v2/bin/
+rm -rf build
+```
+```
+mkdir -p $HOME/.atomone/cosmovisor/upgrades/v2/bin
+mv atomoned $HOME/.atomone/cosmovisor/upgrades/v2/bin/
+```
+```
+$HOME/.atomone/cosmovisor/upgrades/v2/bin/atomoned version --long | grep -e commit -e version
+```
+```
+atomoned version --long | grep -e commit -e version
+```
 ### Init
 ```
 atomoned init Vinjan.Inc --chain-id atomone-1
@@ -75,6 +107,27 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.atomone/config/config.toml
 ```
 ### Service
+```
+sudo tee /etc/systemd/system/atomoned.service > /dev/null << EOF
+[Unit]
+Description=atomone
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.atomone"
+Environment="DAEMON_NAME=atomoned"
+Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.atomone/cosmovisor/current/bin"
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
 ```
 sudo tee /etc/systemd/system/atomoned.service > /dev/null <<EOF
 [Unit]
