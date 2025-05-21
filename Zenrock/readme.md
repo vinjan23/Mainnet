@@ -12,14 +12,14 @@ cd $HOME
 rm -rf zrchain
 git clone https://github.com/Zenrock-Foundation/zrchain
 cd zrchain
-git checkout v6.1.16
+git checkout v6.4.0
 make install
 ```
 ```
 zenrockd version --long | grep -e version -e commit
 ```
-`version: 5.5.0`
-`commit: 1c5e92e50435c334cf814377254367392a4dfda5`
+`version: 6.4.0`
+`commit: c35da0b`
 ### Init
 ```
 zenrockd init Vinjan.inc --chain-id diamond-1
