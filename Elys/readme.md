@@ -37,17 +37,17 @@ cd $HOME
 rm -rf elys
 git clone https://github.com/elys-network/elys
 cd elys
-git checkout v4.0.0
+git checkout v4.1.0
 make install
 ```
 ```
-mkdir -p $HOME/.elys/cosmovisor/upgrades/v4/bin
-sudo cp $HOME/go/bin/elysd $HOME/.elys/cosmovisor/upgrades/v4/bin/
+mkdir -p $HOME/.elys/cosmovisor/upgrades/v4.1/bin
+sudo cp $HOME/go/bin/elysd $HOME/.elys/cosmovisor/upgrades/v4.1/bin/
 ```
 ```
 ls -l $HOME/.elys/cosmovisor/current
 rm $HOME/.elys/cosmovisor/current
-ln -s $HOME/.elys/cosmovisor/upgrades/v3 $HOME/.elys/cosmovisor/current
+ln -s $HOME/.elys/cosmovisor/upgrades/v4.1 $HOME/.elys/cosmovisor/current
 ```
 
 ```
