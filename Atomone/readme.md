@@ -88,7 +88,7 @@ peers="522826623d65d27ef3f7db8a5259d003be5a93d3@65.108.229.19:26666,da165aaeac3a
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.atomone/config/config.toml
 ```
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025uatone\"|" $HOME/.atomone/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025uatone,0.225uphoton\"|" $HOME/.atomone/config/app.toml
 ```
 
 ### Prunning
