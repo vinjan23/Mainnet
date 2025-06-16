@@ -12,7 +12,7 @@ cd $HOME
 rm -rf zrchain
 git clone https://github.com/Zenrock-Foundation/zrchain
 cd zrchain
-git checkout v6.4.2
+git checkout v6.8.1
 make install
 ```
 ```
