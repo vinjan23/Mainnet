@@ -1,10 +1,10 @@
 ### Binary
 ```
-wget https://github.com/LumeraProtocol/lumera/releases/download/v1.1.0/lumera_v1.1.0_linux_amd64.tar.gz
-tar xzvf lumera_v1.1.0_linux_amd64.tar.gz
+wget https://github.com/LumeraProtocol/lumera/releases/download/v1.5.0/lumera_v1.5.0_linux_amd64.tar.gz
+tar xzvf lumera_v1.5.0_linux_amd64.tar.gz
 chmod +x lumerad
 mv lumerad $HOME/go/bin/
-rm lumera_v1.1.0_linux_amd64.tar.gz
+rm lumera_v1.5.0_linux_amd64.tar.gz
 rm install.sh
 mv libwasmvm.x86_64.so /usr/lib/
 ```
@@ -119,5 +119,14 @@ lumerad tx staking create-validator $HOME/.lumera/validator.json \
 --gas-prices=0.025ulume \
 --gas-adjustment=1.5 \
 --gas=auto
+```
+### Delete
+```
+sudo systemctl stop lumerad
+sudo systemctl disable lumerad
+sudo rm /etc/systemd/system/lumerad.service
+sudo systemctl daemon-reload
+rm -f $(which lumerad)
+rm -rf .lumera
 ```
 
