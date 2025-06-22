@@ -5,11 +5,11 @@ rm -rf symphony
 git clone https://github.com/Orchestra-Labs/symphony.git
 cd symphony
 git checkout v1.0.0
-make build
+make install
 ```
 ```
 mkdir -p $HOME/.symphonyd/cosmovisor/genesis/bin
-mv build/symphonyd $HOME/.symphonyd/cosmovisor/genesis/bin/
+cp $HOME/go/bin/symphonyd $HOME/.symphonyd/cosmovisor/genesis/bin/
 ```
 ```
 sudo ln -s $HOME/.symphonyd/cosmovisor/genesis $HOME/.symphonyd/cosmovisor/current -f
