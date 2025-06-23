@@ -38,7 +38,7 @@ wget -O $HOME/.symphonyd/config/genesis.json https://raw.githubusercontent.com/O
 
 ### Seed
 ```
-seeds=""
+seeds="2a13b793b60db04677911f58e12d80854dd49c49@65.21.234.111:21656"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.symphonyd/config/config.toml
 ```
 ```
@@ -90,7 +90,25 @@ sudo journalctl -u symphonyd -f -o cat
 symphonyd status 2>&1 | jq .sync_info
 ```
 
-
+### Snapshot
+```
+sudo systemctl stop symphonyd
+cp $HOME/.symphonyd/data/priv_validator_state.json $HOME/.symphonyd/priv_validator_state.json.backup
+rm -rf $HOME/.symphonyd/data
+curl -L https://snapshot.vinjan.xyz/symphony/latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.symphonyd
+mv $HOME/.symphonyd/priv_validator_state.json.backup $HOME/.symphonyd/data/priv_validator_state.json
+sudo systemctl restart symphonyd
+sudo journalctl -u symphonyd -f -o cat
+```
+```
+curl -L https://snapshot.vinjan.xyz/symphony/genesis.json > $HOME/.symphony/config/genesis.json
+```
+```
+cp $HOME/.symphonyd/config/addrbook.json /var/www/snapshot/symphony/addrbook.json
+```
+```
+curl -L https://snapshot.vinjan.xyz/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json
+```
 ### Delete
 ```
 sudo systemctl stop symphonyd
