@@ -28,7 +28,7 @@ sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:216
 ```
 ```
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:21658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:21657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:21060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:21656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":21660\"%" $HOME/.symphonyd/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:21317\"%; s%^address = \"localhost:9090\"%address = \"localhost:21090\"%" $HOME/.symphonyd/config/app.toml
+sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:21317\"%; s%^address = \"localhost:9090\"%address = \"0.0.0.0:21090\"%" $HOME/.symphonyd/config/app.toml
 ```
 ### Genesis
 ```
