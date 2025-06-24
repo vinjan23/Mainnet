@@ -32,7 +32,7 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 ```
 ### Genesis
 ```
-wget -O $HOME/.symphonyd/config/genesis.json https://raw.githubusercontent.com/Orchestra-Labs/symphony/refs/heads/main/networks/symphony-1/genesis.json
+wget -O $HOME/.symphonyd/config/genesis.json https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Symphony/genesis.json
 ```
 ### Addrbook
 
