@@ -89,7 +89,12 @@ sudo journalctl -u symphonyd -f -o cat
 ```
 symphonyd status 2>&1 | jq .sync_info
 ```
-
+```
+echo $(symphonyd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.symphonyd/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+```
+798fd108b9a0e696bdacd6e7ea7a3fe20c11eafd@65.21.234.111:26656
+```
 ### Snapshot
 ```
 sudo systemctl stop symphonyd
