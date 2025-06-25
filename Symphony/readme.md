@@ -35,7 +35,9 @@ sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost
 wget -O $HOME/.symphonyd/config/genesis.json https://raw.githubusercontent.com/Orchestra-Labs/symphony/refs/heads/main/networks/symphony-1/genesis.json
 ```
 ### Addrbook
-
+```
+curl -L https://snap.vinjan.xyz/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json
+```
 ### Seed
 ```
 seeds="2a13b793b60db04677911f58e12d80854dd49c49@65.21.234.111:21656"
@@ -100,7 +102,7 @@ echo $(symphonyd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME
 sudo systemctl stop symphonyd
 cp $HOME/.symphonyd/data/priv_validator_state.json $HOME/.symphonyd/priv_validator_state.json.backup
 rm -rf $HOME/.symphonyd/data
-curl -L https://snapshot.vinjan.xyz/symphony/latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.symphonyd
+curl -L https://snap.vinjan.xyz/symphony/latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.symphonyd
 mv $HOME/.symphonyd/priv_validator_state.json.backup $HOME/.symphonyd/data/priv_validator_state.json
 sudo systemctl restart symphonyd
 sudo journalctl -u symphonyd -f -o cat
