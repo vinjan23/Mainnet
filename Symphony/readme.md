@@ -44,7 +44,7 @@ seeds="2a13b793b60db04677911f58e12d80854dd49c49@65.21.234.111:21656"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.symphonyd/config/config.toml
 ```
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025note\"/" $HOME/.symphonyd/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025note\"/" $HOME/.symphonyd/config/app.toml
 ```
 ### Prunning
 ```
@@ -90,6 +90,10 @@ sudo journalctl -u symphonyd -f -o cat
 ### Sync
 ```
 symphonyd status 2>&1 | jq .sync_info
+```
+### Node Info
+```
+symphonyd status 2>&1 | jq .node_info
 ```
 ```
 echo $(symphonyd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.symphonyd/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
