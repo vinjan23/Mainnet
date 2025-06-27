@@ -24,12 +24,11 @@ symphonyd init $MONIKER --chain-id symphony-1
 ```
 ### Port
 ```
-sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:21657\"%" $HOME/.symphonyd/config/client.toml
+sed -i -e "s%:26657%:21657%" $HOME/.symphonyd/config/client.toml
+sed -i -e "s%:26658%:21658%; s%:26657%:21657%; s%:6060%:21060%; s%:26656%:21656%; s%:26660%:21660%" $HOME/.symphonyd/config/config.toml
+sed -i -e "s%:1317%:21317%; s%:9090%:21090%" $HOME/.symphonyd/config/app.toml
 ```
-```
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:21658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:21657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:21060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:21656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":21660\"%" $HOME/.symphonyd/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:21317\"%; s%^address = \"localhost:9090\"%address = \"0.0.0.0:21090\"%" $HOME/.symphonyd/config/app.toml
-```
+
 ### Genesis
 ```
 wget -O $HOME/.symphonyd/config/genesis.json https://raw.githubusercontent.com/Orchestra-Labs/symphony/refs/heads/main/networks/symphony-1/genesis.json
