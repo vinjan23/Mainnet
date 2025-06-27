@@ -120,6 +120,11 @@ cp $HOME/.symphonyd/config/addrbook.json /var/www/snapshot/symphony/addrbook.jso
 ```
 curl -L https://snapshot.vinjan.xyz/symphony/addrbook.json > $HOME/.symphonyd/config/addrbook.json
 ```
+### Cek Snapshot
+```
+du -h /var/www/snap/symphony/latest.tar.lz4|cut -f1
+```
+
 ### Delete
 ```
 sudo systemctl stop symphonyd
