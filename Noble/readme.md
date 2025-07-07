@@ -3,7 +3,7 @@
 ```
 cd $HOME
 rm -rf noble
-git clone https://github.com/strangelove-ventures/noble noble
+git clone https://github.com/noble-assets/noble.git
 cd noble
 git checkout v10.0.0
 make build
@@ -22,7 +22,7 @@ sudo ln -s $HOME/.noble/cosmovisor/current/bin/nobled /usr/local/bin/nobled -f
 ```
 cd $HOME
 rm -rf noble
-git clone https://github.com/strangelove-ventures/noble noble
+git clone https://github.com/noble-assets/noble.git
 cd noble
 git checkout v10.0.0
 make install
