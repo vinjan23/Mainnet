@@ -52,11 +52,6 @@ sed -i -e "s%:26657%:${PORT}57%" $HOME/.noble/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.noble/config/config.toml
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.noble/config/app.toml
 ```
-```
-sed -i -e "s%:26657%:12057%" $HOME/.noble/config/client.toml
-sed -i -e "s%:26658%:12058%; s%:26657%:12057%; s%:6060%:12060%; s%:26656%:12056%; s%:26660%:12060%" $HOME/.noble/config/config.toml
-sed -i -e "s%:1317%:12017%; s%:9090%:12090%" $HOME/.noble/config/app.toml
-```
 
 ### Genesis
 ```
@@ -72,7 +67,7 @@ sed -i 's/seeds = ""/seeds = "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.pol
 ```
 ### Gas
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.1uusdc\"|" $HOME/.osmosisd/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.1uusdc\"|" $HOME/.noble/config/app.toml
 ```
 ### Prunning
 ```
