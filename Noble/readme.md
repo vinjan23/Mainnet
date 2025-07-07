@@ -70,7 +70,10 @@ wget -O $HOME/.noble/config/addrbook.json https://snapshots.polkachu.com/addrboo
 ```
 sed -i 's/seeds = ""/seeds = "ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:21556"/' ~/.noble/config/config.toml
 ```
-
+### Gas
+```
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.1uusdc\"|" $HOME/.osmosisd/config/app.toml
+```
 ### Prunning
 ```
 sed -i \
