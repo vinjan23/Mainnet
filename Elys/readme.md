@@ -105,6 +105,10 @@ peers="949ee3582bab917fc4dd89829871bd46c8b366d8@162.55.245.228:46656,d95bdf717eb
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.elys/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.00025uelys\"|" $HOME/.elys/config/app.toml
 ```
+### Gas Prices
+```
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.01uelys,0.001ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349,0.0002ibc/C4CFF46FD6DE35CA4CF4CE031E643C8FDC9BA4B99AE598E9B0ED98FE3A2319F9,47169811320ibc/8464A63954C0350A26C8588E20719F3A0AC8705E4CA0F7450B60C3F16B2D3421\"|" $HOME/.elys/config/app.toml
+```
 ### Prunning
 ```
 sed -i \
