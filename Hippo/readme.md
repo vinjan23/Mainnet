@@ -150,7 +150,10 @@ hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a)
 ```
 echo $(hippod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.hippo/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
-
+### Vote
+```
+hippod tx gov vote 5 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+```
 ### Delete
 ```
 sudo systemctl stop hippod
