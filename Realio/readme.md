@@ -1,12 +1,6 @@
-### Update
-```
-sudo apt update && sudo apt upgrade -y
-sudo apt install git build-essential curl jq libclang-dev clang cmake gcc -y
-```
-
 ### GO
 ```
-ver="1.20.4"
+ver="1.22.5"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
@@ -23,7 +17,7 @@ cd $HOME
 rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v1.0.2
+git checkout v1.2.0
 make install
 ```
 ```
@@ -40,20 +34,24 @@ cd $HOME
 rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v1.2.0
+git checkout v1.3.0
 make install
+```
+```
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin
+mv $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin/
 ```
 ```
 cd $HOME
 rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v1.2.0
+git checkout v1.3.0
 make build
 ```
 ```
-mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.2.0/bin
-mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.2.0/bin/
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin
+mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin/
 rm -rf build
 ```
 ```
