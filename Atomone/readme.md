@@ -208,6 +208,11 @@ atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000u
 ```
 atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025uatone"
 ```
+### Vote
+```
+atomoned tx gov vote 10 yes --from wallet --chain-id atomone-1 --gas-adjustment=1.5 --gas=auto --gas-prices="0.025uatone"
+```
+
 ### Own Peer
 ```
 echo $(atomoned tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.atomone/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
