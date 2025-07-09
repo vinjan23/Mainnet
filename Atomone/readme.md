@@ -210,7 +210,7 @@ atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val
 ```
 ### Vote
 ```
-atomoned tx gov vote 10 yes --from wallet --chain-id atomone-1 --gas-adjustment=1.5 --gas=auto --gas-prices="0.025uatone"
+atomoned tx gov vote 10 yes --from wallet --chain-id atomone-1 --fees 50000uatone
 ```
 
 ### Own Peer
