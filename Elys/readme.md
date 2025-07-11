@@ -42,7 +42,7 @@ make install
 ```
 ```
 mkdir -p $HOME/.elys/cosmovisor/upgrades/v6.4/bin
-cp -a $HOME/go/bin/elysd $HOME/.elys/cosmovisor/upgrades/v6.4bin/
+cp -a $HOME/go/bin/elysd $HOME/.elys/cosmovisor/upgrades/v6.4/bin/
 ```
 
 ```
