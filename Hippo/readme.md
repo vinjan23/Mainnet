@@ -14,9 +14,27 @@ cp $HOME/go/bin/hippod $HOME/.hippo/cosmovisor/genesis/bin
 ln -s $HOME/.hippo/cosmovisor/genesis $HOME/.hippo/cosmovisor/current -f
 sudo ln -s $HOME/.hippo/cosmovisor/current/bin/hippod /usr/local/bin/hippod -f
 ```
+### Update
+```
+cd $HOME
+rm -rf hippo
+git clone https://github.com/hippo-protocol/hippo-protocol.git
+cd hippo
+git checkout v1.0.1
+make build
+```
+```
+mkdir -p $HOME/.hippo/cosmovisor/upgrades/v1.0.1/bin
+mv build/hippod $HOME/.hippo/cosmovisor/upgrades/v1.0.1/bin/
+rm -rf build
+```
+```
+$HOME/.hippo/cosmovisor/upgrades/v1.0.1/bin/hippod version --long | grep -e commit -e version
+```
 ```
 hippod version --long | grep -e commit -e version
 ```
+##### e2e864a
 
 ### Init
 ```
