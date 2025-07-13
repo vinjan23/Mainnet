@@ -58,7 +58,7 @@ rm -rf build
 realio-networkd version --long | grep -e commit -e version
 ```
 ```
-$HOME/.realio-network/cosmovisor/upgrades/v1.2.0/bin/realio-networkd version --long | grep -e commit -e version
+$HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin/realio-networkd version --long | grep -e commit -e version
 ```
 ```
 sudo systemctl restart realio-networkd
