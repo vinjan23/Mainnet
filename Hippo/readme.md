@@ -19,7 +19,7 @@ sudo ln -s $HOME/.hippo/cosmovisor/current/bin/hippod /usr/local/bin/hippod -f
 cd $HOME
 rm -rf hippo
 git clone https://github.com/hippo-protocol/hippo-protocol.git
-cd hippo
+cd hippo-protocol
 git checkout v1.0.1
 make build
 ```
