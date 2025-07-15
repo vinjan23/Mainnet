@@ -86,7 +86,7 @@ ExecStart=$(which sedad) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-
+Environment="SEDA_KEYS_ENCRYPTION_KEY=H1OnLbmp1pBdDqmw0CKNqIM1lRHOHttoAc5C+NLdsyY=
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -233,7 +233,25 @@ s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.sedad/con
 sudo systemctl restart sedad
 sudo journalctl -u sedad -f -o cat
 ```
-
+```
+sedad tx pubkey add-seda-keys \
+    --from wallet --chain-id seda-1 \
+    --gas-prices 10000000000aseda --gas auto --gas-adjustment 2.0 \
+    --generate-only
+```
+```
+sedad tx pubkey add-seda-keys \
+    --from wallet --chain-id seda-1 \
+    --gas-prices 10000000000aseda --gas auto --gas-adjustment 2.0 \
+    --key-file ~/.sedad/config/seda_keys.json \
+    --key-file-custom-encryption-key
+```
+```    
+H1OnLbmp1pBdDqmw0CKNqIM1lRHOHttoAc5C+NLdsyY=
+```
+```
+ {"body":{"messages":[{"@type":"/sedachain.pubkey.v1.MsgAddKey","validator_addr":"sedavaloper10ew8y96pxufpjfs0u488np6jl6e9vy29z39wj5","indexed_pub_keys":[{"index":0,"pub_key":"BFggGtnH8d+Q2FVP2GPACLAMMzhZTbcL42K1mSk8MIYvFy++beJ2RjWfM4fei6I6Pa+9sbZQEP4w6wHYoLF3LXM="}]}],"memo":"","timeout_height":"0","extension_options":[],"non_critical_extension_options":[]},"auth_info":{"signer_infos":[],"fee":{"amount":[{"denom":"aseda","amount":"801540000000000"}],"gas_limit":"80154","payer":"","granter":""},"tip":null},"signatures":[]}
+```
 ### Delete
 ```
 cd $HOME
