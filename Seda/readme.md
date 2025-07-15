@@ -12,7 +12,7 @@ cd $HOME
 rm -rf seda-chain
 git clone https://github.com/sedaprotocol/seda-chain.git
 cd seda-chain
-git checkout v0.1.10
+git checkout v1.0.0
 make install
 ```
 ### Init
