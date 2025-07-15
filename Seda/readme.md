@@ -243,7 +243,7 @@ sedad tx pubkey add-seda-keys \
 sedad tx pubkey add-seda-keys \
     --from wallet --chain-id seda-1 \
     --gas-prices 10000000000aseda --gas auto --gas-adjustment 2.0 \
-    --key-file ~/.sedad/config/seda_keys.json \
+    --key-file ~/.sedad/config/seda_key.json \
     --key-file-custom-encryption-key
 ```
 ```    
