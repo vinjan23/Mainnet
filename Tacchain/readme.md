@@ -15,6 +15,11 @@ cp $HOME/go/bin/tacchaind $HOME/.tacchaind/cosmovisor/genesis/bin/
 ln -s $HOME/.tacchaind/cosmovisor/genesis $HOME/.tacchaind/cosmovisor/current -f
 sudo ln -s $HOME/.tacchaind/cosmovisor/current/bin/tacchaind /usr/local/bin/tacchaind -f
 ```
+### Upgrade
+```
+mkdir -p $HOME/.tacchaind/cosmovisor/upgrades/v1.0.1/bin
+cp $HOME/go/bin/tacchaind $HOME/.tacchaind/cosmovisor/upgrades/v1.0.1/bin/
+```
 ```
 tacchaind  version  --long | grep -e version -e commit
 ```
