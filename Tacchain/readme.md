@@ -114,34 +114,35 @@ nano $HOME/.tacchaind/validator.json
 ```
 ```
 {
-  "pubkey": ,
-  "amount": "1000000000000000000utac",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"VQikNXa3fp3hTipwS2Z1yW9Ic3YMw8RFVKy74UrGKos="},
+  "amount": "111000000000000000000utac",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
   "website": "https://service.vinjan.xyz",
   "security": "",
   "details": "Staking Provider-IBC Relayer",
-  "commission-rate": "0.05",
-  "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.2",
+  "commission-rate": "0.02",
+  "commission-max-rate": "0.5",
+  "commission-max-change-rate": "0.5",
   "min-self-delegation": "1"
 }
 ```
+
 ```
 tacchaind tx staking create-validator $HOME/.tacchaind/validator.json \
 --from wallet \
---chain-id tacchain_2391-1 \
+--chain-id tacchain_239-1 \
 --gas-prices=4000000000000utac \
 --gas-adjustment=1.2 \
 --gas=auto
 ```
 ### WD
 ```
-tacchaind tx distribution withdraw-rewards $(tacchaind keys show wallet --bech val -a) --commission --from wallet --chain-id tacchain_2391-1 --gas-prices=4000000000000utac --gas-adjustment=1.2 --gas=auto
+tacchaind tx distribution withdraw-rewards $(tacchaind keys show wallet --bech val -a) --commission --from wallet --chain-id tacchain_239-1 --gas-prices=4000000000000utac --gas-adjustment=1.2 --gas=auto
 ```
 ### Delegate
 ```
-tacchaind tx staking delegate $(tacchaind keys show wallet --bech val -a) 1000000000000000000utac --from wallet --chain-id tacchain_2391-1 --gas-prices=4000000000000utac --gas-adjustment=1.2 --gas=auto
+tacchaind tx staking delegate $(tacchaind keys show wallet --bech val -a) 1000000000000000000utac --from wallet --chain-id tacchain_239-1 --gas-prices=4000000000000utac --gas-adjustment=1.2 --gas=auto
 ```
 ### Own Peer
 ```
