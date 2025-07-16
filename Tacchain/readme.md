@@ -36,11 +36,15 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:854
 ```
 ### Genesis
 ```
-wget -O $HOME/.tacchaind/config/genesis.json https://snapshots.polkachu.com/genesis/tacchain/genesis.json --inet4-only
+wget -O $HOME/.tacchaind/config/genesis.json https://raw.githubusercontent.com/TacBuild/tacchain/refs/heads/main/networks/tacchain_239-1/genesis.json
 ```
 ### Addrbook
 ```
 wget -O $HOME/.tacchaind/config/addrbook.json https://snapshots.polkachu.com/addrbook/tacchain/addrbook.json --inet4-only
+```
+### Gas
+```
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"25000000000utac\"/" $HOME/.tacchaind/config/app.toml
 ```
 ### Prunning
 ```
