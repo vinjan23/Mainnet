@@ -16,6 +16,26 @@ cp $HOME/go/bin/lumerad $HOME/.lumera/cosmovisor/genesis/bin/
 sudo ln -s $HOME/.lumera/cosmovisor/genesis $HOME/.lumera/cosmovisor/current -f
 sudo ln -s $HOME/.lumera/cosmovisor/current/bin/lumerad /usr/local/bin/lumerad -f
 ```
+### Update
+```
+curl -LO https://github.com/LumeraProtocol/lumera/releases/download/v1.6.1/lumera_v1.6.1_linux_amd64.tar.gz
+tar xzvf lumera_v1.6.1_linux_amd64.tar.gz
+chmod +x lumerad
+rm lumera_v1.6.1_linux_amd64.tar.gz
+rm install.sh
+mv libwasmvm.x86_64.so /usr/lib/
+```
+```
+mkdir -p $HOME/.lumera/cosmovisor/upgrades/v1.6.1/bin
+mv lumerad $HOME/go/bin/lumerad $HOME/.lumera/cosmovisor/upgrades/v1.6.1/bin/
+```
+```
+$HOME/.lumera/cosmovisor/upgrades/v1.6.1/bin/lumerad version --long | grep -e commit -e version
+```
+```
+lumerad version  --long | grep -e version -e commit
+```
+
 ### Init
 ```
 lumerad init Vinjan.Inc --chain-id lumera-mainnet-1
