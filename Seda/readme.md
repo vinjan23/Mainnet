@@ -27,9 +27,11 @@ sedad init $MONIKER --chain-id seda-1
 sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:11657\"%" $HOME/.sedad/config/client.toml
 ```
 ```
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:11658\"%; s%^laddr = \"tcp://0.0.0.0:26657\"%laddr = \"tcp://0.0.0.0:11657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:11060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:11656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":11660\"%" $HOME/.sedad/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:11317\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:11090\"%" $HOME/.sedad/config/app.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:11758\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:11757\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:11760\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:11756\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":11760\"%" $HOME/.sedad/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:11717\"%; s%^address = \"localhost:9090\"%address = \"localhost:11790\"%" $HOME/.sedad/config/app.toml
 ```
+
+
 ### Genesis
 ```
 wget -O $HOME/.sedad/config/genesis.json "https://raw.githubusercontent.com/sedaprotocol/seda-networks/main/mainnet/genesis.json"
