@@ -29,8 +29,12 @@ sed -i -e "s%:26657%:${PORT}57%" $HOME/.axoned/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.axoned/config/config.toml
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.axoned/config/app.toml
 ```
-
-###
+### Peer
+```
+peers="aa6054a53f0f57831e74af4a34bd1f58f5676307@65.21.234.111:10556"
+sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.axoned/config/config.toml
+```
+### Prunning
 ```
 sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
@@ -39,11 +43,11 @@ sed -i \
 -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
 $HOME/.axoned/config/app.toml
 ```
-###
+### Indexer
 ```
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.axoned/config/config.toml
 ```
-###
+### Service
 ```
 sudo tee /etc/systemd/system/axoned.service > /dev/null << EOF
 [Unit]
@@ -63,22 +67,22 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 WantedBy=multi-user.target
 EOF
 ```
-###
+### Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable axoned
 sudo systemctl restart axoned
 sudo journalctl -u axoned -f -o cat
 ```
-###
+### Sync
 ```
 axoned status 2>&1 | jq .sync_info
 ```
-###
+### Balances
 ```
 axoned q bank balances $(axoned keys show wallet -a)
 ```
-###
+### Validator
 ```
 axoned tendermint show-validator
 ```
@@ -117,7 +121,30 @@ axoned tx distribution withdraw-rewards $(axoned keys show wallet --bech val -a)
 ```
 axoned tx staking delegate $(axoned keys show wallet --bech val -a) 1000000uaxone --from wallet --chain-id axone-1 --gas-adjustment=1.5 --gas=auto --gas-prices="0.01uaxone"
 ```
+### Unjail
+```
+axoned tx slashing unjail --from wallet --chain-id axone-1 --gas-adjustment=1.5 --gas=auto --gas-prices="0.01uaxone"
+```
 
+### Own Peer
+```
+echo $(axoned tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.axoned/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+### Vote
+```
+axoned tx gov vote 1 yes --from wallet --chain-id axone-1 --gas-adjustment=1.5 --gas=auto --gas-prices="0.01uaxone"
+```
+
+### Delete
+```
+sudo systemctl stop axoned
+sudo systemctl disable axoned
+sudo rm /etc/systemd/system/axoned.service
+sudo systemctl daemon-reload
+rm -f $(which axoned)
+rm -rf .axoned
+rm -rf axone
+```
 
 
 
