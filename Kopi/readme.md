@@ -25,12 +25,13 @@ git clone --quiet --depth 1 --branch v16.1 https://github.com/kopi-money/kopi.gi
 cd kopi
 make install
 ```
+### Update
 ```
 cd $HOME
 rm -rf kopi
 git clone https://github.com/kopi-money/kopi.git
 cd kopi
-git checkout v21
+git checkout v22
 make install
 ```
 ```
