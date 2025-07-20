@@ -10,6 +10,14 @@ rm /usr/lib/libwasmvm.x86_64.so
 wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v2.1.2/libwasmvm.x86_64.so
 sudo ldconfig
 ```
+```
+mkdir -p $HOME/.medasdigital/cosmovisor/genesis/bin
+cp $HOME/go/bin/medasdigitald $HOME/.medasdigital/cosmovisor/genesis/bin/
+```
+```
+ln -s $HOME/.medasdigital/cosmovisor/genesis $HOME/.medasdigital/cosmovisor/current -f
+sudo ln -s $HOME/.medasdigital/cosmovisor/current/bin/medasdigitald /usr/local/bin/medasdigital -f
+```
 ### Init
 ```
 medasdigitald init Vinjan.Inc --chain-id medasdigital-2
@@ -25,6 +33,13 @@ sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:236
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:23658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:23657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:23060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:23656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":23660\"%" $HOME/.medasdigital/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:23317\"%; s%^address = \"localhost:9090\"%address = \"localhost:23090\"%" $HOME/.medasdigital/config/app.toml
 ```
+```
+PORT=123
+sed -i -e "s|^chain-id *=.*|chain-id = \"medasdigital-2\"|" $HOME/.medasdigital/config/client.toml
+sed -i -e "s%:26657%:${PORT}57%" $HOME/.medasdigital/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.medasdigital/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.medasdigital/config/app.toml
+```
 ### Genesis
 ```
 wget -O $HOME/.medasdigital/config/genesis.json https://raw.githubusercontent.com/oxygene76/medasdigital-2/refs/heads/main/genesis/mainnet/config/genesis.json
@@ -36,7 +51,7 @@ wget -O $HOME/.medasdigital/config/addrbook.json https://raw.githubusercontent.c
 
 ### PEER
 ```
-peers="51ca3b0a3663af88566b32ecfd77948e55000bcc@88.205.101.195:26656,90be2e9f0a279372d2931e38f15025db9a847dbd@88.205.101.196:26656,0e567c9efe6e6d15f9b3257679398368c2ab04bb@88.205.101.197:26656,669d1b9f9c4bb99df594abaee4b13ae1b14d37a6@64.251.18.192:26656,cbfcd111ee19483dbbfed0919ac0d23119c5f0fe@67.207.180.166:26656"
+peers="0de13488933f37ced3ede6d78c4b9cabc845fbe5@65.21.234.111:23656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.medasdigital/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025umedas\"|" $HOME/.medasdigital/config/app.toml
 ```
@@ -45,7 +60,6 @@ sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025umedas\"|" $HO
 sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
--e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
 $HOME/.medasdigital/config/app.toml
 ```
@@ -66,6 +80,25 @@ Restart=always
 RestartSec=3
 LimitNOFILE=65535
 
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+```
+sudo tee /etc/systemd/system/medasdigitald.service > /dev/null << EOF
+[Unit]
+Description=medasdigital
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.medasdigital"
+Environment="DAEMON_NAME=medasdigitald"
+Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.medasdigital/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -138,6 +171,10 @@ medasdigitald tx distribution withdraw-rewards $(medasdigitald keys show wallet 
 ### Stake
 ```
 medasdigitald tx staking delegate $(medasdigitald keys show wallet --bech val -a) 1000000umedas --from wallet --chain-id medasdigital-2 --gas-adjustment 1.5 --gas-prices 0.025umedas  --gas auto
+```
+### Own
+```
+echo $(medasdigitald tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.medasdigital/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
 
 ### Delete
