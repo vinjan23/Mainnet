@@ -160,15 +160,15 @@ kopid tx staking edit-validator \
 ```
 ### Unjail
 ```
-kopid tx slashing unjail --from wallet --chain-id luwak-1 --gas auto --gas-adjustment=1.5 --gas=auto --gas-prices=0.001ukopi
+kopid tx slashing unjail --from wallet --chain-id luwak-1 --gas auto --gas-adjustment=1.5 --gas=auto --gas-prices=0.01ukopi
 ```  
 ### Wd
 ```
-kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) --commission --from wallet --chain-id luwak-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.001ukopi
+kopid tx distribution withdraw-rewards $(kopid keys show wallet --bech val -a) --commission --from wallet --chain-id luwak-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.01ukopi
 ```
 ### Delegate
 ```
-kopid tx staking delegate $(kopid keys show wallet --bech val -a) 1000000ukopi --from wallet --chain-id luwak-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.001ukopi
+kopid tx staking delegate $(kopid keys show wallet --bech val -a) 1000000ukopi --from wallet --chain-id luwak-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.01ukopi
 ```
 ### Vote
 ```
