@@ -22,7 +22,7 @@ make install
 ```
 ```
 mkdir -p $HOME/.realio-network/cosmovisor/genesis/bin
-cp  $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/genesis/bin/
+cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/genesis/bin/
 ```
 ```
 ln -s $HOME/.realio-network/cosmovisor/genesis $HOME/.realio-network/cosmovisor/current -f
@@ -34,7 +34,7 @@ cd $HOME
 rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout 56b67f7df66267cbbcbbcac8e71c4e2dc3d30f91
+git checkout v1.3.1
 make install
 ```
 
@@ -46,7 +46,7 @@ cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.1
 sudo systemctl stop realio-networkd
 ls -l $HOME/.realio-network/cosmovisor/current
 rm $HOME/.realio-network/cosmovisor/current
-ln -s $HOME/.realio-network/cosmovisor/upgrades/v1.3.1 $HOME/.realio-network/cosmovisor/current/bin/realio-networkd
+ln -s $HOME/.realio-network/cosmovisor/upgrades/v1.3.1 $HOME/.realio-network/cosmovisor/current
 ```
 
 
@@ -60,7 +60,7 @@ make build
 ```
 ```
 mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin
-mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin/
+mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.1/bin/
 rm -rf build
 ```
 ```
