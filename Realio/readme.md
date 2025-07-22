@@ -40,7 +40,7 @@ make install
 
 ```
 mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.3.1/bin
-cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.1/bin/
+cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin/
 ```
 ```
 sudo systemctl stop realio-networkd
@@ -48,7 +48,6 @@ ls -l $HOME/.realio-network/cosmovisor/current
 rm $HOME/.realio-network/cosmovisor/current
 ln -s $HOME/.realio-network/cosmovisor/upgrades/v1.3.1 $HOME/.realio-network/cosmovisor/current
 ```
-
 
 ```
 cd $HOME
