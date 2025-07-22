@@ -314,7 +314,7 @@ curl -sS http://localhost:22657/net_info | jq -r '.result.peers[] | "\(.node_inf
 ```
 ### Vote
 ```
-realio-networkd tx gov vote 14 yes --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+realio-networkd tx gov vote 22 yes --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
 ```
 ### Deposit
 ```
