@@ -137,23 +137,6 @@ sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.realio-network/config/config.t
 
 ### Service
 ```
-sudo tee /etc/systemd/system/realio-networkd.service > /dev/null <<EOF
-[Unit]
-Description=realio
-After=network-online.target
-
-[Service]
-User=$USER
-ExecStart=$(which realio-networkd) start
-Restart=always
-RestartSec=3
-LimitNOFILE=65535
-
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-```
 sudo tee /etc/systemd/system/realio-networkd.service > /dev/null << EOF
 [Unit]
 Description=realio-network
@@ -255,7 +238,7 @@ realio-networkd tx staking create-validator \
   -y
 ```
 ```
-realio-networkd tx bank send wallet realio1sw2n4v32puxcneg9kyz7z7v82mnad909p7g99s 50000000000000000ario --from wallet --chain-id realionetwork_3301-1 --gas-prices 30000000000ario --gas 1000000 -y 
+realio-networkd tx bank send wallet realio1zdq2ql5gua8mda627t5p3870c4xvykr6n47qvd 5150000000000000000ario --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario -y 
 ```
 
 ### Edit
@@ -272,17 +255,17 @@ realio-networkd tx staking edit-validator \
 
 ### Unjail
 ```
-realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
 ```
 
 ### Delegate
 ```
-realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech val -a) 470000000000000000almx --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech val -a) 470000000000000000almx --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
 ```
 
 ### Withdraw with comission
 ```
-realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000000000ario
+realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
 ```
 
 ### Stop
