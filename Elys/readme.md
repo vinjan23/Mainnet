@@ -76,7 +76,11 @@ make install
 ```
 cp -a $HOME/go/bin/elysd $HOME/.elys/cosmovisor/upgrades/v6.4/bin/
 ```
-
+```
+ls -l $HOME/.elys/cosmovisor/current
+rm $HOME/.elys/cosmovisor/current
+ln -s $HOME/.elys/cosmovisor/upgrades/v6.4 $HOME/.elys/cosmovisor/current
+```
 ### Init
 ```
 elysd init Vinjan.Inc --chain-id elys-1
