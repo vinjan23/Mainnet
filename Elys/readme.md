@@ -66,12 +66,11 @@ elysd version --long | grep -e commit -e version
 ```
 ```
 sudo systemctl stop elysd
+rm -rf elys
 git clone https://github.com/elys-network/elys.git
 cd elys
-git fetch
-git checkout fix/v1.3.0-patch-2
-git pull origin fix/v1.3.0-patch-2
-git tag -f v1.3.0
+git fetch --tag
+git checkout v6.4.1
 make install
 ```
 ### Init
