@@ -73,6 +73,10 @@ git fetch --tag
 git checkout v6.4.1
 make install
 ```
+```
+cp -a $HOME/go/bin/elysd $HOME/.elys/cosmovisor/upgrades/v6.4/bin/
+```
+
 ### Init
 ```
 elysd init Vinjan.Inc --chain-id elys-1
