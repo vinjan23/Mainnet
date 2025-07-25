@@ -136,13 +136,26 @@ tacchaind tx staking create-validator $HOME/.tacchaind/validator.json \
 --gas-adjustment=1.2 \
 --gas=auto
 ```
+### Edit
+```
+tacchaind tx staking edit-validator \
+--new-moniker="Fees 1% | Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--from=wallet \
+--chain-id=tacchain_239-1 \
+--commission-rate=0.01 \
+--gas-prices=4000000000000utac \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+
 ### WD
 ```
-tacchaind tx distribution withdraw-rewards $(tacchaind keys show wallet --bech val -a) --commission --from wallet --chain-id tacchain_239-1 --gas-prices=4000000000000utac --gas-adjustment=1.2 --gas=auto
+tacchaind tx distribution withdraw-rewards $(tacchaind keys show wallet --bech val -a) --commission --from wallet --chain-id tacchain_239-1 --gas-prices=4000000000000utac --gas-adjustment=1.5 --gas=auto
 ```
 ### Delegate
 ```
-tacchaind tx staking delegate $(tacchaind keys show wallet --bech val -a) 1000000000000000000utac --from wallet --chain-id tacchain_239-1 --gas-prices=4000000000000utac --gas-adjustment=1.2 --gas=auto
+tacchaind tx staking delegate $(tacchaind keys show wallet --bech val -a) 1000000000000000000utac --from wallet --chain-id tacchain_239-1 --gas-prices=4000000000000utac --gas-adjustment=1.5 --gas=auto
 ```
 ### Own Peer
 ```
