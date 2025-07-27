@@ -130,6 +130,16 @@ arkeod tx staking create-validator $HOME/.arkeo/validator.json \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
+```
+arkeod tx staking edit-validator \
+--new-moniker "1% | Vinjan.Inc" \
+--identity 7C66E36EA2B71F68 \
+--from wallet \
+--chain-id arkeo-main-v1 \
+--gas-prices=0.01uarkeo \
+--gas-adjustment=1.5 \
+--gas=auto
+```
 ### Delegate
 ```
 arkeod tx staking delegate $(arkeod keys show wallet --bech val -a) 1000000uarkeo --from wallet --chain-id arkeo-main-v1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.01uarkeo
