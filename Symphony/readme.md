@@ -15,6 +15,22 @@ cp $HOME/go/bin/symphonyd $HOME/.symphonyd/cosmovisor/genesis/bin/
 sudo ln -s $HOME/.symphonyd/cosmovisor/genesis $HOME/.symphonyd/cosmovisor/current -f
 sudo ln -s $HOME/.symphonyd/cosmovisor/current/bin/symphonyd /usr/local/bin/symphonyd -f
 ```
+### Upgrade
+```
+cd $HOME
+rm -rf symphony
+git clone https://github.com/Orchestra-Labs/symphony.git
+cd symphony
+git checkout v1.0.4
+make build
+```
+```
+mkdir -p $HOME/.symphonyd/cosmovisor/upgrades/v28/bin
+cp build/symphonyd $HOME/.symphonyd/cosmovisor/upgrades/v28/bin/
+```
+```
+$HOME/.symphonyd/cosmovisor/upgrades/v28/bin/symphonyd version --long | grep -e commit -e version
+```
 ```
 symphonyd version --long | grep -e commit -e version
 ```
