@@ -255,17 +255,17 @@ realio-networkd tx staking edit-validator \
 
 ### Unjail
 ```
-realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
+realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 5000000000ario
 ```
 
 ### Delegate
 ```
-realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech val -a) 470000000000000000almx --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
+realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech val -a) 470000000000000000almx --from wallet --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario
 ```
 
 ### Withdraw with comission
 ```
-realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
+realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario
 ```
 
 ### Stop
