@@ -116,6 +116,33 @@ echo $(symphonyd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME
 ```
 798fd108b9a0e696bdacd6e7ea7a3fe20c11eafd@65.21.234.111:26656
 ```
+### Edit Validator
+```
+symphonyd tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id=symphony-1 \
+--from=wallet \
+--commission-rate=0.15 \
+--gas-adjustment 1.5 \
+--gas-prices 0.0025note \
+--gas auto
+```
+### WD Commission
+```
+symphonyd tx distribution withdraw-rewards $(symphonyd keys show wallet --bech val -a) --commission --from wallet --chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto
+```
+### Stake
+```
+symphonyd tx staking delegate $(symphonyd keys show wallet --bech val -a) 1000000note --from wallet --chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto
+```
+### Transfer
+```
+symphonyd tx bank send wallet <TO_WALLET_ADDRESS> 1000000note --from wallet ---chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto
+```
+
 ### Snapshot
 ```
 sudo systemctl stop symphonyd
