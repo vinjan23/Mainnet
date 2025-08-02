@@ -158,7 +158,7 @@ hippod tx staking edit-validator \
 ```
 ### Delegate
 ```
-hippod tx staking delegate $(hippod keys show wallet --bech val -a) 1000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.2 --gas-prices=5000000000000ahp --gas=auto
+hippod tx staking delegate $(hippod keys show wallet --bech val -a) 1000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.2 --gas-prices=5000000000000ahp --gas=auto
 ```
 ### WD Comission
 ```
@@ -170,7 +170,7 @@ echo $(hippod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.h
 ```
 ### Vote
 ```
-hippod tx gov vote 5 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+hippod tx gov vote 9 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
 ```
 ### Delete
 ```
