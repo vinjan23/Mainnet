@@ -59,7 +59,7 @@ seeds="2a13b793b60db04677911f58e12d80854dd49c49@65.21.234.111:21656"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.symphonyd/config/config.toml
 ```
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025note\"/" $HOME/.symphonyd/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025note\"/" $HOME/.symphonyd/config/app.toml
 ```
 ### Prunning
 ```
