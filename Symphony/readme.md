@@ -82,7 +82,7 @@ Description=symphony
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which cosmovisor) run start --reject-config-defaults true
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=10000
@@ -95,6 +95,7 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 ```
+
 ### Start
 ```
 sudo systemctl daemon-reload
