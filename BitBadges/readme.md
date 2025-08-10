@@ -9,7 +9,7 @@ cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
 ```
 ```
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin
-cp -a $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin/
+cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin/
 ```
 ```
 sudo ln -s $HOME/.bitbadgeschain/cosmovisor/genesis $HOME/.bitbadgeschain/cosmovisor/current -f
