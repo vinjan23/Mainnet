@@ -206,7 +206,7 @@ atomoned tx staking delegate $(atomoned keys show wallet --bech val -a) 1000000u
 ```
 ### WD Commission
 ```
-atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.1uphoton""
+atomoned tx distribution withdraw-rewards $(atomoned keys show wallet --bech val -a) --commission --from wallet --chain-id atomone-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.1uphoton"
 ```
 ### Vote
 ```
