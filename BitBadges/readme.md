@@ -7,7 +7,7 @@ chmod +x $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
 ```
 ```
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin
-cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin/
+cp $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin/
 ```
 ```
 sudo ln -s $HOME/.bitbadgeschain/cosmovisor/genesis $HOME/.bitbadgeschain/cosmovisor/current -f
