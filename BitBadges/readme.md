@@ -1,17 +1,9 @@
 ### Binary
 ```
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v11/bitbadgeschain-linux-amd64
-mv bitbadgeschain-linux-amd64 $HOME/go/bin/bitbadgeschaind
-chmod +x $HOME/go/bin/bitbadgeschaind
-```
-```
+cd $HOME
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
 wget https://github.com/BitBadges/bitbadgeschain/releases/download/v11/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
 chmod +x $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
-```
-```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
-cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
 ```
 ```
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin
@@ -43,15 +35,26 @@ $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind version --long
 ```
 bitbadgeschaind version --long | grep -e commit -e version
 ```
+### Init
 ```
 bitbadgeschaind init Vinjan.Inc --chain-id bitbadges-1
 ```
+### Genesis
+```
+curl -L https://snap.vinjan.xyz/bitbadges/genesis.json > $HOME/.bitbadgeschain/config/genesis.json
+```
+### Addrbook
+```
+curl -L https://snap.vinjan.xyz/bitbadges/addrbook.json > $HOME/.bitbadgeschain/config/addrbook.json
+```
+### Port
 ```
 PORT=135
 sed -i -e "s%:26657%:${PORT}57%" $HOME/.bitbadgeschain/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.bitbadgeschain/config/config.toml
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.bitbadgeschain/config/app.toml
 ```
+### Prunning
 ```
 sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
@@ -60,12 +63,15 @@ sed -i \
 -e 's|^pruning-interval *=.*|pruning-interval = "10"|' \
 $HOME/.bitbadgeschain/config/app.toml
 ```
+### Gas
 ```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025ubadge\"/" $HOME/.bitbadgeschain/config/app.toml
 ```
+### Indexer
 ```
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.bitbadgeschain/config/config.toml
 ```
+### Service
 ```
 sudo tee /etc/systemd/system/bitbadgeschaind.service > /dev/null << EOF
 [Unit]
@@ -85,21 +91,26 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 WantedBy=multi-user.target
 EOF
 ```
+### Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable bitbadgeschaind
 sudo systemctl restart bitbadgeschaind
 sudo journalctl -u bitbadgeschaind -f -o cat
 ```
+### Sync
 ```
 bitbadgeschaind status 2>&1 | jq .sync_info
 ```
+### Wallet
 ```
 bitbadgeschaind keys add wallet
 ```
+### Balances
 ```
 bitbadgeschaind  q bank balances $(bitbadgeschaind keys show wallet -a)
 ```
+### Validator
 ```
 bitbadgeschaind tendermint show-validator
 ```
@@ -128,5 +139,23 @@ bitbadgeschaind tx staking create-validator $HOME/.bitbadgeschain/validator.json
 --gas-prices=0.025ubadge \
 --gas-adjustment=1.2 \
 --gas=auto
+```
+### WD 
+```
+bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025ubadge"
+```
+### Stake
+```
+bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025ubadge"
+```
+
+### Delete
+```
+sudo systemctl stop bitbadgeschaind
+sudo systemctl disable bitbadgeschaind
+sudo rm /etc/systemd/system/bitbadgeschaind.service
+sudo systemctl daemon-reload
+rm -rf $(which bitbadgeschaind)
+rm -rf .bitbadgeschain
 ```
 
