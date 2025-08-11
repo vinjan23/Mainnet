@@ -6,6 +6,11 @@ chmod +x $HOME/go/bin/bitbadgeschaind
 ```
 ```
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v11/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
+```
+```
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
 cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
 ```
 ```
@@ -25,6 +30,12 @@ chmod +x $HOME/go/bin/bitbadgeschaind
 ```
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin
 mv $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/
+```
+```
+cd $HOME
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v12/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind
 ```
 ```
 $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind version --long | grep -e commit -e version
