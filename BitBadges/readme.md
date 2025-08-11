@@ -1,3 +1,4 @@
+### Binary
 ```
 wget https://github.com/BitBadges/bitbadgeschain/releases/download/v11/bitbadgeschain-linux-amd64
 mv bitbadgeschain-linux-amd64 $HOME/go/bin/bitbadgeschaind
@@ -14,6 +15,19 @@ cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bi
 ```
 sudo ln -s $HOME/.bitbadgeschain/cosmovisor/genesis $HOME/.bitbadgeschain/cosmovisor/current -f
 sudo ln -s $HOME/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/local/bin/bitbadgeschaind -f
+```
+### Upgrade
+```
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v12/bitbadgeschain-linux-amd64
+mv bitbadgeschain-linux-amd64 $HOME/go/bin/bitbadgeschaind
+chmod +x $HOME/go/bin/bitbadgeschaind
+```
+```
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin
+mv $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/
+```
+```
+$HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind version --long | grep -e commit -e version
 ```
 ```
 bitbadgeschaind version --long | grep -e commit -e version
