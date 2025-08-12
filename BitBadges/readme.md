@@ -136,17 +136,17 @@ nano $HOME/.bitbadgeschain/validator.json
 bitbadgeschaind tx staking create-validator $HOME/.bitbadgeschain/validator.json \
 --from wallet \
 --chain-id bitbadges-1 \
---gas-prices=0.025ubadge \
+--gas-prices=0.00025ubadge \
 --gas-adjustment=1.2 \
 --gas=auto
 ```
 ### WD 
 ```
-bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025ubadge"
+bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.00025ubadge"
 ```
 ### Stake
 ```
-bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.025ubadge"
+bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.00025ubadge"
 ```
 
 ### Delete
