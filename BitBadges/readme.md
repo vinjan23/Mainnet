@@ -140,6 +140,17 @@ bitbadgeschaind tx staking create-validator $HOME/.bitbadgeschain/validator.json
 --gas-adjustment=1.2 \
 --gas=auto
 ```
+```
+bitbadgeschaind tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68 " \
+--website="https://service.vinjan.xyz" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id=bitbadges-1 \
+--commission-rate="0.1" \
+--from=wallet \
+--fees 750000ubadge
+```
 ### WD 
 ```
 bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.00025ubadge"
