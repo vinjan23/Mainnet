@@ -139,11 +139,10 @@ tacchaind tx staking create-validator $HOME/.tacchaind/validator.json \
 ### Edit
 ```
 tacchaind tx staking edit-validator \
---new-moniker="Fees 1% | Vinjan.Inc" \
---identity="7C66E36EA2B71F68" \
+--new-moniker="Shuttingdown | please redelegate" \
+--identity="" \
 --from=wallet \
 --chain-id=tacchain_239-1 \
---commission-rate=0.01 \
 --gas-prices=4000000000000utac \
 --gas-adjustment=1.5 \
 --gas=auto
