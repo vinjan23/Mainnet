@@ -143,7 +143,10 @@ symphonyd tx staking delegate $(symphonyd keys show wallet --bech val -a) 100000
 ```
 symphonyd tx bank send wallet <TO_WALLET_ADDRESS> 1000000note --from wallet ---chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto
 ```
-
+### vote
+```
+symphonyd tx gov vote 2 yes --from wallet --chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto
+```
 ### Snapshot
 ```
 sudo systemctl stop symphonyd
