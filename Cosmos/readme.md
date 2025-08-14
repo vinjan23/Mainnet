@@ -1,22 +1,11 @@
-### GO
-```
-ver="1.22.6"
-cd $HOME
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-rm "go$ver.linux-amd64.tar.gz"
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-go version
-```
+
 ### Binary Build
 ```
 cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v23.1.1
+git checkout v25.1.0
 make build
 ```
 ### Cosmovisor
@@ -35,7 +24,7 @@ cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v23.1.1
+git checkout v25.1.0
 make install
 ```
 ```
@@ -52,12 +41,12 @@ cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v23.1.1
+git checkout v25.1.0
 make build
 ```
 ```
-mkdir -p $HOME/.gaia/cosmovisor/upgrades/v23/bin
-mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v23/bin/
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v25.1.0/bin
+mv build/gaiad $HOME/.gaia/cosmovisor/upgrades/v25.1.0/bin/
 rm -rf build
 ```
 ```
@@ -65,25 +54,25 @@ cd $HOME
 rm -rf gaia
 git clone https://github.com/cosmos/gaia.git
 cd gaia
-git checkout v23.1.1
+git checkout v25.1.0
 make install
 ```
 ```
-mkdir -p $HOME/.gaia/cosmovisor/upgrades/v23.1.1/bin
-cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v23.1.1/bin/
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v25.1.0/bin
+cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v25.1.0/bin/
 ```
 ```
 ls -l $HOME/.gaia/cosmovisor/current
 rm $HOME/.gaia/cosmovisor/current
-ln -s $HOME/.gaia/cosmovisor/upgrades/v23.1.1 $HOME/.gaia/cosmovisor/current
+ln -s $HOME/.gaia/cosmovisor/upgrades/v25.1.0 $HOME/.gaia/cosmovisor/current
 ```
 ```
-mkdir -p $HOME/.gaia/cosmovisor/upgrades/v23/bin
+mkdir -p $HOME/.gaia/cosmovisor/upgrades/v25.1.0/bin
 cp $HOME/go/bin/gaiad $HOME/.gaia/cosmovisor/upgrades/v23/bin/
 ```
 ### Cek version
 ```
-$HOME/.gaia/cosmovisor/upgrades/v23.1.1/bin/gaiad version --long | grep -e commit -e version
+$HOME/.gaia/cosmovisor/upgrades/v25.1.0/bin/gaiad version --long | grep -e commit -e version
 ```
 `cc8fa2b`
 
