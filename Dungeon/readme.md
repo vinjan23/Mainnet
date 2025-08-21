@@ -30,12 +30,12 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.dungeonchain/config/
 
 ### Genesis
 ```
-
+curl -L https://snapshot.vinjan.xyz./dungeon/genesis.json > $HOME/.dungeonchain/config/genesis.json
 ```
 
 ### Addrbook
 ```
-
+curl -L https://snapshot.vinjan.xyz./dungeon/addrbook.json > $HOME/.dungeonchain/config/addrbook.json
 ```
 
 ### Seed Peer Gas
@@ -89,132 +89,90 @@ sudo systemctl enable dungeond
 sudo systemctl restart dungeond
 sudo journalctl -u dungeond -f -o cat
 ```
-
+```
+sudo systemctl stop dungeond
+cp $HOME/.dungeonchain/data/priv_validator_state.json $HOME/.dungeonchain/priv_validator_state.json.backup
+dungeond tendermint unsafe-reset-all --home $HOME/.dungeonchain --keep-addr-book
+curl -L https://snapshot.vinjan.xyz./dungeon/latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.dungeonchain
+mv $HOME/.dungeonchain/priv_validator_state.json.backup $HOME/.dungeonchain/data/priv_validator_state.json
+sudo systemctl restart dungeond
+sudo journalctl -u dungeond -f -o cat
+```
 ### Sync
 ```
 dungeond status 2>&1 | jq .sync_info
 ```
-### Log
-```
-sudo journalctl -u empowerd -f -o cat
-```
 
 ### Wallet
 ```
-empowerd keys add wallet
-```
-### Recover
-```
-empowerd keys add wallet --recover
+dungeond keys add wallet
 ```
 
 ### Balances
 ```
-empowerd q bank balances $(empowerd keys show wallet -a)
+dungeond q bank balances $(dungeond keys show wallet -a)
 ```
 
 ### Validator
 ```
-empowerd tx staking create-validator \
---amount 1000000umpwr \
---chain-id empowerchain-1 \
---commission-max-change-rate 0.1 \
---commission-max-rate 0.2 \
---commission-rate 0.05 \
---min-self-delegation "1" \
---moniker "vinjan" \
---details="🎉Proffesional Stake & Node Validator🎉" \
---website "https://service.vinjan.xyz" \
---security-contact="<validator-security-contact>" \
---identity="7C66E36EA2B71F68" \
---from wallet \
---pubkey=$(empowerd tendermint show-validator) \
---gas-adjustment=1.5 \
---gas=auto 
-```
+dungeond tendermint show-validator
+nano /root/.dungeonchain/validator.json
 
-### Edit
+{
+  "pubkey": ,
+  "amount": "100000000udgn",
+  "moniker": "",
+  "identity": "",
+  "website": "",
+  "security": "",
+  "details": "",
+  "commission-rate": "0.05",
+  "commission-max-rate": "0.5",
+  "commission-max-change-rate": "0.5",
+  "min-self-delegation": "1"
+}
 ```
-empowerd tx staking edit-validator \
---new-moniker ""  \
---chain-id empowerchain-1 \
---details "" \
---identity "" \
---from "" \
---gas-prices 0.025umpwr
 ```
-### Unjail
-```
-empowerd tx slashing unjail --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
-```
-### Jail reason
-```
-empowerd query slashing signing-info $(empowerd tendermint show-validator)
+dungeond tx staking create-validator $HOME/.dungeonchain/validator.json \
+--from wallet \
+--chain-id dungeon-1 \
+--gas-prices=0.01udgn \
+--gas-adjustment=1.5 \
+--gas=auto
 ```
 
 ### Delegate
 ```
-empowerd tx staking delegate $(empowerd keys show wallet --bech val -a) 900000umpwr --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
-```
-### Delegate to Another Validator
-```
-empowerd tx staking redelegate $(empowerd keys show wallet --bech val -a) <TO_VALOPER_ADDRESS> 1000000umpwr --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
-```
-
-### Withdraw
-```
-empowerd tx distribution withdraw-all-rewards --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+dungeond tx staking delegate $(dungeond keys show wallet --bech val -a) 900000udgn --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
 ```
 ### Withdraw with Commission
 ```
-empowerd tx distribution withdraw-rewards $(empowerd keys show wallet --bech val -a) --commission --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
-```
-
-### Transfer
-```
-empowerd tx bank send wallet <TO_WALLET_ADDRESS> 1000000umpwr --from wallet --chain-id empowerchain-1
+dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val -a) --commission --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
 ```
 
 ### Vote 
 ```
-empowerd tx gov vote 1 yes --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+dungeond tx gov vote 1 yes --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
 ```
 
 ### Check Matches
 ```
-[[ $(empowerd q staking validator $(empowerd keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(empowerd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+[[ $(dungeond q staking validator $(dungeond keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(dungeond status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
 ### Own Peer
 ```
-echo $(empowerd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.empowerd/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
-```
-
-### Stop
-```
-sudo systemctl stop empowerd
-```
-### Restart
-```
-sudo systemctl restart empowerd
-```
-### Node Info
-```
-empowerd status 2>&1 | jq .NodeInfo
-```
-### Validator Info
-```
-empowerd status 2>&1 | jq .ValidatorInfo
+echo $(dungeond tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.dungeonchain/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
 
 ### Delete
 ```
-sudo systemctl stop empowerd
-sudo systemctl disable empowerd
-sudo rm /etc/systemd/system/empowerd.service
+sudo systemctl stop dungeond
+sudo systemctl disable dungeond
+sudo rm /etc/systemd/system/dungeond.service
 sudo systemctl daemon-reload
-rm -f $(which empowerd)
-rm -rf $HOME/.empowerchain
-rm -rf $HOME/empowerchain
+rm -f $(which dungeond)
+rm -rf $HOME/.dungeonchain
+rm -rf $HOME/dungeonchain
 ```
 
 
