@@ -40,9 +40,7 @@ curl -L https://snapshot.vinjan.xyz./dungeon/addrbook.json > $HOME/.dungeonchain
 
 ### Seed Peer Gas
 ```
-peers="f174206d6b3dbc2dd17cdd884bdfc6ad37268a09@67.218.8.88:26665,5545dc6fa6537ce464a49593bac02258fd963e57@67.218.8.88:26665,cd2311ffdae014daff80c343c26a393e714c7973@172.31.23.120:26656"
-sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.dungeonchain/config/config.toml
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0udgn\"|" $HOME/.dungeonchain/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.05udgn\"|" $HOME/.dungeonchain/config/app.toml
 ```
 
 
