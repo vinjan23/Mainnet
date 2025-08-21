@@ -85,17 +85,15 @@ User=$USER
 ExecStart=$(which cosmovisor) run start --reject-config-defaults true
 Restart=on-failure
 RestartSec=3
-LimitNOFILE=10000
-Environment="DAEMON_NAME=symphonyd"
+LimitNOFILE=65535
 Environment="DAEMON_HOME=$HOME/.symphonyd"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
+Environment="DAEMON_NAME=symphonyd"
 Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.symphonyd/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
 ```
-
 ### Start
 ```
 sudo systemctl daemon-reload
