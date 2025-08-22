@@ -38,7 +38,7 @@ curl -L https://snapshot.vinjan.xyz./dungeon/genesis.json > $HOME/.dungeonchain/
 curl -L https://snapshot.vinjan.xyz./dungeon/addrbook.json > $HOME/.dungeonchain/config/addrbook.json
 ```
 
-### Seed Peer Gas
+###  Gas Prices
 ```
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.05udgn\"|" $HOME/.dungeonchain/config/app.toml
 ```
@@ -50,7 +50,7 @@ sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
 $HOME/.dungeonchain/config/app.toml
 ```
 
