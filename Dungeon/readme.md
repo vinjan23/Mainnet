@@ -30,12 +30,12 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.dungeonchain/config/
 
 ### Genesis
 ```
-curl -L https://snapshot.vinjan.xyz./dungeon/genesis.json > $HOME/.dungeonchain/config/genesis.json
+curl -L https://snap.vinjan.xyz./dungeon/genesis.json > $HOME/.dungeonchain/config/genesis.json
 ```
 
 ### Addrbook
 ```
-curl -L https://snapshot.vinjan.xyz./dungeon/addrbook.json > $HOME/.dungeonchain/config/addrbook.json
+curl -L https://snap.vinjan.xyz./dungeon/addrbook.json > $HOME/.dungeonchain/config/addrbook.json
 ```
 
 ###  Gas Prices
@@ -50,7 +50,7 @@ sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
 $HOME/.dungeonchain/config/app.toml
 ```
 
@@ -91,7 +91,7 @@ sudo journalctl -u dungeond -f -o cat
 sudo systemctl stop dungeond
 cp $HOME/.dungeonchain/data/priv_validator_state.json $HOME/.dungeonchain/priv_validator_state.json.backup
 dungeond tendermint unsafe-reset-all --home $HOME/.dungeonchain --keep-addr-book
-curl -L https://snapshot.vinjan.xyz./dungeon/latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.dungeonchain
+curl -L https://snap.vinjan.xyz./dungeon/latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.dungeonchain
 mv $HOME/.dungeonchain/priv_validator_state.json.backup $HOME/.dungeonchain/data/priv_validator_state.json
 sudo systemctl restart dungeond
 sudo journalctl -u dungeond -f -o cat
@@ -134,23 +134,23 @@ nano /root/.dungeonchain/validator.json
 dungeond tx staking create-validator $HOME/.dungeonchain/validator.json \
 --from wallet \
 --chain-id dungeon-1 \
---gas-prices=0.01udgn \
+--gas-prices=0.05udgn \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
 
 ### Delegate
 ```
-dungeond tx staking delegate $(dungeond keys show wallet --bech val -a) 900000udgn --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+dungeond tx staking delegate $(dungeond keys show wallet --bech val -a) 900000udgn --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
 ```
 ### Withdraw with Commission
 ```
-dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val -a) --commission --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val -a) --commission --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
 ```
 
 ### Vote 
 ```
-dungeond tx gov vote 1 yes --from wallet --chain-id empowerchain-1 --gas-adjustment 1.5 --gas auto
+dungeond tx gov vote 1 yes --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
 ```
 
 ### Check Matches
