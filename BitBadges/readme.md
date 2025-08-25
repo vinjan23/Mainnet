@@ -142,14 +142,13 @@ bitbadgeschaind tx staking create-validator $HOME/.bitbadgeschain/validator.json
 ```
 ```
 bitbadgeschaind tx staking edit-validator \
---new-moniker="Vinjan.Inc" \
+--new-moniker="Vinjan.Inc | REStake" \
 --identity="7C66E36EA2B71F68 " \
 --website="https://service.vinjan.xyz" \
 --details="Staking Provider-IBC Relayer" \
 --chain-id=bitbadges-1 \
---commission-rate="0.1" \
 --from=wallet \
---fees 750000ubadge
+--fees 700000ubadge
 ```
 ### WD 
 ```
