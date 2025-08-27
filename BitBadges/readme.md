@@ -15,22 +15,13 @@ sudo ln -s $HOME/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/loc
 ```
 ### Upgrade
 ```
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v12/bitbadgeschain-linux-amd64
-mv bitbadgeschain-linux-amd64 $HOME/go/bin/bitbadgeschaind
-chmod +x $HOME/go/bin/bitbadgeschaind
-```
-```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin
-mv $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/
-```
-```
 cd $HOME
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v12/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
 ```
 ```
-$HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/bitbadgeschaind version --long | grep -e commit -e version
+$HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind version --long | grep -e commit -e version
 ```
 ```
 bitbadgeschaind version --long | grep -e commit -e version
