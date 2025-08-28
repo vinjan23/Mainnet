@@ -21,7 +21,7 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadges
 chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
 ```
 ```
-$HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind version --long | grep -e commit -e version
+$HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind version
 ```
 ```
 bitbadgeschaind version --long | grep -e commit -e version
