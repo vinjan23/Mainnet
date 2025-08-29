@@ -1,9 +1,13 @@
 ### Binary
 ```
 cd $HOME
+mkdir -p $HOME/.bitbadgeschain
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v12/bitbadgeschain-linux-amd64 -O /usr/local/bin/bitbadgeschaind
+chmod +x /usr/local/bin/bitbadgeschaind
+```
+```
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v12/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
 ```
 ```
 cd $HOME
@@ -14,10 +18,7 @@ make build-linux/amd64
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
-```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
-cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
-```
+
 ```
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin
 cp $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/
@@ -29,9 +30,8 @@ sudo ln -s $HOME/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/loc
 ### Upgrade
 ```
 cd $HOME
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadgeschain-linux-amd64 -O /usr/local/bin/bitbadgeschaind
+chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
