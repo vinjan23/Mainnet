@@ -34,6 +34,20 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadges
 chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
 ```
 ```
+cd $HOME
+rm -rf bitbadgeschain
+git clone https://github.com/BitBadges/bitbadgeschain.git
+cd bitbadgeschain
+git checkout v13
+make build-linux/amd64
+cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
+```
+```
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
+```
+```
 $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind version
 ```
 ```
@@ -154,6 +168,10 @@ bitbadgeschaind tx staking edit-validator \
 --from=wallet \
 --fees 700000ubadge
 ```
+```
+bitbadgeschaind tx slashing unjail --from wallet --chain-id bitbadges-1 --fees 75000ubadge
+```
+
 ### WD 
 ```
 bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.00025ubadge"
