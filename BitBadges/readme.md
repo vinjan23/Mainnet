@@ -2,12 +2,25 @@
 ```
 cd $HOME
 mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v11/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v12/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
 chmod +x $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin
-cp $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v11/bin/
+cd $HOME
+git clone https://github.com/BitBadges/bitbadgeschain.git
+cd bitbadgeschain
+git checkout v12
+make build-linux/amd64
+cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
+chmod +x /usr/local/bin/bitbadgeschaind
+```
+```
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
+```
+```
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin
+cp $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v12/bin/
 ```
 ```
 sudo ln -s $HOME/.bitbadgeschain/cosmovisor/genesis $HOME/.bitbadgeschain/cosmovisor/current -f
@@ -51,12 +64,12 @@ sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "10"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
 $HOME/.bitbadgeschain/config/app.toml
 ```
 ### Gas
 ```
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025ubadge\"/" $HOME/.bitbadgeschain/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025ubadge\"/" $HOME/.bitbadgeschain/config/app.toml
 ```
 ### Indexer
 ```
