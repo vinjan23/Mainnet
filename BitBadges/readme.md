@@ -34,6 +34,11 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadges
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
+```
+```
 cd $HOME
 rm -rf bitbadgeschain
 git clone https://github.com/BitBadges/bitbadgeschain.git
