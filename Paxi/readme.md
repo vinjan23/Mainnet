@@ -3,68 +3,53 @@ cd $HOME
 rm -rf paxi
 git clone https://github.com/paxi-web3/paxi.git
 cd paxi
-git checkout latest-main
+git checkout v1.0.5
 make install
 ```
 ```
-cp $HOME/paxid/paxid $HOME/go/bin
+paxid init Vinjan.Inc --chain-id paxi-mainnet
 ```
 ```
-rm /usr/lib/libwasmvm.x86_64.so
-wget -P /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v2.2.1/libwasmvm.x86_64.so
-sudo ldconfig
+sed -i -e "s%:26657%:16657%"  ~/go/bin/paxi/config/client.toml
+sed -i -e "s%:26658%:16658%; s%:26657%:16657%; s%:6060%:16660%; s%:26656%:16656%; s%:26660%:16661%"  ~/go/bin/paxi/config/config.toml
+sed -i -e "s%:1317%:16617%; s%:9090%:16690%" ~/go/bin/paxi/config/app.toml
 ```
 ```
-mkdir -p $HOME/.paxi/cosmovisor/genesis/bin
-cp $HOME/paxid/paxid $HOME/.paxi/cosmovisor/genesis/bin/
+curl -Ls https://file2.node39.top/Mainnet/Paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
 ```
 ```
-sudo ln -s $HOME/.paxi/cosmovisor/genesis $HOME/.paxi/cosmovisor/current -f
-sudo ln -s $HOME/.paxi/cosmovisor/current/bin/paxid /usr/local/bin/paxid -f
+curl -Ls https://snapshot-t.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
 ```
 ```
-paxid init Vinjan.Inc --chain-id paxi-mainnet --home $HOME/.paxi
+curl -Ls https://file2.node39.top/Mainnet/Paxi/addrbook.json > ~/go/bin/paxi/config/addrbook.json
 ```
 ```
-PORT=166
-sed -i -e "s%:26657%:${PORT}657%" $HOME/.paxi/config/client.toml
-sed -i -e "s%:26658%:${PORT}658%; s%:26657%:${PORT}657%; s%:6060%:${PORT}060%; s%:26656%:${PORT}656%; s%:26660%:${PORT}661%" $HOME/.paxi/config/config.toml
-sed -i -e "s%:1317%:${PORT}317%; s%:9090%:${PORT}090%" $HOME/.paxi/config/app.toml
+curl -Ls https://snapshot-t.vinjan.xyz/paxi/addrbook.json >~/go/bin/paxi/config/addrbook.json
+```
+
+```
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.05upaxi\"/" ~/go/bin/paxi/config/app.toml
+
 ```
 ```
-wget -O $HOME/.paxi/config/genesis.json http://rpc.paxi.info/genesis? | jq -r .result.genesis
+sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/go/bin/paxi/config/app.toml 
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" ~/go/bin/paxi/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"20\"/" ~/go/bin/paxi/config/app.toml
 ```
 ```
-peers="d411fc096e0d946bbd2bdea34f0f9da928c1a714@139.99.68.32:26656,7299b10c0a1545f50c1911b188c579a5e8c5072f@139.99.68.235:26656,509b20ca82d34d0aae1751a681ee386659fb71da@66.70.181.55:26656,57b44498315f013558e342827f352db790d5d90c@142.44.142.121:26656,a325cced9b360c0e5fcbf756e0b1ca139b8f2eef@51.75.54.185:26656,9e64baa45042ae29d999f2677084c9579972722c@139.99.69.74:26656"
-sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.paxi/config/config.toml
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.05upaxi\"/" $HOME/.paxi/config/app.toml
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" ~/go/bin/paxi/config/config.toml
 ```
 ```
-sed -i \
--e 's|^pruning *=.*|pruning = "custom"|' \
--e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
--e 's|^pruning-keep-every *=.*|pruning-keep-every = ""|' \
--e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/.paxi/config/app.toml
-```
-```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.paxi/config/config.toml
-```
-```
-sudo tee /etc/systemd/system/paxid.service > /dev/null << EOF
+sudo tee /etc/systemd/system/paxid.service > /dev/null <<EOF
 [Unit]
 Description=paxi
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which paxid) start
 Restart=on-failure
-RestartSec=10
+RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.paxi"
-Environment="DAEMON_NAME=paxid"
-Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.paxi/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -75,7 +60,29 @@ sudo systemctl enable paxid
 sudo systemctl restart paxid
 sudo journalctl -u paxid -f -o cat
 ```
+```
+paxid status 2>&1 | jq .sync_info
+```
+```
+curl -L https://snapshot-t.vinjan.xyz/paxi/latest.tar.lz4  | lz4 -dc - | tar -xf - -C ~/go/bin/paxi
+```
+```
+sudo systemctl stop paxid 
+cp ~/go/bin/paxi/data/priv_validator_state.json ~/go/bin/paxi/priv_validator_state.json.backup
+paxid tendermint unsafe-reset-all ~/go/bin/paxi --keep-addr-book
 
+SNAP_RPC="https://mainnet-rpc.paxinet.io:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
+/^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
+/^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
+/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" ~/go/bin/paxi/config/config.toml
+
+mv ~/go/bin/paxi/priv_validator_state.json.backup ~/go/bin/paxi/data/priv_validator_state.json
+sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
+```
 ```
 sudo systemctl stop paxid
 sudo systemctl disable paxid
@@ -84,6 +91,6 @@ sudo systemctl daemon-reload
 rm -rf $(which paxid)
 rm -rf paxi
 rm -rf paxid
-rm -rf .paxi
+rm -rf  ~/go/bin/paxi
 ```
 
