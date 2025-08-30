@@ -12,9 +12,9 @@ cp ~/paxid/paxid ~/go/bin
 paxid init Vinjan.Inc --chain-id paxi-mainnet
 ```
 ```
-sed -i -e "s%:26657%:16657%"  ~/go/bin/paxi/config/client.toml
-sed -i -e "s%:26658%:16658%; s%:26657%:16657%; s%:6060%:16660%; s%:26656%:16656%; s%:26660%:16661%"  ~/go/bin/paxi/config/config.toml
-sed -i -e "s%:1317%:16617%; s%:9090%:16690%" ~/go/bin/paxi/config/app.toml
+sed -i -e "s%:26657%:11757%"  ~/go/bin/paxi/config/client.toml
+sed -i -e "s%:26658%:11758%; s%:26657%:11757%; s%:6060%:11760%; s%:26656%:11756%; s%:26660%:11761%"  ~/go/bin/paxi/config/config.toml
+sed -i -e "s%:1317%:11717%; s%:9090%:11790%" ~/go/bin/paxi/config/app.toml
 ```
 ```
 curl -Ls https://file2.node39.top/Mainnet/Paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
