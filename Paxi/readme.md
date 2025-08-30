@@ -86,6 +86,44 @@ mv ~/go/bin/paxi/priv_validator_state.json.backup ~/go/bin/paxi/data/priv_valida
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
 ```
 ```
+paxid q bank balances $(paxid keys show wallet -a)
+```
+```
+paxid tendermint show-validator
+```
+```
+nano ~/go/bin/paxi/validator.json
+```
+```
+{
+  "pubkey":  ,
+  "amount": "1000000upaxi",
+  "moniker": "",
+  "identity": "",
+  "website": "",
+  "security": "",
+  "details": ",
+  "commission-rate": "0.05",
+  "commission-max-rate": "0.2",
+  "commission-max-change-rate": "0.05",
+  "min-self-delegation": "1"
+}
+```
+```
+paxid tx staking create-validator ~/go/bin/paxi/validator.json \
+--from wallet \
+--chain-id paxi-mainnet \
+--gas-prices=0.05upaxi \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+```
+paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) --commission --from wallet --chain-id paxi-mainnet --gas-prices=0.05upaxi --gas-adjustment=1.5 --gas=auto
+```
+```
+paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi --from wallet --chain-id paxi-mainnet --gas-prices=0.05upaxi --gas-adjustment=1.5 --gas=auto
+```
+```
 sudo systemctl stop paxid
 sudo systemctl disable paxid
 rm /etc/systemd/system/paxid.service
