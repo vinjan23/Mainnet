@@ -71,7 +71,7 @@ curl -L https://snapshot-t.vinjan.xyz/paxi/latest.tar.lz4  | lz4 -dc - | tar -xf
 ```
 sudo systemctl stop paxid 
 cp ~/go/bin/paxi/data/priv_validator_state.json ~/go/bin/paxi/priv_validator_state.json.backup
-paxid tendermint unsafe-reset-all ~/go/bin/paxi --keep-addr-book
+paxid tendermint unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
 
 SNAP_RPC="https://mainnet-rpc.paxinet.io:443"
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
