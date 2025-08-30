@@ -1,10 +1,12 @@
 ```
 cd $HOME
-rm -rf paxi
 git clone https://github.com/paxi-web3/paxi.git
 cd paxi
 git checkout v1.0.5
 make install
+```
+```
+cp ~/paxid/paxid ~/go/bin
 ```
 ```
 paxid init Vinjan.Inc --chain-id paxi-mainnet
