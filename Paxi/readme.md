@@ -98,14 +98,14 @@ nano ~/go/bin/paxi/validator.json
 {
   "pubkey":  ,
   "amount": "1000000upaxi",
-  "moniker": "",
-  "identity": "",
-  "website": "",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://service.vinjan.xyz",
   "security": "",
-  "details": ",
-  "commission-rate": "0.05",
-  "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.05",
+  "details": "Staking Provider-IBC Relayer",
+  "commission-rate": "0.1",
+  "commission-max-rate": "1",
+  "commission-max-change-rate": "1",
   "min-self-delegation": "1"
 }
 ```
