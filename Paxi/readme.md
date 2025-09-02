@@ -16,15 +16,11 @@ sed -i -e "s%:26657%:11757%"  ~/go/bin/paxi/config/client.toml
 sed -i -e "s%:26658%:11758%; s%:26657%:11757%; s%:6060%:11760%; s%:26656%:11756%; s%:26660%:11761%"  ~/go/bin/paxi/config/config.toml
 sed -i -e "s%:1317%:11717%; s%:9090%:11790%" ~/go/bin/paxi/config/app.toml
 ```
-```
-curl -Ls https://file2.node39.top/Mainnet/Paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
-```
+
 ```
 curl -Ls https://snapshot-t.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
 ```
-```
-curl -Ls https://file2.node39.top/Mainnet/Paxi/addrbook.json > ~/go/bin/paxi/config/addrbook.json
-```
+
 ```
 curl -Ls https://snapshot-t.vinjan.xyz/paxi/addrbook.json >~/go/bin/paxi/config/addrbook.json
 ```
