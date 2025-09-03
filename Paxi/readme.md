@@ -131,6 +131,9 @@ paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) -
 paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi
 ```
 ```
+curl -sL https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Paxi/wasm |bash
+```
+```
 sudo systemctl stop paxid
 sudo systemctl disable paxid
 rm /etc/systemd/system/paxid.service
