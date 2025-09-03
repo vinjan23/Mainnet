@@ -114,10 +114,21 @@ paxid tx staking create-validator ~/go/bin/paxi/validator.json \
 --gas=auto
 ```
 ```
-paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) --commission --from wallet --chain-id paxi-mainnet --gas-prices=0.05upaxi --gas-adjustment=1.5 --gas=auto
+paxid tx staking edit-validator \
+--new-moniker "Vinjan.Inc" \
+--identity "7C66E36EA2B71F68" \
+--website "https://service.vinjan.xyz" \
+--details "Staking Provider-IBC Relayer" \
+--commission-rate "0.25" \
+--from wallet \
+--chain-id paxi-mainnet \
+--fees 10000upaxi
 ```
 ```
-paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi --from wallet --chain-id paxi-mainnet --gas-prices=0.05upaxi --gas-adjustment=1.5 --gas=auto
+paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) --commission --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+```
+```
+paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi
 ```
 ```
 sudo systemctl stop paxid
