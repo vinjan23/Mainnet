@@ -134,6 +134,9 @@ paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi -
 curl -sL https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Paxi/wasm |bash
 ```
 ```
+paxi tx bank send wallet <TO_WALLET_ADDRESS> 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+```
+```
 sudo systemctl stop paxid
 sudo systemctl disable paxid
 rm /etc/systemd/system/paxid.service
