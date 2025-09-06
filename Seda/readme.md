@@ -173,13 +173,16 @@ sedad tx staking create-validator validator.json \
 ### Edit
 ```
 sedad tx staking edit-validator \
---new-moniker="vinjan" \
+--new-moniker="shutting down | please redelegate" \
 --identity="7C66E36EA2B71F68" \
---details="Staking Provider-IBC Relayer" \
+--details="" \
 --website="" \
 --chain-id=seda-1 \
 --from=wallet \
---fees=2000000000000000aseda
+--gas-adjustment 1.5 \
+--gas auto \
+--gas-prices 10000000000aseda \
+-y
 ```
 
 ### Unjail
@@ -192,7 +195,7 @@ sedad tx staking delegate $(sedad keys show wallet --bech val -a) 10000000000000
 ```
 ### Withdraw Commission
 ```
-sedad tx distribution withdraw-rewards $(sedad keys show wallet --bech val -a) --commission --from wallet --chain-id seda-1 --gas auto --gas-prices 10000000000aseda -y
+sedad tx distribution withdraw-rewards $(sedad keys show wallet --bech val -a) --commission --from wallet --chain-id seda-1 --gas-adjustment 1.5 --gas auto --gas-prices 10000000000aseda -y
 ```
 ### Withdraw
 ```
