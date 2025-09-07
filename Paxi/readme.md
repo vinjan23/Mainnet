@@ -133,8 +133,13 @@ paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi -
 ```
 curl -sL https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Paxi/wasm |bash
 ```
+### Vote
 ```
-paxi tx bank send wallet <TO_WALLET_ADDRESS> 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+paxid tx gov vote 7 yes --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+```
+
+```
+paxid tx bank send wallet <TO_WALLET_ADDRESS> 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi
 ```
 ```
 sudo systemctl stop paxid
