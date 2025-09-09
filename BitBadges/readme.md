@@ -43,14 +43,14 @@ cd $HOME
 rm -rf bitbadgeschain
 git clone https://github.com/BitBadges/bitbadgeschain.git
 cd bitbadgeschain
-git checkout v13
+git checkout v14
 make build-linux/amd64
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin
-cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/bitbadgeschaind
 ```
 ```
 $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/bitbadgeschaind version
