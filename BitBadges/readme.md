@@ -13,7 +13,7 @@ cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
 cd $HOME
 git clone https://github.com/BitBadges/bitbadgeschain.git
 cd bitbadgeschain
-git checkout v12
+git checkout v13
 make build-linux/amd64
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 chmod +x /usr/local/bin/bitbadgeschaind
