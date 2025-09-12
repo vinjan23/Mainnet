@@ -6,6 +6,15 @@ git checkout v1.0.5
 make install
 ```
 ```
+cd $HOME
+rm -rf paxi
+rm -rf paxid
+git clone https://github.com/paxi-web3/paxi.git
+cd paxi
+git checkout v1.0.6
+make install
+```
+```
 cp ~/paxid/paxid ~/go/bin
 ```
 ```
