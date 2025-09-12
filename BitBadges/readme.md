@@ -194,5 +194,6 @@ sudo rm /etc/systemd/system/bitbadgeschaind.service
 sudo systemctl daemon-reload
 rm -rf $(which bitbadgeschaind)
 rm -rf .bitbadgeschain
+rm -rf bitbadgeschain
 ```
 
