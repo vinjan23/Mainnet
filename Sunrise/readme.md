@@ -15,6 +15,10 @@ cp $HOME/go/bin/sunrised $HOME/.sunrise/cosmovisor/genesis/bin
 sudo ln -s $HOME/.sunrise/cosmovisor/genesis $HOME/.sunrise/cosmovisor/current -f
 sudo ln -s $HOME/.sunrise/cosmovisor/current/bin/sunrised /usr/local/bin/sunrised -f
 ```
+```
+mkdir -p $HOME/.sunrise/cosmovisor/upgrades/v1.1.0/bin
+cp $HOME/go/bin/sunrised $HOME/.sunrise/cosmovisor/upgrades/v1.1.0/bin/
+```
 ### Init
 ```
 sunrised init Vinjan.Inc --chain-id sunrise-1
