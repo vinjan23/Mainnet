@@ -15,7 +15,16 @@ git checkout v1.0.6
 make install
 ```
 ```
+sudo systemctl stop paxid
+```
+```
 cp ~/paxid/paxid ~/go/bin
+```
+```
+sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
+```
+```
+paxid version
 ```
 ```
 paxid init Vinjan.Inc --chain-id paxi-mainnet
