@@ -4,7 +4,7 @@ cd $HOME
 rm -rf sunrise
 git clone https://github.com/sunriselayer/sunrise.git
 cd sunrise
-git checkout v1.0.0
+git checkout v1.1.0
 make install
 ```
 ```
