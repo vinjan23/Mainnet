@@ -118,7 +118,19 @@ nano /root/.sunrise/validator.json
 ```
 ```
 sunrised tx staking create-validator $HOME/.sunrise/validator.json \
-    --from=wallet \
-    --chain-id sunrise-1 \
-    --fees 20
+--from=wallet \
+--chain-id sunrise-1 \
+--fees 1000uusdrise \
+--gas auto
+```
+```
+sunrised tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id=sunrise-1 \
+--from=wallet \
+--fees 1000uusdrise \
+--gas auto
 ```
