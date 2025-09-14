@@ -39,7 +39,7 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.sunrise/config/app.t
 ```
 ### Gas
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0\"/" $HOME/.sunrise/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"1000uusdrise\"/" $HOME/.sunrise/config/app.toml
 ```
 ### Prunning
 ```
