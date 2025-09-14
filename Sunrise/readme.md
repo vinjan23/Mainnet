@@ -129,8 +129,24 @@ sunrised tx staking edit-validator \
 --identity="7C66E36EA2B71F68" \
 --website="https://service.vinjan.xyz" \
 --details="Staking Provider-IBC Relayer" \
+--commission-rate=0.06 \
 --chain-id=sunrise-1 \
 --from=wallet \
 --fees 1000uusdrise \
 --gas auto
+```
+```
+sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
+```
+```
+sunrised tx staking delegate $(sunrised keys show wallet --bech val -a) 1000000uvrise --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
+```
+```
+sudo systemctl stop sunrised
+sudo systemctl disable sunrised
+sudo rm /etc/systemd/system/sunrised.service
+sudo systemctl daemon-reload
+rm -f $(which sunrised)
+rm -rf .symphonyd
+rm -rf symphony
 ```
