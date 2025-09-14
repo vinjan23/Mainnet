@@ -2,7 +2,7 @@
 cd $HOME
 git clone https://github.com/paxi-web3/paxi.git
 cd paxi
-git checkout v1.0.5
+git checkout v1.0.6
 make install
 ```
 ```
@@ -40,17 +40,19 @@ curl -Ls https://snapshot-t.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/
 ```
 
 ```
-curl -Ls https://snapshot-t.vinjan.xyz/paxi/addrbook.json >~/go/bin/paxi/config/addrbook.json
+curl -Ls https://snapshot-t.vinjan.xyz/paxi/addrbook.json > ~/go/bin/paxi/config/addrbook.json
 ```
 
 ```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.05upaxi\"/" ~/go/bin/paxi/config/app.toml
-
 ```
 ```
-sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" ~/go/bin/paxi/config/app.toml 
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/" ~/go/bin/paxi/config/app.toml
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"20\"/" ~/go/bin/paxi/config/app.toml
+sed -i \
+  -e 's|^pruning *=.*|pruning = "custom"|' \
+  -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
+  -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
+  -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
+  $HOME/go/bin/paxi/config/app.toml
 ```
 ```
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" ~/go/bin/paxi/config/config.toml
@@ -70,6 +72,7 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
+
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable paxid
