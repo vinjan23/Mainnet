@@ -147,6 +147,6 @@ sudo systemctl disable sunrised
 sudo rm /etc/systemd/system/sunrised.service
 sudo systemctl daemon-reload
 rm -f $(which sunrised)
-rm -rf .symphonyd
-rm -rf symphony
+rm -rf .sunrise
+rm -rf sunrise
 ```
