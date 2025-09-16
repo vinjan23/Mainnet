@@ -27,7 +27,10 @@ pip install -r requirements.txt
 deactivate
 ```
 ```
-symphonyd tx oracle set-feeder symphony1h6897uqcuuv08p8qr55ql8y0j3zap8a2gjtsyu --from wallet --chain-id symphony-1 --fees 2500note
+symphonyd keys add feed --keyring-backend os
+```
+```
+symphonyd tx oracle set-feeder symphony199tk6umn543uqvvqsu6tx0w6ggswhl22845c5c --from wallet --chain-id symphony-1 --fees 2500note
 ```
 ```
 sudo tee /etc/systemd/system/oracle.service > /dev/null << EOF
@@ -105,6 +108,9 @@ CHAIN_ID=symphony-1
 # =============================================================================
 # KEY MANAGEMENT
 # =============================================================================
+
+# Key backend: "test" for testing, "file" for production with docker
+KEY_BACKEND=test
 
 # Key password - only required when using "os" backend
 KEY_PASSWORD=vinjan23
