@@ -46,10 +46,10 @@ wget -O $HOME/.lumera/config/genesis.json https://raw.githubusercontent.com/Lume
 ```
 ### Port
 ```
-PORT=17
-sed -i -e "s%:26657%:${PORT}657%" $HOME/.lumera/config/client.toml
-sed -i -e "s%:26658%:${PORT}658%; s%:26657%:${PORT}657%; s%:6060%:${PORT}060%; s%:26656%:${PORT}656%; s%:26660%:${PORT}660%" $HOME/.lumera/config/config.toml
-sed -i -e "s%:1317%:${PORT}317%; s%:9090%:${PORT}090%" $HOME/.lumera/config/app.toml
+PORT=177
+sed -i -e "s%:26657%:${PORT}57%" $HOME/.lumera/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.lumera/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.lumera/config/app.toml
 ```
 
 ### Gas Price
