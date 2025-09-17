@@ -126,9 +126,9 @@ nano $HOME/.lumera/validator.json
   "website": "https://service.vinjan.xyz",
   "security": "",
   "details": "Staking Provider-IBC Relayer",
-  "commission-rate": "0.05",
-  "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.01",
+  "commission-rate": "0.01",
+  "commission-max-rate": "1",
+  "commission-max-change-rate": "1",
   "min-self-delegation": "1"
 }
 ```
