@@ -30,27 +30,27 @@ sudo ln -s $HOME/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/loc
 ### Upgrade
 ```
 cd $HOME
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadgeschain-linux-amd64 -O /usr/local/bin/bitbadgeschaind
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v15/bitbadgeschain-linux-amd64 -O /usr/local/bin/bitbadgeschaind
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v14/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v15/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
 rm -rf bitbadgeschain
 git clone https://github.com/BitBadges/bitbadgeschain.git
 cd bitbadgeschain
-git checkout v14
-make build-linux/amd64 VERSION=v14
+git checkout v15
+make build-linux/amd64 VERSION=v15
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin
-cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin/
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin/bitbadgeschaind
 ```
 ```
 $HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/bitbadgeschaind version
