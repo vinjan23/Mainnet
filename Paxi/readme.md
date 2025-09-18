@@ -130,7 +130,7 @@ nano ~/go/bin/paxi/validator.json
 paxid tx staking create-validator ~/go/bin/paxi/validator.json \
 --from wallet \
 --chain-id paxi-mainnet \
---gas-prices=0.05upaxi \
+--gas-prices=0.005upaxi \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
