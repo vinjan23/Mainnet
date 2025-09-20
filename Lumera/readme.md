@@ -140,6 +140,19 @@ lumerad tx staking create-validator $HOME/.lumera/validator.json \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
+```
+lumerad tx distribution withdraw-rewards $(lumerad keys show wallet --bech val -a) --commission --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume
+```
+```
+lumerad tx staking delegate $(lumerad keys show wallet --bech val -a) 10000000ulume --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume
+```
+```
+lumerad tx gov vote 2 yes --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume
+```
+```
+echo $(lumerad tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.lumera/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+
 ### Delete
 ```
 sudo systemctl stop lumerad
