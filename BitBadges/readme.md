@@ -53,7 +53,7 @@ cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/
 chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin/bitbadgeschaind
 ```
 ```
-$HOME/.bitbadgeschain/cosmovisor/upgrades/v14/bin/bitbadgeschaind version
+$HOME/.bitbadgeschain/cosmovisor/upgrades/v15/bin/bitbadgeschaind version
 ```
 ```
 bitbadgeschaind version --long | grep -e commit -e version
