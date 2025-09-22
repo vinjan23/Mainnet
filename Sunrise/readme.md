@@ -15,9 +15,18 @@ cp $HOME/go/bin/sunrised $HOME/.sunrise/cosmovisor/genesis/bin
 sudo ln -s $HOME/.sunrise/cosmovisor/genesis $HOME/.sunrise/cosmovisor/current -f
 sudo ln -s $HOME/.sunrise/cosmovisor/current/bin/sunrised /usr/local/bin/sunrised -f
 ```
+### Upgrade
 ```
-mkdir -p $HOME/.sunrise/cosmovisor/upgrades/v1.1.0/bin
-cp $HOME/go/bin/sunrised $HOME/.sunrise/cosmovisor/upgrades/v1.1.0/bin/
+cd $HOME
+rm -rf sunrise
+git clone https://github.com/sunriselayer/sunrise.git
+cd sunrise
+git checkout v1.2.0
+make install
+```
+```
+mkdir -p $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin
+cp -a $HOME/go/bin/sunrised $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin/
 ```
 ### Init
 ```
@@ -135,11 +144,17 @@ sunrised tx staking edit-validator \
 --fees 1000uusdrise \
 --gas auto
 ```
+### WD
 ```
 sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
 ```
+### Stake
 ```
 sunrised tx staking delegate $(sunrised keys show wallet --bech val -a) 1000000uvrise --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
+```
+### Vote
+```
+sunrised tx gov vote 14 yes --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
 ```
 ```
 sudo systemctl stop sunrised
