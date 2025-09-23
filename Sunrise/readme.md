@@ -28,6 +28,12 @@ make install
 mkdir -p $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin
 cp -a $HOME/go/bin/sunrised $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin/
 ```
+```
+$HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin/sunrised version --long | grep -e commit -e version
+```
+```
+sunrised version --long | grep -e commit -e version
+```
 ### Init
 ```
 sunrised init Vinjan.Inc --chain-id sunrise-1
