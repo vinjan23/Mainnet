@@ -148,13 +148,21 @@ sunrised tx staking edit-validator \
 ```
 sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
 ```
+```
+sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --gas 200000 --gas-prices 0.002uusdrise
+```
 ### Stake
 ```
 sunrised tx staking delegate $(sunrised keys show wallet --bech val -a) 1000000uvrise --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
 ```
+### Send
 ```
 sunrised tx bank send wallet <TO_WALLET_ADDRESS> 500000uusdrise --from wallet ---chain-id sunrise-1 --fees 10000uusdrise --gas auto
 ```
+```
+sunrised tx bank send wallet sunrise1ak359erq6xq8v8c8k8pg5yprfl0e0s6n4wp9mr 100000uusdrise --from wallet --chain-id sunrise-1 --gas 200000 --gas-prices 0.002uusdrise
+```
+
 ### Vote
 ```
 sunrised tx gov vote 14 yes --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
