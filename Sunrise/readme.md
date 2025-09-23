@@ -152,6 +152,9 @@ sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val
 ```
 sunrised tx staking delegate $(sunrised keys show wallet --bech val -a) 1000000uvrise --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
 ```
+```
+sunrised tx bank send wallet <TO_WALLET_ADDRESS> 500000uusdrise --from wallet ---chain-id sunrise-1 --fees 10000uusdrise --gas auto
+```
 ### Vote
 ```
 sunrised tx gov vote 14 yes --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
