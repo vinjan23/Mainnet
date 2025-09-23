@@ -145,6 +145,18 @@ decentrd tx staking create-validator -y \
   --gas-adjustment="1.4" \
   --fees 250udec
 ```
+```
+decentrd tx staking edit-validator \
+--new-moniker "Vinjan.Inc" \
+--identity "7C66E36EA2B71F68" \
+--website "https://service.vinjan.xyz" \
+--details "Staking Provider & IBC Relayer" \
+--chain-id mainnet-3 \
+--from wallet \
+--gas auto \
+--gas-adjustment="1.4" \
+--fees 250udec
+```  
 ### Unjail  
 ```
 decentrd tx slashing unjail --from wallet --chain-id mainnet-3 --gas-adjustment="1.4" --gas auto --fees 250udec -y
