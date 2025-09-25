@@ -144,22 +144,22 @@ sunrised tx staking edit-validator \
 --identity="7C66E36EA2B71F68" \
 --website="https://service.vinjan.xyz" \
 --details="Staking Provider-IBC Relayer" \
---commission-rate=0.06 \
+--commission-rate=0.07 \
 --chain-id=sunrise-1 \
 --from=wallet \
---fees 1000uusdrise \
---gas auto
+--gas-prices 0.002uusdrise \
+--gas 400000
 ```
 ### WD
 ```
 sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
 ```
 ```
-sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --gas 200000 --gas-prices 0.002uusdrise
+sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --gas 400000 --gas-prices 0.002uusdrise
 ```
 ### Stake
 ```
-sunrised tx staking delegate $(sunrised keys show wallet --bech val -a) 1000000uvrise --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
+sunrised tx staking delegate $(sunrised keys show wallet --bech val -a) 1000000uvrise --from wallet --chain-id sunrise-1 -gas 400000 --gas-prices 0.002uusdrise
 ```
 ### Send
 ```
