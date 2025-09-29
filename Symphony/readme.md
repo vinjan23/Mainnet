@@ -168,6 +168,9 @@ curl -L https://snapshot.vinjan.xyz/symphony/addrbook.json > $HOME/.symphonyd/co
 ```
 du -h /var/www/snap/symphony/latest.tar.lz4|cut -f1
 ```
+```
+grep  minimum-gas-prices /root/.symphonyd/config/app.toml
+```
 
 ### Delete
 ```
