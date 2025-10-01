@@ -34,19 +34,13 @@ cd $HOME
 rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v1.3.1
+git checkout v1.4.0
 make install
 ```
 
 ```
-mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.3.1/bin
-cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin/
-```
-```
-sudo systemctl stop realio-networkd
-ls -l $HOME/.realio-network/cosmovisor/current
-rm $HOME/.realio-network/cosmovisor/current
-ln -s $HOME/.realio-network/cosmovisor/upgrades/v1.3.1 $HOME/.realio-network/cosmovisor/current
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin
+cp -a $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin/
 ```
 
 ```
@@ -54,19 +48,19 @@ cd $HOME
 rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v1.3.1
+git checkout v1.4.0
 make build
 ```
 ```
-mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.3.0/bin
-mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.3.1/bin/
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin
+mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin/
 rm -rf build
 ```
 ```
 realio-networkd version --long | grep -e commit -e version
 ```
 ```
-$HOME/.realio-network/cosmovisor/upgrades/v1.3.1/bin/realio-networkd version --long | grep -e commit -e version
+$HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin/realio-networkd version --long | grep -e commit -e version
 ```
 ```
 sudo systemctl restart realio-networkd
