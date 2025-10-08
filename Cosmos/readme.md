@@ -147,7 +147,7 @@ gaiad status 2>&1 | jq .sync_info
 ```
 ### Send
 ```
-gaiad tx bank send ibc-cosmos2 cosmos1tslfpzjggk9sw05klppef93t7mmmappeylghch 1000000uatom --from=ibc-cosmos2 --chain-id=cosmoshub-4 --gas-adjustment=1.5 --gas=auto --gas-prices=0.005uatom --gas auto
+gaiad tx bank send ibc-cosmos2 cosmos1tslfpzjggk9sw05klppef93t7mmmappeylghch 1000000uatom --from=ibc-cosmos2 --chain-id=cosmoshub-4 --gas-adjustment=1.5 --gas=auto --gas-prices=0.005uatom --gas auto --node https://cosmos-rpc.polkachu.com
 ```
 ### Delete
 ```
