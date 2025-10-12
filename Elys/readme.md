@@ -224,18 +224,10 @@ elysd tx distribution withdraw-rewards $(elysd keys show wallet --bech val -a) -
 sudo systemctl stop elysd
 cp $HOME/.elys/data/priv_validator_state.json $HOME/.elys/priv_validator_state.json.backup
 elysd tendermint unsafe-reset-all --home $HOME/.elys --keep-addr-book
-SNAP_RPC="https://elys-rpc.polkachu.com:443"
-SYNC_PEER="2b8417ec0e27025a10b494a71b92349e5e38487c@65.109.115.172:22056"
-LATEST_HEIGHT=$(curl -s $SYNC_RPC/block | jq -r .result.block.header.height)
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
-TRUST_HASH=$(curl -s "$SYNC_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-sed -i \
--e "s|^enable *=.*|enable = true|" \
--e "s|^rpc_servers *=.*|rpc_servers = \"$SYNC_RPC,$SYNC_RPC\"|" \
--e "s|^trust_height *=.*|trust_height = $BLOCK_HEIGHT|" \
--e "s|^trust_hash *=.*|trust_hash = \"$TRUST_HASH\"|" \
--e "s|^persistent_peers *=.*|persistent_peers = \"$SYNC_PEER\"|" \
-$HOME/.elys/config/config.toml
+
+wget https://tools.highstakes.ch/files/elys-mainnet/data_2025-10-12-01.tar.gz
+tar -xvf data_2025-10-12-01.tar.gz  -C ~/.elys
+
 mv $HOME/.elys/priv_validator_state.json.backup $HOME/.elys/data/priv_validator_state.json
 sudo systemctl restart elysd && sudo journalctl -u elysd -f -o cat
 ```
