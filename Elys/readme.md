@@ -224,10 +224,10 @@ elysd tx distribution withdraw-rewards $(elysd keys show wallet --bech val -a) -
 sudo systemctl stop elysd
 cp $HOME/.elys/data/priv_validator_state.json $HOME/.elys/priv_validator_state.json.backup
 elysd tendermint unsafe-reset-all --home $HOME/.elys --keep-addr-book
-
-wget https://tools.highstakes.ch/files/elys-mainnet/data_2025-10-12-01.tar.gz
-tar -xvf data_2025-10-12-01.tar.gz  -C ~/.elys
-
+```
+wget https://tools.highstakes.ch/files/elys-mainnet/data_2025-10-14-01.tar.gz
+tar -xvf data_2025-10-14-01.tar.gz  -C ~/.elys
+```
 mv $HOME/.elys/priv_validator_state.json.backup $HOME/.elys/data/priv_validator_state.json
 sudo systemctl restart elysd && sudo journalctl -u elysd -f -o cat
 ```
