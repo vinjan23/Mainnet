@@ -24,21 +24,21 @@ cd $HOME
 rm -rf noble
 git clone https://github.com/noble-assets/noble.git
 cd noble
-git checkout v10.1.0
+git checkout v10.1.2
 make install
 ```
 ```
-mkdir -p $HOME/.noble/cosmovisor/upgrades/v10.1.0/bin
-cp -a $HOME/go/bin/nobled $HOME/.noble/cosmovisor/upgrades/v10.1.0/bin/
+mkdir -p $HOME/.noble/cosmovisor/upgrades/v10.1.2/bin
+cp -a $HOME/go/bin/nobled $HOME/.noble/cosmovisor/upgrades/v10.1.2/bin/
 ```
 ```
 ls -l $HOME/.noble/cosmovisor/current
 rm $HOME/.noble/cosmovisor/current
-ln -s $HOME/.noble/cosmovisor/upgrades/v10.1.0 $HOME/.noble/cosmovisor/current
+ln -s $HOME/.noble/cosmovisor/upgrades/v10.1.2 $HOME/.noble/cosmovisor/current
 ```
 ### Cek version
 ```
-$HOME/.noble/cosmovisor/upgrades/v10.1.0/bin/nobled version --long | grep -e commit -e version
+$HOME/.noble/cosmovisor/upgrades/v10.1.2/bin/nobled version --long | grep -e commit -e version
 ```
 ```
 nobled version --long | grep -e commit -e version
