@@ -135,12 +135,15 @@ User=$USER
 ExecStart=$(which cosmovisor) run start
 Restart=on-failure
 RestartSec=3
-LimitNOFILE=10000
+LimitNOFILE=65535
 Environment="DAEMON_NAME=elysd"
 Environment="DAEMON_HOME=$HOME/.elys"
-Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.elys/cosmovisor/current/bin"
+[Install]
+WantedBy=multi-user.target
+EOF
+
 [Install]
 WantedBy=multi-user.target
 EOF
