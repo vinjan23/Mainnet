@@ -86,23 +86,6 @@ paxid status 2>&1 | jq .sync_info
 curl -L https://snapshot-t.vinjan.xyz/paxi/latest.tar.lz4  | lz4 -dc - | tar -xf - -C ~/go/bin/paxi
 ```
 ```
-sudo systemctl stop paxid 
-cp ~/go/bin/paxi/data/priv_validator_state.json ~/go/bin/paxi/priv_validator_state.json.backup
-paxid tendermint unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
-
-SNAP_RPC="https://mainnet-rpc.paxinet.io:443"
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
-/^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
-/^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
-/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" ~/go/bin/paxi/config/config.toml
-
-mv ~/go/bin/paxi/priv_validator_state.json.backup ~/go/bin/paxi/data/priv_validator_state.json
-sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
-```
-```
 paxid q bank balances $(paxid keys show wallet -a)
 ```
 ```
@@ -158,7 +141,38 @@ curl -sL https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Paxi
 ```
 paxid tx gov vote 7 yes --from wallet --chain-id paxi-mainnet --fees 10000upaxi
 ```
-
+```
+sudo systemctl stop paxid 
+cp ~/go/bin/paxi/data/priv_validator_state.json ~/go/bin/paxi/priv_validator_state.json.backup
+paxid tendermint unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
+SNAP_RPC="https://mainnet-rpc.paxinet.io:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
+/^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
+/^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
+/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" ~/go/bin/paxi/config/config.toml
+mv ~/go/bin/paxi/priv_validator_state.json.backup ~/go/bin/paxi/data/priv_validator_state.json
+sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
+```
+```
+SYNC_RPC="https://rpc-paxi.vinjan.xyz:443"
+SYNC_PEER="8d2ed1dbbeab90c7f68234f49cf42a5164c621f5@65.21.234.111:11756"
+LATEST_HEIGHT=$(curl -s $SYNC_RPC/block | jq -r .result.block.header.height)
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
+TRUST_HASH=$(curl -s "$SYNC_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i \
+-e "s|^enable *=.*|enable = true|" \
+-e "s|^rpc_servers *=.*|rpc_servers = \"$SYNC_RPC,$SYNC_RPC\"|" \
+-e "s|^trust_height *=.*|trust_height = $BLOCK_HEIGHT|" \
+-e "s|^trust_hash *=.*|trust_hash = \"$TRUST_HASH\"|" \
+-e "s|^persistent_peers *=.*|persistent_peers = \"$SYNC_PEER\"|" \
+$HOME/go/bin/paxi/config/config.toml
+```
+```
+echo $(paxid tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/go/bin/paxi/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
 ```
 paxid tx bank send wallet <TO_WALLET_ADDRESS> 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi
 ```
