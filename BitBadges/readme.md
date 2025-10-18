@@ -185,7 +185,10 @@ bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wal
 ```
 bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.0025ubadge"
 ```
-
+### Vote
+```
+bitbadgeschaind tx gov vote 22 yes --from wallet --chain-id bitbadges-1 --fees 5000ubadge
+```
 ### Delete
 ```
 sudo systemctl stop bitbadgeschaind
