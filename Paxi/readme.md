@@ -157,6 +157,9 @@ mv ~/go/bin/paxi/priv_validator_state.json.backup ~/go/bin/paxi/data/priv_valida
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
 ```
 ```
+sudo systemctl stop paxid 
+cp ~/go/bin/paxi/data/priv_validator_state.json ~/go/bin/paxi/priv_validator_state.json.backup
+paxid tendermint unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
 SYNC_RPC="https://rpc-paxi.vinjan.xyz:443"
 SYNC_PEER="8d2ed1dbbeab90c7f68234f49cf42a5164c621f5@65.21.234.111:11756"
 LATEST_HEIGHT=$(curl -s $SYNC_RPC/block | jq -r .result.block.header.height)
@@ -169,6 +172,8 @@ sed -i \
 -e "s|^trust_hash *=.*|trust_hash = \"$TRUST_HASH\"|" \
 -e "s|^persistent_peers *=.*|persistent_peers = \"$SYNC_PEER\"|" \
 $HOME/go/bin/paxi/config/config.toml
+mv ~/go/bin/paxi/priv_validator_state.json.backup ~/go/bin/paxi/data/priv_validator_state.json
+sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
 ```
 ```
 echo $(paxid tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/go/bin/paxi/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
