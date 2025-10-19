@@ -176,7 +176,21 @@ medasdigitald tx staking delegate $(medasdigitald keys show wallet --bech val -a
 ```
 echo $(medasdigitald tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.medasdigital/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
-
+```
+sudo systemctl stop medasdigitald
+cp $HOME/.medasdigital/data/priv_validator_state.json $HOME/.medasdigital/priv_validator_state.json.backup
+medasdigitald tendermint unsafe-reset-all --home $HOME/.medasdigital --keep-addr-book
+SNAP_RPC="https://rpc-medas.vinjan.xyz:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
+/^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
+/^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
+/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" $HOME/.medasdigital/config/config.toml
+mv $HOME/.medasdigital/priv_validator_state.json.backup $HOME/.medasdigital/data/priv_validator_state.json
+sudo systemctl restart medasdigitald && sudo journalctl -u medasdigitald -fo cat
+```
 ### Delete
 ```
 sudo systemctl stop medasdigitald
