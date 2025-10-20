@@ -206,12 +206,13 @@ elysd tx staking create-validator $HOME/.elys/validator.json \
 elysd tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
---commission-rate="0.05" \
+--commission-rate="0.07" \
 --chain-id elys-1 \
 --from wallet \
 --gas auto \
 --gas-adjustment 1.2 \
---fees 250uelys
+--fees 2500uelys \
+--node https://rpc.elys.nodestake.org
 ```
 ### Vote
 ```
