@@ -51,3 +51,10 @@ sudo systemctl enable neutrond
 sudo systemctl restart neutrond
 sudo journalctl -u neutrond -f -o cat
 ```
+```
+neutrond status 2>&1 | jq .sync_info
+```
+```
+sudo systemctl stop neutrond
+neutrond tendermint unsafe-reset-all --home $HOME/.neutrond --keep-addr-book
+```
