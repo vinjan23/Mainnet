@@ -48,6 +48,8 @@ EOF
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable neutrond
+```
+```
 sudo systemctl restart neutrond
 sudo journalctl -u neutrond -f -o cat
 ```
