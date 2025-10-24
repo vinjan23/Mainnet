@@ -21,15 +21,15 @@ cd $HOME
 rm -rf symphony
 git clone https://github.com/Orchestra-Labs/symphony.git
 cd symphony
-git checkout v1.0.7
+git checkout v1.0.8
 make build
 ```
 ```
-mkdir -p $HOME/.symphonyd/cosmovisor/upgrades/v1.0.7/bin
-cp build/symphonyd $HOME/.symphonyd/cosmovisor/upgrades/v1.0.7/bin/
+mkdir -p $HOME/.symphonyd/cosmovisor/upgrades/v1.0.8/bin
+cp build/symphonyd $HOME/.symphonyd/cosmovisor/upgrades/v1.0.8/bin/
 ```
 ```
-$HOME/.symphonyd/cosmovisor/upgrades/v1.0.7/bin/symphonyd version --long | grep -e commit -e version
+$HOME/.symphonyd/cosmovisor/upgrades/v1.0.8/bin/symphonyd version --long | grep -e commit -e version
 ```
 ```
 symphonyd version --long | grep -e commit -e version
