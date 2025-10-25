@@ -70,12 +70,11 @@ atomoned config keyring-backend file
 ### Port
 ```
 PORT=15
-atomoned config node tcp://localhost:${PORT}657
+sed -i -e "s%:26657%:${PORT}657%" $HOME/.atomone/config/client.toml
+sed -i -e "s%:26658%:${PORT}658%; s%:26657%:${PORT}657%; s%:6060%:${PORT}060%; s%:26656%:${PORT}656%; s%:26660%:${PORT}661%" $HOME/.atomone/config/config.toml
+sed -i -e "s%:1317%:${PORT}317%; s%:8080%:${PORT}080%; s%:9090%:${PORT}090%; s%:9091%:${PORT}091%" $HOME/.atomone/config/app.toml
 ```
-```
-sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://0.0.0.0:${PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${PORT}660\"%" $HOME/.atomone/config/config.toml
-sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${PORT}317\"%; s%^address = \":8080\"%address = \":${PORT}080\"%; s%^address = \"localhost:9090\"%address = \"localhost:${PORT}090\"%; s%^address = \"localhost:9091\"%address = \"localhost:${PORT}091\"%" $HOME/.atomone/config/app.toml
-```
+
 ### Genesis
 ```
 wget -O $HOME/.atomone/config/genesis.json  https://atomone.fra1.digitaloceanspaces.com/genesis.json
@@ -87,13 +86,7 @@ wget -O $HOME/.atomone/config/addrbook.json https://raw.githubusercontent.com/vi
 
 ### Seed Peers
 ```
-seeds=""
-sed -i -e "s|^seeds *=.*|seeds = \"$seeds\"|" $HOME/.atomone/config/config.toml
-peers="522826623d65d27ef3f7db8a5259d003be5a93d3@65.108.229.19:26666,da165aaeac3adbc9845879e06f336c2668c5d915@65.21.214.84:9756,ca1d8ab2fdc1cbff4c8283ddbcc8fd53a7d9a254@65.21.215.167:26656,a31d85900f6562b3a8b275617359643a5607ed40@146.70.243.163:26656,2c02f0e92e00a7fdacdfafb1919b3424047b1701@45.87.107.24:27656,e726816f42831689eab9378d5d577f1d06d25716@169.155.46.27:26656,b90fcf4e43c0ff1f3c921698001828c93d6252e1@158.69.125.73:11256,35ecbcf9d8377ca2298cbe7a81eb57e520eb2154@152.53.33.96:26656,d3adcf9eee8665ee2d3108f721b3613cdd18c3a3@23.227.223.49:26656,9e6916423eaa4302127a0b7cb518ead4f8b98fd8@89.109.112.42:30656,e1b058e5cfa2b836ddaa496b10911da62dcf182e@164.152.161.227:26656,d4fedcd6918becd7804e7ccaad3d71237edfbb46@144.76.92.22:10656,0b209dd07b07e4754b8763a2cde80eb02a87bee5@65.109.97.51:26656,5ad3d484730844e66f15926c4fcc006c77b53ddd@88.99.137.151:26656,11024dd977b88f92432dd27bb671c8ab39caa511@65.21.15.238:27656,2ff3c369e3acdabbc371ee462cdf5c9d45a0c582@178.79.157.65:26656,4a89ad49b77cb751f02825f21b95c77b7bdb8e27@107.155.98.206:60856,e28ee47043a193f67fa9598a47a32494c5382a12@164.92.105.245:26656"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.atomone/config/config.toml
-```
-```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025uatone,0.225uphoton\"|" $HOME/.atomone/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.225uphoton\"|" $HOME/.atomone/config/app.toml
 ```
 
 ### Prunning
@@ -101,7 +94,7 @@ sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025uatone,0.225up
 pruning="custom"
 pruning_keep_recent="100"
 pruning_keep_every="0"
-pruning_interval="10"
+pruning_interval="20"
 sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.atomone/config/app.toml
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.atomone/config/app.toml
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.atomone/config/app.toml
