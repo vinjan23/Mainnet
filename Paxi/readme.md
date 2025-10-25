@@ -113,7 +113,7 @@ nano ~/go/bin/paxi/validator.json
 paxid tx staking create-validator ~/go/bin/paxi/validator.json \
 --from wallet \
 --chain-id paxi-mainnet \
---gas-prices=0.005upaxi \
+--gas-prices=0.05upaxi \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
@@ -140,6 +140,9 @@ curl -sL https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Paxi
 ### Vote
 ```
 paxid tx gov vote 7 yes --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+```
+```
+paxid tx staking unbond $(paxid keys show wallet --bech val -a) 1000000000upaxi --from wallet --chain-id paxi-mainnet --gas-prices=0.05upaxi --gas-adjustment=1.5 --gas=auto
 ```
 ```
 sudo systemctl stop paxid 
