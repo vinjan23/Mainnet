@@ -113,5 +113,15 @@ terrad tx staking edit-validator \
 --fees 200000000uluna \
 --gas=300000
 ```
+```
+sudo systemctl stop terrad
+sudo systemctl disable terrad
+sudo rm /etc/systemd/system/terrad.service
+sudo systemctl daemon-reload
+rm -f $(which terrad)
+rm -rf .terra
+rm -rf core
+```
+
 
 
