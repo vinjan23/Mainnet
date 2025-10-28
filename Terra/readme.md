@@ -101,3 +101,17 @@ terrad tx staking create-validator \
 --fees 200000000uluna \
 --gas=300000
 ```
+```
+terrad tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="Stake Provider & IBC Relayer" \
+--security-contact="vinjan.node@gmail.com" \
+--chain-id=columbus-5 \
+--from=wallet \
+--fees 200000000uluna \
+--gas=300000
+```
+
+
