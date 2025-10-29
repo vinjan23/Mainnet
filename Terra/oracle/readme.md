@@ -41,8 +41,8 @@ After=network.target
 Type=simple 
 User=root
 WorkingDirectory=/root/oracle-feeder/feeder
-ExecStart=npm start vote -- -ExecStart=/usr/bin/npm start vote -- --data-source-url http://localhost:8532/latest --lcd-url http://localhost:17517/ --chain-id columbus-5
---terraveloper address terravaloper1dtujf3q0m8zg2tprv37vhdvzha9n6jlmcgpl8c
+ExecStart=npm start vote -- --data-source-url http://localhost:8532/latest --lcd-url http://localhost:17517/ --chain-id columbus-5
+--validators terravaloper1dtujf3q0m8zg2tprv37vhdvzha9n6jlmcgpl8c
 -- password vinjan23
 Restart=on-abort
 [Install] 
@@ -63,9 +63,9 @@ After=network.target
 Type=simple 
 User=<username> 
 WorkingDirectory=/home/<username>/oracle-feeder/feeder 
-ExecStart=npm start vote -- -ExecStart=/usr/bin/npm start vote -- --data-source-url http://localhost:8532/latest --lcd-url http://localhost:1317/ --chain-id columbus-5
---terraveloper address
--- password
+ExecStart=npm start vote --data-source-url http://localhost:8532/latest --lcd-url http://localhost:1317/ --chain-id columbus-5
+--validators
+--password
 Restart=on=abort 
  [Install] 
 WantedBy=multi-user.target
