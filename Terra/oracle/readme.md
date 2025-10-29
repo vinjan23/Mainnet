@@ -40,10 +40,10 @@ After=network.target
 [Service] 
 Type=simple 
 User=root
-WorkingDirectory=/home/root/oracle-feeder/feeder
-ExecStart=npm start vote --data-source-url http://localhost:8532/latest --lcd-url http://localhost:17517/ --chain-id columbus-5
+WorkingDirectory=/root/oracle-feeder/feeder
+ExecStart=npm start vote --ExecStart=/usr/bin/npm start vote --data-source-url http://localhost:8532/latest --lcd-url https://api-terra.vinjan.xyz --chain-id columbus-5
 --validators terravaloper1dtujf3q0m8zg2tprv37vhdvzha9n6jlmcgpl8c
--- password vinjan23
+--password vinjan23
 Restart=on-abort
 [Install] 
 WantedBy=multi-user.target 
@@ -56,19 +56,12 @@ sudo systemctl restart price.service
 journalctl -u price.service -f
 ```
 ```
-sudo tee /etc/systemd/system/price.service > /dev/null << EOF
-[Unit] 
-Description=Price Daemon 
-After=network.target 
- [Service] 
-Type=simple 
-User=root
-WorkingDirectory=/home/root/oracle-feeder/price-server
-ExecStart=npm run start
-Restart=on=abort 
- [Install] 
-WantedBy=multi-user.target
-EOF
+npm start vote -- \
+   --data-source-url http://localhost:8532/latest \
+   --lcd-url https://api-terra.vinjan.xyz \
+   --chain-id columbus-5 \
+   --validators terravaloper1dtujf3q0m8zg2tprv37vhdvzha9n6jlmcgpl8c \
+   --password vinjan23
 ```
 ```
 terrad keys add feeder --keyring-backend os
