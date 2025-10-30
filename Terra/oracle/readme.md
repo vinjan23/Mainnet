@@ -23,14 +23,27 @@ cd $HOME/oracle-feeder/price-server
 ```
 sudo apt install nodejs 
 ```
-``` 
-node --version 
-```
 ```
 npm install
 ```
 ```
+cd $HOME/oracle-feeder/price-server
+```
+```
+screen -S npm
+```
+```
 npm start
+```
+`cntrl A + D`
+```
+screen -R npm
+```
+```
+screen -ls
+```
+```
+screen -X -S <namascreen> quit
 ```
 ```
 sudo tee /etc/systemd/system/price.service > /dev/null << 'EOF'
@@ -58,15 +71,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable price.service
 sudo systemctl restart price.service
 journalctl -u price.service -f
-```
-```
-cd $HOME/oracle-feeder/price-server
-```
-```
-screen -S npm
-```
-```
-screen -R npm
 ```
 ```
 npm start vote -- \
