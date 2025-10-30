@@ -60,6 +60,15 @@ sudo systemctl restart price.service
 journalctl -u price.service -f
 ```
 ```
+cd $HOME/oracle-feeder/price-server
+```
+```
+screen -S npm
+```
+```
+screen -R npm
+```
+```
 npm start vote -- \
    --data-source-url http://localhost:8532/latest \
    --lcd-url https://lcd.terra-classic.hexxagon.io \
