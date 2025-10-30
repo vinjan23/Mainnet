@@ -48,6 +48,7 @@ ExecStart=/usr/bin/npm start vote --\
   --validators terravaloper1dtujf3q0m8zg2tprv37vhdvzha9n6jlmcgpl8c \
   --password vinjan23
 Restart=on-abort
+Environment="ORACLE-FEEDER_PATH=/root/oracle-feeder/price-server/npm start"
 [Install]
 WantedBy=multi-user.target
 EOF
