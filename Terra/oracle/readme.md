@@ -41,7 +41,7 @@ After=network.target
 Type=simple 
 User=root
 WorkingDirectory=/root/oracle-feeder/feeder
-ExecStart=npm start vote --ExecStart=/usr/bin/npm start vote --data-source-url http://localhost:8532/latest --lcd-url https://api-terra.vinjan.xyz --chain-id columbus-5
+ExecStart=/usr/bin/npm start vote --data-source-url http://localhost:8532/latest --lcd-url https://api-terra.vinjan.xyz --chain-id columbus-5
 --validators terravaloper1dtujf3q0m8zg2tprv37vhdvzha9n6jlmcgpl8c
 --password vinjan23
 Restart=on-abort
