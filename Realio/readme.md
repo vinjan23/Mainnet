@@ -152,21 +152,6 @@ realio-networkd status 2>&1 | jq .sync_info
 ```
 sudo journalctl -u realio-networkd -f -o cat
 ```
-### Statesync
-```
-sudo systemctl stop realio-networkd
-realio-networkd tendermint unsafe-reset-all --home $HOME/.realio-network --keep-addr-book
-SNAP_RPC=https://rpc-realio.vinjan.xyz:443
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.realio-network/config/config.toml
-sudo systemctl restart realio-networkd && journalctl -u realio-networkd -f -o cat
-```
 ### Turnoff Statesync
 ```
 sed -i -e "s|^enable *=.*|enable = false|" $HOME/.realio-network/config/config.toml
@@ -181,24 +166,6 @@ realio-networkd q bank balances $(realio-networkd keys show wallet -a)
 ```
 
 ### Validator
-`RIO`
-```
-realio-networkd tx staking create-validator \
-  --amount=1000000000000000000ario \
-  --pubkey=$(realio-networkd tendermint show-validator) \
-  --moniker="vinjan" \
-  --website="https://nodes.vinjan.xyz" \
-  --identity="7C66E36EA2B71F68" \
-  --chain-id=realionetwork_3301-1 \
-  --commission-rate="0.01" \
-  --commission-max-rate="0.20" \
-  --commission-max-change-rate="0.1" \
-  --min-self-delegation="1" \
-  --gas-prices 30000000000ario \
-  --gas 1000000 \
-  --from=wallet \
-  -y
-  ```
 `RST`  
 ```
 realio-networkd tx staking create-validator \
@@ -246,16 +213,6 @@ realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech va
 ### Withdraw with comission
 ```
 realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario
-```
-
-### Stop
-```
-sudo systemctl stop realio-networkd
-```
-
-### Restart
-```
-sudo systemctl restart realio-networkd
 ```
 
 ### Check Validator
