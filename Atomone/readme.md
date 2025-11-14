@@ -9,12 +9,6 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
 source ~/.bash_profile
 go version
 ```
-```
-sudo rm -rf /usr/local/go
-curl -Ls https://go.dev/dl/go1.22.12.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
-eval $(echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee /etc/profile.d/golang.sh)
-eval $(echo 'export PATH=$PATH:$HOME/go/bin' | tee -a $HOME/.profile)
-```
 ### Binary
 ```
 cd $HOME
@@ -38,25 +32,20 @@ cd $HOME
 rm -rf atomone
 git clone https://github.com/atomone-hub/atomone.git
 cd atomone
-git checkout v2.1.0
-make install
+git checkout v3.0.3
+make build
 ```
 ```
-mkdir -p $HOME/.atomone/cosmovisor/upgrades/v2/bin
-mv build/atomoned $HOME/.atomone/cosmovisor/upgrades/v2/bin/
+mkdir -p $HOME/.atomone/cosmovisor/upgrades/v3/bin
+mv build/atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
 rm -rf build
 ```
 ```
-mkdir -p $HOME/.atomone/cosmovisor/upgrades/v2.1.0/bin
-cp $HOME/go/bin/atomoned $HOME/.atomone/cosmovisor/upgrades/v2.1.0/bin/
+mkdir -p $HOME/.atomone/cosmovisor/upgrades/v3/bin
+cp $HOME/go/bin/atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
 ```
 ```
-sudo systemctl stop atomoned
-cp $HOME/go/bin/atomoned $HOME/.atomone/cosmovisor/upgrades/v2/bin/
-```
-
-```
-$HOME/.atomone/cosmovisor/upgrades/v2.1.0/bin/atomoned version --long | grep -e commit -e version
+$HOME/.atomone/cosmovisor/upgrades/v3/bin/atomoned version --long | grep -e commit -e version
 ```
 ```
 atomoned version --long | grep -e commit -e version
