@@ -15,6 +15,10 @@ cp $HOME/go/bin/dungeond $HOME/.dungeonchain/cosmovisor/genesis/bin/
 sudo ln -s $HOME/.dungeonchain/cosmovisor/genesis $HOME/.dungeonchain/cosmovisor/current -f
 sudo ln -s $HOME/.dungeonchain/cosmovisor/current/bin/dungeond /usr/local/bin/dungeond -f
 ```
+```
+dungeond version --long | grep -e commit -e version
+```
+
 ### Init
 ```
 dungeond init <node_name> --chain-id dungeon-1
