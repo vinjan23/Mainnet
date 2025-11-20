@@ -30,30 +30,30 @@ sudo ln -s $HOME/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/loc
 ### Upgrade
 ```
 cd $HOME
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v18/bitbadgeschain-linux-amd64 -O /usr/local/bin/bitbadgeschaind
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v19/bitbadgeschain-linux-amd64 -O /usr/local/bin/bitbadgeschaind
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v18/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v18/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v18/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v18/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v19/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v19/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v19/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v19/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
 rm -rf bitbadgeschain
 git clone https://github.com/BitBadges/bitbadgeschain.git
 cd bitbadgeschain
-git checkout v18
-make build-linux/amd64 VERSION=v18
+git checkout v19
+make build-linux/amd64 VERSION=v19
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v18/bin
-cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v18/bin/
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v18/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v19/bin
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v19/bin/
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v19/bin/bitbadgeschaind
 ```
 ```
-$HOME/.bitbadgeschain/cosmovisor/upgrades/v17/bin/bitbadgeschaind version
+$HOME/.bitbadgeschain/cosmovisor/upgrades/v19/bin/bitbadgeschaind version
 ```
 ```
 bitbadgeschaind version --long | grep -e commit -e version
