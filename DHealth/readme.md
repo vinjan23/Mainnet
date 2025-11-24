@@ -39,13 +39,10 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.dhealth/config/app.t
 sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
--e 's|^pruning-keep-every *=.*|pruning-keep-every = "2000"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
--e 's|^snapshot-interval *=.*|snapshot-interval = "2000"|' \
--e 's|^snapshot-keep-recent *=.*|snapshot-keep-recent = "5"|' \
+-e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
 $HOME/.dhealth/config/app.toml
 ```
-
 ```
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.dhealth/config/config.toml
 ```
