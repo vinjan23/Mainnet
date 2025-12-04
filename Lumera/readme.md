@@ -141,6 +141,17 @@ lumerad tx staking create-validator $HOME/.lumera/validator.json \
 --gas=auto
 ```
 ```
+lumerad tx staking edit-validator \
+--new-moniker "Vinjan.Inc" \
+--identity 7C66E36EA2B71F68 \
+--from wallet \
+--chain-id lumera-mainnet-1 \
+--commission-rate=0.2 \
+--gas-prices=0.025ulume \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+```
 lumerad tx distribution withdraw-rewards $(lumerad keys show wallet --bech val -a) --commission --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume
 ```
 ```
