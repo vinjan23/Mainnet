@@ -36,11 +36,11 @@ sed -i -e "s%:1317%:11717%; s%:9090%:11790%" ~/go/bin/paxi/config/app.toml
 ```
 
 ```
-curl -Ls https://snapshot-t.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
+curl -L https://snap.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
 ```
 
 ```
-curl -Ls https://snapshot-t.vinjan.xyz/paxi/addrbook.json > ~/go/bin/paxi/config/addrbook.json
+curl -L https://snap.vinjan.xyz/paxi/addrbook.json > ~/go/bin/paxi/config/addrbook.json
 ```
 
 ```
