@@ -169,9 +169,12 @@ bitbadgeschaind tx staking edit-validator \
 --identity="7C66E36EA2B71F68 " \
 --website="https://service.vinjan.xyz" \
 --details="Staking Provider-IBC Relayer" \
+--commission-rate="0.15" \
 --chain-id=bitbadges-1 \
 --from=wallet \
---fees 700000ubadge
+--gas-prices=0.05ubadge \
+--gas-adjustment=1.5 \
+--gas=auto
 ```
 ```
 bitbadgeschaind tx slashing unjail --from wallet --chain-id bitbadges-1 --fees 75000ubadge
