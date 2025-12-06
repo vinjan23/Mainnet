@@ -165,7 +165,7 @@ bitbadgeschaind tx staking create-validator $HOME/.bitbadgeschain/validator.json
 ```
 ```
 bitbadgeschaind tx staking edit-validator \
---new-moniker="Vinjan.Inc | REStake" \
+--new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68 " \
 --website="https://service.vinjan.xyz" \
 --details="Staking Provider-IBC Relayer" \
