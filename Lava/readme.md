@@ -46,7 +46,7 @@ sed -i \
   $HOME/.lava/config/app.toml
 ```
 ```
-sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.000000001ulava"|g' $HOME/.lava/config/app.toml
+sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.025ulava"|g' $HOME/.lava/config/app.toml
 ```
 ```
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.lava/config/config.toml
