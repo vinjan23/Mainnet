@@ -97,7 +97,7 @@ lavad tx staking create-validator \
 --min-self-delegation=1 \
 --from=wallet \
 --gas-adjustment=1.5 \
---gas-prices="0.000000005ulava" \
+--gas-prices="0.025ulava" \
 --gas=auto
 ```
 
