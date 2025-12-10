@@ -209,15 +209,16 @@ planqd tx staking create-validator \
  ### Edit Validator
  ```
 planqd tx staking edit-validator \
-  --new-moniker=Vinjan.Inc \
-  --identity=7C66E36EA2B71F68 \
-  --chain-id=planq_7070-2 \
-  --details="Staking Provider-IBC Relayer" \
-  --from=wallet \
-  --gas 1000000 \
-  --gas-adjustment="1.15" \
-  --gas-prices="20000000000aplanq" \
-  --gas=1000000
+ --new-moniker=Vinjan.Inc \
+ --identity=7C66E36EA2B71F68 \
+ --chain-id=planq_7070-2 \
+ --details="Staking Provider-IBC Relayer" \
+ --from=wallet \
+--commission-rate="0.12" \
+--gas 1000000 \
+--gas-adjustment="1.15" \
+--gas-prices="20000000000aplanq" \
+--gas=1000000
 ```
 
 ### Unjail
