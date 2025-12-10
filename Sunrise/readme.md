@@ -144,7 +144,7 @@ sunrised tx staking edit-validator \
 --identity="7C66E36EA2B71F68" \
 --website="https://service.vinjan.xyz" \
 --details="Staking Provider-IBC Relayer" \
---commission-rate=0.07 \
+--commission-rate=0.12 \
 --chain-id=sunrise-1 \
 --from=wallet \
 --gas-prices 0.002uusdrise \
