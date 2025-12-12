@@ -34,17 +34,17 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v20/bitbadges
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v20/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v20/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v20/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v20/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v21/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v21/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v21/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v21/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
 rm -rf bitbadgeschain
 git clone https://github.com/BitBadges/bitbadgeschain.git
 cd bitbadgeschain
-git checkout v20
-make build-linux/amd64 VERSION=v20
+git checkout v21
+make build-linux/amd64 VERSION=v21
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 ```
 ```
