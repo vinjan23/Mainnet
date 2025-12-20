@@ -19,6 +19,20 @@ sudo ln -s $HOME/.lava/cosmovisor/current/bin/lavad /usr/local/bin/lavad -f
 mkdir -p $HOME/.lava/cosmovisor/upgrades/v5.3.0/bin
 cp $HOME/go/bin/lavad $HOME/.lava/cosmovisor/upgrades/v5.3.0/bin/
 ```
+### Update
+```
+cd $HOME
+rm -rf lava
+git clone https://github.com/lavanet/lava.git
+cd lava
+git checkout v5.5.1
+make build
+```
+```
+mkdir -p $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin
+mv build/lavad $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin/
+rm -rf build
+```
 ```
 lavad  version --long | grep -e commit -e version
 ```
