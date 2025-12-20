@@ -34,7 +34,17 @@ mv build/lavad $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin/
 rm -rf build
 ```
 ```
-lavad  version --long | grep -e commit -e version
+cd $HOME
+wget -O lavad https://github.com/lavanet/lava/releases/download/v5.5.1/lavad-v5.5.1-linux-amd64
+chmod +x lavad
+mkdir -p $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin
+mv lavad $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin/
+```
+```
+$HOME/.lava/cosmovisor/upgrades/v5.5.1/bin/lavad version --long | grep -e commit -e version
+```
+```
+lavad version --long | grep -e commit -e version
 ```
 ```
 lavad init Vinjan.Inc --chain-id lava-mainnet-1
