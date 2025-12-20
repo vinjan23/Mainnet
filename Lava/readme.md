@@ -70,7 +70,7 @@ sed -i \
   $HOME/.lava/config/app.toml
 ```
 ```
-sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.025ulava"|g' $HOME/.lava/config/app.toml
+sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.0025ulava"|g' $HOME/.lava/config/app.toml
 ```
 ```
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.lava/config/config.toml
@@ -121,11 +121,28 @@ lavad tx staking create-validator \
 --min-self-delegation=1 \
 --from=wallet \
 --gas-adjustment=1.5 \
---gas-prices="0.025ulava" \
+--gas-prices="0.0025ulava" \
 --gas=auto
 ```
-
-
+```
+lavad tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://service.vinjan.xyz" \
+--details="IBC Relayer Operator" \
+--chain-id=lava-mainnet-1 \
+--commission-rate="0.01" \
+--from=wallet \
+--gas-adjustment=1.5 \
+--gas-prices="0.0025ulava" \
+--gas=auto
+```
+```
+lavad tx distribution withdraw-rewards $(lavad keys show wallet --bech val -a) --commission --from wallet --chain-id lava-mainnet-1 --gas-prices=0.0025ulava --gas-adjustment=1.5 --gas=auto
+```
+```
+lavad tx staking delegate $(lavad keys show wallet --bech val -a) 1000000ulava --from wallet --chain-id lava-mainnet-1 --gas-prices=0.0025ulava --gas-adjustment=1.5 --gas=auto
+```
 ```
 curl -L https://snap.vinjan.xyz/lava/latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.lava
 ```
