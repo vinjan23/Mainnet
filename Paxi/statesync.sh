@@ -62,8 +62,8 @@ echo "Trust Hash:   $TRUST_HASH"
 if [[ ! -f "$CONFIG_FILE" ]]; then
   echo "ERROR: config not found at: $CONFIG_FILE"
   echo "Please set CONFIG_FILE env or create the file. Common locations:"
-  echo "  - $HOME/paxid/paxi/config/config.toml"
-  echo "  - $HOME/.paxi/config/config.toml"
+  echo "  - $HOME/go/bin/paxi/config/config.toml"
+  echo "  - $HOME/go/bin/paxi/config/config.toml"
   exit 1
 fi
 
