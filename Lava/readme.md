@@ -26,12 +26,11 @@ rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
 git checkout v5.5.1
-make build-all
+make install-all
 ```
 ```
 mkdir -p $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin
-mv build/lavad $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin/
-rm -rf build
+cp $HOME/go/bin/lavad $HOME/.lava/cosmovisor/upgrades/v5.5.1/bin/
 ```
 ```
 cd $HOME
