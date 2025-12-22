@@ -83,7 +83,7 @@ sudo journalctl -u paxid -f -o cat
 paxid status 2>&1 | jq .sync_info
 ```
 ```
-curl -L https://snapshot-t.vinjan.xyz/paxi/latest.tar.lz4  | lz4 -dc - | tar -xf - -C ~/go/bin/paxi
+curl -L https://snap.vinjan.xyz/paxi/latest.tar.lz4  | lz4 -dc - | tar -xf - -C ~/go/bin/paxi
 ```
 ```
 paxid q bank balances $(paxid keys show wallet -a)
