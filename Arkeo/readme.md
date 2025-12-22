@@ -14,7 +14,7 @@ cd $HOME
 rm -rf arkeo
 git clone https://github.com/arkeonetwork/arkeo.git
 cd arkeo
-git checkout v1.0.14
+git checkout v1.0.16
 make install
 ```
 ```
