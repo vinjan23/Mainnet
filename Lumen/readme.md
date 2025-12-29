@@ -55,10 +55,7 @@ lumend tx pqc link-account \
 --pubkey "$PQC_PUBKEY" \
 --scheme dilithium3 \
 --chain-id lumen \
---gas auto \
---gas-adjustment 1.5 \
---fees 0ulmn \
---yes
+--gas auto
 ```
 ```
 lumend tendermint show-validator
@@ -87,9 +84,11 @@ lumend tx staking create-validator $HOME/.lumen/validator.json \
 --chain-id lumen \
 --pqc-key node-pqc \
 --pqc-scheme dilithium3 \
---gas auto \
---gas-adjustment 1.5 \
---fees 0ulmn \
---yes
+--gas auto
+```
+
+### Vote
+```
+lumend tx gov vote 5 yes --from wallet --pqc-key node-pqc --chain-id lumen --gas auto
 ```
 
