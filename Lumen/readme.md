@@ -91,4 +91,15 @@ lumend tx staking create-validator $HOME/.lumen/validator.json \
 ```
 lumend tx gov vote 5 yes --from wallet --pqc-key node-pqc --chain-id lumen --gas auto
 ```
+```
+lumend tx staking delegate $(lumend keys show wallet --bech val -a) 1000000ulmn --from wallet --pqc-key node-pqc --chain-id lumen --gas auto
+```
+```
+lumend tx distribution withdraw-rewards $(lumend keys show wallet --bech val -a) --commission --from wallet --pqc-key node-pqc --chain-id lumen --gas auto
+```
+```
+lumend tx distribution withdraw-all-rewards --from wallet --pqc-key node-pqc --chain-id lumen --gas auto
+```
+
+
 
