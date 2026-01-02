@@ -100,6 +100,13 @@ lumend tx distribution withdraw-rewards $(lumend keys show wallet --bech val -a)
 ```
 lumend tx distribution withdraw-all-rewards --from wallet --pqc-key node-pqc --chain-id lumen --gas auto
 ```
-
-
+```
+sudo systemctl stop lumend
+sudo systemctl disable lumend
+sudo rm /etc/systemd/system/lumend.service
+sudo systemctl daemon-reload
+rm -f $(which lumend)
+rm -rf .lumen
+rm -rf validator-kit
+```
 
