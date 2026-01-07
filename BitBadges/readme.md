@@ -34,26 +34,26 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v20/bitbadges
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v21/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v21/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v21/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v21/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v22/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
 rm -rf bitbadgeschain
 git clone https://github.com/BitBadges/bitbadgeschain.git
 cd bitbadgeschain
-git checkout v21
-make build-linux/amd64 VERSION=v21
+git checkout v22
+make build-linux/amd64 VERSION=v22
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v20/bin
-cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v20/bin/
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v20/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind
 ```
 ```
-$HOME/.bitbadgeschain/cosmovisor/upgrades/v20/bin/bitbadgeschaind version
+$HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind version
 ```
 ```
 bitbadgeschaind version --long | grep -e commit -e version
