@@ -1,7 +1,7 @@
 ```
 git clone https://github.com/network-lumen/validator-kit.git
 cd validator-kit
-./join.sh Vinjan.Inc
+./join.sh <your_moniker>
 cp /root/validator-kit/bin/lumend $HOME/go/bin
 ```
 ```
