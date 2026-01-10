@@ -142,7 +142,7 @@ sunrised tx staking create-validator $HOME/.sunrise/validator.json \
 sunrised tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
---website="https://service.vinjan.xyz" \
+--website="https://vinjan-inc.com" \
 --details="Staking Provider-IBC Relayer" \
 --commission-rate=0.12 \
 --chain-id=sunrise-1 \
