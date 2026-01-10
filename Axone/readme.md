@@ -117,13 +117,14 @@ axoned tx staking edit-validator \
 --from wallet \
 --new-moniker "Vinjan.Inc" \
 --identity "7C66E36EA2B71F68" \
---website "https://service.vinjan.xyz" \
+--website "https://vinjan-inc.com" \
 --details "Staking Provider-IBC Relayer" \
 --commission-rate "0.1" \
 --chain-id axone-1 \
 --gas-prices=0.01uaxone \
 --gas-adjustment=1.5 \
 --gas=auto
+
 ```
 ### WD
 ```
