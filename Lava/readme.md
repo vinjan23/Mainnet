@@ -127,10 +127,10 @@ lavad tx staking create-validator \
 lavad tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
---website="https://service.vinjan.xyz" \
+--website="https://vinjan-inc.com" \
 --details="IBC Relayer Operator" \
 --chain-id=lava-mainnet-1 \
---commission-rate="0.01" \
+--commission-rate="0.05" \
 --from=wallet \
 --gas-adjustment=1.5 \
 --gas-prices="0.0025ulava" \
