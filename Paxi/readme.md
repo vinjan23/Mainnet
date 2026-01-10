@@ -121,12 +121,12 @@ paxid tx staking create-validator ~/go/bin/paxi/validator.json \
 paxid tx staking edit-validator \
 --new-moniker "Vinjan.Inc" \
 --identity "7C66E36EA2B71F68" \
---website "https://service.vinjan.xyz" \
+--website "https://vinjan-inc.com" \
 --details "Staking Provider-IBC Relayer" \
---commission-rate "0.25" \
 --from wallet \
 --chain-id paxi-mainnet \
 --fees 10000upaxi
+--commission-rate "0.25" 
 ```
 ```
 paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) --commission --from wallet --chain-id paxi-mainnet --fees 10000upaxi
