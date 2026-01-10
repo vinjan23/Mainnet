@@ -116,6 +116,17 @@ uniond tx union-staking create-union-validator $HOME/.union/validator.json $POSS
 --gas 300000
 ```
 ```
+uniond tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://vinjan-inc.com" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id=union-1 \
+--from=wallet \
+--fees 30000000000000au \
+--gas 300000
+```
+```
 uniond tx staking delegate $(uniond keys show wallet --bech val -a) 1000000000000000000 --from wallet --chain-id union-1 --fees 30000000000000au --gas 300000
 ```
 
@@ -127,7 +138,7 @@ sudo systemctl daemon-reload
 rm -rf $(which uniond)
 rm -rf .union
 rm -rf union
-
+```
 
 
 
