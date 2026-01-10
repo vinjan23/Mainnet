@@ -134,9 +134,10 @@ arkeod tx staking create-validator $HOME/.arkeo/validator.json \
 arkeod tx staking edit-validator \
 --new-moniker "Vinjan.Inc" \
 --identity 7C66E36EA2B71F68 \
+--website="https://vinjan-inc.com" \
+--commission-rate=0.02 \
 --from wallet \
 --chain-id arkeo-main-v1 \
---commission-rate=0.02 \
 --gas-prices=0.01uarkeo \
 --gas-adjustment=1.5 \
 --gas=auto
