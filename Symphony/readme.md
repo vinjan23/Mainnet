@@ -120,14 +120,14 @@ echo $(symphonyd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME
 symphonyd tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
---website="https://service.vinjan.xyz" \
+--website="https://vinjan-inc.com" \
 --details="Staking Provider-IBC Relayer" \
 --chain-id=symphony-1 \
 --from=wallet \
---commission-rate=0.15 \
 --gas-adjustment 1.5 \
 --gas-prices 0.0025note \
 --gas auto
+--commission-rate=0.15 \
 ```
 ### WD Commission
 ```
