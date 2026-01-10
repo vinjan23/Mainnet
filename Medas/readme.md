@@ -157,7 +157,7 @@ medasdigitald tx staking create-validator $HOME/.medasdigital/validator.json \
 medasdigitald tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
---commission-rate="0.1" \
+--website="https://vinjan-inc.com" \
 --chain-id=medasdigital-2 \
 --from=wallet \
 --gas-prices 0.025umedas \
