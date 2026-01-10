@@ -191,13 +191,15 @@ realio-networkd tx bank send wallet realio1zdq2ql5gua8mda627t5p3870c4xvykr6n47qv
 ### Edit
 ```
 realio-networkd tx staking edit-validator \
---new-moniker "Vinjan.Inc | RIO" \
+--new-moniker "Vinjan.Inc | DSTRX" \
 --identity "7C66E36EA2B71F68" \
+--website="https://vinjan-inc.com" \
+--details "Staking Provider-IBC Relayer" \
 --chain-id "realionetwork_3301-1" \
---commission-rate="0.06" \
 --from wallet \
 --gas 800000 \
 --fees 5000000000000000ario
+--commission-rate="0.06" \
 ```
 
 ### Unjail
