@@ -211,6 +211,7 @@ planqd tx staking create-validator \
 planqd tx staking edit-validator \
  --new-moniker=Vinjan.Inc \
  --identity=7C66E36EA2B71F68 \
+ --website="https://vinjan-inc.com" \
  --chain-id=planq_7070-2 \
  --details="Staking Provider-IBC Relayer" \
  --from=wallet \
