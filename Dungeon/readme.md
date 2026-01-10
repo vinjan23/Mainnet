@@ -160,7 +160,18 @@ dungeond tx staking create-validator $HOME/.dungeonchain/validator.json \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
-
+```
+dungeond tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68 " \
+--website="https://vinjan-inc.com" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id=dungeon-1 \
+--from=wallet \
+--gas-prices=0.05udgn \
+--gas-adjustment=1.5 \
+--gas=auto
+```
 ### Delegate
 ```
 dungeond tx staking delegate $(dungeond keys show wallet --bech val -a) 900000udgn --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
