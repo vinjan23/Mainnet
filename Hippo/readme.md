@@ -149,7 +149,7 @@ hippod tx staking create-validator $HOME/.hippo/validator.json \
 hippod tx staking edit-validator \
 --new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
---commission-rate="0.1" \
+--website="https://vinjan-inc.com" \
 --from=wallet \
 --chain-id hippo-protocol-1 \
 --gas-prices=5000000000000ahp \
