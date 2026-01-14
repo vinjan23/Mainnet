@@ -14,6 +14,7 @@ sudo ln -s $HOME/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
 ```
 ```
 epixd init Vinjan.Inc --chain-id epix_1916-1
+epixd config set client chain-id epix_1916-1
 ```
 ```
 PORT=399
