@@ -81,3 +81,4 @@ rm -f $(which epixd)
 rm -rf .epixd
 rm -rf EpixChain
 ```
+curl -L https://services.silknodes.io/snapshots/epix/epix_1902072.tar.zst | tar -I zstd -xvf - -C $HOME/.epixd
