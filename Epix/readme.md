@@ -69,6 +69,7 @@ sudo journalctl -u epixd -f -o cat
 epixd status 2>&1 | jq .sync_info
 ```
 ```
+sudo systemctl stop epixd
 rm -rf $HOME/.epixd/data
 epixd comet unsafe-reset-all --home $HOME/.epixd --keep-addr-book
 ```
@@ -81,4 +82,4 @@ rm -f $(which epixd)
 rm -rf .epixd
 rm -rf EpixChain
 ```
-curl -L https://services.silknodes.io/snapshots/epix/epix_1902072.tar.zst | tar -I zstd -xvf - -C $HOME/.epixd
+
