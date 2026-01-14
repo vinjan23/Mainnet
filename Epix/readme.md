@@ -13,6 +13,10 @@ sudo ln -s $HOME/.epixd/cosmovisor/genesis $HOME/.epixd/cosmovisor/current -f
 sudo ln -s $HOME/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
 ```
 ```
+epixd version --long | grep -e commit -e version
+```
+
+```
 epixd init Vinjan.Inc --chain-id epix_1916-1
 epixd config set client chain-id epix_1916-1
 ```
@@ -69,6 +73,40 @@ sudo journalctl -u epixd -f -o cat
 ```
 epixd status 2>&1 | jq .sync_info
 ```
+```
+epixd q bank balances $(epixd keys show wallet -a)
+```
+```
+epixd comet show-validator
+```
+```
+nano $HOME/.epixd/validator.json
+```
+```
+{
+  "pubkey": ,
+  "amount": "999000000000000000000apix",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://vinjan-inc.com",
+  "security": "",
+  "details": "Staking Provider-IBC Relayer",
+  "commission-rate": "0.05",
+  "commission-max-rate": "1",
+  "commission-max-change-rate": "1",
+  "min-self-delegation": "1"
+}
+```
+```
+epixd tx staking create-validator $HOME/.epixd/validator.json \
+--from wallet \
+--chain-id epix_1916-1 \
+--gas-prices="0.001aepix" \
+--gas-adjustment=1.2 \
+--gas=auto
+```
+ 
+
 ```
 sudo systemctl stop epixd
 rm -rf $HOME/.epixd/data
