@@ -1,6 +1,8 @@
 ```
+cd $HOME
+rm -rf epix
 git clone https://github.com/EpixZone/EpixChain.git
-cd EpixChain
+cd epix
 git checkout v0.5.2
 make install
 ```
@@ -27,11 +29,12 @@ sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:2
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.epixd/config/app.toml
 ```
 ```
-curl -s https://raw.githubusercontent.com/EpixZone/EpixChain/main/artifacts/genesis/mainnet/genesis.json > ~/.epixd/config/genesis.json
+curl -L https://snapshot.vinjan-inc.com/epix/genesis.json > $HOME/.epixd/config/genesis.json
 ```
 ```
-PEERS="1b7b67ff660e8609ad8dc75149509fafff7bd82b@84.203.116.103:26656"
-sed -i "s/persistent_peers = \"\"/persistent_peers = \"$PEERS\"/" ~/.epixd/config/config.toml
+curl -L https://snapshot.vinjan-inc.com/epix/addrbook.json > $HOME/.epixd/config/addrbook.json
+```
+```
 sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "0.001aepix"/' ~/.epixd/config/app.toml
 ```
 ```
@@ -119,6 +122,6 @@ sudo rm /etc/systemd/system/epixd.service
 sudo systemctl daemon-reload
 rm -f $(which epixd)
 rm -rf .epixd
-rm -rf EpixChain
+rm -rf epix
 ```
 
