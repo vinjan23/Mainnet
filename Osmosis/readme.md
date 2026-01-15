@@ -52,6 +52,10 @@ mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v31/bin
 mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v31/bin/
 rm -rf build
 ```
+```
+wget --https-only -O osmosisd https://osmosis.fra1.cdn.digitaloceanspaces.com/binaries/v31-cometbft-v0.38.20/osmosisd-linux-amd64
+chmod +x osmosisd
+```
 ### Cek version
 ```
 $HOME/.osmosisd/cosmovisor/upgrades/v31/bin/osmosisd version --long | grep -e commit -e version
