@@ -15,6 +15,17 @@ sudo ln -s $HOME/.epixd/cosmovisor/genesis $HOME/.epixd/cosmovisor/current -f
 sudo ln -s $HOME/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
 ```
 ```
+wget https://github.com/EpixZone/EpixChain/releases/download/v0.5.2-fix/epixd
+mkdir-p $HOME/.epixd/cosmovisor/upgrades/v0.5.2/bin
+cp epixd $HOME/.epixd/cosmovisor/upgrades/v0.5.2/bin/
+```
+```
+chmod +x $HOME/.epixd/cosmovisor/upgrades/v0.5.2/bin/
+```
+```
+$HOME/.epixd/cosmovisor/upgrades/v22/bin/epixd version --long | grep -e commit -e version
+```
+```
 epixd version --long | grep -e commit -e version
 ```
 
