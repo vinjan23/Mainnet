@@ -103,11 +103,11 @@ terrad tx staking create-validator \
 ```
 ```
 terrad tx staking edit-validator \
---new-moniker="Vinjan.Inc" \
+--new-moniker="Sunsetting-End Jan | please redelegate" \
 --identity="7C66E36EA2B71F68" \
---website="https://service.vinjan.xyz" \
---details="Stake Provider & IBC Relayer" \
---security-contact="vinjan.node@gmail.com" \
+--website="" \
+--details="" \
+--security-contact="" \
 --chain-id=columbus-5 \
 --from=wallet \
 --fees 200000000uluna \
