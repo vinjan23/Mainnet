@@ -53,6 +53,11 @@ cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/
 chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind
 ```
 ```
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v22/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind
+```
+
+```
 $HOME/.bitbadgeschain/cosmovisor/upgrades/v22/bin/bitbadgeschaind version
 ```
 ```
