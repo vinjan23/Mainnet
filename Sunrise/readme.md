@@ -29,6 +29,11 @@ mkdir -p $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin
 cp -a $HOME/go/bin/sunrised $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin/
 ```
 ```
+wget https://github.com/sunriselayer/sunrise/releases/download/v1.2.0-hotfix/sunrised-linux-amd64
+cp sunrised-linux-amd64 $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin/sunrised
+chmod +x $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin/sunrised
+```
+```
 $HOME/.sunrise/cosmovisor/upgrades/v1.2.0/bin/sunrised version --long | grep -e commit -e version
 ```
 ```
