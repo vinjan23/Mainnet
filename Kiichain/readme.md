@@ -79,5 +79,19 @@ kiichaind status 2>&1 | jq .sync_info
 ```
 kiichaind keys add wallet
 ```
-
+```
+sudo systemctl stop kiichaind
+kiichaind comet unsafe-reset-all --home $HOME/.kiichain --keep-addr-book
+cp $HOME/.kiichaindata/priv_validator_state.json $HOME/.kiichain/priv_validator_state.json.backup
+SNAP_RPC="https://rpc.kiivalidator.com:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1500)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
+/^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
+/^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
+/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" $HOME/.kiichain/config/config.toml
+mv $HOME/.kiichain/priv_validator_state.json.backup $HOME/.kiichain/data/priv_validator_state.json
+sudo systemctl restart kiichaind && sudo journalctl -u kiichaind -fo cat
+```
 
