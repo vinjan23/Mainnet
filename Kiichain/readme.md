@@ -80,6 +80,38 @@ kiichaind status 2>&1 | jq .sync_info
 kiichaind keys add wallet
 ```
 ```
+kiichaind q bank balances $(kiichaind keys show wallet -a)
+```
+```
+kiichaind comet show-validator
+```
+```
+nano $HOME/.kiichain/validator.json
+```
+```
+{
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"FirBah+BZudUKz6J8lQunuu5iRokaqxdAjLs4i0oyTo="},
+  "amount": "9900000000000000000akii",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://vinjan-inc.com",
+  "security": "",
+  "details": "Staking Provider-IBC Relayer",
+  "commission-rate": "0.05",
+  "commission-max-rate": "1",
+  "commission-max-change-rate": "1",
+  "min-self-delegation": "1"
+}
+```
+```
+kiichaind tx staking create-validator $HOME/.kiichain/validator.json \
+--from wallet \
+--chain-id kiichain_1783-1 \
+--gas-prices="333333333akii" \
+--gas-adjustment=1.2 \
+--gas=auto
+```
+```
 sudo systemctl stop kiichaind
 kiichaind comet unsafe-reset-all --home $HOME/.kiichain --keep-addr-book
 cp $HOME/.kiichaindata/priv_validator_state.json $HOME/.kiichain/priv_validator_state.json.backup
@@ -95,3 +127,14 @@ mv $HOME/.kiichain/priv_validator_state.json.backup $HOME/.kiichain/data/priv_va
 sudo systemctl restart kiichaind && sudo journalctl -u kiichaind -fo cat
 ```
 
+
+```
+sudo systemctl stop kiichaind
+sudo systemctl disable kiichaind
+sudo rm /etc/systemd/system/kiichaind.service
+sudo systemctl daemon-reload
+rm -rf $(which kiichaind)
+rm -rf .kiichain
+rm -rf kiichain
+```
+10000000000000000000
