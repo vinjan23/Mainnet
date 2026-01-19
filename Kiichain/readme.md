@@ -30,9 +30,7 @@ sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:2
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.kiichain/config/app.toml
 ```
 ```
-persistent_peers="4d0c3be48018cf8234faa46d789634f8a811dc5b@p2p-1.kiivalidator.com:26656,ac58976b16880535d56b2e1fe1f499a3841c4039@p2p-2.kiivalidator.com:26656"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$persistent_peers\"/" $HOME/.kiichain/config/config.toml
-persistent_peers="$(curl -sS https://rpc.kiivalidator.com:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+persistent_peers="$(curl -sS https://rpc-kiichain.vinjan-inc.com:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$persistent_peers\"/" $HOME/.kiichain/config/config.toml
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"333333333akii\"/" $HOME/.kiichain/config/app.toml
 sed -i -e "/evm-chain-id =/ s/= .*/= 1783/" $HOME/.kiichain/config/app.toml
@@ -74,6 +72,21 @@ sudo systemctl restart kiichaind
 sudo journalctl -u kiichaind -f -o cat
 ```
 ```
+sudo systemctl stop kiichaind
+kiichaind comet unsafe-reset-all --home $HOME/.kiichain --keep-addr-book
+cp $HOME/.kiichaindata/priv_validator_state.json $HOME/.kiichain/priv_validator_state.json.backup
+SNAP_RPC="https://rpc-kiichain.vinjan-inc.com:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1500)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
+/^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
+/^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
+/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" $HOME/.kiichain/config/config.toml
+mv $HOME/.kiichain/priv_validator_state.json.backup $HOME/.kiichain/data/priv_validator_state.json
+sudo systemctl restart kiichaind && sudo journalctl -u kiichaind -fo cat
+```
+```
 kiichaind status 2>&1 | jq .sync_info
 ```
 ```
@@ -90,7 +103,7 @@ nano $HOME/.kiichain/validator.json
 ```
 ```
 {
-  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"FirBah+BZudUKz6J8lQunuu5iRokaqxdAjLs4i0oyTo="},
+  "pubkey": ,
   "amount": "9900000000000000000akii",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
@@ -111,21 +124,7 @@ kiichaind tx staking create-validator $HOME/.kiichain/validator.json \
 --gas-adjustment=1.2 \
 --gas=auto
 ```
-```
-sudo systemctl stop kiichaind
-kiichaind comet unsafe-reset-all --home $HOME/.kiichain --keep-addr-book
-cp $HOME/.kiichaindata/priv_validator_state.json $HOME/.kiichain/priv_validator_state.json.backup
-SNAP_RPC="https://rpc.kiivalidator.com:443"
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 1500)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
-/^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
-/^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
-/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" $HOME/.kiichain/config/config.toml
-mv $HOME/.kiichain/priv_validator_state.json.backup $HOME/.kiichain/data/priv_validator_state.json
-sudo systemctl restart kiichaind && sudo journalctl -u kiichaind -fo cat
-```
+
 
 
 ```
@@ -137,4 +136,4 @@ rm -rf $(which kiichaind)
 rm -rf .kiichain
 rm -rf kiichain
 ```
-10000000000000000000
+
