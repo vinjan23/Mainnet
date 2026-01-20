@@ -18,6 +18,18 @@ git checkout v1.0.16
 make install
 ```
 ```
+mkdir -p $HOME/.arkeo/cosmovisor/genesis/bin
+cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/genesis/bin/
+```
+```
+ln -s $HOME/.arkeo/cosmovisor/genesis $HOME/.arkeo/cosmovisor/current -f
+sudo ln -s $HOME/.arkeo/cosmovisor/current/bin/arkeod /usr/local/bin/arkeod -f
+```
+```
+mkdir -p $HOME/.arkeo/cosmovisor/upgrades/providers-v1.0.16.1/bin
+cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/upgrades/providers-v1.0.16.1/bin/
+```
+```
 arkeod version --long | grep -e commit -e version
 ```
 ### Init
@@ -26,24 +38,17 @@ arkeod init Vinjan.Inc --chain-id arkeo-main-v1
 ```
 ### Port
 ```
-sed -i.bak -e  "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:24657\"%" $HOME/.arkeo/config/client.toml
-```
-```
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:24658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://0.0.0.0:24657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:24060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:24656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":24660\"%" $HOME/.arkeo/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:24317\"%; s%^address = \"localhost:9090\"%address = \"0.0.0.0:24090\"%" $HOME/.arkeo/config/app.toml
+PORT=244
+sed -i -e "s%:26657%:${PORT}57%" $HOME/.arkeo/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.arkeo/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.arkeo/config/app.toml
 ```
 ### Genesis
-```
-curl -L https://snapshot-t.vinjan.xyz/arkeo/genesis.json > $HOME/.arkeo/config/genesis.json
-```
+
 ### Addrbook
-```
-curl -L https://snapshot-t.vinjan.xyz/arkeo/addrbook.json > $HOME/.arkeo/config/addrbook.json
-```
+
 ### Seed
 ```
-seeds="4d2c67a1d732679826b2f71c833e94b3718c2b50@seed2.arkeo.network:26656,416bd4379fa4fa3e76e59e4415396f727463142e@seed.arkeo.network:26656"
-sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.arkeo/config/config.toml
 sed -i -e 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.01uarkeo"|' $HOME/.arkeo/config/app.toml
 ```
 ### Prunning
@@ -52,7 +57,7 @@ sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
 $HOME/.arkeo/config/app.toml
 ```
 ### Indexer
