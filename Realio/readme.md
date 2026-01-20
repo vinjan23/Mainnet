@@ -1,15 +1,3 @@
-### GO
-```
-ver="1.22.5"
-cd $HOME
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-rm "go$ver.linux-amd64.tar.gz"
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-source ~/.bash_profile
-go version
-```
 
 ### Binary
 ```
@@ -37,7 +25,6 @@ cd realio-network
 git checkout v1.4.0
 make install
 ```
-
 ```
 mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin
 cp -a $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin/
@@ -61,6 +48,14 @@ realio-networkd version --long | grep -e commit -e version
 ```
 ```
 $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin/realio-networkd version --long | grep -e commit -e version
+```
+### Patch
+```
+wget https://github.com/decentrio/realio-binary/raw/refs/heads/main/realio-network_Linux_x86_64.tar.gz
+tar xzvf realio-network_Linux_x86_64.tar.gz
+chmod +x $HOME/bin/realio-networkd
+sudo systemctl stop realio-networkd
+mv $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin/
 ```
 ```
 sudo systemctl restart realio-networkd
