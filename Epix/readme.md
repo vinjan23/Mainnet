@@ -119,8 +119,18 @@ epixd tx staking create-validator $HOME/.epixd/validator.json \
 --gas-adjustment=1.2 \
 --gas=auto
 ```
- 
-
+```
+ epixd tx staking edit-validator \
+--new-moniker="Vinjan.Inc | RESTAKE" \
+--identity="7C66E36EA2B71F68" \
+--website="" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id epix_1916-1 \
+--from=wallet \
+--gas-prices="0.002aepix" \
+--gas-adjustment=1.5 \
+--gas=auto
+```
 ```
 sudo systemctl stop epixd
 rm -rf $HOME/.epixd/data
