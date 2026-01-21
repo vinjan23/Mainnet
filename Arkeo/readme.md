@@ -4,16 +4,6 @@ cd $HOME
 rm -rf arkeo
 git clone https://github.com/arkeonetwork/arkeo.git
 cd arkeo
-git checkout v1.0.13
-make install
-```
-
-### Update
-```
-cd $HOME
-rm -rf arkeo
-git clone https://github.com/arkeonetwork/arkeo.git
-cd arkeo
 git checkout v1.0.16
 make install
 ```
@@ -25,9 +15,22 @@ cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/genesis/bin/
 ln -s $HOME/.arkeo/cosmovisor/genesis $HOME/.arkeo/cosmovisor/current -f
 sudo ln -s $HOME/.arkeo/cosmovisor/current/bin/arkeod /usr/local/bin/arkeod -f
 ```
+
+### Update
 ```
-mkdir -p $HOME/.arkeo/cosmovisor/upgrades/providers-v1.0.16.1/bin
-cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/upgrades/providers-v1.0.16.1/bin/
+cd $HOME
+rm -rf arkeo
+git clone https://github.com/arkeonetwork/arkeo.git
+cd arkeo
+git checkout v1.0.17
+make install
+```
+```
+mkdir -p $HOME/.arkeo/cosmovisor/upgrades/general-v1.0.17.1/bin
+cp $HOME/go/bin/arkeod $HOME/.arkeo/cosmovisor/upgrades/general-v1.0.17.1/bin/
+```
+```
+$HOME/.arkeo/cosmovisor/upgrades/general-v1.0.17.1/bin/arkeod version --long | grep -e commit -e version
 ```
 ```
 arkeod version --long | grep -e commit -e version
