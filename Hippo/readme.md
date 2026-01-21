@@ -20,21 +20,20 @@ cd $HOME
 rm -rf hippo
 git clone https://github.com/hippo-protocol/hippo-protocol.git
 cd hippo-protocol
-git checkout v1.0.1
+git checkout v1.0.2
 make build
 ```
 ```
-mkdir -p $HOME/.hippo/cosmovisor/upgrades/v1.0.1/bin
-mv build/hippod $HOME/.hippo/cosmovisor/upgrades/v1.0.1/bin/
+mkdir -p $HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin
+mv build/hippod $HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin/
 rm -rf build
 ```
 ```
-$HOME/.hippo/cosmovisor/upgrades/v1.0.1/bin/hippod version --long | grep -e commit -e version
+$HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin/hippod version --long | grep -e commit -e version
 ```
 ```
 hippod version --long | grep -e commit -e version
 ```
-##### e2e864a
 
 ### Init
 ```
@@ -170,7 +169,7 @@ echo $(hippod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.h
 ```
 ### Vote
 ```
-hippod tx gov vote 9 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+hippod tx gov vote 24 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
 ```
 ### Delete
 ```
