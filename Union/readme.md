@@ -16,8 +16,14 @@ sudo ln -s $HOME/.union/cosmovisor/genesis $HOME/.union/cosmovisor/current -f
 sudo ln -s $HOME/.union/cosmovisor/current/bin/uniond /usr/local/bin/uniond -f
 ```
 ```
+wget https://github.com/unionlabs/union/releases/download/uniond%2Fv1.2.2.SECURITY.1/uniond-release-x86_64-liunx.v1.2.2-tachyon
+mv uniond-release-x86_64-liunx.v1.2.2-tachyon uniond
+chmod +x uniond
+mv uniond $HOME/go/bin/
+```
+```
 mkdir -p $HOME/.union/cosmovisor/upgrades/v1.2.2/bin
-cp $HOME/.union/cosmovisor/genesis/bin/uniond $HOME/.union/cosmovisor/upgrades/v1.2.2/bin/
+cp $HOME/go/bin/uniond $HOME/.union/cosmovisor/upgrades/v1.2.2/bin/
 ```
 ### Init
 ```
