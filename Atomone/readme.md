@@ -35,6 +35,13 @@ cd atomone
 git checkout v3.0.3
 make build
 ```
+### Patch
+```
+wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v3.1.0/atomoned-v3.1.0-linux-amd64
+sudo systemctl stop atomoned
+cp atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
+chmod +x $HOME/.atomone/cosmovisor/upgrades/v3/bin/atomoned
+```
 ```
 mkdir -p $HOME/.atomone/cosmovisor/upgrades/v3/bin
 mv build/atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
@@ -115,23 +122,7 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 WantedBy=multi-user.target
 EOF
 ```
-```
-sudo tee /etc/systemd/system/atomoned.service > /dev/null <<EOF
-[Unit]
-Description=atomone
-After=network-online.target
 
-[Service]
-User=$USER
-ExecStart=$(which atomoned) start
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=65535
-
-[Install]
-WantedBy=multi-user.target
-EOF
-```
 ### Start
 ```
 sudo systemctl daemon-reload
@@ -139,8 +130,6 @@ sudo systemctl enable atomoned
 ```
 ```
 sudo systemctl restart atomoned
-```
-```
 sudo journalctl -u atomoned -f -o cat
 ```
 ### Sync
