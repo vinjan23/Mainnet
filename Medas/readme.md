@@ -19,7 +19,7 @@ ln -s $HOME/.medasdigital/cosmovisor/genesis $HOME/.medasdigital/cosmovisor/curr
 sudo ln -s $HOME/.medasdigital/cosmovisor/current/bin/medasdigitald /usr/local/bin/medasdigital -f
 ```
 ```
-wget https://github.com/oxygene76/medasdigital-2/tree/main/binaries/v1.0.1/medasdigitald
+wget https://raw.githubusercontent.com/oxygene76/medasdigital-2/main/binaries/v1.0.1/medasdigitald
 chmod +x medasdigitald
 mv medasdigitald $HOME/go/bin/
 ```
