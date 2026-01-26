@@ -20,7 +20,8 @@ sudo ln -s $HOME/.medasdigital/cosmovisor/current/bin/medasdigitald /usr/local/b
 ```
 ```
 wget https://github.com/oxygene76/medasdigital-2/tree/main/binaries/v1.0.1/medasdigitald
-chmod +x medasdigitald mv medasdigitald $HOME/go/bin/
+chmod +x medasdigitald
+mv medasdigitald $HOME/go/bin/
 ```
 ```
 mkdir -p $HOME/.medasdigital/cosmovisor/upgrades/v1.0.1/bin
