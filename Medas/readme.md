@@ -25,7 +25,7 @@ mv medasdigitald $HOME/go/bin/
 ```
 ```
 mkdir -p $HOME/.medasdigital/cosmovisor/upgrades/v1.0.1/bin
-cp $HOME/go/bin/medasdigitald $HOME/.epixd/cosmovisor/upgrades/v1.0.1/bin/
+cp $HOME/go/bin/medasdigitald $HOME/.medasdigital/cosmovisor/upgrades/v1.0.1/bin/
 ```
 ### Init
 ```
