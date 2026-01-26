@@ -22,8 +22,21 @@ cp epixd $HOME/.epixd/cosmovisor/upgrades/v0.5.2/bin/
 ```
 chmod +x $HOME/.epixd/cosmovisor/upgrades/v0.5.2/bin/epixd
 ```
+### Upgrade
 ```
-$HOME/.epixd/cosmovisor/upgrades/v0.5.2/bin/epixd version --long | grep -e commit -e version
+cd $HOME
+rm -rf epix
+git clone https://github.com/EpixZone/EpixChain.git
+cd epix
+git checkout v0.5.3
+make install
+```
+```
+mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.5.3/bin
+cp $HOMW/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.5.3/bin/
+```
+```
+$HOME/.epixd/cosmovisor/upgrades/v0.5.3/bin/epixd version --long | grep -e commit -e version
 ```
 ```
 epixd version --long | grep -e commit -e version
