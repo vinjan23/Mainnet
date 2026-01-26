@@ -18,6 +18,14 @@ cp $HOME/go/bin/medasdigitald $HOME/.medasdigital/cosmovisor/genesis/bin/
 ln -s $HOME/.medasdigital/cosmovisor/genesis $HOME/.medasdigital/cosmovisor/current -f
 sudo ln -s $HOME/.medasdigital/cosmovisor/current/bin/medasdigitald /usr/local/bin/medasdigital -f
 ```
+```
+wget https://github.com/oxygene76/medasdigital-2/tree/main/binaries/v1.0.1/medasdigitald
+chmod +x medasdigitald mv medasdigitald $HOME/go/bin/
+```
+```
+mkdir -p $HOME/.medasdigital/cosmovisor/upgrades/v1.0.1/bin
+cp $HOME/go/bin/medasdigitald $HOME/.epixd/cosmovisor/upgrades/v1.0.1/bin/
+```
 ### Init
 ```
 medasdigitald init Vinjan.Inc --chain-id medasdigital-2
