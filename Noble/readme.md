@@ -49,7 +49,7 @@ nobled init Vinjan.Inc --chain-id noble-1
 ```
 ### Port
 ```
-PORT=120
+PORT=128
 sed -i -e "s%:26657%:${PORT}57%" $HOME/.noble/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.noble/config/config.toml
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.noble/config/app.toml
