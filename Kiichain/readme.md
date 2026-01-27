@@ -30,8 +30,12 @@ sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:2
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.kiichain/config/app.toml
 ```
 ```
+seeds="8c5a218a5b63c094e4172d3c674a8627c4f5335e@seed-kiichain.vinjan-inc.com:19956"
+sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.kiichain/config/config.toml
 persistent_peers="$(curl -sS https://rpc-kiichain.vinjan-inc.com:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$persistent_peers\"/" $HOME/.kiichain/config/config.toml
+```
+```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"333333333akii\"/" $HOME/.kiichain/config/app.toml
 sed -i -e "/evm-chain-id =/ s/= .*/= 1783/" $HOME/.kiichain/config/app.toml
 ```
@@ -124,8 +128,9 @@ kiichaind tx staking create-validator $HOME/.kiichain/validator.json \
 --gas-adjustment=1.2 \
 --gas=auto
 ```
-
-
+```
+echo $(kiichaind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.kiichain/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
 
 ```
 sudo systemctl stop kiichaind
