@@ -27,7 +27,7 @@ chmod +x $HOME/.epixd/cosmovisor/upgrades/v0.5.2/bin/epixd
 cd $HOME
 rm -rf epix
 git clone https://github.com/EpixZone/EpixChain.git
-cd epix
+cd EpixChain
 git checkout v0.5.3
 make install
 ```
