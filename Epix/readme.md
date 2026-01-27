@@ -33,7 +33,7 @@ make install
 ```
 ```
 mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.5.3/bin
-cp $HOMW/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.5.3/bin/
+cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.5.3/bin/
 ```
 ```
 $HOME/.epixd/cosmovisor/upgrades/v0.5.3/bin/epixd version --long | grep -e commit -e version
