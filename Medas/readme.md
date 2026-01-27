@@ -27,6 +27,9 @@ mv medasdigitald $HOME/go/bin/
 mkdir -p $HOME/.medasdigital/cosmovisor/upgrades/v1.0.1/bin
 cp $HOME/go/bin/medasdigitald $HOME/.medasdigital/cosmovisor/upgrades/v1.0.1/bin/
 ```
+```
+$HOME/.medasdigital/cosmovisor/upgrades/v1.0.1/bin/medasdigitald version --long | grep -e commit -e version
+```
 ### Init
 ```
 medasdigitald init Vinjan.Inc --chain-id medasdigital-2
