@@ -17,7 +17,7 @@ sudo ln -s $HOME/.hippo/cosmovisor/current/bin/hippod /usr/local/bin/hippod -f
 ### Update
 ```
 cd $HOME
-rm -rf hippo
+rm -rf hippo-protocol
 git clone https://github.com/hippo-protocol/hippo-protocol.git
 cd hippo-protocol
 git checkout v1.0.2
