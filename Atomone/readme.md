@@ -37,7 +37,7 @@ make build
 ```
 ### Patch
 ```
-wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v3.1.0/atomoned-v3.1.0-linux-amd64
+wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v3.2.0/atomoned-v3.2.0-linux-amd64
 sudo systemctl stop atomoned
 cp atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
 chmod +x $HOME/.atomone/cosmovisor/upgrades/v3/bin/atomoned
