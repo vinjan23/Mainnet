@@ -28,8 +28,8 @@ git checkout v11.2.0
 make install
 ```
 ```
-mkdir -p $HOME/.noble/cosmovisor/upgrades/pulse/bin
-cp -a $HOME/go/bin/nobled $HOME/.noble/cosmovisor/upgrades/pulse/bin/
+mkdir -p $HOME/.noble/cosmovisor/upgrades/v11.2.0/bin
+cp -a $HOME/go/bin/nobled $HOME/.noble/cosmovisor/upgrades/v11.2.0/bin/
 ```
 ```
 mkdir -p $HOME/.noble/cosmovisor/upgrades/pulse/bin
