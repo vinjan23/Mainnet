@@ -24,7 +24,7 @@ cd $HOME
 rm -rf noble
 git clone https://github.com/noble-assets/noble.git
 cd noble
-git checkout v11.1.0
+git checkout v11.2.0
 make install
 ```
 ```
