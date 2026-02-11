@@ -27,7 +27,7 @@ make install
 ```
 ```
 mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.5.0/bin
-cp -a $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.5.0/bin/
+cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.5.0/bin/
 ```
 
 ```
