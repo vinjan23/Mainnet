@@ -18,20 +18,20 @@ sudo ln -s $HOME/.lumera/cosmovisor/current/bin/lumerad /usr/local/bin/lumerad -
 ```
 ### Update
 ```
-wget https://github.com/LumeraProtocol/lumera/releases/download/v1.9.1/lumera_v1.9.1_linux_amd64.tar.gz
-tar xzvf lumera_v1.9.1_linux_amd64.tar.gz
+wget https://github.com/LumeraProtocol/lumera/releases/download/v1.10.1/lumera_v1.10.1_linux_amd64.tar.gz
+tar xzvf lumera_v1.10.1_linux_amd64.tar.gz
 chmod +x lumerad
-rm lumera_v1.9.1_linux_amd64.tar.gz
+rm lumera_v1.10.1_linux_amd64.tar.gz
 rm install.sh
 sudo mv libwasmvm.x86_64.so /usr/lib/
 sudo ldconfig
 ```
 ```
-mkdir -p $HOME/.lumera/cosmovisor/upgrades/v1.9.1/bin
-mv lumerad $HOME/.lumera/cosmovisor/upgrades/v1.9.1/bin/
+mkdir -p $HOME/.lumera/cosmovisor/upgrades/v1.10.1/bin
+mv lumerad $HOME/.lumera/cosmovisor/upgrades/v1.10.1/bin/
 ```
 ```
-$HOME/.lumera/cosmovisor/upgrades/v1.9.1/bin/lumerad version --long | grep -e commit -e version
+$HOME/.lumera/cosmovisor/upgrades/v1.10.1/bin/lumerad version --long | grep -e commit -e version
 ```
 ```
 lumerad version  --long | grep -e version -e commit
@@ -87,7 +87,7 @@ Environment="DAEMON_HOME=$HOME/.lumera"
 Environment="DAEMON_NAME=lumerad"
 Environment="UNSAFE_SKIP_BACKUP=true"
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.lumera/cosmovisor/current/bin"
-
+Environment="LD_LIBRARY_PATH=$HOME/.lumera/cosmovisor/current/bin/"
 [Install]
 WantedBy=multi-user.target
 EOF
