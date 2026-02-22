@@ -2,7 +2,7 @@
 ```
 cd $HOME
 rm -rf shentu
-git clone https://github.com/ShentuChain/shentu shentu
+git clone https://github.com/shentufoundation/shentu.git
 cd shentu
 git checkout v2.16.2
 make install
