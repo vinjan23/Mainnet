@@ -1,9 +1,9 @@
 ###
 ```
 cd $HOME
-rm -rf secretnetwork_1.23.2_mainnet_goleveldb_amd64_ubuntu-24.04.deb
-wget https://github.com/scrtlabs/SecretNetwork/releases/download/v1.23.2/secretnetwork_1.23.2_mainnet_goleveldb_amd64_ubuntu-24.04.deb
-sudo apt install -y ./secretnetwork_1.23.2_mainnet_goleveldb_amd64_ubuntu-24.04.deb
+rm -rf secretnetwork_1.23.3_mainnet_goleveldb_amd64_ubuntu-24.04.deb
+wget wget https://github.com/scrtlabs/SecretNetwork/releases/download/v1.23.3/secretnetwork_1.23.3_mainnet_goleveldb_amd64_ubuntu-22.04.deb
+sudo apt install -y ./secretnetwork_1.23.3_mainnet_goleveldb_amd64_ubuntu-22.04.deb
 
 ```
 ```
