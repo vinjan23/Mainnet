@@ -1,11 +1,10 @@
 ###
 ```
 cd $HOME
-rm -rf secretnetwork
-git clone https://github.com/scrtlabs/SecretNetwork secretnetwork
-cd secretnetwork
-git checkout v1.23.3
-make install
+rm -rf secretnetwork_1.23.2_mainnet_goleveldb_amd64_ubuntu-24.04.deb
+wget https://github.com/scrtlabs/SecretNetwork/releases/download/v1.23.2/secretnetwork_1.23.2_mainnet_goleveldb_amd64_ubuntu-24.04.deb
+sudo apt install -y ./secretnetwork_1.23.2_mainnet_goleveldb_amd64_ubuntu-24.04.deb
+
 ```
 ```
 mkdir -p $HOME/.secretd/cosmovisor/genesis/bin
@@ -31,6 +30,10 @@ PORT=143
 sed -i -e "s%:26657%:${PORT}57%" $HOME/.secretd/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.secretd/config/config.toml
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.secretd/config/app.toml
+```
+###
+```
+sed -i 's|minimum-gas-prices =.*|minimum-gas-prices = "0.00125uscrt"|g' $HOME/.secretd/config/app.toml
 ```
 ###
 ```
