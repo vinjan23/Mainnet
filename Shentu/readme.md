@@ -105,8 +105,8 @@ nano $HOME/.shentud/validator.json
 shentud tx staking create-validator $HOME/.shentud/validator.json \
 --from wallet \
 --chain-id shentu-2.2 \
---gas-prices="0.001uctk" \
---gas-adjustment=1.2 \
+--gas-prices="0.05uctk" \
+--gas-adjustment=1.5 \
 --gas=auto
 ```
 
