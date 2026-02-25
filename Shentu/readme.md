@@ -17,7 +17,7 @@ sudo ln -s $HOME/.shentud/cosmovisor/current/bin/shentud /usr/local/bin/shentud 
 ```
 ```
 mkdir -p $HOME/.shentud/cosmovisor/upgrades/v2.17.0/bin
-cp -a $HOME/go/bin/shentud $HOME/.sunrise/cosmovisor/upgrades/v2.17.0/bin/
+cp -a $HOME/go/bin/shentud $HOME/.shentud/cosmovisor/upgrades/v2.17.0/bin/
 ```
 ### 
 ```
