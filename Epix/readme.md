@@ -145,8 +145,9 @@ epixd tx staking create-validator $HOME/.epixd/validator.json \
 --gas=auto
 ```
 ```
-epixd tx distribution withdraw-rewards $(epixd keys show wallet --bech val -a) --commission --from wallet --chain-id epix_1916-1 --gas-adjustment=1.2 --gas-prices="0.001aepix" --gas=auto
+epixd tx distribution withdraw-rewards $(epixd keys show wallet --bech val -a) --commission --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices="20000000000aepix" --gas=auto
 ```
+
 ```
 epixd tx staking delegate $(epixd keys show wallet --bech val -a) 1000000000000000000aepix --from wallet --chain-id epix_1916-1 --gas-adjustment=1.2 --gas-prices="0.001aepix" --gas=auto
 ```
