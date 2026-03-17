@@ -43,14 +43,14 @@ cd $HOME
 rm -rf bitbadgeschain
 git clone https://github.com/BitBadges/bitbadgeschain.git
 cd bitbadgeschain
-git checkout v25
-make build-linux/amd64 VERSION=v25
+git checkout v26
+make build-linux/amd64 VERSION=v26
 cp build/bitbadgeschain-linux-amd64 /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v25/bin
-cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v25/bin/
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v25/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v26/bin
+cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v26/bin/
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v26/bin/bitbadgeschaind
 ```
 ```
 wget https://github.com/BitBadges/bitbadgeschain/releases/download/v24/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v24/bin/bitbadgeschaind
