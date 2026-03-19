@@ -31,7 +31,7 @@ rm lumera_v1.11.1_linux_amd64.tar.gz
 rm install.sh
 ```
 ```
-$HOME/.lumera/cosmovisor/upgrades/v1.10.1/bin/lumerad version --long | grep -e commit -e version
+$HOME/.lumera/cosmovisor/upgrades/v1.11.1/bin/lumerad version --long | grep -e commit -e version
 ```
 ```
 lumerad version  --long | grep -e version -e commit
