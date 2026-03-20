@@ -28,15 +28,15 @@ cd $HOME
 rm -rf EpixChain
 git clone https://github.com/EpixZone/EpixChain.git
 cd EpixChain
-git checkout v0.5.4
+git checkout v0.5.5
 make install
 ```
 ```
-mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.5.4/bin
-cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.5.4/bin/
+mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.5.5/bin
+cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.5.5/bin/
 ```
 ```
-$HOME/.epixd/cosmovisor/upgrades/v0.5.4/bin/epixd version --long | grep -e commit -e version
+$HOME/.epixd/cosmovisor/upgrades/v0.5.5/bin/epixd version --long | grep -e commit -e version
 ```
 ```
 epixd version --long | grep -e commit -e version
@@ -152,7 +152,7 @@ epixd tx distribution withdraw-rewards $(epixd keys show wallet --bech val -a) -
 epixd tx staking delegate $(epixd keys show wallet --bech val -a) 1000000000000000000aepix --from wallet --chain-id epix_1916-1 --gas-adjustment=1.2 --gas-prices="0.001aepix" --gas=auto
 ```
 ```
-epixd tx gov vote 5 yes --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices="0.001aepix" --gas=auto
+epixd tx gov vote 7 yes --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices="0.001aepix" --gas=auto
 ```
 ```
 sudo systemctl stop epixd
