@@ -25,7 +25,7 @@ make build
 ```
 ```
 mkdir -p $HOME/.kiichain/cosmovisor/upgrades/v7.1.0-mainnet/bin
-mv build/kiichaind $HOME/.kiichain/cosmovisor/upgrades/b7.1.0-mainnet/bin/
+mv build/kiichaind $HOME/.kiichain/cosmovisor/upgrades/v7.1.0-mainnet/bin/
 rm -rf build
 ```
 ```
