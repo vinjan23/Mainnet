@@ -136,11 +136,12 @@ epixd tx staking create-validator $HOME/.epixd/validator.json \
  epixd tx staking edit-validator \
 --new-moniker="Vinjan.Inc | RESTAKE" \
 --identity="7C66E36EA2B71F68" \
---website="" \
+--website="https://vinjan-inc.com" \
 --details="Staking Provider-IBC Relayer" \
 --chain-id epix_1916-1 \
+--commission-rate=0.04 \
 --from=wallet \
---gas-prices="0.002aepix" \
+--gas-prices="20000000000aepix" \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
