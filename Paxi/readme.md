@@ -11,7 +11,7 @@ rm -rf paxi
 rm -rf paxid
 git clone https://github.com/paxi-web3/paxi.git
 cd paxi
-git checkout v1.0.6
+git checkout v1.0.7
 make install
 ```
 ```
