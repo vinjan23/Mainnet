@@ -105,3 +105,8 @@ gnodid tx staking create-validator $HOME/.gnodi/validator.json \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
+
+```
+echo $(gnodid tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.gnodi/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+c0aad4afe82f4e12f931860e7877787d356f17de@peer-gnodi.vinjan-inc.com:15556
+```
