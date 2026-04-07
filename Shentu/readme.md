@@ -113,4 +113,12 @@ shentud tx staking create-validator $HOME/.shentud/validator.json \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
-
+```
+sudo systemctl stop shentud
+sudo systemctl disable shentud
+sudo rm /etc/systemd/system/shentud.service
+sudo systemctl daemon-reload
+rm -rf $(which shentud)
+rm -rf .shentud
+rm -rf shentu
+```
