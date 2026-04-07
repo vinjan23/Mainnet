@@ -1,3 +1,4 @@
+### Binary
 ```
 cd $HOME
 mkdir -p $HOME/.gnodi
@@ -16,18 +17,27 @@ sudo ln -s $HOME/.gnodi/cosmovisor/current/bin/gnodid /usr/local/bin/gnodid -f
 ```
 gnodid version --long | grep -e commit -e version
 ```
-```
-wget -O $HOME/.gnodi/config/genesis.json https://raw.githubusercontent.com/gnodi-network/genesis-mainnet/refs/heads/main/genesis.json
-```
+### Init
 ```
 gnodid init Vinjan.Inc --chain-id gnodi
 ```
+### Genesis
+```
+wget -O $HOME/.gnodi/config/genesis.json https://raw.githubusercontent.com/gnodi-network/genesis-mainnet/refs/heads/main/genesis.json
+```
+### Peer
+```
+peers="c0aad4afe82f4e12f931860e7877787d356f17de@peer-gnodi.vinjan-inc.com:15556"
+sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.gnodi/config/config.toml
+```
+### Port
 ```
 PORT=155
 sed -i -e "s%:26657%:${PORT}57%" $HOME/.gnodi/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.gnodi/config/config.toml
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.gnodi/config/app.toml
 ```
+### Prunning
 ```
 sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
@@ -36,12 +46,15 @@ sed -i \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
 $HOME/.gnodi/config/app.toml
 ```
+### Gas
 ```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.25uGNOD\"/" $HOME/.gnodi/config/app.toml
 ```
+### Indexer
 ```
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.gnodi/config/config.toml
 ```
+### Service
 ```
 sudo tee /etc/systemd/system/gnodid.service > /dev/null << EOF
 [Unit]
@@ -61,6 +74,7 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 WantedBy=multi-user.target
 EOF
 ```
+### Start
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable gnodid
@@ -101,12 +115,33 @@ nano $HOME/.gnodi/validator.json
 gnodid tx staking create-validator $HOME/.gnodi/validator.json \
 --from wallet \
 --chain-id gnodi \
---gas-prices="0.255uGNOD" \
+--gas-prices="0.25uGNOD" \
 --gas-adjustment=1.5 \
 --gas=auto
+```
+### Unjail
+```
+gnodid tx slashing unjail --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="0.25uGNOD"
+```
+### WD
+```
+gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a) --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="0.25uGNOD"
+```
+### Delegate
+```
+gnodid tx staking delegate $(gnodid keys show wallet --bech val -a) 1000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="0.25uGNOD"
 ```
 
 ```
 echo $(gnodid tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.gnodi/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
-c0aad4afe82f4e12f931860e7877787d356f17de@peer-gnodi.vinjan-inc.com:15556
+```
+
+### Delete
+```
+sudo systemctl stop gnodid
+sudo systemctl disable gnodid
+sudo rm /etc/systemd/system/gnodid.service
+sudo systemctl daemon-reload
+rm -rf $(which gnodid)
+rm -rf .gnodi
 ```
