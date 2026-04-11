@@ -151,17 +151,18 @@ hippod tx staking edit-validator \
 --website="https://vinjan-inc.com" \
 --from=wallet \
 --chain-id hippo-protocol-1 \
+--commission-rate=0.11 \
 --gas-prices=5000000000000ahp \
---gas-adjustment=1.2 \
+--gas-adjustment=1.5 \
 --gas=auto
 ```
 ### Delegate
 ```
-hippod tx staking delegate $(hippod keys show wallet --bech val -a) 1000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.2 --gas-prices=5000000000000ahp --gas=auto
+hippod tx staking delegate $(hippod keys show wallet --bech val -a) 1000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
 ```
 ### WD Comission
 ```
-hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.2 --gas-prices=5000000000000ahp --gas=auto
+hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
 ```
 ### Own peer
 ```
