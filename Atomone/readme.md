@@ -170,6 +170,7 @@ atomoned tx staking edit-validator \
 --details="Stake Provider & IBC Relayer" \
 --chain-id=atomone-1 \
 --from=wallet \
+--commission-rate="0.12" \
 --gas-adjustment=1.2 \
 --gas-prices="0.2uphoton" \
 --gas=auto
