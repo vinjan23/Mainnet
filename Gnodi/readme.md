@@ -17,6 +17,15 @@ sudo ln -s $HOME/.gnodi/cosmovisor/current/bin/gnodid /usr/local/bin/gnodid -f
 ```
 gnodid version --long | grep -e commit -e version
 ```
+```
+mkdir -p $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin
+wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.0/gnodid-linux -O $HOME/.gnodi/cosmovisor/upgrades/evm-upgrades/bin/gnodid
+chmod +x HOME/.gnodi/cosmovisor/upgrades/evm-upgrades/bin/gnodid
+```
+```
+$HOME/.gnodi/cosmovisor/upgrades/evm-ugrades/bin/gnodid version --long | grep -e commit -e version
+```
+
 ### Init
 ```
 gnodid init Vinjan.Inc --chain-id gnodi
