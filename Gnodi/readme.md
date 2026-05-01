@@ -18,12 +18,27 @@ sudo ln -s $HOME/.gnodi/cosmovisor/current/bin/gnodid /usr/local/bin/gnodid -f
 gnodid version --long | grep -e commit -e version
 ```
 ```
+wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.0/gnodid-linux
+chmod +x gnodid-linux
+sudo mv gnodid-linux /usr/local/bin/gnodid
+```
+```
 mkdir -p $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin
-wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.0/gnodid-linux -O $HOME/.gnodi/cosmovisor/upgrades/evm-upgrades/bin/gnodid
-chmod +x HOME/.gnodi/cosmovisor/upgrades/evm-upgrades/bin/gnodid
+cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
 ```
 ```
-$HOME/.gnodi/cosmovisor/upgrades/evm-ugrades/bin/gnodid version --long | grep -e commit -e version
+cd $HOME
+git clone https://github.com/gnodi-network/gnodi.git
+cd gnodi
+git checkout v2.0.0
+make install
+```
+```
+mkdir -p $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin
+cp $HOME/go/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
+```
+```
+$HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/gnodid version --long | grep -e commit -e version
 ```
 
 ### Init
