@@ -27,18 +27,6 @@ mkdir -p $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin
 cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
 ```
 ```
-cd $HOME
-rm -rf gnodi
-git clone https://github.com/gnodi-network/gnodi.git
-cd gnodi
-git checkout v2.0.2
-make install
-```
-```
-mkdir -p $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin
-cp $HOME/go/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
-```
-```
 $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/gnodid version --long | grep -e commit -e version
 ```
 ```
@@ -51,6 +39,16 @@ gnodid init Vinjan.Inc --chain-id gnodi
 ### Genesis
 ```
 wget -O $HOME/.gnodi/config/genesis.json https://raw.githubusercontent.com/gnodi-network/genesis-mainnet/refs/heads/main/genesis.json
+```
+```
+cat <<EOF >> ~/.gnodi/config/app.toml
+
+[evm]
+evm-chain-id = 46634
+
+[json-rpc]
+enable = true
+EOF
 ```
 ### Peer
 ```
