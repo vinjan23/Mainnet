@@ -164,21 +164,19 @@ echo $(gnodid tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.g
 sudo systemctl stop gnodid
 cp $HOME/.gnodi/data/priv_validator_state.json $HOME/.gnodi/priv_validator_state.json.backup
 gnodid comet unsafe-reset-all --home $HOME/.gnodi/ --keep-addr-book
-SYNC_RPC="https://rpc.gnodi.zone"
-SYNC_PEER="cd0f4a3e82fa723b5b2d41480d72b0488b49ef34@146.190.38.60:26656"
-LATEST_HEIGHT=$(curl -s $SYNC_RPC/block | jq -r .result.block.header.height)
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000))
-TRUST_HASH=$(curl -s "$SYNC_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-sed -i \
--e "s|^enable *=.*|enable = true|" \
--e "s|^rpc_servers *=.*|rpc_servers = \"$SYNC_RPC,$SYNC_RPC\"|" \
--e "s|^trust_height *=.*|trust_height = $BLOCK_HEIGHT|" \
--e "s|^trust_hash *=.*|trust_hash = \"$TRUST_HASH\"|" \
--e "s|^persistent_peers *=.*|persistent_peers = \"$SYNC_PEER\"|" \ ~/.gnodi/config/config.toml
+SNAP_RPC=https://rpc.gnodi.zone
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.gnodi/config/config.toml
 mv $HOME/.gnodi/priv_validator_state.json.backup $HOME/.gnodi/data/priv_validator_state.json
 sudo systemctl restart gnodid && sudo journalctl -u gnodid -fo cat
 ```
-
 ### Delete
 ```
 sudo systemctl stop gnodid
