@@ -18,7 +18,7 @@ sudo ln -s $HOME/.gnodi/cosmovisor/current/bin/gnodid /usr/local/bin/gnodid -f
 gnodid version --long | grep -e commit -e version
 ```
 ```
-wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.0/gnodid-linux
+wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.2/gnodid-linux
 chmod +x gnodid-linux
 sudo mv gnodid-linux /usr/local/bin/gnodid
 ```
