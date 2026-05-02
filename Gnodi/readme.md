@@ -28,9 +28,10 @@ cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
 ```
 ```
 cd $HOME
+rm -rf gnodi
 git clone https://github.com/gnodi-network/gnodi.git
 cd gnodi
-git checkout v2.0.0
+git checkout v2.0.2
 make install
 ```
 ```
