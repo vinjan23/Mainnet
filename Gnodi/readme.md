@@ -87,7 +87,7 @@ Description=gnodi
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which cosmovisor) run start --chain-id gnodi
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -123,7 +123,7 @@ nano $HOME/.gnodi/validator.json
 ```
 ```
 {
-  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"R8/G8u1YaelVBkqhefIcy4kebKHx2DzXPpNR3F0d9IQ="},
+  "pubkey": ,
   "amount": "100000000uGNOD",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
@@ -140,7 +140,7 @@ nano $HOME/.gnodi/validator.json
 gnodid tx staking create-validator $HOME/.gnodi/validator.json \
 --from wallet \
 --chain-id gnodi \
---gas-prices="0.25uGNOD" \
+--gas-prices="1uGNOD" \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
