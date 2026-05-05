@@ -146,15 +146,15 @@ gnodid tx staking create-validator $HOME/.gnodi/validator.json \
 ```
 ### Unjail
 ```
-gnodid tx slashing unjail --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="0.25uGNOD"
+gnodid tx slashing unjail --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
 ```
 ### WD
 ```
-gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a) --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="0.25uGNOD"
+gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a) --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
 ```
 ### Delegate
 ```
-gnodid tx staking delegate $(gnodid keys show wallet --bech val -a) 1000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="0.25uGNOD"
+gnodid tx staking delegate $(gnodid keys show wallet --bech val -a) 1000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
 ```
 
 ```
@@ -191,6 +191,9 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+```
+gnodid tx gov vote 5 yes --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas-prices="1uGNOD" --gas=auto
 ```
 ### Delete
 ```
