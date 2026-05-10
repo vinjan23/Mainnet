@@ -18,6 +18,22 @@ sudo ln -s $HOME/.dungeonchain/cosmovisor/current/bin/dungeond /usr/local/bin/du
 ```
 dungeond version --long | grep -e commit -e version
 ```
+### Update
+```
+cd $HOME
+rm -rf dungeonchain 
+git clone https://github.com/Crypto-Dungeon/dungeonchain.git
+cd dungeonchain
+git checkout v6.0.0
+make install
+```
+```
+mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v6/bin
+cp $HOME/go/bin/dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v6/bin/
+```
+```
+$HOME/.dungeonchain/cosmovisor/upgrades/v6/bin/dungeond version --long | grep -e commit -e version
+```
 
 ### Init
 ```
@@ -183,7 +199,7 @@ dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val
 
 ### Vote 
 ```
-dungeond tx gov vote 1 yes --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
+dungeond tx gov vote 32 yes --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
 ```
 
 ### Check Matches
