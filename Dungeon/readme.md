@@ -120,7 +120,7 @@ sudo journalctl -u dungeond -f -o cat
 sudo systemctl stop dungeond
 cp $HOME/.dungeonchain/data/priv_validator_state.json $HOME/.dungeonchain/priv_validator_state.json.backup
 dungeond tendermint unsafe-reset-all --home $HOME/.dungeonchain --keep-addr-book
-SNAP_RPC="https://rpc-dungeon.vinjan.xyz:443"
+SNAP_RPC="https://rpc.dungeon.chaintools.tech"
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000))
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
