@@ -95,8 +95,8 @@ sudo journalctl -u kiichaind -f -o cat
 ```
 sudo systemctl stop kiichaind
 kiichaind comet unsafe-reset-all --home $HOME/.kiichain --keep-addr-book
-cp $HOME/.kiichaindata/priv_validator_state.json $HOME/.kiichain/priv_validator_state.json.backup
-SNAP_RPC="https://rpc-kiichain.vinjan-inc.com:443"
+cp $HOME/.kiichain/data/priv_validator_state.json $HOME/.kiichain/priv_validator_state.json.backup
+SNAP_RPC="https://rpc.kiivalidator.com"
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 1500)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
