@@ -123,11 +123,11 @@ symphonyd tx staking edit-validator \
 --website="https://vinjan-inc.com" \
 --details="Staking Provider-IBC Relayer" \
 --chain-id=symphony-1 \
+--commission-rate=0.3 \
 --from=wallet \
 --gas-adjustment 1.5 \
 --gas-prices 0.0025note \
 --gas auto
---commission-rate=0.15 \
 ```
 ### WD Commission
 ```
