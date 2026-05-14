@@ -31,9 +31,9 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.jayn/config/app.toml
 ```
 curl -s http://89.58.25.104:26657/genesis | jq '.result.genesis' > ~/.jayn/config/genesis.json
 ```
-### Seed
+### peer
 ```
-peers="ba900c17cfcc187e374323ff31016b178d088d55@89.58.24.232:26656,9951f5546f067ed877dc425fadc98e234e0480c1@152.53.195.74:26656"
+peers="218942ae4b1d1d8ab6517b06e0828198a0867bb1@65.21.234.111:18256,ba900c17cfcc187e374323ff31016b178d088d55@89.58.24.232:26656"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.jayn/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025ujay\"|" $HOME/.jayn/config/app.toml
 ```
@@ -135,6 +135,9 @@ jayndd tx staking delegate $(jaynd keys show wallet --bech val -a) 1000000ujay -
 ```
 ```
 jaynd tx distribution withdraw-rewards $(jaynd keys show wallet --bech val -a) --from wallet --chain-id thejaynetwork --gas-adjustment=1.5 --gas=auto --gas-prices="0.01ujay"
+```
+```
+echo $(jaynd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.jayn/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
 ### Delete
 ```
