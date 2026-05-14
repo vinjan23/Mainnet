@@ -109,8 +109,8 @@ nano $HOME/.jayn/validator.json
 ```
 ```
 {
-  "pubkey": ,
-  "amount": "100000000ujay",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"GPD4dSVaMLG6+qkvuWlSbeWdjznAIaCbp7ZUDbGWzt4="},
+  "amount": "4000000000ujay",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
   "website": "https://vinjan-inc.com",
