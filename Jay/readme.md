@@ -78,10 +78,10 @@ sudo journalctl -u jaynd -f -o cat
 ```
 ### Sync
 ```
-jaynd status 2>&1 | jq .SyncInfo
+jaynd status 2>&1 | jq .sync_info
 ```
 
-### Snapshot
+### Statesync
 ```
 sudo systemctl stop jaynd
 SNAP_RPC="http://89.58.25.104:26657"
@@ -96,16 +96,54 @@ sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
 ```
 ### Wallet
 ```
-starsd keys add ibc-juno
+jaynd keys add wallet
+```
+```
+jaynd q bank balances $(jaynd keys show wallet -a)
+```
+```
+jaynd comet show-validator
+```
+```
+nano $HOME/.jayn/validator.json
+```
+```
+{
+  "pubkey": ,
+  "amount": "100000000ujay",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://vinjan-inc.com",
+  "security": "",
+  "details": "Staking Provider-IBC Relayer",
+  "commission-rate": "0.05",
+  "commission-max-rate": "1",
+  "commission-max-change-rate": "1",
+  "min-self-delegation": "1"
+}
+```
+```
+jaynd tx staking create-validator $HOME/.jayn/validator.json \
+--from wallet \
+--chain-id thejaynetwork \
+--gas-prices="0.01ujay" \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+```
+jayndd tx staking delegate $(jaynd keys show wallet --bech val -a) 1000000ujay --from wallet --chain-id thejaynetwork --gas-adjustment=1.5 --gas=auto --gas-prices="0.01ujay"
+```
+```
+jaynd tx distribution withdraw-rewards $(jaynd keys show wallet --bech val -a) --from wallet --chain-id thejaynetwork --gas-adjustment=1.5 --gas=auto --gas-prices="0.01ujay"
 ```
 ### Delete
 ```
-sudo systemctl stop junod
-sudo systemctl disable junod
-sudo rm /etc/systemd/system/junod.service
+sudo systemctl stop jaynd
+sudo systemctl disable jaynd
+sudo rm /etc/systemd/system/jaynd.service
 sudo systemctl daemon-reload
-rm -f $(which junod)
-rm -rf $HOME/.junod
-rm -rf $HOME/juno
+rm -rf $(which jaynd)
+rm -rf $HOME/.jayn
+rm -rf $HOME/thejaynetwork
 ```
 
