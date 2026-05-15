@@ -33,7 +33,7 @@ curl -s http://89.58.25.104:26657/genesis | jq '.result.genesis' > ~/.jayn/confi
 ```
 ### peer
 ```
-peers="218942ae4b1d1d8ab6517b06e0828198a0867bb1@65.21.234.111:18256,ba900c17cfcc187e374323ff31016b178d088d55@89.58.24.232:26656"
+peers="218942ae4b1d1d8ab6517b06e0828198a0867bb1@peer-jayn.vinjan-inc.com:18256,ba900c17cfcc187e374323ff31016b178d088d55@89.58.24.232:26656"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.jayn/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025ujay\"|" $HOME/.jayn/config/app.toml
 ```
