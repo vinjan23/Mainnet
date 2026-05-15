@@ -101,11 +101,11 @@ nano $HOME/.safrochain/validator.json
 ```
 ```
 {
-  "pubkey": ,
-  "amount": "1000000usaf",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"vIfyVKtXPyoZbN3ZtmcPcE357hHCY2jkZgFH1f+GXYk="},
+  "amount": "10000000000usaf",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
-  "website": "https://service.vinjan.xyz",
+  "website": "https://vinjan-inc.com",
   "security": "",
   "details": "Staking Provider-IBC Relayer",
   "commission-rate": "0.05",
