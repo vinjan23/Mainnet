@@ -108,9 +108,9 @@ nano $HOME/.safrochain/validator.json
   "website": "https://service.vinjan.xyz",
   "security": "",
   "details": "Staking Provider-IBC Relayer",
-  "commission-rate": "0.1",
+  "commission-rate": "0.05",
+  "commission-max-change-rate": "0.05",
   "commission-max-rate": "0.5",
-  "commission-max-change-rate": "0.5",
   "min-self-delegation": "1"
 }
 ```
