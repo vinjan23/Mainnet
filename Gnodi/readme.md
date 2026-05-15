@@ -52,7 +52,7 @@ EOF
 ```
 ### Peer
 ```
-peers="cd0f4a3e82fa723b5b2d41480d72b0488b49ef34@146.190.38.60:26656"
+peers="cd0f4a3e82fa723b5b2d41480d72b0488b49ef34@146.190.38.60:26656,55bb9b88bcfdd0de814426c024550b2599ae43c6@peer-gnodi.vinjan-inc.com:15556"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.gnodi/config/config.toml
 ```
 ### Port
