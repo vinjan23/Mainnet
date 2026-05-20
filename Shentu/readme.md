@@ -4,7 +4,7 @@ cd $HOME
 rm -rf shentu
 git clone https://github.com/shentufoundation/shentu.git
 cd shentu
-git checkout v2.17.0
+git checkout v2.18.0
 make install
 ```
 ```
@@ -16,8 +16,8 @@ sudo ln -s $HOME/.shentud/cosmovisor/genesis $HOME/.shentud/cosmovisor/current -
 sudo ln -s $HOME/.shentud/cosmovisor/current/bin/shentud /usr/local/bin/shentud -f
 ```
 ```
-mkdir -p $HOME/.shentud/cosmovisor/upgrades/v2.17.0/bin
-cp -a $HOME/go/bin/shentud $HOME/.shentud/cosmovisor/upgrades/v2.17.0/bin/
+mkdir -p $HOME/.shentud/cosmovisor/upgrades/v2.18.0/bin
+cp -a $HOME/go/bin/shentud $HOME/.shentud/cosmovisor/upgrades/v2.18.0/bin/
 ```
 ### 
 ```
