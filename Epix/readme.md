@@ -165,8 +165,8 @@ sudo systemctl stop epixd
 sudo systemctl disable epixd
 sudo rm /etc/systemd/system/epixd.service
 sudo systemctl daemon-reload
-rm -f $(which epixd)
+rm -rf $(which epixd)
 rm -rf .epixd
-rm -rf epix
+rm -rf EpixChain
 ```
 
