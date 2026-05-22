@@ -135,7 +135,7 @@ jaynd tx staking edit-validator \
 --new-moniker="Vinjan.Inc | REStake" \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
---details="Staking Provider-IBC Relayer | https://restake.app/thejaynetwork/yjayvaloper1zuv7m0jy4hrxyk4xxw65wfxu7mf0dywnc9y2en" \
+--details="https://restake.app/thejaynetwork/yjayvaloper1zuv7m0jy4hrxyk4xxw65wfxu7mf0dywnc9y2en | Staking Provider-IBC Relayer" \
 --chain-id thejaynetwork \
 --from=wallet \
 --gas-prices="0.025ujay" \
