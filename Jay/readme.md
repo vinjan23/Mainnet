@@ -131,6 +131,18 @@ jaynd tx staking create-validator $HOME/.jayn/validator.json \
 --gas=auto
 ```
 ```
+jaynd tx staking edit-validator \
+--new-moniker="Vinjan.Inc | REStake" \
+--identity="7C66E36EA2B71F68" \
+--website="https://vinjan-inc.com" \
+--details="Staking Provider-IBC Relayer | https://restake.app/thejaynetwork/yjayvaloper1zuv7m0jy4hrxyk4xxw65wfxu7mf0dywnc9y2en" \
+--chain-id thejaynetwork \
+--from=wallet \
+--gas-prices="0.025ujay" \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+```
 jayndd tx staking delegate $(jaynd keys show wallet --bech val -a) 1000000ujay --from wallet --chain-id thejaynetwork --gas-adjustment=1.5 --gas=auto --gas-prices="0.01ujay"
 ```
 ```
