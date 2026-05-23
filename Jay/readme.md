@@ -16,6 +16,16 @@ cp $HOME/go/bin/jaynd $HOME/.jayn/cosmovisor/genesis/bin/
 sudo ln -s $HOME/.jayn/cosmovisor/genesis $HOME/.jayn/cosmovisor/current -f
 sudo ln -s $HOME/.jayn/cosmovisor/current/bin/jaynd /usr/local/bin/jaynd -f
 ```
+wget https://snapshot.vinjan-inc.com/jaynetwork/jaynd
+chmod +x jaynd
+mv jaynd $HOME/usr/local/bin/
+
+wget https://github.com/bbtccore/thejaynetwork/releases/download/v1.1.0/jaynd-linux-amd64.tar.gz
+tar xzvf jaynd-linux-amd64.tar.gz
+chmod +x $HOME/jaynd-linux-amd64
+sudo mv $HOME/jaynd-linux-amd64 $HOME/usr/local/bin/jaynd
+
+mv jaynd $HOME/go/bin/
 ### Init
 ```
 jaynd init Vinjan.Inc --chain-id thejaynetwork
