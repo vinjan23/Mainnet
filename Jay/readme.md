@@ -143,6 +143,7 @@ jaynd tx staking edit-validator \
 --details="https://restake.app/thejaynetwork/yjayvaloper1zuv7m0jy4hrxyk4xxw65wfxu7mf0dywnc9y2en | Staking Provider-IBC Relayer" \
 --chain-id thejaynetwork \
 --from=wallet \
+--commission-rate=0.1 \
 --gas-prices="0.025ujay" \
 --gas-adjustment=1.5 \
 --gas=auto
