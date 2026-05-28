@@ -28,7 +28,7 @@ git checkout v7.0.0
 make install
 ```
 ```
-mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v7bin
+mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v7/bin
 cp $HOME/go/bin/dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v7/bin/
 ```
 ```
