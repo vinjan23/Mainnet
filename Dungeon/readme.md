@@ -24,7 +24,7 @@ cd $HOME
 rm -rf dungeonchain 
 git clone https://github.com/Crypto-Dungeon/dungeonchain.git
 cd dungeonchain
-git checkout v7.0.0
+git checkout v7.0.1
 make install
 ```
 ```
