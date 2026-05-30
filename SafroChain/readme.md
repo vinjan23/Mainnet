@@ -140,7 +140,8 @@ nano $HOME/.safrochain/validator.json
 ```
 safrochaind tx staking create-validator $HOME/.safrochain/validator.json \
 --from wallet \
---chain-id safrochain-1 \
+--chain-id safro-preprod-1 \
+--fees 10000usaf
 --gas-prices 100000usaf \
 --gas-adjustment 1.3 \
 --gas auto
