@@ -31,7 +31,7 @@ sha256sum $HOME/go/bin/safrochaind
 ```
 ### Init
 ```
-safrochaind init Vinjan.inc --chain-idsafro-preprod-1
+safrochaind init Vinjan.inc --chain-id safro-preprod-1
 ```
 ```
 safrochaind version  --long | grep -e version -e commit
