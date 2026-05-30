@@ -4,6 +4,17 @@ cd $HOME
 rm -rf safrochain-node
 git clone https://github.com/Safrochain-Org/safrochain-node.git
 cd safrochain-node
+git fetch --tags
+git checkout v0.2.2
+make install
+
+git checkout v0.2.2
+make install
+```
+```
+git clone https://github.com/Safrochain-Org/safrochain-node ~/safrochain-node
+cd ~/safrochain-node
+git fetch --tags
 git checkout v0.2.2
 make install
 ```
