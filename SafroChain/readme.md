@@ -20,12 +20,17 @@ sudo ln -s $HOME/.safrochain/cosmovisor/current/bin/safrochaind /usr/local/bin/s
 ```
 safrochaind init Vinjan.inc --chain-id safrochain-1
 ```
-
+```
+safrochaind version  --long | grep -e version -e commit
+```
 ### Genesis
 ```
-wget -O $HOME/.amber/config/genesis.json https://raw.githubusercontent.com/Synternet/synternet-chain-releases/refs/heads/main/networks/mainnet/genesis.json
+wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis.json
 ```
-
+```
+safrochaind genesis validate --home ~/.safrochain
+```
+`
 ### Port
 ```
 PORT=127
@@ -35,7 +40,7 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:854
 ```
 ### Config
 ```
-peers=""
+peers="131aeac8bd7fe9b678cdaa9cc3fe2d7af3ded1fe@rpc1.safrochain.network:26676,29879611b7f822203a2822c2bfbd8e8f39161139@rpc2.safrochain.network:36656"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.safrochain/config/config.toml
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"100000usaf\"/" $HOME/.safrochain/config/app.toml
 ```
