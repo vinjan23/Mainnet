@@ -38,7 +38,7 @@ safrochaind version  --long | grep -e version -e commit
 ```
 ### Genesis
 ```
-wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/draft-genesis/main/genesis.json
+wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis.json
 ```
 ```
 safrochaind genesis validate --home ~/.safrochain
