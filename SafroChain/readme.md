@@ -31,14 +31,14 @@ sha256sum $HOME/go/bin/safrochaind
 ```
 ### Init
 ```
-safrochaind init Vinjan.inc --chain-id safrochain-1
+safrochaind init Vinjan.inc --chain-idsafro-preprod-1
 ```
 ```
 safrochaind version  --long | grep -e version -e commit
 ```
 ### Genesis
 ```
-wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis.json
+wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis-preprod.json
 ```
 ```
 safrochaind genesis validate --home ~/.safrochain
@@ -99,6 +99,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable safrochaind
 sudo systemctl restart safrochaind
 sudo journalctl -u safrochaind -f -o cat
+```
+```
+safrochaind comet unsafe-reset-all --home ~/.safrochain
 ```
 ### Sync
 ```
