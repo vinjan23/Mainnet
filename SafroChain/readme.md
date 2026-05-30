@@ -15,7 +15,9 @@ cp $HOME/go/bin/safrochaind $HOME/.safrochain/cosmovisor/genesis/bin/
 sudo ln -s $HOME/.safrochain/cosmovisor/genesis $HOME/.safrochain/cosmovisor/current -f
 sudo ln -s $HOME/.safrochain/cosmovisor/current/bin/safrochaind /usr/local/bin/safrochaind -f
 ```
-
+```
+sha256sum $HOME/go/bin/safrochaind
+```
 ### Init
 ```
 safrochaind init Vinjan.inc --chain-id safrochain-1
@@ -30,7 +32,9 @@ wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/
 ```
 safrochaind genesis validate --home ~/.safrochain
 ```
-`
+```
+sha256sum $HOME/.safrochain/config/genesis.json
+```
 ### Port
 ```
 PORT=127
