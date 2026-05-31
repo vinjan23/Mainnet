@@ -11,13 +11,7 @@ make install
 git checkout v0.2.2
 make install
 ```
-```
-git clone https://github.com/Safrochain-Org/safrochain-node ~/safrochain-node
-cd ~/safrochain-node
-git fetch --tags
-git checkout v0.2.2
-make install
-```
+
 ```
 mkdir -p $HOME/.safrochain/cosmovisor/genesis/bin
 cp $HOME/go/bin/safrochaind $HOME/.safrochain/cosmovisor/genesis/bin/
@@ -55,9 +49,9 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:854
 ```
 ### Config
 ```
-peers="131aeac8bd7fe9b678cdaa9cc3fe2d7af3ded1fe@rpc1.safrochain.network:26676,29879611b7f822203a2822c2bfbd8e8f39161139@rpc2.safrochain.network:36656"
+peers="3d783002ed0218431e4623aff4754bb2280afece@peer-safrochain.vinjan-inc.com:12756"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.safrochain/config/config.toml
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"100000usaf\"/" $HOME/.safrochain/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"10000usaf\"/" $HOME/.safrochain/config/app.toml
 ```
 
 ### Prunning
