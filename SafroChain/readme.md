@@ -7,9 +7,6 @@ cd safrochain-node
 git fetch --tags
 git checkout v0.2.2
 make install
-
-git checkout v0.2.2
-make install
 ```
 
 ```
