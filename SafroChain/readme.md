@@ -154,7 +154,9 @@ ID
 ```
 echo $(safrochaind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.safrochain/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
-
+```
+safrochaind tx bank send wallet addr_safro1sdlfp8n5fcfa7qw7770ngqs02k876gf6dq7aw5 1005000000usaf --from wallet --chain-id safro-preprod-1 --fees 10000usaf
+```
 ### Delete
 ```
 sudo systemctl stop safrochaind 
