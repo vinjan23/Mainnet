@@ -114,6 +114,19 @@ shentud tx staking create-validator $HOME/.shentud/validator.json \
 --gas=auto
 ```
 ```
+shentud tx staking edit-validator \
+--new-moniker="shuttingdown,please redelegate" \
+--identity="" \
+--details="" \
+--website="" \
+--chain-id=shentu-2.2 \
+--from=wallet \
+--gas-adjustment 1.5 \
+--gas-prices 0.05uctk \
+--gas auto
+```
+
+```
 sudo systemctl stop shentud
 sudo systemctl disable shentud
 sudo rm /etc/systemd/system/shentud.service
