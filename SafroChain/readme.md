@@ -157,6 +157,9 @@ echo $(safrochaind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.s
 ```
 safrochaind tx bank send wallet addr_safro1sdlfp8n5fcfa7qw7770ngqs02k876gf6dq7aw5 1005000000usaf --from wallet --chain-id safro-preprod-1 --fees 10000usaf
 ```
+```
+safrochaind tx gov vote 4 yes --from wallet --chain-id safro-preprod-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+```
 ### Delete
 ```
 sudo systemctl stop safrochaind 
