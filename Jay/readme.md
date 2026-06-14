@@ -22,13 +22,11 @@ chmod +x jaynd
 mv jaynd /usr/local/bin/
 ```
 ```
-wget https://github.com/bbtccore/thejaynetwork/releases/download/v3-static/jaynd-linux-amd64.tar.gz
-tar xzvf jaynd-linux-amd64.tar.gz
-chmod +x jaynd
+wget -O jaynd https://github.com/bbtccore/thejaynetwork/releases/download/v3-static/jaynd-linux-amd64
 ```
 ```
 mkdir -p $HOME/.jayn/cosmovisor/upgrades/v3-static/bin
-mv jaynd $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/
+cp jaynd $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/
 rm jaynd-linux-amd64.tar.gz
 ```
 ```
