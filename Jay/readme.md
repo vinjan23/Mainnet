@@ -21,6 +21,22 @@ wget https://snapshot.vinjan-inc.com/jaynetwork/jaynd
 chmod +x jaynd
 mv jaynd /usr/local/bin/
 ```
+```
+wget https://github.com/bbtccore/thejaynetwork/releases/download/v3-static/jaynd-linux-amd64.tar.gz
+tar xzvf jaynd-linux-amd64.tar.gz
+chmod +x jaynd
+```
+```
+mkdir -p $HOME/.jayn/cosmovisor/upgrades/v3-static/bin
+mv jaynd $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/
+rm jaynd-linux-amd64.tar.gz
+```
+```
+$HOME/.jayn/cosmovisor/upgrades/v3-static/bin/jaynd version --long | grep -e commit -e version
+```
+```
+jaynd version --long | grep -e commit -e version
+```
 
 ```
 jaynd init Vinjan.Inc --chain-id thejaynetwork
