@@ -27,6 +27,7 @@ wget -O jaynd https://github.com/bbtccore/thejaynetwork/releases/download/v3-sta
 ```
 mkdir -p $HOME/.jayn/cosmovisor/upgrades/v3-static/bin
 cp jaynd $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/
+chmod +x $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/jaynd
 rm jaynd-linux-amd64.tar.gz
 ```
 ```
