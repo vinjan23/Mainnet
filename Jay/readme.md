@@ -16,13 +16,11 @@ cp $HOME/go/bin/jaynd $HOME/.jayn/cosmovisor/genesis/bin/
 sudo ln -s $HOME/.jayn/cosmovisor/genesis $HOME/.jayn/cosmovisor/current -f
 sudo ln -s $HOME/.jayn/cosmovisor/current/bin/jaynd /usr/local/bin/jaynd -f
 ```
-```
-wget https://snapshot.vinjan-inc.com/jaynetwork/jaynd
-chmod +x jaynd
-mv jaynd /usr/local/bin/
-```
+
 ```
 wget -O jaynd https://github.com/bbtccore/thejaynetwork/releases/download/v3-static/jaynd-linux-amd64
+chmod +x jaynd-linux-amd64
+mv jaynd-linux-amd64 /usr/local/bin/jaynd
 ```
 ```
 mkdir -p $HOME/.jayn/cosmovisor/upgrades/v3-static/bin
@@ -36,7 +34,9 @@ $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/jaynd version --long | grep -e com
 ```
 jaynd version --long | grep -e commit -e version
 ```
-
+```
+sha256sum $(which jaynd)
+```
 ```
 jaynd init Vinjan.Inc --chain-id thejaynetwork
 ```
@@ -53,7 +53,7 @@ curl -s http://89.58.25.104:26657/genesis | jq '.result.genesis' > ~/.jayn/confi
 ```
 ### peer
 ```
-peers="218942ae4b1d1d8ab6517b06e0828198a0867bb1@peer-jayn.vinjan-inc.com:18256,ba900c17cfcc187e374323ff31016b178d088d55@89.58.24.232:26656"
+peers="9951f5546f067ed877dc425fadc98e234e0480c1@152.53.195.74:26656,c06244aa1a3f76707d4330e05df510010faff26c@89.58.25.104:26656"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.jayn/config/config.toml
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025ujay\"|" $HOME/.jayn/config/app.toml
 ```
