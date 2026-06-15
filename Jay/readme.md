@@ -18,13 +18,12 @@ sudo ln -s $HOME/.jayn/cosmovisor/current/bin/jaynd /usr/local/bin/jaynd -f
 ```
 
 ```
-wget -O jaynd https://github.com/bbtccore/thejaynetwork/releases/download/v3-static/jaynd-linux-amd64
-chmod +x jaynd-linux-amd64
-mv jaynd-linux-amd64 /usr/local/bin/jaynd
+wget -O jaynd https://github.com/bbtccore/thejaynetwork/releases/download/v3-static/jaynd-linux-amd64 -O /usr/local/bin/jaynd
+chmod +x /usr/local/bin/jaynd
 ```
 ```
 mkdir -p $HOME/.jayn/cosmovisor/upgrades/v3-static/bin
-cp jaynd $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/
+cp /usr/local/bin/jaynd $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/
 chmod +x $HOME/.jayn/cosmovisor/upgrades/v3-static/bin/jaynd
 rm jaynd-linux-amd64.tar.gz
 ```
@@ -36,6 +35,13 @@ jaynd version --long | grep -e commit -e version
 ```
 ```
 sha256sum $(which jaynd)
+```
+```
+jaynd query wasm libwasmvm-version
+```
+```
+curl -fLO https://github.com/bbtccore/thejaynetwork/releases/download/v3-static/import-golden-wasm.sh
+SVC=jaynd bash import-golden-wasm.sh
 ```
 ```
 jaynd init Vinjan.Inc --chain-id thejaynetwork
@@ -117,6 +123,7 @@ sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
 mv $HOME/.jayn/priv_validator_state.json.backup $HOME/.jayn/data/priv_validator_state.json
 sudo systemctl restart jaynd
 sudo journalctl -u jaynd -f -o cat
+
 
 ```
 ### Wallet
