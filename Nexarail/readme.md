@@ -22,6 +22,7 @@ wget -O $HOME/.nexarail/config/genesis.json "https://github.com/Bookings-cpu/nex
 ```
 
 ```
+sed -i -e "s/^chain-id *=.*/chain-id = \"nexarail-mainnet-1\"/;" ~/.nexarail/config/client.toml
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025unxrl\"/;" ~/.nexarail/config/app.toml
 ```
 ```
@@ -82,15 +83,15 @@ nexaraild q bank balances $(nexaraild keys show wallet -a)
 ```
 ```
 nexaraild tx staking create-validator \
---amount=1000000unxrl \
+--amount=500000000unxrl \
 --pubkey="$(nexaraild tendermint show-validator)" \
 --moniker="Vinjan.Inc" \
 --chain-id=nexarail-mainnet-1 \
 --identity="7C66E36EA2B71F68" \
 --from=wallet \
 --commission-rate="0.10" \
---commission-max-rate="0.50" \
---commission-max-change-rate="0.5" \
+--commission-max-rate="1" \
+--commission-max-change-rate="1" \
 --min-self-delegation="1" \
 --gas=auto \
 --gas-adjustment=1.4 \
