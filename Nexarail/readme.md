@@ -88,6 +88,7 @@ nexaraild tx staking create-validator \
 --moniker="Vinjan.Inc" \
 --chain-id=nexarail-mainnet-1 \
 --identity="7C66E36EA2B71F68" \
+--details="Staking Provider-IBC Relayer" \
 --from=wallet \
 --commission-rate="0.10" \
 --commission-max-rate="1" \
