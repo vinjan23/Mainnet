@@ -114,7 +114,7 @@ nano $HOME/.safrochain/validator.json
 ```
 ```
 {
-  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"vIfyVKtXPyoZbN3ZtmcPcE357hHCY2jkZgFH1f+GXYk="},
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"XoLqV8XIVJd/61Ke1jkqdQ+OWf7VChzoA8ZL7tFgEGE="},
   "amount": "9000000000usaf",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
