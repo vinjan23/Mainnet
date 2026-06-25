@@ -37,10 +37,7 @@ safrochaind genesis validate --home ~/.safrochain
 ```
 sha256sum $HOME/.safrochain/config/genesis.json
 ```
-```
-peers="$(curl -sS https://rpc.safrochain.network:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.safrochain/config/config.toml
-```
+
 ### Port
 ```
 PORT=127
