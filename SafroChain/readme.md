@@ -22,20 +22,24 @@ sha256sum $HOME/go/bin/safrochaind
 ```
 ### Init
 ```
-safrochaind init Vinjan.inc --chain-id safro-preprod-1
+safrochaind init Vinjan.inc --chain-id safrochain-1
 ```
 ```
 safrochaind version  --long | grep -e version -e commit
 ```
 ### Genesis
 ```
-wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis-preprod.json
+wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis.json
 ```
 ```
 safrochaind genesis validate --home ~/.safrochain
 ```
 ```
 sha256sum $HOME/.safrochain/config/genesis.json
+```
+```
+peers="$(curl -sS https://rpc.safrochain.network:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.safrochain/config/config.toml
 ```
 ### Port
 ```
@@ -114,14 +118,14 @@ nano $HOME/.safrochain/validator.json
 ```
 {
   "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"vIfyVKtXPyoZbN3ZtmcPcE357hHCY2jkZgFH1f+GXYk="},
-  "amount": "10000000000usaf",
+  "amount": "9000000000usaf",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
   "website": "https://vinjan-inc.com",
   "security": "",
   "details": "Staking Provider-IBC Relayer",
-  "commission-rate": "0.05",
-  "commission-max-change-rate": "0.05",
+  "commission-rate": "0.1",
+  "commission-max-change-rate": "0.5",
   "commission-max-rate": "0.5",
   "min-self-delegation": "1"
 }
@@ -129,7 +133,7 @@ nano $HOME/.safrochain/validator.json
 ```
 safrochaind tx staking create-validator $HOME/.safrochain/validator.json \
 --from wallet \
---chain-id safro-preprod-1 \
+--chain-id safrochain-1 \
 --fees 10000usaf
 --gas-prices 0.05usaf \
 --gas-adjustment 1.3 \
