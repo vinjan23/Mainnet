@@ -131,7 +131,6 @@ nano $HOME/.safrochain/validator.json
 safrochaind tx staking create-validator $HOME/.safrochain/validator.json \
 --from wallet \
 --chain-id safrochain-1 \
---fees 10000usaf
 --gas-prices 0.05usaf \
 --gas-adjustment 1.3 \
 --gas auto
@@ -139,27 +138,27 @@ safrochaind tx staking create-validator $HOME/.safrochain/validator.json \
 
 ### Unjail
 ```
-safrochaind tx slashing unjail --from wallet --chain-id safro-preprod-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx slashing unjail --from wallet --chain-id ssafrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
 ```
 
 ### Wd
 ```
-safrochaind tx distribution withdraw-rewards $(safrochaind keys show wallet --bech val -a) --commission --from wallet --chain-id safro-preprod-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx distribution withdraw-rewards $(safrochaind keys show wallet --bech val -a) --commission --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
 ```
 
 ### Delegate
 ```
-safrochaind tx staking delegate $(safrochaind keys show wallet --bech val -a) 1000000usaf --from wallet --chain-id safro-preprod-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx staking delegate $(safrochaind keys show wallet --bech val -a) 1000000usaf --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
 ```
 ID
 ```
 echo $(safrochaind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.safrochain/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
 ```
-safrochaind tx bank send wallet addr_safro1sdlfp8n5fcfa7qw7770ngqs02k876gf6dq7aw5 1005000000usaf --from wallet --chain-id safro-preprod-1 --fees 10000usaf
+safrochaind tx bank send wallet addr_safro1sdlfp8n5fcfa7qw7770ngqs02k876gf6dq7aw5 1005000000usaf --from wallet --chain-id safrochain-1 --fees 10000usaf
 ```
 ```
-safrochaind tx gov vote 4 yes --from wallet --chain-id safro-preprod-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx gov vote 4 yes --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
 ```
 ### Delete
 ```
