@@ -151,7 +151,7 @@ hippod tx staking edit-validator \
 --website="https://vinjan-inc.com" \
 --from=wallet \
 --chain-id hippo-protocol-1 \
---commission-rate=0.17 \
+--commission-rate=0.18 \
 --gas-prices=5000000000000ahp \
 --gas-adjustment=1.5 \
 --gas=auto
