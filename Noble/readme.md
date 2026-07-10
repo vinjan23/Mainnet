@@ -24,7 +24,7 @@ cd $HOME
 rm -rf noble
 git clone https://github.com/noble-assets/noble.git
 cd noble
-git checkout v11.4.0
+git checkout v11.5.0
 make install
 ```
 ```
@@ -82,6 +82,21 @@ $HOME/.noble/config/app.toml
 ```
 
 ### Service
+```
+sudo tee /etc/systemd/system/nobled.service > /dev/null <<EOF
+[Unit]
+Description=noble
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which nobled) start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
+```
 ```
 sudo tee /etc/systemd/system/nobled.service > /dev/null << EOF
 [Unit]
