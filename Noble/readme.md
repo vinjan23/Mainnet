@@ -36,6 +36,11 @@ mkdir -p $HOME/.noble/cosmovisor/upgrades/pulse/bin
 mv build/nobled $HOME/.noble/cosmovisor/upgrades/pulse/bin/
 rm -rf build
 ```
+```
+wget https://github.com/noble-assets/noble/releases/download/v11.4.0/nobled_linux-amd64
+chmod +x nobled_linux-amd64
+mv nobled_linux-amd64 $HOME/go/bin/nobled
+```
 ### Cek version
 ```
 $HOME/.noble/cosmovisor/upgrades/v11.4.0/bin/nobled version --long | grep -e commit -e version
@@ -124,8 +129,6 @@ sudo systemctl enable nobled
 ```
 ```
 sudo systemctl restart nobled
-```
-```
 sudo journalctl -u nobled -f -o cat
 ```
 ### Sync
