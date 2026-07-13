@@ -135,7 +135,19 @@ safrochaind tx staking create-validator $HOME/.safrochain/validator.json \
 --gas-adjustment 1.3 \
 --gas auto
 ```
-
+```
+safrochaind tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://vinjan-inc.com" \
+--details="Staking Provider-IBC Relayer" \
+--from wallet \
+--chain-id safrochain-1 \
+--commission-rate 0.15 \
+--gas-prices 0.05usaf \
+--gas-adjustment 1.5 \
+--gas auto
+```
 ### Unjail
 ```
 safrochaind tx slashing unjail --from wallet --chain-id ssafrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
