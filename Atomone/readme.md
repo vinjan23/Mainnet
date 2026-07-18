@@ -32,7 +32,7 @@ cd $HOME
 rm -rf atomone
 git clone https://github.com/atomone-hub/atomone.git
 cd atomone
-git checkout v3.0.3
+git checkout v4.0.0
 make build
 ```
 ### Patch
@@ -43,16 +43,16 @@ cp atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
 chmod +x $HOME/.atomone/cosmovisor/upgrades/v3/bin/atomoned
 ```
 ```
-mkdir -p $HOME/.atomone/cosmovisor/upgrades/v3/bin
-mv build/atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
+mkdir -p $HOME/.atomone/cosmovisor/upgrades/v4/bin
+mv build/atomoned $HOME/.atomone/cosmovisor/upgrades/v4/bin/
 rm -rf build
 ```
 ```
-mkdir -p $HOME/.atomone/cosmovisor/upgrades/v3/bin
-cp $HOME/go/bin/atomoned $HOME/.atomone/cosmovisor/upgrades/v3/bin/
+mkdir -p $HOME/.atomone/cosmovisor/upgrades/v4/bin
+cp $HOME/go/bin/atomoned $HOME/.atomone/cosmovisor/upgrades/v4/bin/
 ```
 ```
-$HOME/.atomone/cosmovisor/upgrades/v3/bin/atomoned version --long | grep -e commit -e version
+$HOME/.atomone/cosmovisor/upgrades/v4/bin/atomoned version --long | grep -e commit -e version
 ```
 ```
 atomoned version --long | grep -e commit -e version
