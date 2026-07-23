@@ -143,7 +143,7 @@ safrochaind tx staking edit-validator \
 --details="Staking Provider-IBC Relayer" \
 --from wallet \
 --chain-id safrochain-1 \
---commission-rate 0.15 \
+--commission-rate 0.0888 \
 --gas-prices 0.05usaf \
 --gas-adjustment 1.5 \
 --gas auto
