@@ -127,7 +127,7 @@ echo $(nexaraild tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME
 nexaraild tendermint show-address
 ```
 ```
-nexaraild tx gov vote 1 yes --from wallet --chain-id nexarail-mainnet-1 --gas-adjustment=1.4 --gas-prices=0.05unxrl --gas auto
+nexaraild tx gov vote 3 yes --from wallet --chain-id nexarail-mainnet-1 --gas-adjustment=1.4 --gas-prices=0.05unxrl --gas auto
 ```
 ```
 sudo systemctl stop nexaraild
