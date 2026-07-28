@@ -51,12 +51,14 @@ $HOME/.realio-network/cosmovisor/upgrades/v1.6.0/bin/realio-networkd version --l
 ```
 ### Patch
 ```
-wget https://github.com/decentrio/realio-binary/raw/refs/heads/main/realio-network_Linux_x86_64.tar.gz
+wget https://github.com/decentrio/realio-binary/blob/main/realio-network_Linux_x86_64.tar.gz
 tar xzvf realio-network_Linux_x86_64.tar.gz
 chmod +x $HOME/bin/realio-networkd
-sudo systemctl stop realio-networkd
-mv $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.4.0/bin/
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin
+mv $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin/
 ```
+
+
 ```
 sudo systemctl restart realio-networkd
 sudo journalctl -u realio-networkd -f -o cat
