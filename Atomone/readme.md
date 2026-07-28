@@ -40,7 +40,7 @@ make build
 wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v3.3.0/atomoned-v3.3.0-linux-amd64
 ```
 ```
-wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v4.0.1/atomoned-v4.0.1-linux-amd64
+wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v4.1.0/atomoned-v4.1.0-linux-amd64
 sudo systemctl stop atomoned
 cp atomoned $HOME/.atomone/cosmovisor/upgrades/v4/bin/
 chmod +x $HOME/.atomone/cosmovisor/upgrades/v4/bin/atomoned
