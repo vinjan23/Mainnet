@@ -29,10 +29,10 @@ mv build/kiichaind $HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/
 rm -rf build
 ```
 ```
-$HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version
+$HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version -e name -e server_name
 ```
 ```
-kiichaind version --long | grep -e commit -e version
+kiichaind version --long | grep -e commit -e version -e name -e server_name
 ```
 ```
 kiichaind init Vinjan.Inc --chain-id kiichain_1783-1
