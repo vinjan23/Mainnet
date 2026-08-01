@@ -167,10 +167,10 @@ jaynd tx staking edit-validator \
 --new-moniker="Vinjan.Inc | REStake" \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
---details="https://restake.app/thejaynetwork/yjayvaloper1zuv7m0jy4hrxyk4xxw65wfxu7mf0dywnc9y2en | Staking Provider-IBC Relayer" \
+--details="Staking Provider-IBC Relayer" \
 --chain-id thejaynetwork \
 --from=wallet \
---commission-rate=0.1 \
+--commission-rate=0.15 \
 --gas-prices="0.025ujay" \
 --gas-adjustment=1.5 \
 --gas=auto
@@ -179,7 +179,7 @@ jaynd tx staking edit-validator \
 jayndd tx staking delegate $(jaynd keys show wallet --bech val -a) 1000000ujay --from wallet --chain-id thejaynetwork --gas-adjustment=1.5 --gas=auto --gas-prices="0.01ujay"
 ```
 ```
-jaynd tx distribution withdraw-rewards $(jaynd keys show wallet --bech val -a) --from wallet --chain-id thejaynetwork --gas-adjustment=1.5 --gas=auto --gas-prices="0.01ujay"
+jaynd tx distribution withdraw-rewards $(jaynd keys show wallet --bech val -a) --commission --from wallet --chain-id thejaynetwork --gas-adjustment=1.5 --gas=auto --gas-prices="0.01ujay"
 ```
 ```
 echo $(jaynd tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.jayn/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
