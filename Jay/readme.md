@@ -164,13 +164,13 @@ jaynd tx staking create-validator $HOME/.jayn/validator.json \
 ```
 ```
 jaynd tx staking edit-validator \
---new-moniker="Vinjan.Inc | REStake" \
+--new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
 --details="Staking Provider-IBC Relayer" \
 --chain-id thejaynetwork \
 --from=wallet \
---commission-rate=0.15 \
+--commission-rate=0.99 \
 --gas-prices="0.025ujay" \
 --gas-adjustment=1.5 \
 --gas=auto
