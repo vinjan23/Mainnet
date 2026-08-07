@@ -167,7 +167,7 @@ atomoned tx staking create-validator \
 ### Edit
 ```
 atomoned tx staking edit-validator \
---new-moniker="Vinjan.Inc | " \
+--new-moniker="Vinjan.Inc | RESTAKE" \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
 --details="Stake Provider & IBC Relayer" \
