@@ -167,17 +167,17 @@ atomoned tx staking create-validator \
 ### Edit
 ```
 atomoned tx staking edit-validator \
---new-moniker="Vinjan.Inc" \
+--new-moniker="Vinjan.Inc | " \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
 --details="Stake Provider & IBC Relayer" \
 --chain-id=atomone-1 \
 --from=wallet \
---commission-rate="0.06" \
 --gas-adjustment=1.2 \
 --gas-prices="0.2uphoton" \
 --gas=auto
 ```
+--commission-rate="0.06" \
 
 ### Delegate
 ```
