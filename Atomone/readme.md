@@ -137,7 +137,7 @@ sudo journalctl -u atomoned -f -o cat
 ```
 ### Sync
 ```
-atomoned status 2>&1 | jq .SyncInfo
+atomoned status 2>&1 | jq .sync_info
 ```
 ### Add wallet
 ```
