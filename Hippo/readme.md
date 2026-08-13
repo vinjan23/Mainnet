@@ -121,7 +121,7 @@ nano /root/.hippo/validator.json
 ```
 ```
 {
-  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"LEWCiao/h22Ml4yEXCvbFV/bOctAUQFxO6LT6usETC4="},
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"GvaBWUDxEG45G6XQb2q/hRjIS5usfvTLH1k5JD7klLQ="},
   "amount": "3000000000000000000ahp",
   "moniker": "Vinjan.Inc-1",
   "identity": "7C66E36EA2B71F68",
@@ -145,7 +145,7 @@ hippod tx staking create-validator $HOME/.hippo/validator.json \
 ### Edit
 ```
 hippod tx staking edit-validator \
---new-moniker="Vinjan.Inc-1" \
+--new-moniker="Vinjan.Inc-2" \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
 --from=wallet \
@@ -157,7 +157,7 @@ hippod tx staking edit-validator \
 --commission-rate=0.20 \
 ### Delegate
 ```
-hippod tx staking delegate $(hippod keys show wallet --bech val -a) 1000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+hippod tx staking delegate $(hippod keys show wallet --bech val -a) 10000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
 ```
 ### WD Comission
 ```
