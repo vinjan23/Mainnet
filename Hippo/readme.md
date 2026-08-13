@@ -121,16 +121,16 @@ nano /root/.hippo/validator.json
 ```
 ```
 {
-  "pubkey": ,
-  "amount": "1800000000ahp",
-  "moniker": "Low Fees | Vinjan.Inc",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"LEWCiao/h22Ml4yEXCvbFV/bOctAUQFxO6LT6usETC4="},
+  "amount": "3000000000000000000ahp",
+  "moniker": "Vinjan.Inc-1",
   "identity": "7C66E36EA2B71F68",
-  "website": "https://service.vinjan.xyz",
+  "website": "https://vinjan-inc.com",
   "security": "",
   "details": "Staking Provider-IBC Relayer",
-  "commission-rate": "0.02",
-  "commission-max-rate": "0.2",
-  "commission-max-change-rate": "0.01",
+  "commission-rate": "0.1",
+  "commission-max-rate": "1",
+  "commission-max-change-rate": "1",
   "min-self-delegation": "1"
 }
 ```
@@ -139,22 +139,22 @@ hippod tx staking create-validator $HOME/.hippo/validator.json \
 --from wallet \
 --chain-id hippo-protocol-1 \
 --gas-prices=5000000000000ahp \
---gas-adjustment=1.2 \
+--gas-adjustment=1.5 \
 --gas=auto
 ```
 ### Edit
 ```
 hippod tx staking edit-validator \
---new-moniker="Vinjan.Inc" \
+--new-moniker="Vinjan.Inc-1" \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
 --from=wallet \
 --chain-id hippo-protocol-1 \
---commission-rate=0.20 \
 --gas-prices=5000000000000ahp \
 --gas-adjustment=1.5 \
 --gas=auto
 ```
+--commission-rate=0.20 \
 ### Delegate
 ```
 hippod tx staking delegate $(hippod keys show wallet --bech val -a) 1000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
