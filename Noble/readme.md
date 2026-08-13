@@ -37,7 +37,7 @@ mv build/nobled $HOME/.noble/cosmovisor/upgrades/pulse/bin/
 rm -rf build
 ```
 ```
-wget https://github.com/noble-assets/noble/releases/download/v11.4.0/nobled_linux-amd64
+wget https://github.com/noble-assets/noble/releases/download/v11.6.0/nobled_linux-amd64
 chmod +x nobled_linux-amd64
 mv nobled_linux-amd64 $HOME/go/bin/nobled
 ```
