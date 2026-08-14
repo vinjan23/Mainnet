@@ -195,6 +195,10 @@ EOF
 ```
 gnodid tx gov vote 5 yes --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas-prices="1uGNOD" --gas=auto
 ```
+### Send
+```
+gnodid tx bank send wallet <To_Address> 1000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
+```
 ### Delete
 ```
 sudo systemctl stop gnodid
