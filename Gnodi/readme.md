@@ -177,21 +177,7 @@ s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.gnodi/config/config.toml
 mv $HOME/.gnodi/priv_validator_state.json.backup $HOME/.gnodi/data/priv_validator_state.json
 sudo systemctl restart gnodid && sudo journalctl -u gnodid -fo cat
 ```
-```
-sudo tee /etc/systemd/system/gnodid.service > /dev/null <<EOF
-[Unit]
-Description=gnodi
-After=network-online.target
-[Service]
-User=$USER
-ExecStart=$(which gnodid) start --chain-id gnodi
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=65535
-[Install]
-WantedBy=multi-user.target
-EOF
-```
+
 ```
 gnodid tx gov vote 5 yes --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas-prices="1uGNOD" --gas=auto
 ```
