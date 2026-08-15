@@ -145,7 +145,7 @@ hippod tx staking create-validator $HOME/.hippo/validator.json \
 ### Edit
 ```
 hippod tx staking edit-validator \
---new-moniker="Vinjan.Inc-2" \
+--new-moniker="Vinjan.Inc" \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
 --from=wallet \
