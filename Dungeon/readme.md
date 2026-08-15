@@ -199,7 +199,7 @@ dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val
 
 ### Vote 
 ```
-dungeond tx gov vote 32 yes --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
+dungeond tx gov vote 41 yes --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
 ```
 
 ### Check Matches
