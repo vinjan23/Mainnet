@@ -155,6 +155,9 @@ sunrised tx staking edit-validator \
 --gas-prices 0.002uusdrise \
 --gas 400000
 ```
+```
+sunrised tx slashing unjail --from wallet --chain-id sunrise-1 --node https://sunrise-rpc.polkachu.com:443 --fees 400uusdrise
+```
 ### WD
 ```
 sunrised tx distribution withdraw-rewards $(sunrised keys show wallet --bech val -a) --commission --from wallet --chain-id sunrise-1 --fees 1000uusdrise --gas auto
