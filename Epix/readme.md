@@ -28,15 +28,15 @@ cd $HOME
 rm -rf EpixChain
 git clone https://github.com/EpixZone/EpixChain.git
 cd EpixChain
-git checkout v0.7.1
+git checkout v0.7.2
 make install
 ```
 ```
-mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.7.1/bin
-cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.7.1/bin/
+mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin
+cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin/
 ```
 ```
-$HOME/.epixd/cosmovisor/upgrades/v0.7.1/bin/epixd version --long | grep -e commit -e version -e server_name
+$HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin/epixd version --long | grep -e commit -e version -e server_name
 ```
 ```
 epixd version --long | grep -e commit -e version
