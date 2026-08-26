@@ -23,11 +23,16 @@ chmod +x gnodid-linux
 sudo mv gnodid-linux /usr/local/bin/gnodid
 ```
 ```
-mkdir -p $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin
-cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
+wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.4-security/gnodid
+chmod +x gnodid
+sudo mv gnodid /usr/local/bin/
 ```
 ```
-$HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/gnodid version --long | grep -e commit -e version
+mkdir -p $HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin
+cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/
+```
+```
+$HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/gnodid version --long | grep -e commit -e version
 ```
 ```
 gnodid version --long | grep -e commit -e version
