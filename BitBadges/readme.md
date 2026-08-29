@@ -34,9 +34,9 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v33/bitbadges
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v33/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v33/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v33/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v33/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v34/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v34/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v34/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v34/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
@@ -54,7 +54,7 @@ chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v33/bin/bitbadgeschaind
 ```
 
 ```
-$HOME/.bitbadgeschain/cosmovisor/upgrades/v31/bin/bitbadgeschaind version
+$HOME/.bitbadgeschain/cosmovisor/upgrades/v34/bin/bitbadgeschaind version
 ```
 ```
 bitbadgeschaind version --long | grep -e commit -e version
