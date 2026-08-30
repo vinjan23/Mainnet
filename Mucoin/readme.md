@@ -105,6 +105,15 @@ mucoind tx staking create-validator $HOME/.mucoin/validator.json \
 --gas=auto
 ```
 ```
+mucoind tx gov vote 5 yes --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
+```
+```
+mucoind tx distribution withdraw-rewards $(mucoind keys show wallet --bech val -a) --commission --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
+```
+```
+mucoind tx staking delegate $(mucoind keys show wallet --bech val -a) 1000000umuc --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
+```
+```
 echo $(mucoind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.mucoin/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
 ```
