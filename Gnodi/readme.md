@@ -159,7 +159,7 @@ gnodid tx slashing unjail --from wallet --chain-id gnodi --gas-adjustment=1.5 --
 ```
 ### WD
 ```
-gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a) --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
+gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a) --commission --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
 ```
 ### Delegate
 ```
@@ -192,7 +192,7 @@ gnodid tx gov vote 5 yes --from wallet --chain-id gnodi --gas-adjustment=1.5 --g
 ```
 ### Send
 ```
-gnodid tx bank send wallet <To_Address> 1000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
+gnodid tx bank send wallet gnodi1jr8jvtztgzccjz9hqat6pf8432324ndrl9jn2r 6000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
 ```
 ### Delete
 ```
