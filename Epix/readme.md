@@ -28,7 +28,7 @@ cd $HOME
 rm -rf EpixChain
 git clone https://github.com/EpixZone/EpixChain.git
 cd EpixChain
-git checkout v0.7.2
+git checkout v0.7.3
 make install
 ```
 ```
