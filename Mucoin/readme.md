@@ -105,6 +105,18 @@ mucoind tx staking create-validator $HOME/.mucoin/validator.json \
 --gas=auto
 ```
 ```
+mucoind tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://vinjan-inc.com" \
+--from=wallet \
+--commission-rate "0.20" \
+--chain-id mucoin-1 \
+--gas-prices=0.01umuc \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+```
 mucoind tx gov vote 5 yes --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
 ```
 ```
