@@ -157,6 +157,9 @@ kiichaind tx staking create-validator $HOME/.kiichain/validator.json \
 --gas=auto
 ```
 ```
+kiichaind tx gov vote 10 yes --from wallet --chain-id kiichain_1783-1 --gas-adjustment 1.3 --gas-prices 333333333akii --gas-adjustment=1.5 --gas auto
+```
+```
 echo $(kiichaind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.kiichain/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
 ```
 
