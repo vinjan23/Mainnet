@@ -48,6 +48,11 @@ git checkout v31.0.0
 make build
 ```
 ```
+wget -O osmosisd https://osmosis.fra1.cdn.digitaloceanspaces.com/binaries/v31-0-5/osmosisd-linux-amd64
+mv osmosisd $HOME/.osmosisd/cosmovisor/current/bin/osmosisd
+chmod +x $HOME/.osmosisd/cosmovisor/current/bin/osmosisd
+```
+```
 mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v31/bin
 mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v31/bin/
 rm -rf build
