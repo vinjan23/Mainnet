@@ -49,12 +49,19 @@ realio-networkd version --long | grep -e commit -e version
 ```
 $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin/realio-networkd version --long | grep -e commit -e version
 ```
+### New Update
 ```
-wget https://github.com/realiotech/realio-network/releases/download/v1.7.0/realio-network_Linux_x86_64.tar.gz
+wget https://github.com/realiotech/realio-network/releases/download/v1.7.1/realio-network_Linux_x86_64.tar.gz
 tar xzvf realio-network_Linux_x86_64.tar.gz
 chmod +x $HOME/bin/realio-networkd
-mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin
-mv $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin/
+```
+```
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.7.1/bin
+cp $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.7.1/bin/
+```
+```
+sudo systemctl stop realio-networkd
+cp $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/current/bin/
 ```
 
 ### Patch
