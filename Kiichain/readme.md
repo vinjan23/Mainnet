@@ -33,12 +33,14 @@ $HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -
 ```
 
 ```
-wget https://github.com/KiiChain/kiichain/releases/download/v7.4.0/kiichaind-v7.4.0-linux-amd64 -O $HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind
+wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.1/kiichaind-v7.4.1-linux-amd64
+chmod +x kiichaind-v7.4.1-linux-amd64
+sudo systemctl stop kiichaind
+cp kiichaind-v7.4.1-linux-amd64 $HOME/.kiichain/cosmovisor/current/bin/kiichaind
 ```
 
-
 ```
-$HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version
+$HOME/.kiichain/cosmovisor/upgrades/v7.4.0/bin/kiichaind version --long | grep -e commit -e version
 ```
 
 
