@@ -89,7 +89,7 @@ $HOME/.bitbadgeschain/config/app.toml
 ```
 ### Gas
 ```
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025ubadge\"/" $HOME/.bitbadgeschain/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"10ubadge\"/" $HOME/.bitbadgeschain/config/app.toml
 ```
 ### Indexer
 ```
@@ -183,11 +183,11 @@ bitbadgeschaind tx slashing unjail --from wallet --chain-id bitbadges-1 --fees 7
 
 ### WD 
 ```
-bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.0025ubadge"
+bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.5 --gas=auto --gas-prices="10ubadge"
 ```
 ### Stake
 ```
-bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.2 --gas=auto --gas-prices="0.0025ubadge"
+bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.5 --gas=auto --gas-prices="10ubadge"
 ```
 ### Vote
 ```
