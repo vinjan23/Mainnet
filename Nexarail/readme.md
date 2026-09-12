@@ -107,6 +107,7 @@ nexaraild tx staking edit-validator \
 --details="Staking Provider-IBC Relayer" \
 --chain-id=nexarail-mainnet-1 \
 --from=wallet \
+--commission-rate="1" \
 --gas-adjustment=1.4 \
 --gas-prices="0.025unxrl" \
 --gas=auto 
