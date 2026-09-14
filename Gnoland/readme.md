@@ -1,7 +1,8 @@
 ### Binary
 ```
 git clone https://github.com/gnolang/gno.git
-cd gno && git checkout chain/mainnet
+cd gno && git fetch --all --tags
+git checkout 31b6650a100d9baf14e7669f8f0df924f1f841e0
 make -C gno.land install.gnoland install.gnokey
 ```
 ### Init
