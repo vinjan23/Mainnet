@@ -194,6 +194,14 @@ gnodid tx gov vote 5 yes --from wallet --chain-id gnodi --gas-adjustment=1.5 --g
 ```
 gnodid tx bank send wallet gnodi1jr8jvtztgzccjz9hqat6pf8432324ndrl9jn2r 6000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
 ```
+```
+git clone https://github.com/gnodi-ecosystem/gnodi-node-setup.git /tmp/gnodi-node-setup
+cd /tmp/gnodi-node-setup
+bash install.sh
+```
+
+
+
 ### Delete
 ```
 sudo systemctl stop gnodid
