@@ -94,11 +94,11 @@ gnokey maketx call \
   --args "VinjanInc" \
   --args "$(cat desc.txt)" \
   --args "data-center" \
-  --args "g1cm5z4slw83sa3x0gttkvv64nx5dc39n2yxk296" \
+  --args "g17x76ltae2x4e93t8hry6fxeynlr29n7h60fyxd" \
   --args "gpub1pggj7ard9eg82cjtv4u52epjx56nzwgjyg9zptz529djprpqvquq0mtq8yqc5z72gqakx9cvqmf9q6286m9qk72v0tnsa8" \
   --gas-fee 1000000ugnot --gas-wanted 50000000 \
-  --chainid pearl-1 \
-  --remote https://rpc.pearl.testnets.gno.land \
+  --chainid gnoland-1 \
+  --remote https://rpc.gno.land \
   --broadcast \
   wallet
 ```
