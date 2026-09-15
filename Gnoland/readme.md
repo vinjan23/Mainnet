@@ -95,7 +95,7 @@ gnokey maketx call \
   --args "$(cat desc.txt)" \
   --args "data-center" \
   --args "g17x76ltae2x4e93t8hry6fxeynlr29n7h60fyxd" \
-  --args "gpub1pggj7ard9eg82cjtv4u52epjx56nzwgjyg9zptz529djprpqvquq0mtq8yqc5z72gqakx9cvqmf9q6286m9qk72v0tnsa8" \
+  --args "gpub1pggj7ard9eg82cjtv4u52epjx56nzwgjyg9zp9wqwyzm7qau3q4uxp94yp0mu8xrmdzzd6szr5grnzpxlmllgnzz4t7mml" \
   --gas-fee 1000000ugnot --gas-wanted 50000000 \
   --chainid gnoland-1 \
   --remote https://rpc.gno.land \
