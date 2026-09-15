@@ -6,6 +6,7 @@ mv nexaraild-linux-amd64 $HOME/go/bin/nexaraild
 ```
 wget https://github.com/Bookings-cpu/nexarail/releases/download/mainnet-genesis-nexarail-mainnet-2/nexaraild-linux-amd64 -O $HOME/go/bin/nexaraild
 chmod +x $HOME/go/bin/nexaraild
+cp $HOME/go/bin/nexaraild /usr/local/bin/
 ```
 ```
 nexaraild init vinjan --chain-id nexarail-mainnet-2
@@ -15,11 +16,9 @@ nexaraild init vinjan --chain-id nexarail-mainnet-2
 nexaraild version
 ```
 ```
-wget -O $HOME/.nexarail/config/genesis.json "https://github.com/Bookings-cpu/nexarail/releases/download/mainnet-genesis-nexarail-mainnet-1/genesis.json"
+curl -L https://github.com/Bookings-cpu/nexarail/releases/download/mainnet-genesis-nexarail-mainnet-2/genesis.json > $HOME/.nexarail/config/genesis.json
 ```
-```
-curl -L -o ~/.nexarail/config/genesis.json https://github.com/Bookings-cpu/nexarail/releases/download/mainnet-genesis-nexarailmainnet-2/genesis.json
-```
+
 ```
 sed -i -e "s/^chain-id *=.*/chain-id = \"nexarail-mainnet-2\"/;" ~/.nexarail/config/client.toml
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001unxrl\"/;" ~/.nexarail/config/app.toml
