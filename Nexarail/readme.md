@@ -4,8 +4,8 @@ chmod +x nexaraild-linux-amd64
 mv nexaraild-linux-amd64 $HOME/go/bin/nexaraild
 ```
 ```
-curl -L https://github.com/Bookingscpu/nexarail/releases/download/mainnet-genesis-nexarail-mainnet-2/nexaraild-linux-amd64 -O /root/go/bin/nexaraild
-chmod +x /root/go/bin/nexaraild
+wget https://github.com/Bookings-cpu/nexarail/releases/download/mainnet-genesis-nexarail-mainnet-2/nexaraild-linux-amd64 -O $HOME/go/bin/nexaraild
+chmod +x $HOME/go/bin/nexaraild
 ```
 ```
 nexaraild init vinjan --chain-id nexarail-mainnet-2
