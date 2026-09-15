@@ -4,26 +4,26 @@ chmod +x nexaraild-linux-amd64
 mv nexaraild-linux-amd64 $HOME/go/bin/nexaraild
 ```
 ```
-nexaraild init vinjan --chain-id nexarail-mainnet-1
+curl -L -o nexaraild https://github.com/Bookingscpu/nexarail/releases/download/mainnet-genesis-nexarail-mainnet-2/nexaraild-linux-amd64
+chmod +x nexaraild
+sudo mv nexaraild /usr/local/bin/
 ```
 ```
-mkdir -p $HOME/.nexarail/cosmovisor/genesis/bin
-cp $HOME/go/bin/nexaraild $HOME/.nexarail/cosmovisor/genesis/bin/
+nexaraild init vinjan --chain-id nexarail-mainnet-2
 ```
-```
-sudo ln -s $HOME/.nexarail/cosmovisor/genesis $HOME/.nexarail/cosmovisor/current -f
-sudo ln -s $HOME/.nexarail/cosmovisor/current/bin/nexaraild /usr/local/bin/nexaraild -f
-```
+
 ```
 nexaraild version
 ```
 ```
 wget -O $HOME/.nexarail/config/genesis.json "https://github.com/Bookings-cpu/nexarail/releases/download/mainnet-genesis-nexarail-mainnet-1/genesis.json"
 ```
-
 ```
-sed -i -e "s/^chain-id *=.*/chain-id = \"nexarail-mainnet-1\"/;" ~/.nexarail/config/client.toml
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025unxrl\"/;" ~/.nexarail/config/app.toml
+curl -L -o ~/.nexarail/config/genesis.json https://github.com/Bookings-cpu/nexarail/releases/download/mainnet-genesis-nexarailmainnet-2/genesis.json
+```
+```
+sed -i -e "s/^chain-id *=.*/chain-id = \"nexarail-mainnet-2\"/;" ~/.nexarail/config/client.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001unxrl\"/;" ~/.nexarail/config/app.toml
 ```
 ```
 PORT=169
@@ -32,9 +32,13 @@ sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:2
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.nexarail/config/app.toml
 ```
 ```
-peers="96e659f9a87723304dcd614e3ca89d9b6daf26cc@[2a04:4a43:867f:f226:ca7:b2ed:6262:4005]:32656"
+peers="1af9139d59677cc42ff2924c89f9cf9e0c980246@5.161.85.160:26656,d91372d5918d870c7861a2eb3e
+99b90d7c5882ca@5.161.103.203:26656,8776e496483fefbbc4dc17749f5ec80ab121fe2c@5.161.99.76
+:26656,45668d1ae375f39fce47dfa96e76db7946da7188@5.161.94.47:26656,bbd2b07264da053541128
+a0677540bc95bf415c6@5.161.72.48:26656"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.nexarail/config/config.toml
 ```
+
 ```
 pruning="custom"
 pruning_keep_recent="100"
