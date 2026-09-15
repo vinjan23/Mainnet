@@ -30,10 +30,7 @@ sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:2
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.nexarail/config/app.toml
 ```
 ```
-peers="1af9139d59677cc42ff2924c89f9cf9e0c980246@5.161.85.160:26656,d91372d5918d870c7861a2eb3e
-99b90d7c5882ca@5.161.103.203:26656,8776e496483fefbbc4dc17749f5ec80ab121fe2c@5.161.99.76
-:26656,45668d1ae375f39fce47dfa96e76db7946da7188@5.161.94.47:26656,bbd2b07264da053541128
-a0677540bc95bf415c6@5.161.72.48:26656"
+peers="1af9139d59677cc42ff2924c89f9cf9e0c980246@5.161.85.160:26656,d91372d5918d870c7861a2eb3e99b90d7c5882ca@5.161.103.203:26656,8776e496483fefbbc4dc17749f5ec80ab121fe2c@5.161.99.76:26656,45668d1ae375f39fce47dfa96e76db7946da7188@5.161.94.47:26656,bbd2b07264da053541128a0677540bc95bf415c6@5.161.72.48:26656"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.nexarail/config/config.toml
 ```
 
@@ -50,20 +47,16 @@ indexer="null"
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.nexarail/config/config.toml
 ```
 ```
-sudo tee /etc/systemd/system/nexaraild.service > /dev/null << EOF
+sudo tee /etc/systemd/system/nexaraild.service > /dev/null <<EOF
 [Unit]
 Description=nexarail
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which nexaraild) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.nexarail"
-Environment="DAEMON_NAME=nexaraild"
-Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.nexarail/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -88,7 +81,7 @@ nexaraild tx staking create-validator \
 --amount=500000000unxrl \
 --pubkey="$(nexaraild tendermint show-validator)" \
 --moniker="Vinjan.Inc" \
---chain-id=nexarail-mainnet-1 \
+--chain-id=nexarail-mainnet-2 \
 --identity="7C66E36EA2B71F68" \
 --details="Staking Provider-IBC Relayer" \
 --from=wallet \
@@ -97,8 +90,8 @@ nexaraild tx staking create-validator \
 --commission-max-change-rate="1" \
 --min-self-delegation="1" \
 --gas=auto \
---gas-adjustment=1.4 \
---gas-prices=0.025unxrl \
+--gas-adjustment=1.5 \
+--gas-prices=0.001unxrl \
 --node tcp://localhost:16957
 ```
 ```  
@@ -107,7 +100,7 @@ nexaraild tx staking edit-validator \
 --identity="7C66E36EA2B71F68" \
 --website="https://vinjan-inc.com" \
 --details="Staking Provider-IBC Relayer" \
---chain-id=nexarail-mainnet-1 \
+--chain-id=nexarail-mainnet-2 \
 --from=wallet \
 --commission-rate="1" \
 --gas-adjustment=1.4 \
@@ -115,13 +108,13 @@ nexaraild tx staking edit-validator \
 --gas=auto 
 ```
 ```
-nexaraild tx slashing unjail --from wallet --chain-id nexarail-mainnet-1 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
+nexaraild tx slashing unjail --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
 ```
 ```
-nexaraild tx distribution withdraw-rewards $(nexaraild keys show wallet --bech val -a) --commission --from wallet --chain-id nexarail-mainnet-1 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
+nexaraild tx distribution withdraw-rewards $(nexaraild keys show wallet --bech val -a) --commission --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
 ```
 ```
-nexaraild tx staking delegate $(nexaraild keys show wallet --bech val -a) 1000000unxrl --from wallet --chain-id nexarail-mainnet-1 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
+nexaraild tx staking delegate $(nexaraild keys show wallet --bech val -a) 1000000unxrl --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
 ```
 ```
 echo $(nexaraild tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.nexarail/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
@@ -130,7 +123,7 @@ echo $(nexaraild tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME
 nexaraild tendermint show-address
 ```
 ```
-nexaraild tx gov vote 3 yes --from wallet --chain-id nexarail-mainnet-1 --gas-adjustment=1.4 --gas-prices=0.05unxrl --gas auto
+nexaraild tx gov vote 3 yes --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.05unxrl --gas auto
 ```
 ```
 sudo systemctl stop nexaraild
