@@ -5,6 +5,11 @@ cd gno && git fetch --all --tags
 git checkout 31b6650a100d9baf14e7669f8f0df924f1f841e0
 make -C gno.land install.gnoland install.gnokey
 ```
+```
+cd gno
+git checkout f01063d9bf6cd4614e635ec933d88357793a048f
+make -C gno.land install.gnoland install.gnokey
+```
 ### Init
 ```
 cd gno
