@@ -24,12 +24,17 @@ git checkout v1.0.2
 make build
 ```
 ```
-mkdir -p $HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin
+mkdir -p $HOME/.hippo/cosmovisor/upgrades/v2.0.0/bin
+wget https://github.com/hippo-protocol/hippo-protocol/releases/download/v2.0.0/hippod-v2.0.0-linux-amd64 -O $HOME/.hippo/cosmovisor/upgrades/v2.0.0/bin/hippod
+chmod +x $HOME/.hippo/cosmovisor/upgrades/v2.0.0/bin/hippod
+```
+```
+mkdir -p $HOME/.hippo/cosmovisor/upgrades/v2.0.0/bin
 mv build/hippod $HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin/
 rm -rf build
 ```
 ```
-$HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin/hippod version --long | grep -e commit -e version
+$HOME/.hippo/cosmovisor/upgrades/v2.0.0/bin/hippod version --long | grep -e commit -e version
 ```
 ```
 hippod version --long | grep -e commit -e version
