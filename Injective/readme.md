@@ -41,3 +41,10 @@ sudo journalctl -u injectived -f -o cat
 ```
 injectived status 2>&1 | jq .sync_info
 ```
+```
+sudo systemctl stop injectived
+injectived comet unsafe-reset-all --home $HOME/.injectived --keep-addr-book
+```
+
+
+
