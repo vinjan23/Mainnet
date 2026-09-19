@@ -38,7 +38,11 @@ chmod +x kiichaind-v7.4.1-linux-amd64
 sudo systemctl stop kiichaind
 cp kiichaind-v7.4.1-linux-amd64 $HOME/.kiichain/cosmovisor/current/bin/kiichaind
 ```
-
+```
+mkdir -p $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin
+wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.2/kiichaind-v7.4.2-linux-amd64 -O $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
+chmod +x $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
+```
 ```
 $HOME/.kiichain/cosmovisor/upgrades/v7.4.0/bin/kiichaind version --long | grep -e commit -e version
 ```
