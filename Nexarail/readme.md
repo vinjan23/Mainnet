@@ -102,19 +102,18 @@ nexaraild tx staking edit-validator \
 --details="Staking Provider-IBC Relayer" \
 --chain-id=nexarail-mainnet-2 \
 --from=wallet \
---commission-rate="1" \
---gas-adjustment=1.4 \
---gas-prices="0.025unxrl" \
---gas=auto 
+--commission-rate="0.1" \
+--gas-prices="0.001unxrl" \
+--gas=200000
 ```
 ```
-nexaraild tx slashing unjail --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
+nexaraild tx slashing unjail --from wallet --chain-id nexarail-mainnet-2 --gas-prices=0.001unxrl --gas 200000
 ```
 ```
-nexaraild tx distribution withdraw-rewards $(nexaraild keys show wallet --bech val -a) --commission --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
+nexaraild tx distribution withdraw-rewards $(nexaraild keys show wallet --bech val -a) --commission --from wallet --chain-id nexarail-mainnet-2 --gas-prices=0.001unxrl --gas 200000
 ```
 ```
-nexaraild tx staking delegate $(nexaraild keys show wallet --bech val -a) 1000000unxrl --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.025unxrl --gas auto 
+nexaraild tx staking delegate $(nexaraild keys show wallet --bech val -a) 1000000unxrl --from wallet --chain-id nexarail-mainnet-2 --gas-prices=0.001unxrl --gas 200000
 ```
 ```
 echo $(nexaraild tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.nexarail/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
@@ -123,7 +122,7 @@ echo $(nexaraild tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME
 nexaraild tendermint show-address
 ```
 ```
-nexaraild tx gov vote 3 yes --from wallet --chain-id nexarail-mainnet-2 --gas-adjustment=1.4 --gas-prices=0.05unxrl --gas auto
+nexaraild tx gov vote 1 yes --from wallet --chain-id nexarail-mainnet-2 --gas-prices=0.001unxrl --gas 200000
 ```
 ```
 sudo systemctl stop nexaraild
