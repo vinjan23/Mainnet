@@ -4,11 +4,11 @@ cd $HOME
 mkdir -p $HOME/.gnodi
 wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.4-security/gnodid
 chmod +x gnodid-linux
-sudo mv gnodid-linux /usr/local/bin/gnodid
+sudo mv gnodid-linux $HOME/go/bin/
 ```
 ```
 mkdir -p $HOME/.gnodi/cosmovisor/genesis/bin
-cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/genesis/bin/
+cp $HOME/go/bin/gnodid $HOME/.gnodi/cosmovisor/genesis/bin/
 ```
 ```
 sudo ln -s $HOME/.gnodi/cosmovisor/genesis $HOME/.gnodi/cosmovisor/current -f
@@ -17,19 +17,15 @@ sudo ln -s $HOME/.gnodi/cosmovisor/current/bin/gnodid /usr/local/bin/gnodid -f
 ```
 gnodid version --long | grep -e commit -e version
 ```
-```
-wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.2/gnodid-linux
-chmod +x gnodid-linux
-sudo mv gnodid-linux /usr/local/bin/gnodid
-```
+
 ```
 wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.4-security/gnodid
 chmod +x gnodid
-sudo mv gnodid /usr/local/bin/
+mv gnodid $HOME/go/bin/
 ```
 ```
 mkdir -p $HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin
-cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/
+mv $HOME/go/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/
 ```
 ```
 cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
