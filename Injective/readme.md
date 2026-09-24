@@ -3,7 +3,7 @@ cd $HOME
 rm -rf injective
 git clone https://github.com/InjectiveFoundation/injective-core injective
 cd injective
-git checkout v1.20.3-safeharbor.2
+git checkout v1.20.4
 make install
 ```
 ```
