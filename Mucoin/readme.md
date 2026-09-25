@@ -15,8 +15,14 @@ ln -s $HOME/.mucoin/cosmovisor/genesis $HOME/.mucoin/cosmovisor/current -f
 sudo ln -s $HOME/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mucoind -f
 ```
 ```
-mkdir -p $HOME/.mucoin/cosmovisor/upgrades/rewards-v0.9.0/bin
-cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/upgrades/rewards-v0.9.0/bin/
+mkdir -p $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin
+cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/
+```
+```
+cat <<EOF >> ~/.mucoin/config/config.toml
+
+timeout_commit = "10s"
+EOF
 ```
 ```
 mucoind init Vinjan.Inc --chain-id mucoin-1
