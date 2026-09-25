@@ -3,7 +3,7 @@ cd $HOME
 rm -rf mucoin
 git clone https://github.com/dasgrid/mucoin.git
 cd mucoin
-git checkout rewards-v0.8.0
+git checkout rewards-v0.9.0
 make install
 ```
 ```
@@ -13,6 +13,10 @@ cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/genesis/bin/
 ```
 ln -s $HOME/.mucoin/cosmovisor/genesis $HOME/.mucoin/cosmovisor/current -f
 sudo ln -s $HOME/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mucoind -f
+```
+```
+mkdir -p $HOME/.mucoin/cosmovisor/upgrades/rewards-v0.9.0/bin
+cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/upgrades/rewards-v0.9.0/bin/
 ```
 ```
 mucoind init Vinjan.Inc --chain-id mucoin-1
