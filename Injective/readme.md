@@ -11,6 +11,13 @@ wget https://github.com/InjectiveFoundation/injective-core/releases/download/v1.
 unzip -o linux-amd64.zip -d injective-v1.20.4
 ```
 ```
+sudo mv $HOME/injective-v1.20.4/injectived /root/go/bin/
+sudo mv injective-v1.20.4/peggo /usr/bin/peggo
+sudo mv injective-v1.20.4/libwasmvm.x86_64.so /usr/lib/libwasmvm.x86_64.so
+chmod +x /usr/bin/injectived /usr/bin/peggo
+sudo ldconfig
+```
+```
 injectived init Vinjan.Inc --chain-id injective-1
 ```
 ```
