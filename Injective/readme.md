@@ -7,6 +7,10 @@ git checkout v1.20.4-1789748350
 make install
 ```
 ```
+wget https://github.com/InjectiveFoundation/injective-core/releases/download/v1.20.4-1789748350/linux-amd64.zip
+unzip -o linux-amd64.zip -d injective-v1.20.4
+```
+```
 injectived init Vinjan.Inc --chain-id injective-1
 ```
 ```
