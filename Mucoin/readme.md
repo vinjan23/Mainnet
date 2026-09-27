@@ -15,6 +15,10 @@ ln -s $HOME/.mucoin/cosmovisor/genesis $HOME/.mucoin/cosmovisor/current -f
 sudo ln -s $HOME/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mucoind -f
 ```
 ```
+wget https://github.com/dasgrid/mucoin/releases/download/rewards-v0.9.0/mucoind-linux-amd64 -O $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
+chmod +x $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
+```
+```
 mkdir -p $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin
 cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/
 ```
