@@ -28,6 +28,9 @@ EOF
 mucoind init Vinjan.Inc --chain-id mucoin-1
 ```
 ```
+$HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind version --long | grep -e commit -e version -e server_name
+```
+```
 mucoind version --long | grep -e commit -e version -e server_name
 ```
 ```
