@@ -131,8 +131,13 @@ symphonyd tx staking edit-validator \
 ```
 ### WD Commission
 ```
+symphonyd tx distribution withdraw-rewards $(symphonyd keys show wallet --bech val -a --keyring-backend file --keyring-dir /root/.symphonyd-file) --commission --from wallet --chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto --keyring-backend file --keyring-dir /root/.symphonyd-file
+```
+```
 symphonyd tx distribution withdraw-rewards $(symphonyd keys show wallet --bech val -a) --commission --from wallet --chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto
 ```
+
+
 ### Stake
 ```
 symphonyd tx staking delegate $(symphonyd keys show wallet --bech val -a) 1000000note --from wallet --chain-id symphony-1 --gas-adjustment 1.5 --gas-prices 0.0025note --gas auto
