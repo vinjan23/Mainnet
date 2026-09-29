@@ -7,12 +7,12 @@ git checkout v0.5.2
 make install
 ```
 ```
-mkdir -p $HOME/vinjan/.epixd/cosmovisor/genesis/bin
-cp $HOME/vinjan/go/bin/epixd $HOME/vinjan/.epixd/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.epixd/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/epixd /home/vinjan/.epixd/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s $HOME/vinjan/.epixd/cosmovisor/genesis $HOME/vinjan/.epixd/cosmovisor/current -f
-sudo ln -s $HOME/vinjan/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
+sudo ln -s /home/vinjan/.epixd/cosmovisor/genesis /home//vinjan/.epixd/cosmovisor/current -f
+sudo ln -s /home/vinjan/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
 ```
 ```
 wget https://github.com/EpixZone/EpixChain/releases/download/v0.5.2-fix/epixd
@@ -48,9 +48,9 @@ epixd config set client chain-id epix_1916-1
 ```
 ```
 PORT=399
-sed -i -e "s%:26657%:${PORT}57%" $HOME/vinjan/.epixd/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/vinjan/.epixd/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/vinjan/.epixd/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.epixd/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.epixd/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.epixd/config/app.toml
 ```
 ```
 curl -L https://snapshot.vinjan-inc.com/epix/genesis.json > $HOME/.epixd/config/genesis.json
@@ -59,7 +59,7 @@ curl -L https://snapshot.vinjan-inc.com/epix/genesis.json > $HOME/.epixd/config/
 curl -L https://snapshot.vinjan-inc.com/epix/addrbook.json > $HOME/.epixd/config/addrbook.json
 ```
 ```
-sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "20000000000aepix"/' ~/.epixd/config/app.toml
+sed -i 's/minimum-gas-prices = ""/minimum-gas-prices = "20000000000aepix"/' /home/vinjan/.epixd/config/app.toml
 ```
 ```
 sed -i \
@@ -67,10 +67,10 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/vinjan/.epixd/config/app.toml
+/home/vinjan/.epixd/config/app.toml
 ```
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/vinjan/.epixd/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.epixd/config/config.toml
 ```
 ```
 sudo tee /etc/systemd/system/epixd.service > /dev/null <<'EOF'
@@ -158,7 +158,8 @@ epixd tx staking delegate $(epixd keys show wallet --bech val -a) 10000000000000
 epixd tx gov vote 7 yes --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices=20000000000aepix --gas=auto
 ```
 ```
-curl https://services.silknodes.io/snapshots/epix/epix_5820326.tar.zst | zstd -dc - | tar -xf - -C $HOME/vinjan/.epixd
+epixd comet unsafe-reset-all --home home/vinjan/.epixd --keep-addr-book
+curl https://services.silknodes.io/snapshots/epix/epix_5820326.tar.zst | zstd -dc - | tar -xf - -C /home/vinjan/.epixd
 ```
 ```
 sudo systemctl stop epixd
