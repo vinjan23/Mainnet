@@ -5,7 +5,7 @@ cd $HOME
 rm -rf thejaynetwork
 git clone https://github.com/bbtccore/thejaynetwork.git
 cd thejaynetwork
-git checkout v1.1.0
+git checkout v3-static
 make install
 ```
 ```
