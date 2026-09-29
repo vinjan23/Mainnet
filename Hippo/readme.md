@@ -7,12 +7,12 @@ git checkout main
 make install
 ```
 ```
-mkdir -p $HOME/.hippo/cosmovisor/genesis/bin
-cp $HOME/go/bin/hippod $HOME/.hippo/cosmovisor/genesis/bin
+mkdir -p /home/vinjan/.hippo/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/hippod /home/vinjan/.hippo/cosmovisor/genesis/bin
 ```
 ```
-ln -s $HOME/.hippo/cosmovisor/genesis $HOME/.hippo/cosmovisor/current -f
-sudo ln -s $HOME/.hippo/cosmovisor/current/bin/hippod /usr/local/bin/hippod -f
+ln -s /home/vinjan/.hippo/cosmovisor/genesis /home/vinjan/.hippo/cosmovisor/current -f
+sudo ln -s /home/vinjan/.hippo/cosmovisor/current/bin/hippod /usr/local/bin/hippod -f
 ```
 ### Update
 ```
@@ -34,6 +34,12 @@ mv build/hippod $HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin/
 rm -rf build
 ```
 ```
+wget https://snnapshot.vinjan-inc.com/hippo/hippod
+chmod +x hippod
+mv hippod /home/vinjan/go/bin/
+```
+
+```
 $HOME/.hippo/cosmovisor/upgrades/v2.0.0/bin/hippod version --long | grep -e commit -e version
 ```
 ```
@@ -47,9 +53,9 @@ hippod init Vinjan.Inc --chain-id hippo-protocol-1
 ### Port
 ```
 PORT=100
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.hippo/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.hippo/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.hippo/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.hippo/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" /home/vinjan/.hippo/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.hippo/config/app.toml
 ```
 ### Genesis
 ```
@@ -61,7 +67,7 @@ curl -L https://snapshot.vinjan.xyz./hippo/addrbook.json > $HOME/.hippo/config/a
 ```
 ### Gas
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"5000000000000ahp\"/;" ~/.hippo/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"5000000000000ahp\"/;" /home/vinjan/.hippo/config/app.toml
 ```
 ### Prunning
 ```
@@ -70,11 +76,11 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "19"|' \
-$HOME/.hippo/config/app.toml
+/home/vinjan/.hippo/config/app.toml
 ```
 ### Indexer
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.hippo/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.hippo/config/config.toml
 ```
 ### Service
 ```
@@ -83,12 +89,13 @@ sudo tee /etc/systemd/system/hippod.service > /dev/null << EOF
 Description=hippo
 After=network-online.target
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.hippo"
+Environment="DAEMON_HOME=/home/vinjan/.hippo"
 Environment="DAEMON_NAME=hippod"
 Environment="UNSAFE_SKIP_BACKUP=true"
 Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.hippo/cosmovisor/current/bin"
