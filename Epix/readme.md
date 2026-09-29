@@ -73,19 +73,22 @@ $HOME/.epixd/config/app.toml
 sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.epixd/config/config.toml
 ```
 ```
-sudo tee /etc/systemd/system/epixd.service > /dev/null << EOF
+sudo tee /etc/systemd/system/epixd.service > /dev/null <<'EOF'
 [Unit]
 Description=epix
 After=network-online.target
+
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.epixd"
+Environment="DAEMON_HOME=/home/vinjan/.epixd"
 Environment="DAEMON_NAME=epixd"
 Environment="UNSAFE_SKIP_BACKUP=true"
+
 [Install]
 WantedBy=multi-user.target
 EOF
