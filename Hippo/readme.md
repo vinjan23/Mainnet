@@ -34,7 +34,7 @@ mv build/hippod $HOME/.hippo/cosmovisor/upgrades/v1.0.2/bin/
 rm -rf build
 ```
 ```
-wget https://snnapshot.vinjan-inc.com/hippo/hippod
+wget https://snapshot.vinjan-inc.com/hippo/hippod
 chmod +x hippod
 mv hippod /home/vinjan/go/bin/
 ```
