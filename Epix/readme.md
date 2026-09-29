@@ -158,7 +158,7 @@ epixd tx staking delegate $(epixd keys show wallet --bech val -a) 10000000000000
 epixd tx gov vote 7 yes --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices=20000000000aepix --gas=auto
 ```
 ```
-curl https://services.silknodes.io/snapshots/epix/epix_5820326.tar.zst | zstd -dc - | tar -xf - -C $HOME/.epixd
+curl https://services.silknodes.io/snapshots/epix/epix_5820326.tar.zst | zstd -dc - | tar -xf - -C $HOME/vinjan/.epixd
 ```
 ```
 sudo systemctl stop epixd
