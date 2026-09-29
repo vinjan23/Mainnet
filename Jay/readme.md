@@ -112,7 +112,7 @@ jaynd status 2>&1 | jq .sync_info
 sudo systemctl stop jaynd
 cp $HOME/.jayn/data/priv_validator_state.json $HOME/.jayn/priv_validator_state.json.backup
 jaynd comet unsafe-reset-all --home $HOME/.jayn --keep-addr-book
-SNAP_RPC="http://89.58.25.104:26657"
+SNAP_RPC="http://152.53.195.74:26657"
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
