@@ -3,22 +3,22 @@
 wget https://github.com/LumeraProtocol/lumera/releases/download/v1.8.5/lumera_v1.8.5_linux_amd64.tar.gz
 tar xzvf lumera_v1.8.5_linux_amd64.tar.gz
 chmod +x lumerad
-mv lumerad $HOME/go/bin/
+mv lumerad /home/vinjan/go/bin/
 rm lumera_v1.8.5_linux_amd64.tar.gz
 rm install.sh
 mv libwasmvm.x86_64.so /usr/lib/
 ```
 ```
-mkdir -p $HOME/.lumera/cosmovisor/genesis/bin
-cp $HOME/go/bin/lumerad $HOME/.lumera/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.lumera/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/lumerad /home/vinjan/.lumera/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s $HOME/.lumera/cosmovisor/genesis $HOME/.lumera/cosmovisor/current -f
-sudo ln -s $HOME/.lumera/cosmovisor/current/bin/lumerad /usr/local/bin/lumerad -f
+sudo ln -s /home/vinjan/.lumera/cosmovisor/genesis /home/vinjan/.lumera/cosmovisor/current -f
+sudo ln -s /home/vinjan/.lumera/cosmovisor/current/bin/lumerad /usr/local/bin/lumerad -f
 ```
 ### Update
 ```
-mkdir -p $HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin
+mkdir -p /home/vinjan/.lumera/cosmovisor/upgrades/v1.20.2/bin
 wget https://github.com/LumeraProtocol/lumera/releases/download/v1.20.3/lumera_v1.20.3_linux_amd64.tar.gz
 tar xzvf lumera_v1.20.3_linux_amd64.tar.gz
 chmod +x lumerad
@@ -27,12 +27,12 @@ sudo ldconfig
 ```
 
 ```
-mv lumerad $HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin/
+mv lumerad /home/vinjan/.lumera/cosmovisor/upgrades/v1.20.2/bin/
 rm lumera_v1.20.3_linux_amd64.tar.gz
 rm install.sh
 ```
 ```
-$HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin/lumerad version --long | grep -e commit -e version
+/home/vinjan/.lumera/cosmovisor/upgrades/v1.20.2/bin/lumerad version --long | grep -e commit -e version
 ```
 ```
 lumerad version  --long | grep -e version -e commit
@@ -44,19 +44,19 @@ lumerad init Vinjan.Inc --chain-id lumera-mainnet-1
 ```
 ### Genesis
 ```
-wget -O $HOME/.lumera/config/genesis.json https://raw.githubusercontent.com/LumeraProtocol/lumera-networks/refs/heads/master/mainnet/genesis.json
+wget -O /home/vinjan/.lumera/config/genesis.json https://raw.githubusercontent.com/LumeraProtocol/lumera-networks/refs/heads/master/mainnet/genesis.json
 ```
 ### Port
 ```
 PORT=177
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.lumera/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.lumera/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.lumera/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.lumera/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.lumera/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.lumera/config/app.toml
 ```
 
 ### Gas Price
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0ulume\"/" $HOME/.lumera/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0ulume\"/" /home/vinjan/.lumera/config/app.toml
 ```
 ### Prunning
 ```
@@ -65,11 +65,11 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "1000"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = ""|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "11"|' \
-$HOME/.lumera/config/app.toml
+/home/vinjan/.lumera/config/app.toml
 ```
 ### Indexer
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.lumera/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.lumera/config/config.toml
 ```
 ### Service
 ```
@@ -77,17 +77,16 @@ sudo tee /etc/systemd/system/lumerad.service > /dev/null << EOF
 [Unit]
 Description=lumera
 After=network-online.target
-
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.lumera"
+Environment="DAEMON_HOME=/home/vinjan/.lumera"
 Environment="DAEMON_NAME=lumerad"
 Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.lumera/cosmovisor/current/bin"
 Environment="LD_LIBRARY_PATH=$HOME/.lumera/cosmovisor/current/bin/"
 [Install]
 WantedBy=multi-user.target
