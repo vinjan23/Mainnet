@@ -7,23 +7,23 @@ git checkout rewards-v0.9.0
 make install
 ```
 ```
-mkdir -p $HOME/.mucoin/cosmovisor/genesis/bin
-cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.mucoin/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/mucoind /home/vinjan/.mucoin/cosmovisor/genesis/bin/
 ```
 ```
-ln -s $HOME/.mucoin/cosmovisor/genesis $HOME/.mucoin/cosmovisor/current -f
-sudo ln -s $HOME/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mucoind -f
+ln -s /home/vinjan/.mucoin/cosmovisor/genesis /home/vinjan/.mucoin/cosmovisor/current -f
+sudo ln -s /home/vinjan/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mucoind -f
 ```
 ```
-wget https://github.com/dasgrid/mucoin/releases/download/rewards-v0.9.0/mucoind-linux-amd64 -O $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
-chmod +x $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
+wget https://github.com/dasgrid/mucoin/releases/download/rewards-v0.9.0/mucoind-linux-amd64 -O /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
+chmod +x /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
 ```
 ```
-mkdir -p $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin
-cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/
+mkdir -p /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin
+cp /home/vinjan/go/bin/mucoind /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/
 ```
 ```
-cat <<EOF >> ~/.mucoin/config/config.toml
+cat <<EOF >> /home/vinjan/.mucoin/config/config.toml
 
 timeout_commit = "10s"
 EOF
@@ -32,24 +32,24 @@ EOF
 mucoind init Vinjan.Inc --chain-id mucoin-1
 ```
 ```
-$HOME/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind version --long | grep -e commit -e version -e server_name
+/home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind version --long | grep -e commit -e version -e server_name
 ```
 ```
 mucoind version --long | grep -e commit -e version -e server_name
 ```
 ```
 PORT=157
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.mucoin/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.mucoin/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.mucoin/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.mucoin/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.mucoin/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.mucoin/config/app.toml
 ```
 ```
-wget -O $HOME/.mucoin/config/genesis.json https://raw.githubusercontent.com/dasgrid/mucoin/refs/heads/main/networks/mucoin-1/genesis.json
+wget -O /home/vinjan/.mucoin/config/genesis.json https://raw.githubusercontent.com/dasgrid/mucoin/refs/heads/main/networks/mucoin-1/genesis.json
 ```
 ```
 peers="14b942af909ff8740c52bea456949a5de4be98e8@peer-mucoin.vinjan-inc.com:15756,32361fe4a8e26a1096261c031a951ed31bb07598@169.58.22.139:26656"
-sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$peers\"|" $HOME/.mucoin/config/config.toml
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0umuc\"/" $HOME/.mucoin/config/app.toml
+sed -i -e "s|^persistent_peers *=.*|persistent_peers = \"$peers\"|" /home/vinjan/.mucoin/config/config.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0umuc\"/" /home/vinjan/.mucoin/config/app.toml
 ```
 ```
 sed -i \
@@ -57,10 +57,10 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/.mucoin/config/app.toml
+/home/vinjan/.mucoin/config/app.toml
 ```
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.mucoin/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.mucoin/config/config.toml
 ```
 ```
 sudo tee /etc/systemd/system/mucoind.service > /dev/null <<EOF
@@ -68,13 +68,14 @@ sudo tee /etc/systemd/system/mucoind.service > /dev/null <<EOF
 Description=mucoin
 After=network-online.target
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
 Environment="DAEMON_NAME=mucoind"
-Environment="DAEMON_HOME=$HOME/.mucoin"
+Environment="DAEMON_HOME=/home/vinjan/.mucoin"
 Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
 [Install]
 WantedBy=multi-user.target
