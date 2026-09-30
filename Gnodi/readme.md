@@ -93,7 +93,7 @@ After=network-online.target
 [Service]
 User=vinjan
 WorkingDirectory=/home/vinjan
-ExecStart=/home/vinjan/go/bin/cosmovisor run start
+ExecStart=/home/vinjan/go/bin/cosmovisor run start --chain-id gnodi
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
