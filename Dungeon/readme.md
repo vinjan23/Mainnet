@@ -8,12 +8,12 @@ git checkout v5.0.0
 make install
 ```
 ```
-mkdir -p $HOME/.dungeonchain/cosmovisor/genesis/bin
-cp $HOME/go/bin/dungeond $HOME/.dungeonchain/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.dungeonchain/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s $HOME/.dungeonchain/cosmovisor/genesis $HOME/.dungeonchain/cosmovisor/current -f
-sudo ln -s $HOME/.dungeonchain/cosmovisor/current/bin/dungeond /usr/local/bin/dungeond -f
+sudo ln -s /home/vinjan/.dungeonchain/cosmovisor/genesis /home/vinjan/.dungeonchain/cosmovisor/current -f
+sudo ln -s /home/vinjan/.dungeonchain/cosmovisor/current/bin/dungeond /usr/local/bin/dungeond -f
 ```
 ```
 dungeond version --long | grep -e commit -e version
@@ -28,11 +28,11 @@ git checkout v9.0.0
 make install
 ```
 ```
-mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v9/bin
-cp $HOME/go/bin/dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v9/bin/
+mkdir -p /home/vinjan/.dungeonchain/cosmovisor/upgrades/v9/bin
+cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/upgrades/v9/bin/
 ```
 ```
-$HOME/.dungeonchain/cosmovisor/upgrades/v9/bin/dungeond version --long | grep -e commit -e version
+/home/vinjan/.dungeonchain/cosmovisor/upgrades/v9/bin/dungeond version --long | grep -e commit -e version
 ```
 
 ### Init
@@ -43,24 +43,24 @@ dungeond init <node_name> --chain-id dungeon-1
 ### Custom Port
 ```
 PORT=165
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.dungeonchain/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.dungeonchain/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.dungeonchain/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.dungeonchain/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.dungeonchain/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.dungeonchain/config/app.toml
 ```
 
 ### Genesis
 ```
-curl -L https://snap.vinjan.xyz./dungeon/genesis.json > $HOME/.dungeonchain/config/genesis.json
+curl -L https://snap.vinjan.xyz./dungeon/genesis.json > /home/vinjan/.dungeonchain/config/genesis.json
 ```
 
 ### Addrbook
 ```
-curl -L https://snap.vinjan.xyz./dungeon/addrbook.json > $HOME/.dungeonchain/config/addrbook.json
+curl -L https://snap.vinjan.xyz./dungeon/addrbook.json > /home/vinjan/.dungeonchain/config/addrbook.json
 ```
 
 ###  Gas Prices
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.05udgn\"|" $HOME/.dungeonchain/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.05udgn\"|" /home/vinjan/.dungeonchain/config/app.toml
 ```
 
 
@@ -71,12 +71,12 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
-$HOME/.dungeonchain/config/app.toml
+/home/vinjan/.dungeonchain/config/app.toml
 ```
 
 ### Indexer Off
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.dungeonchain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.dungeonchain/config/config.toml
 ```
 
 ### Service
@@ -86,15 +86,15 @@ sudo tee /etc/systemd/system/dungeond.service > /dev/null << EOF
 Description=dungeon
 After=network-online.target
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.dungeonchain"
+Environment="DAEMON_HOME=/home/vinjan/.dungeonchain"
 Environment="DAEMON_NAME=dungeond"
 Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.dungeonchain/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -187,6 +187,9 @@ dungeond tx staking edit-validator \
 --gas-prices=0.05udgn \
 --gas-adjustment=1.5 \
 --gas=auto
+```
+```
+dungeond tx slashing unjail --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas=auto --gas-prices="0.05udgn"
 ```
 ### Delegate
 ```
