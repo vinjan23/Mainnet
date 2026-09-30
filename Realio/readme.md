@@ -150,6 +150,24 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 ```
+```
+sudo tee /etc/systemd/system/realio-networkd.service > /dev/null << EOF
+[Unit]
+Description=realio-network
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.realio-network"
+Environment="DAEMON_NAME=realio-networkd"
+Environment="UNSAFE_SKIP_BACKUP=true"
+[Install]
+WantedBy=multi-user.target
+EOF
+```
 ### Start
 ```
 sudo systemctl daemon-reload
