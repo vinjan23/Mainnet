@@ -128,7 +128,7 @@ bitbadgeschaind status 2>&1 | jq .sync_info
 ```
 ### Wallet
 ```
-bitbadgeschaind keys add wallet
+bitbadgeschaind keys add wallet --recover --coin-type 118 --algo secp256k1
 ```
 ### Balances
 ```
