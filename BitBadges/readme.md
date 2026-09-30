@@ -6,8 +6,8 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadges
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
-cp /usr/local/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.bitbadgeschain/cosmovisor/genesis/bin
+cp /usr/local/bin/bitbadgeschaind /home/vinjan/.bitbadgeschain/cosmovisor/genesis/bin/
 ```
 ```
 cd $HOME
@@ -24,8 +24,8 @@ mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin
 cp $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/
 ```
 ```
-sudo ln -s $HOME/.bitbadgeschain/cosmovisor/genesis $HOME/.bitbadgeschain/cosmovisor/current -f
-sudo ln -s $HOME/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/local/bin/bitbadgeschaind -f
+sudo ln -s /home/vinjan/.bitbadgeschain/cosmovisor/genesis /home/vinjan/.bitbadgeschain/cosmovisor/current -f
+sudo ln -s /home/vinjan/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/local/bin/bitbadgeschaind -f
 ```
 ### Upgrade
 ```
@@ -34,9 +34,9 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v33/bitbadges
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v35/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v35/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
-chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
+mkdir -p /home/vinjan/.bitbadgeschain/cosmovisor/upgrades/v35/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v35/bitbadgeschain-linux-amd64 -O /home/vinjan/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
+chmod +x /home/vinjan/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
@@ -74,9 +74,9 @@ curl -L https://snap.vinjan.xyz/bitbadges/addrbook.json > $HOME/.bitbadgeschain/
 ### Port
 ```
 PORT=135
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.bitbadgeschain/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.bitbadgeschain/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.bitbadgeschain/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.bitbadgeschain/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.bitbadgeschain/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.bitbadgeschain/config/app.toml
 ```
 ### Prunning
 ```
@@ -85,15 +85,15 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/.bitbadgeschain/config/app.toml
+/home/vinjan/.bitbadgeschain/config/app.toml
 ```
 ### Gas
 ```
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"10ubadge\"/" $HOME/.bitbadgeschain/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"10ubadge\"/" /home/vinjan/.bitbadgeschain/config/app.toml
 ```
 ### Indexer
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.bitbadgeschain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.bitbadgeschain/config/config.toml
 ```
 ### Service
 ```
@@ -102,15 +102,15 @@ sudo tee /etc/systemd/system/bitbadgeschaind.service > /dev/null << EOF
 Description=bitbadgeschain
 After=network-online.target
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.bitbadgeschain"
+Environment="DAEMON_HOME=/home/vinjan/.bitbadgeschain"
 Environment="DAEMON_NAME=bitbadgeschaind"
 Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.bitbadgeschain/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
