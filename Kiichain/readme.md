@@ -7,12 +7,12 @@ git checkout v6.1.0
 make install
 ```
 ```
-mkdir -p $HOME/.kiichain/cosmovisor/genesis/bin
-cp $HOME/go/bin/kiichaind $HOME/.kiichain/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.kiichain/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/kiichaind /home/vinjan/.kiichain/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s $HOME/.kiichain/cosmovisor/genesis $HOME/.kiichain/cosmovisor/current -f
-sudo ln -s $HOME/.kiichain/cosmovisor/current/bin/kiichaind /usr/local/bin/kiichaind -f
+sudo ln -s /home/vinjan/.kiichain/cosmovisor/genesis /home/vinjan/.kiichain/cosmovisor/current -f
+sudo ln -s /home/vinjan/.kiichain/cosmovisor/current/bin/kiichaind /usr/local/bin/kiichaind -f
 ```
 ### Update
 ```
@@ -24,27 +24,27 @@ git checkout v7.3.0
 make build
 ```
 ```
-mkdir -p $HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin
-mv build/kiichaind $HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/
+mkdir -p /home/vinjan/.kiichain/cosmovisor/upgrades/v7.3.0/bin
+mv build/kiichaind /home/vinjan/.kiichain/cosmovisor/upgrades/v7.3.0/bin/
 rm -rf build
 ```
 ```
-$HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version -e name -e server_name
+/home/vinjan/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version -e name -e server_name
 ```
 
 ```
 wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.1/kiichaind-v7.4.1-linux-amd64
 chmod +x kiichaind-v7.4.1-linux-amd64
 sudo systemctl stop kiichaind
-cp kiichaind-v7.4.1-linux-amd64 $HOME/.kiichain/cosmovisor/current/bin/kiichaind
+cp kiichaind-v7.4.1-linux-amd64 /home/vinjan/.kiichain/cosmovisor/current/bin/kiichaind
 ```
 ```
-mkdir -p $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin
-wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.2/kiichaind-v7.4.2-linux-amd64 -O $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
-chmod +x $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
+mkdir -p /home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.2/bin
+wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.2/kiichaind-v7.4.2-linux-amd64 -O /home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
+chmod +x /home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
 ```
 ```
-$HOME/.kiichain/cosmovisor/upgrades/v7.4.0/bin/kiichaind version --long | grep -e commit -e version
+/home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.0/bin/kiichaind version --long | grep -e commit -e version
 ```
 
 
@@ -55,23 +55,23 @@ kiichaind version --long | grep -e commit -e version -e name -e server_name
 kiichaind init Vinjan.Inc --chain-id kiichain_1783-1
 ```
 ```
-wget -O $HOME/.kiichain/config/genesis.json https://raw.githubusercontent.com/KiiChain/mainnets/refs/heads/main/kiichain/genesis.json
+wget -O /home/vinjan/.kiichain/config/genesis.json https://raw.githubusercontent.com/KiiChain/mainnets/refs/heads/main/kiichain/genesis.json
 ```
 ```
 PORT=199
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.kiichain/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.kiichain/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.kiichain/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.kiichain/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.kiichain/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.kiichain/config/app.toml
 ```
 ```
 seeds="8c5a218a5b63c094e4172d3c674a8627c4f5335e@seed-kiichain.vinjan-inc.com:19956"
-sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.kiichain/config/config.toml
+sed -i -e "s/^seeds =.*/seeds = \"$seeds\"/" /home/vinjan/.kiichain/config/config.toml
 persistent_peers="$(curl -sS https://rpc-kiichain.vinjan-inc.com:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$persistent_peers\"/" $HOME/.kiichain/config/config.toml
+sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$persistent_peers\"/" /home/vinjan/.kiichain/config/config.toml
 ```
 ```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"333333333akii\"/" $HOME/.kiichain/config/app.toml
-sed -i -e "/evm-chain-id =/ s/= .*/= 1783/" $HOME/.kiichain/config/app.toml
+sed -i -e "/evm-chain-id =/ s/= .*/= 1783/" /home/vinjan/.kiichain/config/app.toml
 ```
 ```
 sed -i \
@@ -79,10 +79,10 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = ""|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/.kiichain/config/app.toml
+/home/vinjan/.kiichain/config/app.toml
 ```
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.kiichain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.kiichain/config/config.toml
 ```
 ```
 sudo tee /etc/systemd/system/kiichaind.service > /dev/null << EOF
@@ -90,15 +90,15 @@ sudo tee /etc/systemd/system/kiichaind.service > /dev/null << EOF
 Description=kiichain
 After=network-online.target
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.kiichain"
+Environment="DAEMON_HOME=/home/vinjan/.kiichain"
 Environment="DAEMON_NAME=kiichaind"
 Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.kiichain/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
