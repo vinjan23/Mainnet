@@ -10,12 +10,12 @@ make install
 ```
 
 ```
-mkdir -p $HOME/.safrochain/cosmovisor/genesis/bin
-cp $HOME/go/bin/safrochaind $HOME/.safrochain/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.safrochain/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/safrochaind /home/vinjan/.safrochain/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s $HOME/.safrochain/cosmovisor/genesis $HOME/.safrochain/cosmovisor/current -f
-sudo ln -s $HOME/.safrochain/cosmovisor/current/bin/safrochaind /usr/local/bin/safrochaind -f
+sudo ln -s /home/vinjan/.safrochain/cosmovisor/genesis /home/vinjan/.safrochain/cosmovisor/current -f
+sudo ln -s /home/vinjan/.safrochain/cosmovisor/current/bin/safrochaind /usr/local/bin/safrochaind -f
 ```
 ```
 sha256sum $HOME/go/bin/safrochaind
@@ -29,7 +29,7 @@ safrochaind version  --long | grep -e version -e commit
 ```
 ### Genesis
 ```
-wget -O $HOME/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis.json
+wget -O /home/vinjan/.safrochain/config/genesis.json https://raw.githubusercontent.com/Safrochain-Org/mainnet-genesis/refs/heads/main/genesis.json
 ```
 ```
 safrochaind genesis validate --home ~/.safrochain
@@ -41,15 +41,15 @@ sha256sum $HOME/.safrochain/config/genesis.json
 ### Port
 ```
 PORT=127
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.safrochain/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.safrochain/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:8546%:${PORT}46%; s%:6065%:${PORT}65%" $HOME/.safrochain/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.safrochain/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" /home/vinjan/.safrochain/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:8546%:${PORT}46%; s%:6065%:${PORT}65%" /home/vinjan/.safrochain/config/app.toml
 ```
 ### Config
 ```
 peers="3aafa25bae84b2bbcbf7ead5400474a623727fe3@65.21.234.111:12756"
-sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.safrochain/config/config.toml
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"10000usaf\"/" $HOME/.safrochain/config/app.toml
+sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" /home/vinjan/.safrochain/config/config.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"10000usaf\"/" /home/vinjan/.safrochain/config/app.toml
 ```
 
 ### Prunning
@@ -59,11 +59,11 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = ""|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/.safrochain/config/app.toml
+/home/vinjan/.safrochain/config/app.toml
 ```
 ### Indexer Off
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.safrochain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.safrochain/config/config.toml
 ```
 ### Service
 ```
@@ -72,15 +72,15 @@ sudo tee /etc/systemd/system/safrochaind.service > /dev/null << EOF
 Description=safrochain
 After=network-online.target
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.safrochain"
+Environment="DAEMON_HOME=/home/vinjan/.safrochain"
 Environment="DAEMON_NAME=safrochaind"
 Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.safrochain/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
