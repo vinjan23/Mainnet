@@ -29,9 +29,9 @@ sudo ln -s /home/vinjan/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /
 ```
 ### Upgrade
 ```
-cd $HOME
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v33/bitbadgeschain-linux-amd64 -O /usr/local/bin/bitbadgeschaind
-chmod +x /usr/local/bin/bitbadgeschaind
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v35/bitbadgeschain-linux-amd64
+ mv bitbadgeschain-linux-amd64 /home/vinjan/go/bin/bitbadgeschaind
+chmod +x /home/vinjan/go/bin/bitbadgeschaind
 ```
 ```
 mkdir -p /home/vinjan/.bitbadgeschain/cosmovisor/upgrades/v35/bin
