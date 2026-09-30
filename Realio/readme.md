@@ -9,12 +9,12 @@ git checkout v1.2.0
 make install
 ```
 ```
-mkdir -p $HOME/.realio-network/cosmovisor/genesis/bin
-cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/genesis/bin/
+mkdir -p /home/vinjan/.realio-network/cosmovisor/genesis/bin
+cp /home/vinjan/go/bin/realio-networkd /home/vinjan/.realio-network/cosmovisor/genesis/bin/
 ```
 ```
-ln -s $HOME/.realio-network/cosmovisor/genesis $HOME/.realio-network/cosmovisor/current -f
-sudo ln -s $HOME/.realio-network/cosmovisor/current/bin/realio-networkd /usr/local/bin/realio-networkd -f
+ln -s /home/vinjan/.realio-network/cosmovisor/genesis /home/vinjan/.realio-network/cosmovisor/current -f
+sudo ln -s /home/vinjan/.realio-network/cosmovisor/current/bin/realio-networkd /usr/local/bin/realio-networkd -f
 ```
 ### Update
 ```
@@ -26,8 +26,8 @@ git checkout v1.7.0
 make install
 ```
 ```
-mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin
-cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin/
+mkdir -p /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin
+cp /home/vinjan/go/bin/realio-networkd /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin/
 ```
 
 ```
@@ -39,26 +39,26 @@ git checkout v1.7.0
 make build
 ```
 ```
-mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin
-mv build/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin/
+mkdir -p /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin
+mv build/realio-networkd /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin/
 rm -rf build
 ```
 ```
 realio-networkd version --long | grep -e commit -e version
 ```
 ```
-$HOME/.realio-network/cosmovisor/upgrades/v1.7.0/bin/realio-networkd version --long | grep -e commit -e version
+/home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin/realio-networkd version --long | grep -e commit -e version
 ```
 ### New Update
 ```
 wget https://github.com/realiotech/realio-network/releases/download/v1.7.1/realio-network_Linux_x86_64.tar.gz
 tar xzvf realio-network_Linux_x86_64.tar.gz
-chmod +x $HOME/bin/realio-networkd
-cp $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/current/bin/
+chmod +x /home/vinjan/bin/realio-networkd
+cp /home/vinjan/bin/realio-networkd /home/vinjan/.realio-network/cosmovisor/current/bin/
 ```
 ```
-mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.7.1/bin
-cp $HOME/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.7.1/bin/
+mkdir -p /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.1/bin
+cp /home/vinjan/bin/realio-networkd /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.1/bin/
 ```
 ```
 sudo systemctl stop realio-networkd
@@ -85,19 +85,18 @@ MONIKER=
 ```
 realio-networkd init $MONIKER --chain-id realionetwork_3301-1
 realio-networkd config chain-id realionetwork_3301-1
-realio-networkd config keyring-backend file
 ```
 
 ### Custom Port
 ```
 PORT=22
-sed -i -e "s%:26657%:${PORT}657%" $HOME/.realio-network/config/client.toml
-sed -i -e "s%:26658%:${PORT}658%; s%:26657%:${PORT}657%; s%:6060%:${PORT}060%; s%:26656%:${PORT}656%; s%:26660%:${PORT}661%" $HOME/.realio-network/config/config.toml
-sed -i -e "s%:1317%:${PORT}317%; s%:9090%:${PORT}090%" $HOME/.realio-network/config/app.toml
+sed -i -e "s%:26657%:${PORT}657%" /home/vinjan/.realio-network/config/client.toml
+sed -i -e "s%:26658%:${PORT}658%; s%:26657%:${PORT}657%; s%:6060%:${PORT}060%; s%:26656%:${PORT}656%; s%:26660%:${PORT}661%" /home/vinjan/.realio-network/config/config.toml
+sed -i -e "s%:1317%:${PORT}317%; s%:9090%:${PORT}090%" /home/vinjan/.realio-network/config/app.toml
 ```
 ### Genesis
 ```
-wget -O $HOME/.realio-network/config/genesis.json https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Realio/genesis.json
+wget -O /home/vinjan/.realio-network/config/genesis.json https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Realio/genesis.json
 ```
 
 ### Addrbook
@@ -107,7 +106,7 @@ wget -O $HOME/.realio-network/config/addrbook.json "https://raw.githubuserconten
 
 ### Seed & Peer & Gas
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0ario\"/" $HOME/.realio-network/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0ario\"/" /home/vinjan/.realio-network/config/app.toml
 ```
 
 ### Prunning
@@ -117,11 +116,11 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/.realio-network/config/app.toml
+/home/vinjan/.realio-network/config/app.toml
 ```
 ### Indexer Null
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.realio-network/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.realio-network/config/config.toml
 ```
 
 ### Service
@@ -131,15 +130,15 @@ sudo tee /etc/systemd/system/realio-networkd.service > /dev/null << EOF
 Description=realio-network
 After=network-online.target
 [Service]
-User=$USER
-ExecStart=$(which cosmovisor) run start
+User=vinjan
+WorkingDirectory=/home/vinjan
+ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.realio-network"
+Environment="DAEMON_HOME=/home/vinjan/.realio-network"
 Environment="DAEMON_NAME=realio-networkd"
 Environment="UNSAFE_SKIP_BACKUP=true"
-Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.realio-network/cosmovisor/current/bin"
 [Install]
 WantedBy=multi-user.target
 EOF
