@@ -151,17 +151,20 @@ dungeond q bank balances $(dungeond keys show wallet -a)
 
 ### Validator
 ```
-dungeond tendermint show-validator
-nano /root/.dungeonchain/validator.json
-
+dungeond comet show-validator
+```
+```
+nano /home/vinjan/.dungeonchain/validator.json
+```
+```
 {
-  "pubkey": ,
-  "amount": "100000000udgn",
-  "moniker": "",
-  "identity": "",
-  "website": "",
+  "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"p7IDoDlphBt1CvI23bORQY0i0RYJHMKKcy7sgTyIIc8="},
+  "amount": "1500000000udgn",
+  "moniker": "Vinjan.Inc",
+  "identity": "7C66E36EA2B71F68",
+  "website": "https://vinjan-inc.com",
   "security": "",
-  "details": "",
+  "details": "Staking Provider-IBC Relayer",
   "commission-rate": "0.05",
   "commission-max-rate": "0.5",
   "commission-max-change-rate": "0.5",
@@ -169,7 +172,7 @@ nano /root/.dungeonchain/validator.json
 }
 ```
 ```
-dungeond tx staking create-validator $HOME/.dungeonchain/validator.json \
+dungeond tx staking create-validator /home/vinjan/.dungeonchain/validator.json \
 --from wallet \
 --chain-id dungeon-1 \
 --gas-prices=0.05udgn \
