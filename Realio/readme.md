@@ -13,8 +13,16 @@ mkdir -p /home/vinjan/.realio-network/cosmovisor/genesis/bin
 cp /home/vinjan/go/bin/realio-networkd /home/vinjan/.realio-network/cosmovisor/genesis/bin/
 ```
 ```
+mkdir -p $HOME/.realio-network/cosmovisor/genesis/bin
+cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/genesis/bin/
+```
+```
 ln -s /home/vinjan/.realio-network/cosmovisor/genesis /home/vinjan/.realio-network/cosmovisor/current -f
 sudo ln -s /home/vinjan/.realio-network/cosmovisor/current/bin/realio-networkd /usr/local/bin/realio-networkd -f
+```
+```
+ln -s $HOME/.realio-network/cosmovisor/genesis $HOME/.realio-network/cosmovisor/current -f
+sudo ln -s $HOME/.realio-network/cosmovisor/current/bin/realio-networkd /usr/local/bin/realio-networkd -f
 ```
 ### Update
 ```
@@ -83,8 +91,7 @@ MONIKER=
 
 ### Init
 ```
-realio-networkd init $MONIKER --chain-id realionetwork_3301-1
-realio-networkd config chain-id realionetwork_3301-1
+realio-networkd init Vinjan --chain-id realionetwork_3301-1
 ```
 
 ### Custom Port
