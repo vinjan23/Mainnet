@@ -1,10 +1,10 @@
 ### Binary
 ```
-wget https://github.com/LumeraProtocol/lumera/releases/download/v1.8.5/lumera_v1.8.5_linux_amd64.tar.gz
-tar xzvf lumera_v1.8.5_linux_amd64.tar.gz
+wget https://github.com/LumeraProtocol/lumera/releases/download/v1.12.0/lumera_v1.12.0_linux_amd64.tar.gz
+tar xzvf lumera_v1.12.0_linux_amd64.tar.gz
 chmod +x lumerad
 mv lumerad /home/vinjan/go/bin/
-rm lumera_v1.8.5_linux_amd64.tar.gz
+rm lumera_v1.12.0_linux_amd64.tar.gz
 rm install.sh
 mv libwasmvm.x86_64.so /usr/lib/
 ```
