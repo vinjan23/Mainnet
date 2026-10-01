@@ -24,15 +24,15 @@ cd $HOME
 rm -rf dungeonchain 
 git clone https://github.com/Crypto-Dungeon/dungeonchain.git
 cd dungeonchain
-git checkout v9.0.0
+git checkout v10.0.0
 make install
 ```
 ```
-mkdir -p /home/vinjan/.dungeonchain/cosmovisor/upgrades/v9/bin
-cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/upgrades/v9/bin/
+mkdir -p /home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin
+cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin/
 ```
 ```
-/home/vinjan/.dungeonchain/cosmovisor/upgrades/v9/bin/dungeond version --long | grep -e commit -e version
+/home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin/dungeond version --long | grep -e commit -e version
 ```
 
 ### Init
