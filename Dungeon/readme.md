@@ -11,7 +11,7 @@ make install
 mkdir -p /home/vinjan/.dungeonchain/cosmovisor/genesis/bin
 cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/genesis/bin/
 ```
-````
+```
 sudo ln -s $HOME/.dungeonchain/cosmovisor/genesis $HOME/.dungeonchain/cosmovisor/current -f
 sudo ln -s $HOME/.dungeonchain/cosmovisor/current/bin/dungeond /usr/local/bin/dungeond -f
 ```
@@ -32,7 +32,7 @@ mkdir -p /home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin
 cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin/
 ```
 ```
-/home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin/dungeond version --long | grep -e commit -e version
+$HOME/.dungeonchain/cosmovisor/upgrades/v10/bin/dungeond version --long | grep -e commit -e version
 ```
 
 ### Init
