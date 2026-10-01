@@ -103,7 +103,7 @@ sudo journalctl -u epixd -f -o cat
 epixd status 2>&1 | jq .sync_info
 ```
 ```
-epixd q bank balances $(epixd keys show wallet -a)
+epixd q bank balances $(epixd keys show wallet -a --keyring-backend file)
 ```
 ```
 epixd comet show-validator
@@ -148,14 +148,14 @@ epixd tx staking create-validator $HOME/.epixd/validator.json \
 --gas=auto
 ```
 ```
-epixd tx distribution withdraw-rewards $(epixd keys show wallet --bech val -a) --commission --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices="20000000000aepix" --gas=auto
+epixd tx distribution withdraw-rewards $(epixd keys show wallet --bech val -a) --commission --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices="20000000000aepix" --gas=auto --keyring-backend file -y
 ```
 
 ```
-epixd tx staking delegate $(epixd keys show wallet --bech val -a) 1000000000000000000aepix --from wallet --chain-id epix_1916-1 --gas-adjustment=1.2 --gas-prices=20000000000aepix --gas=auto
+epixd tx staking delegate $(epixd keys show wallet --bech val -a) 1000000000000000000aepix --from wallet --chain-id epix_1916-1 --gas-adjustment=1.2 --gas-prices=20000000000aepix --gas=auto --keyring-backend file -y
 ```
 ```
-epixd tx gov vote 7 yes --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices=20000000000aepix --gas=auto
+epixd tx gov vote 7 yes --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices=20000000000aepix --gas=auto --keyring-backend file -y
 ```
 ```
 epixd comet unsafe-reset-all --home home/vinjan/.epixd --keep-addr-book
