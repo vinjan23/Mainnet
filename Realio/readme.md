@@ -9,8 +9,8 @@ git checkout v1.2.0
 make install
 ```
 ```
-mkdir -p /home/vinjan/.realio-network/cosmovisor/genesis/bin
-cp /home/vinjan/go/bin/realio-networkd /home/vinjan/.realio-network/cosmovisor/genesis/bin/
+mkdir -p $HOME/.realio-network/cosmovisor/genesis/bin
+cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/genesis/bin/
 ```
 ```
 mkdir -p $HOME/.realio-network/cosmovisor/genesis/bin
@@ -242,12 +242,12 @@ realio-networkd tx slashing unjail --from wallet --chain-id realionetwork_3301-1
 
 ### Delegate
 ```
-realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech val -a) 470000000000000000almx --from wallet --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario
+realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech val -a) 470000000000000000almx --from wallet --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario --keyring-backend file -y
 ```
 
 ### Withdraw with comission
 ```
-realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario
+realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario --keyring-backend file -y
 ```
 
 ### Check Validator
@@ -269,11 +269,11 @@ curl -sS http://localhost:22657/net_info | jq -r '.result.peers[] | "\(.node_inf
 ```
 ### Vote
 ```
-realio-networkd tx gov vote 29 yes --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario
+realio-networkd tx gov vote 29 yes --from wallet --chain-id realionetwork_3301-1 --gas 800000 --fees 16000000000000000ario --keyring-backend file -y
 ```
 ### Deposit
 ```
-realio-networkd tx gov deposit 8 5000000000000000000ario --from wallet --chain-id realionetwork_3301-1 --fees 70000000000ario
+realio-networkd tx gov deposit 8 5000000000000000000ario --from wallet --chain-id realionetwork_3301-1 --fees 70000000000ario --keyring-backend file -y
 ```
 ### Delete
 ```
