@@ -155,7 +155,7 @@ gnodid tx slashing unjail --from wallet --chain-id gnodi --gas-adjustment=1.5 --
 ```
 ### WD
 ```
-gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a) --commission --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
+gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a) --commission --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD" --keyring-backend file
 ```
 ### Delegate
 ```
@@ -184,7 +184,7 @@ sudo systemctl restart gnodid && sudo journalctl -u gnodid -fo cat
 ```
 
 ```
-gnodid tx gov vote 5 yes --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas-prices="1uGNOD" --gas=auto
+gnodid tx gov vote 5 yes --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas-prices="1uGNOD" --gas=auto --keyring-backend file
 ```
 ### Send
 ```
