@@ -141,12 +141,12 @@ dungeond status 2>&1 | jq .sync_info
 
 ### Wallet
 ```
-dungeond keys add wallet
+dungeond keys add wallet --recover --keyring-backend file
 ```
 
 ### Balances
 ```
-dungeond q bank balances $(dungeond keys show wallet -a)
+dungeond q bank balances $(dungeond keys show wallet -a --keyring-backend file)
 ```
 
 ### Validator
@@ -196,16 +196,16 @@ dungeond tx slashing unjail --from wallet --chain-id dungeon-1 --gas-adjustment=
 ```
 ### Delegate
 ```
-dungeond tx staking delegate $(dungeond keys show wallet --bech val -a) 900000udgn --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
+dungeond tx staking delegate $(dungeond keys show wallet --bech val -a) 900000udgn --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto --keyring-backend file
 ```
 ### Withdraw with Commission
 ```
-dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val -a) --commission --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
+dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val -a) --commission --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto --keyring-backend file
 ```
 
 ### Vote 
 ```
-dungeond tx gov vote 41 yes --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto
+dungeond tx gov vote 41 yes --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto --keyring-backend file
 ```
 
 ### Check Matches
