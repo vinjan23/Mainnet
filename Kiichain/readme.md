@@ -24,27 +24,27 @@ git checkout v7.3.0
 make build
 ```
 ```
-mkdir -p /home/vinjan/.kiichain/cosmovisor/upgrades/v7.3.0/bin
-mv build/kiichaind /home/vinjan/.kiichain/cosmovisor/upgrades/v7.3.0/bin/
+mkdir -p $HOME/vinjan/.kiichain/cosmovisor/upgrades/v7.3.0/bin
+mv build/kiichaind $HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/
 rm -rf build
 ```
 ```
-/home/vinjan/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version -e name -e server_name
+$HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version -e name -e server_name
 ```
 
 ```
 wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.1/kiichaind-v7.4.1-linux-amd64
 chmod +x kiichaind-v7.4.1-linux-amd64
 sudo systemctl stop kiichaind
-cp kiichaind-v7.4.1-linux-amd64 /home/vinjan/.kiichain/cosmovisor/current/bin/kiichaind
+cp kiichaind-v7.4.1-linux-amd64 $HOME/.kiichain/cosmovisor/current/bin/kiichaind
 ```
 ```
-mkdir -p /home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.2/bin
-wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.2/kiichaind-v7.4.2-linux-amd64 -O /home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
-chmod +x /home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
+mkdir -p $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin
+wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.2/kiichaind-v7.4.2-linux-amd64 -O $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
+chmod +x $HOME/.kiichain/cosmovisor/upgrades/v7.4.2/bin/kiichaind
 ```
 ```
-/home/vinjan/.kiichain/cosmovisor/upgrades/v7.4.0/bin/kiichaind version --long | grep -e commit -e version
+$HOME/.kiichain/cosmovisor/upgrades/v7.4.0/bin/kiichaind version --long | grep -e commit -e version
 ```
 
 
@@ -128,10 +128,10 @@ sudo systemctl restart kiichaind && sudo journalctl -u kiichaind -fo cat
 kiichaind status 2>&1 | jq .sync_info
 ```
 ```
-kiichaind keys add wallet
+kiichaind keys add wallet --recover --keyring-backend file
 ```
 ```
-kiichaind q bank balances $(kiichaind keys show wallet -a)
+kiichaind q bank balances $(kiichaind keys show wallet -a --keyring-backend file)
 ```
 ```
 kiichaind comet show-validator
@@ -163,7 +163,7 @@ kiichaind tx staking create-validator $HOME/.kiichain/validator.json \
 --gas=auto
 ```
 ```
-kiichaind tx gov vote 10 yes --from wallet --chain-id kiichain_1783-1 --gas-adjustment 1.3 --gas-prices 333333333akii --gas-adjustment=1.5 --gas auto
+kiichaind tx gov vote 10 yes --from wallet --chain-id kiichain_1783-1 --gas-adjustment 1.3 --gas-prices 333333333akii --gas-adjustment=1.5 --gas auto --keyring-backend file
 ```
 ```
 echo $(kiichaind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.kiichain/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
