@@ -3,14 +3,14 @@
 wget https://github.com/LumeraProtocol/lumera/releases/download/v1.12.0/lumera_v1.12.0_linux_amd64.tar.gz
 tar xzvf lumera_v1.12.0_linux_amd64.tar.gz
 chmod +x lumerad
-mv lumerad /home/vinjan/go/bin/
+mv lumerad $HOME/go/bin/
 rm lumera_v1.12.0_linux_amd64.tar.gz
 rm install.sh
 mv libwasmvm.x86_64.so /usr/lib/
 ```
 ```
-mkdir -p /home/vinjan/.lumera/cosmovisor/genesis/bin
-cp /home/vinjan/go/bin/lumerad /home/vinjan/.lumera/cosmovisor/genesis/bin/
+mkdir -p $HOME/.lumera/cosmovisor/genesis/bin
+cp $HOME/go/bin/lumerad $HOME/.lumera/cosmovisor/genesis/bin/
 ```
 ```
 sudo ln -s /home/vinjan/.lumera/cosmovisor/genesis /home/vinjan/.lumera/cosmovisor/current -f
@@ -18,7 +18,7 @@ sudo ln -s /home/vinjan/.lumera/cosmovisor/current/bin/lumerad /usr/local/bin/lu
 ```
 ### Update
 ```
-mkdir -p /home/vinjan/.lumera/cosmovisor/upgrades/v1.20.2/bin
+mkdir -p $HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin
 wget https://github.com/LumeraProtocol/lumera/releases/download/v1.20.3/lumera_v1.20.3_linux_amd64.tar.gz
 tar xzvf lumera_v1.20.3_linux_amd64.tar.gz
 chmod +x lumerad
@@ -27,12 +27,12 @@ sudo ldconfig
 ```
 
 ```
-mv lumerad /home/vinjan/.lumera/cosmovisor/upgrades/v1.20.2/bin/
+mv lumerad $HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin/
 rm lumera_v1.20.3_linux_amd64.tar.gz
 rm install.sh
 ```
 ```
-/home/vinjan/.lumera/cosmovisor/upgrades/v1.20.2/bin/lumerad version --long | grep -e commit -e version
+$HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin/lumerad version --long | grep -e commit -e version
 ```
 ```
 lumerad version  --long | grep -e version -e commit
@@ -105,11 +105,11 @@ lumerad status 2>&1 | jq .sync_info
 ```
 ### Wallet
 ```
-lumerad keys add wallet --recover
+lumerad keys add wallet --recover --keyring-backend file
 ```
 ### Balances
 ```
-lumerad q bank balances $(lumerad keys show wallet -a)
+lumerad q bank balances $(lumerad keys show wallet -a --keyring-backend file)
 ```
 ### Validator
 ```
@@ -154,13 +154,13 @@ lumerad tx staking edit-validator \
 --gas=auto
 ```
 ```
-lumerad tx distribution withdraw-rewards $(lumerad keys show wallet --bech val -a) --commission --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume
+lumerad tx distribution withdraw-rewards $(lumerad keys show wallet --bech val -a) --commission --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume --keyring-backend file
 ```
 ```
-lumerad tx staking delegate $(lumerad keys show wallet --bech val -a) 10000000ulume --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume
+lumerad tx staking delegate $(lumerad keys show wallet --bech val -a) 10000000ulume --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume --keyring-backend file
 ```
 ```
-lumerad tx gov vote 2 yes --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume
+lumerad tx gov vote 2 yes --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume --keyring-backend file
 ```
 ```
 echo $(lumerad tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.lumera/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
