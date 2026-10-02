@@ -91,7 +91,7 @@ sudo journalctl -u mucoind -f -o cat
 mucoind status 2>&1 | jq .sync_info
 ```
 ```
-mucoind q bank balances $(mucoind keys show wallet -a)
+mucoind q bank balances $(mucoind keys show wallet -a --keyring-backend file)
 ```
 ```
 mucoind comet show-validator
@@ -135,13 +135,13 @@ mucoind tx staking edit-validator \
 --gas=auto
 ```
 ```
-mucoind tx gov vote 5 yes --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
+mucoind tx gov vote 5 yes --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto --keyring-backend file
 ```
 ```
-mucoind tx distribution withdraw-rewards $(mucoind keys show wallet --bech val -a) --commission --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
+mucoind tx distribution withdraw-rewards $(mucoind keys show wallet --bech val -a) --commission --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto --keyring-backend file
 ```
 ```
-mucoind tx staking delegate $(mucoind keys show wallet --bech val -a) 1000000umuc --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
+mucoind tx staking delegate $(mucoind keys show wallet --bech val -a) 1000000umuc --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto --keyring-backend file
 ```
 ```
 echo $(mucoind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.mucoin/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
