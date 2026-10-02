@@ -115,10 +115,10 @@ sudo journalctl -u gnodid -f -o cat
 gnodid status 2>&1 | jq .sync_info
 ```
 ```
-gnodid keys add wallet
+gnodid keys add wallet --recover --keyring-backend file
 ```
 ```
-gnodid q bank balances $(gnodid keys show wallet -a)
+gnodid q bank balances $(gnodid keys show wallet -a --keyring-backend file)
 ```
 ```
 gnodid comet show-validator
@@ -151,7 +151,7 @@ gnodid tx staking create-validator $HOME/.gnodi/validator.json \
 ```
 ### Unjail
 ```
-gnodid tx slashing unjail --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
+gnodid tx slashing unjail --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD" --keyring-backend file
 ```
 ### WD
 ```
@@ -159,7 +159,7 @@ gnodid tx distribution withdraw-rewards $(gnodid keys show wallet --bech val -a)
 ```
 ### Delegate
 ```
-gnodid tx staking delegate $(gnodid keys show wallet --bech val -a) 1000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD"
+gnodid tx staking delegate $(gnodid keys show wallet --bech val -a) 1000000uGNOD --from wallet --chain-id gnodi --gas-adjustment=1.5 --gas=auto --gas-prices="1uGNOD" --keyring-backend file
 ```
 
 ```
