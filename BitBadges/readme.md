@@ -128,11 +128,11 @@ bitbadgeschaind status 2>&1 | jq .sync_info
 ```
 ### Wallet
 ```
-bitbadgeschaind keys add wallet --recover --coin-type 118 --algo secp256k1
+bitbadgeschaind keys add wallet --recover --coin-type 118 --algo secp256k1 --keyring-backend file
 ```
 ### Balances
 ```
-bitbadgeschaind  q bank balances $(bitbadgeschaind keys show wallet -a)
+bitbadgeschaind  q bank balances $(bitbadgeschaind keys show wallet -a --keyring-backend file)
 ```
 ### Validator
 ```
@@ -183,15 +183,15 @@ bitbadgeschaind tx slashing unjail --from wallet --chain-id bitbadges-1 --fees 7
 
 ### WD 
 ```
-bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.5 --gas=auto --gas-prices="10ubadge"
+bitbadgeschaind tx distribution withdraw-rewards $(bitbadgeschaind keys show wallet --bech val -a) --commission --from wallet --chain-id bitbadges-1 --gas-adjustment=1.5 --gas=auto --gas-prices="10ubadge" --keyring-backend file 
 ```
 ### Stake
 ```
-bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.5 --gas=auto --gas-prices="10ubadge"
+bitbadgeschaind tx staking delegate $(bitbadgeschaind keys show wallet --bech val -a) 1000000000ubadge --from wallet --chain-id bitbadges-1 --gas-adjustment=1.5 --gas=auto --gas-prices="10ubadge" --keyring-backend file
 ```
 ### Vote
 ```
-bitbadgeschaind tx gov vote 22 yes --from wallet --chain-id bitbadges-1 --fees 5000ubadge
+bitbadgeschaind tx gov vote 22 yes --from wallet --chain-id bitbadges-1 --fees 5000ubadge --keyring-backend file
 ```
 ### Delete
 ```
