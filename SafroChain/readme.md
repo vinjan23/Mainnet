@@ -10,12 +10,12 @@ make install
 ```
 
 ```
-mkdir -p /home/vinjan/.safrochain/cosmovisor/genesis/bin
-cp /home/vinjan/go/bin/safrochaind /home/vinjan/.safrochain/cosmovisor/genesis/bin/
+mkdir -p $HOME/.safrochain/cosmovisor/genesis/bin
+cp $HOME/go/bin/safrochaind $HOME/.safrochain/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s /home/vinjan/.safrochain/cosmovisor/genesis /home/vinjan/.safrochain/cosmovisor/current -f
-sudo ln -s /home/vinjan/.safrochain/cosmovisor/current/bin/safrochaind /usr/local/bin/safrochaind -f
+sudo ln -s $HOME/.safrochain/cosmovisor/genesis $HOME/.safrochain/cosmovisor/current -f
+sudo ln -s $HOME/.safrochain/cosmovisor/current/bin/safrochaind /usr/local/bin/safrochaind -f
 ```
 ```
 sha256sum $HOME/go/bin/safrochaind
@@ -99,11 +99,11 @@ safrochaind status 2>&1 | jq .sync_info
 ```
 ### Wallet
 ```
-safrochaind keys add wallet
+safrochaind keys add wallet --recover --keyring-backend file
 ```
 ### Balances
 ```
-safrochaind q bank balances $(safrochaind keys show wallet -a)
+safrochaind q bank balances $(safrochaind keys show wallet -a --keyring-backend file)
 ```
 ### Validator
 ```
@@ -150,17 +150,17 @@ safrochaind tx staking edit-validator \
 ```
 ### Unjail
 ```
-safrochaind tx slashing unjail --from wallet --chain-id ssafrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx slashing unjail --from wallet --chain-id ssafrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto --keyring-backend file
 ```
 
 ### Wd
 ```
-safrochaind tx distribution withdraw-rewards $(safrochaind keys show wallet --bech val -a) --commission --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx distribution withdraw-rewards $(safrochaind keys show wallet --bech val -a) --commission --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto --keyring-backend file
 ```
 
 ### Delegate
 ```
-safrochaind tx staking delegate $(safrochaind keys show wallet --bech val -a) 1000000usaf --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx staking delegate $(safrochaind keys show wallet --bech val -a) 1000000usaf --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto --keyring-backend file
 ```
 ID
 ```
@@ -170,7 +170,7 @@ echo $(safrochaind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.s
 safrochaind tx bank send wallet addr_safro1sdlfp8n5fcfa7qw7770ngqs02k876gf6dq7aw5 1005000000usaf --from wallet --chain-id safrochain-1 --fees 10000usaf
 ```
 ```
-safrochaind tx gov vote 4 yes --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto
+safrochaind tx gov vote 4 yes --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto --keyring-backend file
 ```
 ### Delete
 ```
