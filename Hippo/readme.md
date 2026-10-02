@@ -118,11 +118,11 @@ hippod status 2>&1 | jq .sync_info
 ```
 ### Wallet
 ```
-hippod keys add wallet
+hippod keys add wallet --recover --keyring-backend file
 ```
 ### Balances
 ```
-hippod q bank balances $(hippod keys show wallet -a)
+hippod q bank balances $(hippod keys show wallet -a --keyring-backend file)
 ```
 ### Valiadator
 ```
@@ -170,11 +170,11 @@ hippod tx staking edit-validator \
 
 ### Delegate
 ```
-hippod tx staking delegate $(hippod keys show wallet --bech val -a) 10000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+hippod tx staking delegate $(hippod keys show wallet --bech val -a) 10000000000000000000ahp --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
 ```
 ### WD Comission
 ```
-hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
 ```
 ### Own peer
 ```
@@ -182,7 +182,7 @@ echo $(hippod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.h
 ```
 ### Vote
 ```
-hippod tx gov vote 24 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+hippod tx gov vote 24 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
 ```
 ### Delete
 ```
