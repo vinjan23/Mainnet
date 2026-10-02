@@ -86,7 +86,7 @@ paxid status 2>&1 | jq .sync_info
 curl -L https://snap.vinjan.xyz/paxi/latest.tar.lz4  | lz4 -dc - | tar -xf - -C ~/go/bin/paxi
 ```
 ```
-paxid q bank balances $(paxid keys show wallet -a)
+paxid q bank balances $(paxid keys show wallet -a --keyring-backend file)
 ```
 ```
 paxid tendermint show-validator
@@ -129,17 +129,17 @@ paxid tx staking edit-validator \
 --commission-rate "0.25" 
 ```
 ```
-paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) --commission --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) --commission --from wallet --chain-id paxi-mainnet --fees 10000upaxi --keyring-backend file
 ```
 ```
-paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+paxid tx staking delegate $(paxid keys show wallet --bech val -a) 1000000upaxi --from wallet --chain-id paxi-mainnet --fees 10000upaxi --keyring-backend file
 ```
 ```
 curl -sL https://raw.githubusercontent.com/vinjan23/Mainnet/refs/heads/main/Paxi/wasm |bash
 ```
 ### Vote
 ```
-paxid tx gov vote 7 yes --from wallet --chain-id paxi-mainnet --fees 10000upaxi
+paxid tx gov vote 7 yes --from wallet --chain-id paxi-mainnet --fees 10000upaxi --keyring-backend file
 ```
 ```
 paxid tx staking unbond $(paxid keys show wallet --bech val -a) 1000000000upaxi --from wallet --chain-id paxi-mainnet --gas-prices=0.05upaxi --gas-adjustment=1.5 --gas=auto
