@@ -17,7 +17,7 @@ sudo ln -s /home/vinjan/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mu
 ```
 mkdir -p $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin
 wget https://github.com/dasgrid/mucoin/releases/download/v0.10.0/mucoind-linux-amd64 -O $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind
-chmod + $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind
+chmod +x $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind
 ```
 ```
 mkdir -p $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin
