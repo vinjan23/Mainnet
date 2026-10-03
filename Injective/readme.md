@@ -56,6 +56,10 @@ injectived status 2>&1 | jq .sync_info
 sudo systemctl stop injectived
 injectived comet unsafe-reset-all --home $HOME/.injectived --keep-addr-book
 ```
-
+```
+wget https://github.com/CosmWasm/wasmvm/releases/download/v2.2.9/libwasmvm.x86_64.so
+sudo mv libwasmvm.x86_64.so /usr/lib/libwasmvm.x86_64.so
+sudo ldconfig
+```
 
 
