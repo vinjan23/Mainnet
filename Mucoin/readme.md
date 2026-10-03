@@ -15,11 +15,12 @@ ln -s /home/vinjan/.mucoin/cosmovisor/genesis /home/vinjan/.mucoin/cosmovisor/cu
 sudo ln -s /home/vinjan/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mucoind -f
 ```
 ```
-wget https://github.com/dasgrid/mucoin/releases/download/rewards-v0.9.0/mucoind-linux-amd64 -O /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
-chmod +x /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind
+mkdir -p $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin
+wget https://github.com/dasgrid/mucoin/releases/download/v0.10.0/mucoind-linux-amd64 -O $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind
+chmod + $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind
 ```
 ```
-mkdir -p /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin
+mkdir -p $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin
 cp /home/vinjan/go/bin/mucoind /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/
 ```
 ```
@@ -32,7 +33,7 @@ EOF
 mucoind init Vinjan.Inc --chain-id mucoin-1
 ```
 ```
-/home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/mucoind version --long | grep -e commit -e version -e server_name
+~/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind version --long | grep -e commit -e version -e server_name
 ```
 ```
 mucoind version --long | grep -e commit -e version -e server_name
