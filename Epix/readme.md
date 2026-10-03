@@ -172,7 +172,7 @@ cp $HOME/.epixd/data/priv_validator_state.json $HOME/.epixd/priv_validator_state
 epixd comet unsafe-reset-all --home $HOME/.epixd --keep-addr-book
 ```
 ```
-SNAP_RPC="https://rpc-epix.vinjan-inc.com:443"
+SNAP_RPC="https://epix.rpc.m.anode.team:443"
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000))
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
