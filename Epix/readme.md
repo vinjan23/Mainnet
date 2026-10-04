@@ -11,7 +11,7 @@ mkdir -p $HOME/.epixd/cosmovisor/genesis/bin
 cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s $HOME/.epixd/cosmovisor/genesis /home//vinjan/.epixd/cosmovisor/current -f
+sudo ln -s $HOME/.epixd/cosmovisor/genesis $HOME/.epixd/cosmovisor/current -f
 sudo ln -s $HOME/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
 ```
 ```
