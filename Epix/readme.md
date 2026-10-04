@@ -7,12 +7,12 @@ git checkout v0.5.2
 make install
 ```
 ```
-mkdir -p /home/vinjan/.epixd/cosmovisor/genesis/bin
-cp /home/vinjan/go/bin/epixd /home/vinjan/.epixd/cosmovisor/genesis/bin/
+mkdir -p $HOME/.epixd/cosmovisor/genesis/bin
+cp $HOME/go/bin/epixd /home/vinjan/.epixd/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s /home/vinjan/.epixd/cosmovisor/genesis /home//vinjan/.epixd/cosmovisor/current -f
-sudo ln -s /home/vinjan/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
+sudo ln -s $HOME/.epixd/cosmovisor/genesis /home//vinjan/.epixd/cosmovisor/current -f
+sudo ln -s $HOME/.epixd/cosmovisor/current/bin/epixd /usr/local/bin/epixd -f
 ```
 ```
 wget https://github.com/EpixZone/EpixChain/releases/download/v0.5.2-fix/epixd
