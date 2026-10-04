@@ -19,12 +19,12 @@ git checkout v1.1.2
 make install
 ```
 ```
-mkdir -p /home/vinjan/.atomone/cosmovisor/genesis/bin
-cp /home/vinjan/go/bin/atomoned /home/vinjan/.atomone/cosmovisor/genesis/bin/
+mkdir -p $HOME/.atomone/cosmovisor/genesis/bin
+cp $HOME/go/bin/atomoned $HOME/.atomone/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s /home/vinjan/.atomone/cosmovisor/genesis /home/vinjan/.atomone/cosmovisor/current -f
-sudo ln -s /home/vinjan/.atomone/cosmovisor/current/bin/atomoned /usr/local/bin/atomoned -f
+sudo ln -s $HOME/.atomone/cosmovisor/genesis $HOME/.atomone/cosmovisor/current -f
+sudo ln -s $HOME/.atomone/cosmovisor/current/bin/atomoned /usr/local/bin/atomoned -f
 ```
 ### Update
 ```
@@ -68,14 +68,14 @@ atomoned config keyring-backend file
 ### Port
 ```
 PORT=15
-sed -i -e "s%:26657%:${PORT}657%" /home/vinjan/.atomone/config/client.toml
-sed -i -e "s%:26658%:${PORT}658%; s%:26657%:${PORT}657%; s%:6060%:${PORT}060%; s%:26656%:${PORT}656%; s%:26660%:${PORT}661%" /home/vinjan/.atomone/config/config.toml
-sed -i -e "s%:1317%:${PORT}317%; s%:8080%:${PORT}080%; s%:9090%:${PORT}090%; s%:9091%:${PORT}091%" /home/vinjan/.atomone/config/app.toml
+sed -i -e "s%:26657%:${PORT}657%" $HOME/.atomone/config/client.toml
+sed -i -e "s%:26658%:${PORT}658%; s%:26657%:${PORT}657%; s%:6060%:${PORT}060%; s%:26656%:${PORT}656%; s%:26660%:${PORT}661%" $HOME/.atomone/config/config.toml
+sed -i -e "s%:1317%:${PORT}317%; s%:8080%:${PORT}080%; s%:9090%:${PORT}090%; s%:9091%:${PORT}091%" $HOME/.atomone/config/app.toml
 ```
 
 ### Genesis
 ```
-wget -O /home/vinjan/.atomone/config/genesis.json  https://atomone.fra1.digitaloceanspaces.com/genesis.json
+wget -O $HOME/.atomone/config/genesis.json  https://atomone.fra1.digitaloceanspaces.com/genesis.json
 ```
 ### Addrbook
 ```
@@ -84,7 +84,7 @@ wget -O $HOME/.atomone/config/addrbook.json https://raw.githubusercontent.com/vi
 
 ### Seed Peers
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.225uphoton\"|" /home/vinjan/.atomone/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.2uphoton\"|" $HOME/.atomone/config/app.toml
 ```
 
 ### Prunning
@@ -94,11 +94,11 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-/home/vinjan/.atomone/config/app.toml
+$HOME/.atomone/config/app.toml
 ```
 ### Indexer Off
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.atomone/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.atomone/config/config.toml
 ```
 ### Service
 ```
@@ -107,7 +107,7 @@ sudo tee /etc/systemd/system/atomoned.service > /dev/null << EOF
 Description=atomone
 After=network-online.target
 [Service]
-User=vinjan
+User=$USER
 WorkingDirectory=/home/vinjan
 ExecStart=/home/vinjan/go/bin/cosmovisor run start
 Restart=on-failure
