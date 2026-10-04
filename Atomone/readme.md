@@ -41,8 +41,8 @@ wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v3.3.0
 ```
 ```
 wget -O atomoned https://github.com/atomone-hub/atomone/releases/download/v4.1.0/atomoned-v4.1.0-linux-amd64
-cp atomoned /home/vinjan/.atomone/cosmovisor/upgrades/v4/bin/
-chmod +x /home/vinjan/.atomone/cosmovisor/upgrades/v4/bin/atomoned
+cp atomoned $HOME/.atomone/cosmovisor/upgrades/v4/bin/
+chmod +x $HOME/.atomone/cosmovisor/upgrades/v4/bin/atomoned
 ```
 ```
 mkdir -p $HOME/.atomone/cosmovisor/upgrades/v4/bin
