@@ -8,7 +8,7 @@ make install
 ```
 ```
 mkdir -p $HOME/.epixd/cosmovisor/genesis/bin
-cp $HOME/go/bin/epixd /home/vinjan/.epixd/cosmovisor/genesis/bin/
+cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/genesis/bin/
 ```
 ```
 sudo ln -s $HOME/.epixd/cosmovisor/genesis /home//vinjan/.epixd/cosmovisor/current -f
