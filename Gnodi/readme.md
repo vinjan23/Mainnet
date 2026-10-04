@@ -169,7 +169,7 @@ echo $(gnodid tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.g
 sudo systemctl stop gnodid
 cp $HOME/.gnodi/data/priv_validator_state.json $HOME/.gnodi/priv_validator_state.json.backup
 gnodid comet unsafe-reset-all --home $HOME/.gnodi/ --keep-addr-book
-SNAP_RPC=https://rpc.gnodi.zone
+SNAP_RPC=https://rpc.gnodi.nodestake.org
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
