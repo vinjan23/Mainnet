@@ -67,7 +67,7 @@ sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "10"|' \
 $HOME/.epixd/config/app.toml
 ```
 ```
@@ -102,6 +102,11 @@ sudo journalctl -u epixd -f -o cat
 ```
 ```
 epixd status 2>&1 | jq .sync_info
+```
+```
+[topholders]
+
+enable = true
 ```
 ```
 epixd q bank balances $(epixd keys show wallet -a --keyring-backend file)
