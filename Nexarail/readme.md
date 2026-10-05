@@ -9,6 +9,13 @@ chmod +x $HOME/go/bin/nexaraild
 cp $HOME/go/bin/nexaraild /usr/local/bin/
 ```
 ```
+wget https://github.com/Bookings-cpu/nexarail/releases/download/v0.1.1-mainnet2-fundsafety/nexaraild-linux-amd64
+chmod +x nexaraild-linux-amd64
+sudo systemctl stop nexaraild
+mv nexaraild-linux-amd64 $HOME/go/bin/nexaraild
+sudo systemctl restart nexaraild
+```
+```
 nexaraild init vinjan --chain-id nexarail-mainnet-2
 ```
 
