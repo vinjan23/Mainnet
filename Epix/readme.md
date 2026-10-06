@@ -97,10 +97,12 @@ WantedBy=multi-user.target
 EOF
 ```
 ```
-sed -i 's/^type = "flood"/type = "app"/' $HOME/.bitbadgeschain/config/config.toml
+sed -i 's/^type = "flood"/type = "app"/' $HOME/.epixd/config/config.toml
+sed -i 's/^enable = false$/enable = true/' "$HOME/.epixd/config/config.toml"
 ```
 ```
 cat <<EOF >> ~/.epixd/config/app.toml
+
 [topholders]
 
 enable = true
