@@ -109,6 +109,9 @@ enable = true
 EOF
 ```
 ```
+sed -i '/^\[topholders\]/,/^\[/ s/^enable = true$/enable = false/' ~/.epixd/config/app.toml
+```
+```
 sudo systemctl daemon-reload
 sudo systemctl enable epixd
 sudo systemctl restart epixd
