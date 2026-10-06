@@ -50,8 +50,7 @@ epixd config set client chain-id epix_1916-1
 PORT=399
 sed -i -e "s%:26657%:${PORT}57%" $HOME/.epixd/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.epixd/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.epixd/config/app.toml
-```
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:8546%:${PORT}46%; s%:6065%:${PORT}65%" $HOME/.epixd/config/app.toml
 ```
 wget -O genesis.json https://services.silknodes.io/genesis/epix/genesis.json --inet4-only
 mv genesis.json ~/.epixd/config
