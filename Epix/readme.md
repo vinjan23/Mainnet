@@ -69,7 +69,7 @@ sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "30"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
 $HOME/.epixd/config/app.toml
 ```
 ```
@@ -216,11 +216,11 @@ epixd comet unsafe-reset-all --home $HOME/.epixd --keep-addr-book
 ```
 sudo systemctl stop epixd
 sudo systemctl disable epixd
-sudo rm /etc/systemd/system/epixd.service
+sudo rm -f /etc/systemd/system/epixd.service
 sudo systemctl daemon-reload
-rm -rf $(which epixd)
-rm -rf .epixd
-rm -rf EpixChain
+sudo rm -f "$(which epixd)"
+rm -rf "$HOME/.epixd"
+rm -rf "$HOME/EpixChain"
 ```
 9c608d8d9f60ca4912f758904cab6ee58f166eda@2a01:4f9:6a:2126::2:39956
 
