@@ -95,6 +95,16 @@ WantedBy=multi-user.target
 EOF
 ```
 ```
+sed -i 's/^type = "flood"/type = "app"/' $HOME/.bitbadgeschain/config/config.toml
+```
+```
+cat <<EOF >> ~/.epixd/config/app.toml
+[topholders]
+
+enable = true
+EOF
+```
+```
 sudo systemctl daemon-reload
 sudo systemctl enable epixd
 sudo systemctl restart epixd
@@ -102,11 +112,6 @@ sudo journalctl -u epixd -f -o cat
 ```
 ```
 epixd status 2>&1 | jq .sync_info
-```
-```
-[topholders]
-
-enable = true
 ```
 ```
 epixd q bank balances $(epixd keys show wallet -a --keyring-backend file)
