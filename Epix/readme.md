@@ -53,10 +53,12 @@ sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:2
 sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.epixd/config/app.toml
 ```
 ```
-curl -L https://snapshot.vinjan-inc.com/epix/genesis.json > $HOME/.epixd/config/genesis.json
+wget -O genesis.json https://services.silknodes.io/genesis/epix/genesis.json --inet4-only
+mv genesis.json ~/.epixd/config
 ```
 ```
-curl -L https://snapshot.vinjan-inc.com/epix/addrbook.json > $HOME/.epixd/config/addrbook.json
+wget -O addrbook.json https://services.silknodes.io/addrbook/epix/addrbook.json --inet4-only
+mv addrbook.json ~/.epixd/config
 ```
 ```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"20000000000aepix\"/" $HOME/.epixd/config/app.toml
@@ -67,7 +69,7 @@ sed -i \
 -e 's|^pruning *=.*|pruning = "custom"|' \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
--e 's|^pruning-interval *=.*|pruning-interval = "10"|' \
+-e 's|^pruning-interval *=.*|pruning-interval = "30"|' \
 $HOME/.epixd/config/app.toml
 ```
 ```
