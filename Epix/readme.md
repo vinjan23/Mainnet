@@ -80,7 +80,6 @@ sudo tee /etc/systemd/system/epixd.service > /dev/null <<'EOF'
 [Unit]
 Description=epix
 After=network-online.target
-
 [Service]
 User=vinjan
 WorkingDirectory=/home/vinjan
@@ -91,11 +90,27 @@ LimitNOFILE=65535
 Environment="DAEMON_HOME=/home/vinjan/.epixd"
 Environment="DAEMON_NAME=epixd"
 Environment="UNSAFE_SKIP_BACKUP=true"
-
 [Install]
 WantedBy=multi-user.target
 EOF
 ```
+sudo tee /etc/systemd/system/epixd.service > /dev/null << EOF
+[Unit]
+Description=epix
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.epixd"
+Environment="DAEMON_NAME=epixd"
+Environment="UNSAFE_SKIP_BACKUP=true"
+[Install]
+WantedBy=multi-user.target
+EOF
+
 ```
 sed -i 's/^type = "flood"/type = "app"/' $HOME/.epixd/config/config.toml
 sed -i 's/^enable = false$/enable = true/' "$HOME/.epixd/config/config.toml"
