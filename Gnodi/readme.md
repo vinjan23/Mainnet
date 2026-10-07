@@ -7,12 +7,12 @@ chmod +x gnodid-linux
 sudo mv gnodid-linux $HOME/go/bin/
 ```
 ```
-mkdir -p /home/vinjan/.gnodi/cosmovisor/genesis/bin
-cp /home/vinjan/go/bin/gnodid /home/vinjan/.gnodi/cosmovisor/genesis/bin/
+mkdir -p $HOME/.gnodi/cosmovisor/genesis/bin
+cp $HOME/go/bin/gnodid $HOME/.gnodi/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s /home/vinjan/.gnodi/cosmovisor/genesis /home/vinjan/.gnodi/cosmovisor/current -f
-sudo ln -s /home/vinjan/.gnodi/cosmovisor/current/bin/gnodid /usr/local/bin/gnodid -f
+sudo ln -s $HOME/.gnodi/cosmovisor/genesis $HOME/.gnodi/cosmovisor/current -f
+sudo ln -s $HOME/.gnodi/cosmovisor/current/bin/gnodid /usr/local/bin/gnodid -f
 ```
 ```
 gnodid version --long | grep -e commit -e version
@@ -21,18 +21,18 @@ gnodid version --long | grep -e commit -e version
 ```
 wget https://github.com/gnodi-network/gnodi/releases/download/v2.0.4-security/gnodid
 chmod +x gnodid
-mv gnodid /home/vinjan/go/bin/
+mv gnodid $HOME/go/bin/
 ```
 ```
-mkdir -p /home/vinjan/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin
-mv /home/vinjan/go/bin/gnodid /home/vinjan/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/
+mkdir -p $HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin
+mv $HOME/go/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/
 ```
 ```
-cp /usr/local/bin/gnodid /home/vinjan/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
+cp /usr/local/bin/gnodid $HOME/.gnodi/cosmovisor/upgrades/evm-upgrade/bin/
 ```
 
 ```
-/home/vinjan/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/gnodid version --long | grep -e commit -e version
+$HOME/.gnodi/cosmovisor/upgrades/v2.0.4-security/bin/gnodid version --long | grep -e commit -e version
 ```
 ```
 gnodid version --long | grep -e commit -e version
@@ -43,7 +43,7 @@ gnodid init Vinjan.Inc --chain-id gnodi
 ```
 ### Genesis
 ```
-wget -O /home/vinjan/.gnodi/config/genesis.json https://raw.githubusercontent.com/gnodi-network/genesis-mainnet/refs/heads/main/genesis.json
+wget -O $HOME/.gnodi/config/genesis.json https://raw.githubusercontent.com/gnodi-network/genesis-mainnet/refs/heads/main/genesis.json
 ```
 ```
 cat <<EOF >> ~/.gnodi/config/app.toml
@@ -57,15 +57,15 @@ EOF
 ```
 ### Peer
 ```
-peers="cd0f4a3e82fa723b5b2d41480d72b0488b49ef34@146.190.38.60:26656,55bb9b88bcfdd0de814426c024550b2599ae43c6@peer-gnodi.vinjan-inc.com:15556"
-sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" /home/vinjan/.gnodi/config/config.toml
+peers="cd0f4a3e82fa723b5b2d41480d72b0488b49ef34@146.190.38.60:26656"
+sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.gnodi/config/config.toml
 ```
 ### Port
 ```
 PORT=155
-sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.gnodi/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" /home/vinjan/.gnodi/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.gnodi/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" $HOME/.gnodi/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.gnodi/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.gnodi/config/app.toml
 ```
 ### Prunning
 ```
@@ -74,15 +74,15 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-/home/vinjan/.gnodi/config/app.toml
+$HOME/.gnodi/config/app.toml
 ```
 ### Gas
 ```
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.25uGNOD\"/" /home/vinjan/.gnodi/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.25uGNOD\"/" $HOME/.gnodi/config/app.toml
 ```
 ### Indexer
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.gnodi/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.gnodi/config/config.toml
 ```
 ### Service
 ```
@@ -104,6 +104,23 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 ```
+sudo tee /etc/systemd/system/gnodid.service > /dev/null << EOF
+[Unit]
+Description=gnodi
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.gnodi"
+Environment="DAEMON_NAME=gnodid"
+Environment="UNSAFE_SKIP_BACKUP=true"
+[Install]
+WantedBy=multi-user.target
+EOF
+
 ### Start
 ```
 sudo systemctl daemon-reload
