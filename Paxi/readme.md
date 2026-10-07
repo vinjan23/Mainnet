@@ -125,7 +125,7 @@ paxid tx staking edit-validator \
 --details "Staking Provider-IBC Relayer" \
 --from wallet \
 --chain-id paxi-mainnet \
---fees 10000upaxi
+--fees 10000upaxi \
 --commission-rate "0.25" 
 ```
 ```
