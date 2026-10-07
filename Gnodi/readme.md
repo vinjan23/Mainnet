@@ -111,7 +111,7 @@ Description=gnodi
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which cosmovisor) run start --chain-id gnodi
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
