@@ -7,12 +7,13 @@ git checkout v1.20.4-1789748350
 make install
 ```
 ```
-wget https://github.com/InjectiveFoundation/injective-core/releases/download/v1.20.4-1789748350/linux-amd64.zip
-unzip -o linux-amd64.zip -d injective-v1.20.4
+wget  https://storage.googleapis.com/injective-chain-releases/v1.20.4-bl.2/injective-v1.20.4-bl.2-linux-amd64.zip
+echo '81f49009d1652fe8688bf6662c6d4d42ad65d7039207fd77ec2a161050973df2  injective-v1.20.4-bl.2-linux-amd64.zip' | sha256sum -c -
+unzip injective-v1.20.4-bl.2-linux-amd64.zip
 ```
 ```
-sudo mv $HOME/injective-v1.20.4/injectived /root/go/bin/
-sudo mv injective-v1.20.4/peggo /usr/bin/peggo
+sudo mv $HOME//injectived /root/go/bin/
+sudo mv $HOME/peggo /usr/bin/peggo
 sudo mv injective-v1.20.4/libwasmvm.x86_64.so /usr/lib/libwasmvm.x86_64.so
 chmod +x /usr/bin/injectived /usr/bin/peggo
 sudo ldconfig
