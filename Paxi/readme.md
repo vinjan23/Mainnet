@@ -124,9 +124,10 @@ paxid tx staking edit-validator \
 --website "https://vinjan-inc.com" \
 --details "Staking Provider-IBC Relayer" \
 --from wallet \
+--keyring-backend file \
 --chain-id paxi-mainnet \
 --fees 10000upaxi \
---commission-rate "0.25" 
+--commission-rate "0.02" 
 ```
 ```
 paxid tx distribution withdraw-rewards $(paxid keys show wallet --bech val -a) --commission --from wallet --chain-id paxi-mainnet --fees 10000upaxi --keyring-backend file
