@@ -94,6 +94,7 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 ```
+```
 sudo tee /etc/systemd/system/epixd.service > /dev/null << EOF
 [Unit]
 Description=epix
@@ -110,7 +111,7 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 [Install]
 WantedBy=multi-user.target
 EOF
-
+```
 ```
 sed -i 's/^type = "flood"/type = "app"/' $HOME/.epixd/config/config.toml
 sed -i 's/^enable = false$/enable = true/' "$HOME/.epixd/config/config.toml"
