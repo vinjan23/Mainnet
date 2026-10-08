@@ -18,7 +18,7 @@ make install
 sudo systemctl stop paxid
 ```
 ```
-cp $HOME/paxid/paxid /home/vinjan/go/bin
+cp $HOME/paxid/paxid $HOME/go/bin
 ```
 ```
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
@@ -39,11 +39,10 @@ sed -i -e "s%:1317%:11717%; s%:9090%:11790%" $HOME/go/bin/paxi/config/app.toml
 curl -L https://snap.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
 ```
 
+
 ```
-curl -L https://snap.vinjan.xyz/paxi/addrbook.json > ~/go/bin/paxi/config/addrbook.json
-```
-```
-c5984fb57dbbc2bfeae2127261774e334929e39a@51.79.176.70:26656,22489785ead0af42491015b6674788f2e89144e9@209.209.8.66:28656
+peers="c5984fb57dbbc2bfeae2127261774e334929e39a@51.79.176.70:26656,22489785ead0af42491015b6674788f2e89144e9@209.209.8.66:28656"
+sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/go/bin/paxi/config/config.toml
 ```
 ```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.05upaxi\"/" $HOME/go/bin/paxi/config/app.toml
