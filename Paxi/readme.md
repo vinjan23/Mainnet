@@ -38,7 +38,10 @@ sed -i -e "s%:1317%:11717%; s%:9090%:11790%" $HOME/go/bin/paxi/config/app.toml
 ```
 curl -L https://snap.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
 ```
-
+```
+peers="$(curl -sS https://mainnet-rpc.paxinet.io:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/go/bin/paxi/config/config.toml
+```
 
 ```
 peers="c5984fb57dbbc2bfeae2127261774e334929e39a@51.79.176.70:26656,22489785ead0af42491015b6674788f2e89144e9@209.209.8.66:28656"
