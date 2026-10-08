@@ -62,7 +62,9 @@ curl -L https://snap.vinjan.xyz./dungeon/addrbook.json > /home/vinjan/.dungeonch
 ```
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.05udgn\"|" /home/vinjan/.dungeonchain/config/app.toml
 ```
-
+```
+a0f1460785dae232b4c9d43255624dce521e8a29@69.75.130.190:11656
+```
 
 ### Prunning
 ```
