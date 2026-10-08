@@ -65,7 +65,7 @@ sudo tee /etc/systemd/system/paxid.service > /dev/null <<EOF
 Description=paxi
 After=network-online.target
 [Service]
-User=vinjan
+User=$USER
 ExecStart=$(which paxid) start
 Restart=on-failure
 RestartSec=3
@@ -160,8 +160,8 @@ TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.bloc
 sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
 /^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
 /^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
-/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" /home/vinjan/go/bin/paxi/config/config.toml
-mv /home/vinjan/go/bin/paxi/priv_validator_state.json.backup /home/vinjan/go/bin/paxi/data/priv_validator_state.json
+/^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" $HOME/go/bin/paxi/config/config.toml
+mv /home/vinjan/go/bin/paxi/priv_validator_state.json.backup $HOME/go/bin/paxi/data/priv_validator_state.json
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
 ```
 ```
