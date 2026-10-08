@@ -167,7 +167,7 @@ mv $HOME/go/bin/paxi/priv_validator_state.json.backup $HOME/go/bin/paxi/data/pri
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
 ```
 ```
-SNAP_RPC="https://rpc-paxi.vinjan.xyz:443"
+SNAP_RPC="https://paxi-rpc.codeblocklabs.com:443"
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
@@ -175,7 +175,6 @@ sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
 /^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
 /^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
 /^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" ~/go/bin/paxi/config/config.toml
-mv ~/go/bin/paxi/priv_validator_state.json.backup ~/go/bin/paxi/data/priv_validator_state.json
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
 ```
 ```
