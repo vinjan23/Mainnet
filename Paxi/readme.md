@@ -18,7 +18,7 @@ make install
 sudo systemctl stop paxid
 ```
 ```
-cp /home/vinjan/paxid/paxid /home/vinjan/go/bin
+cp $HOME/paxid/paxid /home/vinjan/go/bin
 ```
 ```
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
@@ -30,9 +30,9 @@ paxid version
 paxid init Vinjan.Inc --chain-id paxi-mainnet
 ```
 ```
-sed -i -e "s%:26657%:11757%"  /home/vinjan/go/bin/paxi/config/client.toml
-sed -i -e "s%:26658%:11758%; s%:26657%:11757%; s%:6060%:11760%; s%:26656%:11756%; s%:26660%:11761%"  /home/vinjan/go/bin/paxi/config/config.toml
-sed -i -e "s%:1317%:11717%; s%:9090%:11790%" /home/vinjan/go/bin/paxi/config/app.toml
+sed -i -e "s%:26657%:11757%" $HOME/go/bin/paxi/config/client.toml
+sed -i -e "s%:26658%:11758%; s%:26657%:11757%; s%:6060%:11760%; s%:26656%:11756%; s%:26660%:11761%" $HOME/go/bin/paxi/config/config.toml
+sed -i -e "s%:1317%:11717%; s%:9090%:11790%" $HOME/go/bin/paxi/config/app.toml
 ```
 
 ```
@@ -44,7 +44,7 @@ curl -L https://snap.vinjan.xyz/paxi/addrbook.json > ~/go/bin/paxi/config/addrbo
 ```
 
 ```
-sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.05upaxi\"/" /home/vinjan/go/bin/paxi/config/app.toml
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.05upaxi\"/" $HOME/go/bin/paxi/config/app.toml
 ```
 ```
 sed -i \
@@ -52,10 +52,10 @@ sed -i \
   -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
   -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
   -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-  /home/vinjan/go/bin/paxi/config/app.toml
+$HOME/go/bin/paxi/config/app.toml
 ```
 ```
-sed -i -e "s/^indexer *=.*/indexer = \"null\"/" /home/vinjan/go/bin/paxi/config/config.toml
+sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/go/bin/paxi/config/config.toml
 ```
 ```
 sudo tee /etc/systemd/system/paxid.service > /dev/null <<EOF
