@@ -44,7 +44,7 @@ sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/go/bin/pax
 ```
 
 ```
-peers="c5984fb57dbbc2bfeae2127261774e334929e39a@51.79.176.70:26656,22489785ead0af42491015b6674788f2e89144e9@209.209.8.66:28656"
+peers="96e1fb922b8980489ad583ac34d5d9da319b8b3c@51.79.228.147:26656"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/go/bin/paxi/config/config.toml
 ```
 ```
