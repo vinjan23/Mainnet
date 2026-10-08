@@ -42,7 +42,9 @@ curl -L https://snap.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis
 ```
 curl -L https://snap.vinjan.xyz/paxi/addrbook.json > ~/go/bin/paxi/config/addrbook.json
 ```
-
+```
+c5984fb57dbbc2bfeae2127261774e334929e39a@51.79.176.70:26656,22489785ead0af42491015b6674788f2e89144e9@209.209.8.66:28656
+```
 ```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.05upaxi\"/" $HOME/go/bin/paxi/config/app.toml
 ```
