@@ -149,8 +149,8 @@ paxid tx staking unbond $(paxid keys show wallet --bech val -a) 1000000000upaxi 
 ```
 ```
 sudo systemctl stop paxid 
-cp /home/vinjan/go/bin/paxi/data/priv_validator_state.json /home/vinjan/go/bin/paxi/priv_validator_state.json.backup
-paxid tendermint unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
+cp $HOME/go/bin/paxi/data/priv_validator_state.json $HOME/go/bin/paxi/priv_validator_state.json.backup
+paxid comet unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
 ```
 ```
 SNAP_RPC="https://mainnet-rpc.paxinet.io:443"
@@ -161,7 +161,7 @@ sed -i "/\[statesync\]/, /^enable =/ s/=.*/= true/;\
 /^rpc_servers =/ s|=.*|= \"$SNAP_RPC,$SNAP_RPC\"|;\
 /^trust_height =/ s/=.*/= $BLOCK_HEIGHT/;\
 /^trust_hash =/ s/=.*/= \"$TRUST_HASH\"/" $HOME/go/bin/paxi/config/config.toml
-mv /home/vinjan/go/bin/paxi/priv_validator_state.json.backup $HOME/go/bin/paxi/data/priv_validator_state.json
+mv $HOME/go/bin/paxi/priv_validator_state.json.backup $HOME/go/bin/paxi/data/priv_validator_state.json
 sudo systemctl restart paxid && sudo journalctl -u paxid -fo cat
 ```
 ```
