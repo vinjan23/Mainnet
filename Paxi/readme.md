@@ -152,7 +152,7 @@ paxid tx staking unbond $(paxid keys show wallet --bech val -a) 1000000000upaxi 
 ```
 sudo systemctl stop paxid 
 cp $HOME/go/bin/paxi/data/priv_validator_state.json $HOME/go/bin/paxi/priv_validator_state.json.backup
-paxid comet unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
+paxid tendermint unsafe-reset-all --home ~/go/bin/paxi --keep-addr-book
 ```
 ```
 SNAP_RPC="https://mainnet-rpc.paxinet.io:443"
