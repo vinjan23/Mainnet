@@ -39,7 +39,7 @@ sed -i -e "s%:1317%:11717%; s%:9090%:11790%" $HOME/go/bin/paxi/config/app.toml
 curl -L https://snap.vinjan.xyz/paxi/genesis.json > ~/go/bin/paxi/config/genesis.json
 ```
 ```
-peers="$(curl -sS https://mainnet-rpc.paxinet.io:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
+peers="$(curl -sS https://paxi-rpc.codeblocklabs.com:443/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}' | sed -z 's|\n|,|g;s|.$||')"
 sed -i -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/go/bin/paxi/config/config.toml
 ```
 
