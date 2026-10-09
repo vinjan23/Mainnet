@@ -247,7 +247,10 @@ realio-networkd tx staking delegate $(realio-networkd keys show wallet --bech va
 
 ### Withdraw with comission
 ```
-realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario --keyring-backend file -y
+realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a --keyring-backend file) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario --keyring-backend file -y
+```
+```
+realio-networkd tx distribution withdraw-rewards $(realio-networkd keys show wallet --bech val -a) --from wallet --commission --chain-id realionetwork_3301-1 --gas 800000 --gas-prices 30000000000ario
 ```
 
 ### Check Validator
