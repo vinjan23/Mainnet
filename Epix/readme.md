@@ -182,7 +182,7 @@ epixd tx staking create-validator $HOME/.epixd/validator.json \
 --gas=auto
 ```
 ```
-epixd tx distribution withdraw-rewards $(epixd keys show wallet --bech val -a) --commission --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices="20000000000aepix" --gas=auto --keyring-backend file -y
+epixd tx distribution withdraw-rewards $(epixd keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id epix_1916-1 --gas-adjustment=1.5 --gas-prices="20000000000aepix" --gas=auto --keyring-backend file -y
 ```
 
 ```
