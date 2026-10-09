@@ -174,7 +174,7 @@ hippod tx staking delegate $(hippod keys show wallet --bech val -a) 100000000000
 ```
 ### WD Comission
 ```
-hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
+hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
 ```
 ### Own peer
 ```
