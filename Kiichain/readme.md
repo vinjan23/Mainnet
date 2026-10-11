@@ -155,11 +155,17 @@ nano $HOME/.kiichain/validator.json
 }
 ```
 ```
-kiichaind tx staking create-validator $HOME/.kiichain/validator.json \
+kiichaind tx staking edit-validator \
+--new-moniker Vinjan.Inc \
+--identity "7C66E36EA2B71F68" \
+--website "https://vinjan-inc.com" \
+--details "Staking Provider-IBC Relayer" \
 --from wallet \
+--keyring-backend file \
 --chain-id kiichain_1783-1 \
+--commission-rate 0.1 \
 --gas-prices="333333333akii" \
---gas-adjustment=1.2 \
+--gas-adjustment=1.5 \
 --gas=auto
 ```
 ```
