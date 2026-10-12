@@ -30,12 +30,12 @@ cd $HOME
 rm -rf realio-network
 git clone https://github.com/realiotech/realio-network.git
 cd realio-network
-git checkout v1.7.0
+git checkout v1.8.0
 make install
 ```
 ```
-mkdir -p /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin
-cp /home/vinjan/go/bin/realio-networkd /home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin/
+mkdir -p $HOME/.realio-network/cosmovisor/upgrades/v1.8.0/bin
+cp $HOME/go/bin/realio-networkd $HOME/.realio-network/cosmovisor/upgrades/v1.8.0/bin/
 ```
 
 ```
@@ -55,7 +55,7 @@ rm -rf build
 realio-networkd version --long | grep -e commit -e version
 ```
 ```
-/home/vinjan/.realio-network/cosmovisor/upgrades/v1.7.0/bin/realio-networkd version --long | grep -e commit -e version
+$HOME/.realio-network/cosmovisor/upgrades/v1.8.0/bin/realio-networkd version --long | grep -e commit -e version
 ```
 ### New Update
 ```
