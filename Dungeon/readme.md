@@ -8,8 +8,8 @@ git checkout v5.0.0
 make install
 ```
 ```
-mkdir -p /home/vinjan/.dungeonchain/cosmovisor/genesis/bin
-cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/genesis/bin/
+mkdir -p $HOME/.dungeonchain/cosmovisor/genesis/bin
+cp $HOME/go/bin/dungeond $HOME/.dungeonchain/cosmovisor/genesis/bin/
 ```
 ```
 sudo ln -s $HOME/.dungeonchain/cosmovisor/genesis $HOME/.dungeonchain/cosmovisor/current -f
@@ -24,15 +24,15 @@ cd $HOME
 rm -rf dungeonchain 
 git clone https://github.com/Crypto-Dungeon/dungeonchain.git
 cd dungeonchain
-git checkout v10.0.0
+git checkout v12.0.0
 make install
 ```
 ```
-mkdir -p /home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin
-cp /home/vinjan/go/bin/dungeond /home/vinjan/.dungeonchain/cosmovisor/upgrades/v10/bin/
+mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v12/bin
+cp $HOME/go//bin/dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v12/bin/
 ```
 ```
-$HOME/.dungeonchain/cosmovisor/upgrades/v10/bin/dungeond version --long | grep -e commit -e version
+$HOME/.dungeonchain/cosmovisor/upgrades/v12/bin/dungeond version --long | grep -e commit -e version
 ```
 
 ### Init
