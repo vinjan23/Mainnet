@@ -176,6 +176,9 @@ hippod tx staking delegate $(hippod keys show wallet --bech val -a) 100000000000
 ```
 hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
 ```
+```
+hippod tx distribution withdraw-rewards $(hippod keys show wallet --bech val -a) --commission --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto
+```
 ### Own peer
 ```
 echo $(hippod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.hippo/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
