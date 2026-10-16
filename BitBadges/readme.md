@@ -30,13 +30,13 @@ sudo ln -s /home/vinjan/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /
 ### Upgrade
 ```
 wget https://github.com/BitBadges/bitbadgeschain/releases/download/v35/bitbadgeschain-linux-amd64
- mv bitbadgeschain-linux-amd64 /home/vinjan/go/bin/bitbadgeschaind
-chmod +x /home/vinjan/go/bin/bitbadgeschaind
+ mv bitbadgeschain-linux-amd64 $HOME/go/bin/bitbadgeschaind
+chmod +x $HOME/go/bin/bitbadgeschaind
 ```
 ```
-mkdir -p /home/vinjan/.bitbadgeschain/cosmovisor/upgrades/v35/bin
-wget https://github.com/BitBadges/bitbadgeschain/releases/download/v35/bitbadgeschain-linux-amd64 -O /home/vinjan/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
-chmod +x /home/vinjan/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v35/bin
+wget https://github.com/BitBadges/bitbadgeschain/releases/download/v35/bitbadgeschain-linux-amd64 -O $HOME/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
+chmod +x $HOME/.bitbadgeschain/cosmovisor/upgrades/v35/bin/bitbadgeschaind
 ```
 ```
 cd $HOME
@@ -74,9 +74,9 @@ curl -L https://snap.vinjan.xyz/bitbadges/addrbook.json > $HOME/.bitbadgeschain/
 ### Port
 ```
 PORT=135
-sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.bitbadgeschain/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.bitbadgeschain/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.bitbadgeschain/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" $HOME/.bitbadgeschain/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.bitbadgeschain/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.bitbadgeschain/config/app.toml
 ```
 ### Prunning
 ```
@@ -85,7 +85,7 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-/home/vinjan/.bitbadgeschain/config/app.toml
+$HOME/.bitbadgeschain/config/app.toml
 ```
 ### Gas
 ```
@@ -93,7 +93,7 @@ sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"10ubadge\"/" /home/
 ```
 ### Indexer
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' /home/vinjan/.bitbadgeschain/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.bitbadgeschain/config/config.toml
 ```
 ### Service
 ```
@@ -115,6 +115,7 @@ Environment="UNSAFE_SKIP_BACKUP=true"
 WantedBy=multi-user.target
 EOF
 ```
+
 ### Start
 ```
 sudo systemctl daemon-reload
