@@ -52,7 +52,7 @@ cat <<EOF >> ~/.gnodi/config/app.toml
 evm-chain-id = 46634
 
 [json-rpc]
-enable = true
+enable = false
 EOF
 ```
 ### Peer
