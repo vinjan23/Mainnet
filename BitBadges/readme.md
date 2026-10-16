@@ -7,7 +7,7 @@ chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
 mkdir -p /home/vinjan/.bitbadgeschain/cosmovisor/genesis/bin
-cp /usr/local/bin/bitbadgeschaind /home/vinjan/.bitbadgeschain/cosmovisor/genesis/bin/
+cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
 ```
 ```
 cd $HOME
@@ -24,8 +24,8 @@ mkdir -p $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin
 cp $HOME/.bitbadgeschain/cosmovisor/genesis/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/upgrades/v13/bin/
 ```
 ```
-sudo ln -s /home/vinjan/.bitbadgeschain/cosmovisor/genesis /home/vinjan/.bitbadgeschain/cosmovisor/current -f
-sudo ln -s /home/vinjan/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/local/bin/bitbadgeschaind -f
+sudo ln -s $HOME/.bitbadgeschain/cosmovisor/genesis $HOME/.bitbadgeschain/cosmovisor/current -f
+sudo ln -s $HOME/.bitbadgeschain/cosmovisor/current/bin/bitbadgeschaind /usr/local/bin/bitbadgeschaind -f
 ```
 ### Upgrade
 ```
