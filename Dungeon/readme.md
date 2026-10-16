@@ -43,24 +43,24 @@ dungeond init <node_name> --chain-id dungeon-1
 ### Custom Port
 ```
 PORT=165
-sed -i -e "s%:26657%:${PORT}57%" /home/vinjan/.dungeonchain/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" /home/vinjan/.dungeonchain/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" /home/vinjan/.dungeonchain/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" $HOME/.dungeonchain/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}61%" $HOME/.dungeonchain/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%" $HOME/.dungeonchain/config/app.toml
 ```
 
 ### Genesis
 ```
-curl -L https://snap.vinjan.xyz./dungeon/genesis.json > /home/vinjan/.dungeonchain/config/genesis.json
+curl -L https://snap.vinjan.xyz./dungeon/genesis.json > $HOME/.dungeonchain/config/genesis.json
 ```
 
 ### Addrbook
 ```
-curl -L https://snap.vinjan.xyz./dungeon/addrbook.json > /home/vinjan/.dungeonchain/config/addrbook.json
+curl -L https://snap.vinjan.xyz./dungeon/addrbook.json > $HOME/.dungeonchain/config/addrbook.json
 ```
 
 ###  Gas Prices
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.05udgn\"|" /home/vinjan/.dungeonchain/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.05udgn\"|" $HOME/.dungeonchain/config/app.toml
 ```
 ```
 a0f1460785dae232b4c9d43255624dce521e8a29@69.75.130.190:11656
@@ -73,7 +73,7 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "17"|' \
-/home/vinjan/.dungeonchain/config/app.toml
+$HOME/.dungeonchain/config/app.toml
 ```
 
 ### Indexer Off
