@@ -6,7 +6,7 @@ wget https://github.com/BitBadges/bitbadgeschain/releases/download/v13/bitbadges
 chmod +x /usr/local/bin/bitbadgeschaind
 ```
 ```
-mkdir -p /home/vinjan/.bitbadgeschain/cosmovisor/genesis/bin
+mkdir -p $HOME/.bitbadgeschain/cosmovisor/genesis/bin
 cp $HOME/go/bin/bitbadgeschaind $HOME/.bitbadgeschain/cosmovisor/genesis/bin/
 ```
 ```
