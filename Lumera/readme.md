@@ -154,7 +154,7 @@ lumerad tx staking edit-validator \
 --gas=auto
 ```
 ```
-lumerad tx distribution withdraw-rewards $(lumerad keys show wallet --bech val -a) --commission --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume --keyring-backend file
+lumerad tx distribution withdraw-rewards $(lumerad keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume --keyring-backend file
 ```
 ```
 lumerad tx staking delegate $(lumerad keys show wallet --bech val -a) 10000000ulume --from wallet --chain-id lumera-mainnet-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.025ulume --keyring-backend file
