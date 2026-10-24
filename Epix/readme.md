@@ -36,6 +36,15 @@ mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin
 cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin/
 ```
 ```
+tar -xzf epixd-v0.7.4.tar.gz
+chmod +x epixd-v0.7.4
+sha256sum epixd-v0.7.4
+sudo systemctl stop epixd
+mv epixd-v0.7.4 ~/.epixd/cosmovisor/current/bin/epixd
+sudo systemctl restart epixd
+sudo journalctl -u epixd -f -o cat
+```
+```
 $HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin/epixd version --long | grep -e commit -e version -e server_name
 ```
 ```
