@@ -22,6 +22,12 @@ luxad init Vinjan.Inc --chain-id luxa-1
 curl -s https://luxaecosystem.xyz/genesis.json > $HOME/.luxa/config/genesis.json
 ```
 ```
+curl -L https://snapshot.vinjan-inc.com/luxa/genesis.json > $HOME/.luxa/config/genesis.json
+```
+```
+curl -L https://snapshot.vinjan-inc.com/luxa/addrbook.json > $HOME/.luxa/config/addrbook.json
+```
+```
 PORT=149
 sed -i -e "s%:26657%:${PORT}57%" $HOME/.luxa/config/client.toml
 sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.luxa/config/config.toml
