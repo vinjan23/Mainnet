@@ -95,4 +95,33 @@ sudo journalctl -u luxad -f -o cat
 ```
 luxad status 2>&1 | jq .sync_info
 ```
-
+```
+luxad q bank balances $(luxad keys show wallet -a --keyring-backend file)
+```
+```
+luxad tendermint show-validator
+```
+```
+nano $HOME/.luxa/validator.json
+```
+```
+luxad tx staking create-validator $HOME/.luxa/validator.json \
+--from wallet \
+--keyring-backend file \
+--chain-id luxa-1 \
+--gas-prices=0.0025uluxa \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+```
+luxad tx distribution withdraw-rewards $(luxad keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id luxa-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.0025uluxa --keyring-backend file
+```
+```
+sudo systemctl stop luxad
+sudo systemctl disable luxad
+sudo rm /etc/systemd/system/luxad.service
+sudo systemctl daemon-reload
+rm -f $(which luxad)
+rm -rf .luxa
+rm -rf luxa-chain
+```
