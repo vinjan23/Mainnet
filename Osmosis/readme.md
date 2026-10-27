@@ -21,7 +21,7 @@ cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v28.0.5
+git checkout v32.0.0
 make build
 ```
 
@@ -44,42 +44,41 @@ cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v31.0.0
+git checkout v32.0.0
 make build
 ```
+
 ```
-wget -O osmosisd https://osmosis.fra1.cdn.digitaloceanspaces.com/binaries/v31.1.0/osmosisd-linux-amd64
-sudo systemctl stop osmosisd
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v32/bin
+mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v32/bin/
+rm -rf build
+```
+```
 mv osmosisd $HOME/.osmosisd/cosmovisor/current/bin/osmosisd
 chmod +x $HOME/.osmosisd/cosmovisor/current/bin/osmosisd
 ```
 ```
-mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v31/bin
-mv build/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v31/bin/
-rm -rf build
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v32/bin
+wget -O osmosisd https://github.com/osmosis-labs/osmosis/releases/download/v32.0.0/osmosisd-32.0.0-linux-amd64
+mv osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v32/bin/
+chmod +x $HOME/.osmosisd/cosmovisor/upgrades/v32/bin/osmosisd
 ```
-```
-wget --https-only -O osmosisd https://osmosis.fra1.cdn.digitaloceanspaces.com/binaries/v31-cometbft-v0.38.20/osmosisd-linux-amd64
-chmod +x osmosisd
-```
-### Cek version
-```
-$HOME/.osmosisd/cosmovisor/upgrades/v31/bin/osmosisd version --long | grep -e commit -e version
-```
+
 ```
 cd $HOME
 rm -rf osmosis
 git clone https://github.com/osmosis-labs/osmosis.git
 cd osmosis
-git checkout v31.0.0
+git checkout v32.0.0
 make install
 ```
 ```
-mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v31/bin
-cp -a ~/go/bin/osmosisd ~/.osmosisd/cosmovisor/upgrades/v31/bin/
+mkdir -p $HOME/.osmosisd/cosmovisor/upgrades/v32/bin
+cp $HOME/go/bin/osmosisd $HOME/.osmosisd/cosmovisor/upgrades/v32/bin/
 ```
+### Cek version
 ```
-cosmovisor add-upgrade v31.0.0 /root/.osmosisd/cosmovisor/upgrades/v31/bin/osmosisd --force --upgrade-height 33187000
+$HOME/.osmosisd/cosmovisor/upgrades/v32/bin/osmosisd version --long | grep -e commit -e version
 ```
 ```
 osmosisd version --long | grep -e commit -e version
