@@ -114,6 +114,19 @@ luxad tx staking create-validator $HOME/.luxa/validator.json \
 --gas=auto
 ```
 ```
+luxad tx staking edit-validator \
+--new-moniker "Vinjan.Inc" \
+--identity 7C66E36EA2B71F68 \
+--website="https://vinjan-inc.com" \
+--from wallet \
+--keyring-backend file \
+--chain-id luxa-1 \
+--commission-rate=0.1 \
+--gas-prices=0.0025uluxa \
+--gas-adjustment=1.5 \
+--gas=auto
+```
+```
 luxad tx distribution withdraw-rewards $(luxad keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id luxa-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.0025uluxa --keyring-backend file
 ```
 ```
