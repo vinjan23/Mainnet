@@ -34,7 +34,7 @@ sed -i -e "s%:1317%:${PORT}317%; s%:9090%:${PORT}090%" $HOME/.osmosisd/config/ap
 ```
 ### Genesis
 ```
-wget -O genesis.json https://snapshots.polkachu.com/genesis/osmosis/genesis.json --inet4-only
+wget -O genesis.json https://genesis.osmosis.zone/genesis.json
 mv genesis.json ~/.osmosisd/config
 ```
 ### Addrbook
@@ -63,7 +63,7 @@ Description=osmosis
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which osmosisd) start
+ExecStart=$(which osmosisd) start --reject-config-defaults true
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -98,4 +98,7 @@ sudo systemctl daemon-reload
 rm -f $(which osmosisd)
 rm -rf $HOME/.osmosisd
 rm -rf $HOME/osmosis
+```
+```
+curl -L https://hel1.your-objectstorage.com/osmosis/osmosis-1/snapshots/v32/osmosis-snapshot-202610280004-73319597.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.osmosisd
 ```
