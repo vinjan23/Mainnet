@@ -28,17 +28,17 @@ git checkout v12.0.0
 make install
 ```
 ```
-wget https://github.com/Crypto-Dungeon/dungeonchain/releases/download/v13.0.1/dungeonchain-13.0.1-linux-amd64.tar.gz
-tar xzvf dungeonchain-13.0.1-linux-amd64.tar.gz
-chmod +x dungeond
 mv dungeond ~/.dungeonchain/cosmovisor/current/bin/
 ```
 ```
-mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v12/bin
-cp $HOME/go//bin/dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v12/bin/
+mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin
+wget https://github.com/Crypto-Dungeon/dungeonchain-releases/releases/download/v13.1.1/dungeonchain-13.1.1-linux-amd64.tar.gz
+tar xzvf dungeonchain-13.1.1-linux-amd64.tar.gz
+chmod +x dungeond
+mv dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin/
 ```
 ```
-$HOME/.dungeonchain/cosmovisor/upgrades/v12/bin/dungeond version --long | grep -e commit -e version
+$HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin/dungeond version --long | grep -e commit -e version
 ```
 
 ### Init
