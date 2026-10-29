@@ -38,6 +38,12 @@ mv dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin/
 chmod +x $HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin/dungeond
 ```
 ```
+wget https://github.com/Crypto-Dungeon/dungeonchain/releases/download/v13.1.2-rc.1/dungeonchain-13.1.2-rc.1-linux-amd64.tar.gz
+tar xzvf dungeonchain-13.1.2-rc.1-linux-amd64.tar.gz
+mv dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin/
+chmod +x $HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin/dungeond
+```
+```
 $HOME/.dungeonchain/cosmovisor/upgrades/v13-contract-roles/bin/dungeond version --long | grep -e commit -e version
 ```
 
