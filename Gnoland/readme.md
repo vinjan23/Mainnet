@@ -5,7 +5,7 @@ git ls-remote https://github.com/gnolang/gno.git refs/heads/chain/mainnet
 ```
 git clone https://github.com/gnolang/gno.git
 cd gno && git fetch --all --tags
-git checkout v1.5.1
+git checkout v1.7.0
 make -C gno.land install.gnoland install.gnokey
 ```
 ```
