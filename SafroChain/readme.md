@@ -155,7 +155,7 @@ safrochaind tx slashing unjail --from wallet --chain-id ssafrochain-1 --gas-pric
 
 ### Wd
 ```
-safrochaind tx distribution withdraw-rewards $(safrochaind keys show wallet --bech val -a) --commission --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto --keyring-backend file
+safrochaind tx distribution withdraw-rewards $(safrochaind keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id safrochain-1 --gas-prices 0.05usaf --gas-adjustment 1.5 --gas auto --keyring-backend file
 ```
 
 ### Delegate
