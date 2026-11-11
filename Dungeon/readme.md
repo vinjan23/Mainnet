@@ -31,11 +31,17 @@ make install
 mv dungeond ~/.dungeonchain/cosmovisor/current/bin/
 ```
 ```
-mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v13.2/bin
-wget https://github.com/Crypto-Dungeon/dungeonchain-releases/releases/download/v13.2.0/dungeonchain-13.2.0-linux-amd64.tar.gz
-tar xzvf dungeonchain-13.2.0-linux-amd64.tar.gz
+wget https://app.dungeon.games/v/5ebe7b1c4e8898b3a843db9f4d164b5c/dungeonchain-13.2.2-linux-amd64.tar.gz
+tar xzvf dungeonchain-13.2.2-linux-amd64.tar.gz
 mv dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v13.2/bin/
 chmod +x $HOME/.dungeonchain/cosmovisor/upgrades/v13.2/bin/dungeond
+```
+```
+mkdir -p $HOME/.dungeonchain/cosmovisor/upgrades/v13.3/bin
+wget https://app.dungeon.games/v/5ebe7b1c4e8898b3a843db9f4d164b5c/dungeonchain-13.3.4-linux-amd64.tar.gz
+tar xzvf dungeonchain-13.3.4-linux-amd64.tar.gz
+mv dungeond $HOME/.dungeonchain/cosmovisor/upgrades/v13.3/bin/
+chmod +x $HOME/.dungeonchain/cosmovisor/upgrades/v13.3/bin/dungeond
 ```
 ```
 $HOME/.dungeonchain/cosmovisor/upgrades/v13.2/bin/dungeond version --long | grep -e commit -e version
