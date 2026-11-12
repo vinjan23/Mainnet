@@ -27,9 +27,14 @@ gnoland config set p2p.flush_throttle_timeout	10ms
 gnoland config set mempool.size 10000
 gnoland config set p2p.max_num_outbound_peers 40
 ```
-
 ```
 gnoland config set p2p.persistent_peers g15rcv5yqef3kvnmueqvkyw8y05sd40jz9p3n5su@seed-1.gno.land:26656,g1ck2yeyvvnpl92237gcea0z68jx07a4nnyvuaan@seed-2.gno.land:26656
+```
+```
+gnoland config set rpc.laddr tcp://0.0.0.0:33357
+gnoland config set p2p.laddr tcp://0.0.0.0:33356
+gnoland config set proxy_app tcp://127.0.0.1:33358
+gnoland config set p2p.external_address $(wget -qO- eth0.me):33356
 ```
 ### Genesis
 ```
