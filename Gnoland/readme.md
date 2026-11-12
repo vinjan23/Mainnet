@@ -74,14 +74,14 @@ journalctl -u gnoland -f -o cat
 ```
 ### Sync Info
 ```
-curl -s http://localhost:26657/status | jq -r '.result.sync_info'
+curl -s http://localhost:33357/status | jq -r '.result.sync_info'
 ```
 ```
-curl -s http://localhost:26657/status | jq -r .result.sync_info.catching_up
+curl -s http://localhost:33357/status | jq -r .result.sync_info.catching_up
 ```
 ### Last Block
 ```
-curl -s localhost:26657/status | jq .result.sync_info.latest_block_height
+curl -s localhost:33357/status | jq .result.sync_info.latest_block_height
 ```
 ### Node Info
 ```
