@@ -16,6 +16,9 @@ sudo ln -s $HOME/.evmd/cosmovisor/current/bin/limonatad /usr/local/bin/limonatad
 ```
 limonatad version --long | grep -e commit -e version -e server_name
 ```
+
+
+
 ```
 limonatad init Vinjan.Inc --chain-id limonata_20777-1
 ```
