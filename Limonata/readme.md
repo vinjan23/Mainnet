@@ -30,7 +30,8 @@ sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:854
 ```
 ```
 sed -i -e "s/^chain-id *=.*/chain-id = \"limonata_20777-1\"/;" $HOME/.evmd/config/client.toml
-sed -i 's/^evm-chain-id = "262144"/evm-chain-id = "20777"/' $HOME/.evmd/config/config.toml
+sed -i 's/^type = "flood"/type = "app"/' $HOME/.evmd/config/config.toml
+sed -i 's/^evm-chain-id = "262144"/evm-chain-id = "20777"/' $HOME/.evmd/config/app.toml
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0aLIMO\"/" $HOME/.evmd/config/app.toml
 ```
 ```
@@ -69,3 +70,7 @@ sudo systemctl enable limonatad
 sudo systemctl restart limonatad
 sudo journalctl -u limonatad -f -o cat
 ```
+```
+limonatad status 2>&1 | jq .sync_info
+```
+
