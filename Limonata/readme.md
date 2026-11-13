@@ -24,9 +24,9 @@ limonatad init Vinjan.Inc --chain-id limonata_20777-1
 ```
 ```
 PORT=191
-sed -i -e "s%:26657%:${PORT}57%" $HOME/.evmd/config/client.toml
-sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.evmd/config/config.toml
-sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:8546%:${PORT}46%; s%:6065%:${PORT}65%" $HOME/.evmd/config/app.toml
+sed -i -e "s%:26657%:${PORT}57%" $HOME/.limonata-mainnet/config/client.toml
+sed -i -e "s%:26658%:${PORT}58%; s%:26657%:${PORT}57%; s%:6060%:${PORT}60%; s%:26656%:${PORT}56%; s%:26660%:${PORT}60%" $HOME/.limonata-mainnet/config/config.toml
+sed -i -e "s%:1317%:${PORT}17%; s%:9090%:${PORT}90%; s%:8545%:${PORT}45%; s%:8546%:${PORT}46%; s%:6065%:${PORT}65%" $HOME/.limonata-mainnet/config/app.toml
 ```
 ```
 sed -i -e "s/^chain-id *=.*/chain-id = \"limonata_20777-1\"/;" $HOME/.evmd/config/client.toml
