@@ -73,4 +73,17 @@ sudo journalctl -u limonatad -f -o cat
 ```
 limonatad status 2>&1 | jq .sync_info
 ```
-
+```
+limonatad tx staking edit-validator \
+--new-moniker="Vinjan.Inc" \
+--identity="7C66E36EA2B71F68" \
+--website="https://vinjan-inc.com" \
+--details="Staking Provider-IBC Relayer" \
+--chain-id=limonata_20777-1 \
+--from=wallet \
+--keyring-backend file \
+--gas-prices 0.0001aLIMO \
+--gas-adjustment=1.5 \
+--gas auto \
+--home /home/vinjan/.limonata-mainnet
+```
