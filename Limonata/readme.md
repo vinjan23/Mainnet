@@ -6,12 +6,12 @@ chmod +x limonatad
 mv limonatad $HOME/go/bin/
 ```
 ```
-mkdir -p $HOME/.evmd/cosmovisor/genesis/bin
+mkdir -p $HOME/.limonata-mainnet/cosmovisor/genesis/bin
 cp $HOME/go/bin/limonatad $HOME/.evmd/cosmovisor/genesis/bin/
 ```
 ```
-sudo ln -s $HOME/.evmd/cosmovisor/genesis $HOME/.evmd/cosmovisor/current -f
-sudo ln -s $HOME/.evmd/cosmovisor/current/bin/limonatad /usr/local/bin/limonatad -f
+sudo ln -s $HOME/.limonata-mainnet/cosmovisor/genesis $HOME/.limonata-mainnet/cosmovisor/current -f
+sudo ln -s $HOME/.limonata-mainnet/cosmovisor/current/bin/limonatad /usr/local/bin/limonatad -f
 ```
 ```
 limonatad version --long | grep -e commit -e version -e server_name
@@ -40,10 +40,10 @@ sed -i \
 -e 's|^pruning-keep-recent *=.*|pruning-keep-recent = "100"|' \
 -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' \
 -e 's|^pruning-interval *=.*|pruning-interval = "20"|' \
-$HOME/.evmd/config/app.toml
+$HOME/.limonata-mainnet/config/app.toml
 ```
 ```
-sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.evmd/config/config.toml
+sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.limonata-mainnet/config/config.toml
 ```
 ```
 sudo tee /etc/systemd/system/limonatad.service > /dev/null <<'EOF'
@@ -53,11 +53,11 @@ After=network-online.target
 [Service]
 User=vinjan
 WorkingDirectory=/home/vinjan
-ExecStart=/home/vinjan/go/bin/cosmovisor run start --chain-id limonata_20777-1 --evm.evm-chain-id 20777 --minimum-gas-prices 0aLIMO
+ExecStart=/home/vinjan/go/bin/cosmovisor run start --home /home/vinjan/.limonata-mainnet --chain-id limonata_20777-1 --evm.evm-chain-id 20777 --minimum-gas-prices 0aLIMO
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=/home/vinjan/.evmd"
+Environment="DAEMON_HOME=/home/vinjan/.limonata-mainnet"
 Environment="DAEMON_NAME=limonatad"
 Environment="UNSAFE_SKIP_BACKUP=true"
 [Install]
