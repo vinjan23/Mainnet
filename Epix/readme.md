@@ -32,8 +32,11 @@ git checkout v0.7.3
 make install
 ```
 ```
-mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin
-cp $HOME/go/bin/epixd $HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin/
+mkdir -p $HOME/.epixd/cosmovisor/upgrades/v0.7.5/bin
+tar -xzf epixd-v0.7.5.tar.gz
+chmod +x epixd-v0.7.5
+mv epixd-v0.7.5 $HOME/.epixd/cosmovisor/upgrades/v0.7.5/bin/epixd
+rm -rf epixd-v0.7.5.tar.gz
 ```
 ```
 tar -xzf epixd-v0.7.4.tar.gz
@@ -44,8 +47,10 @@ mv epixd-v0.7.4 ~/.epixd/cosmovisor/current/bin/epixd
 sudo systemctl restart epixd
 sudo journalctl -u epixd -f -o cat
 ```
+
+
 ```
-$HOME/.epixd/cosmovisor/upgrades/v0.7.2/bin/epixd version --long | grep -e commit -e version -e server_name
+$HOME/.epixd/cosmovisor/upgrades/v0.7.5/bin/epixd version --long | grep -e commit -e version -e server_name
 ```
 ```
 epixd version --long | grep -e commit -e version
