@@ -107,9 +107,9 @@ gnokey maketx call \
   --args "VinjanInc" \
   --args "$(cat desc.txt)" \
   --args "data-center" \
-  --args "g17x76ltae2x4e93t8hry6fxeynlr29n7h60fyxd" \
-  --args "gpub1pggj7ard9eg82cjtv4u52epjx56nzwgjyg9zp9wqwyzm7qau3q4uxp94yp0mu8xrmdzzd6szr5grnzpxlmllgnzz4t7mml" \
-  --gas-fee 1000000ugnot --gas-wanted 50000000 \
+  --args "g10rh5saf4jn8al8hmccwm9lg5v4jle8xr22jm5q" \
+  --args "gpub1pggj7ard9eg82cjtv4u52epjx56nzwgjyg9zpr5aq7tfemfknp27m5wymd2j7wx7d8lj9jxj0xlxdp8pgrmshg38vust4w" \
+  --gas-fee 1000000ugnot --gas-wanted 60000000 \
   --chainid gnoland-1 \
   --remote https://rpc.gno.land \
   --broadcast \
