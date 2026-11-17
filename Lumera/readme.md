@@ -18,19 +18,22 @@ sudo ln -s /home/vinjan/.lumera/cosmovisor/current/bin/lumerad /usr/local/bin/lu
 ```
 ### Update
 ```
-mkdir -p $HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin
-wget https://github.com/LumeraProtocol/lumera/releases/download/v1.20.3/lumera_v1.20.3_linux_amd64.tar.gz
-tar xzvf lumera_v1.20.3_linux_amd64.tar.gz
+mkdir -p $HOME/.lumera/cosmovisor/upgrades/v1.23.0/bin
+wget https://github.com/LumeraProtocol/lumera/releases/download/v1.23.0/lumera_v1.23.0_linux_amd64.tar.gz
+tar xzvf lumera_v1.23.0_linux_amd64.tar.gz
 chmod +x lumerad
+```
+```
+mv lumerad $HOME/.lumera/cosmovisor/upgrades/v1.23.0/bin/
+mv libwasmvm.x86_64.so $HOME/.lumera/cosmovisor/upgrades/v1.23.0/bin/
+rm lumera_v1.23.0_linux_amd64.tar.gz
+rm install.sh
+```
+```
 sudo mv libwasmvm.x86_64.so /usr/lib/
 sudo ldconfig
 ```
 
-```
-mv lumerad $HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin/
-rm lumera_v1.20.3_linux_amd64.tar.gz
-rm install.sh
-```
 ```
 $HOME/.lumera/cosmovisor/upgrades/v1.20.2/bin/lumerad version --long | grep -e commit -e version
 ```
