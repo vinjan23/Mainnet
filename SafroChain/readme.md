@@ -5,7 +5,7 @@ rm -rf safrochain-node
 git clone https://github.com/Safrochain-Org/safrochain-node.git
 cd safrochain-node
 git fetch --tags
-git checkout v0.2.2
+git checkout v0.3.0
 make install
 ```
 
@@ -18,7 +18,8 @@ sudo ln -s $HOME/.safrochain/cosmovisor/genesis $HOME/.safrochain/cosmovisor/cur
 sudo ln -s $HOME/.safrochain/cosmovisor/current/bin/safrochaind /usr/local/bin/safrochaind -f
 ```
 ```
-sha256sum $HOME/go/bin/safrochaind
+mkdir -p $HOME/.safrochain/cosmovisor/upgrades/v0.3.0/bin
+cp $HOME/go/bin/safrochaind $HOME/.safrochain/cosmovisor/upgrades/v0.3.0/bin/
 ```
 ### Init
 ```
