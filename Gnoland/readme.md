@@ -115,6 +115,22 @@ gnokey maketx call \
   --broadcast \
   wallet
 ```
+```
+gnokey maketx call \
+  --pkgpath gno.land/r/gnops/valopers \
+  --func Register \
+  --args "VinjanInc" \
+  --args "$(cat /home/vinjan/desc.txt)" \
+  --args "data-center" \
+  --args "g1cm5z4slw83sa3x0gttkvv64nx5dc39n2yxk296" \
+  --args "gpub1pggj7ard9eg82cjtv4u52epjx56nzwgjyg9zqr8jnjt4et3588xxm2fx85fqnqr772rvh6jqe3fv5q0hun5dq4fguv4h6j" \
+  --gas-fee 1000000ugnot \
+  --gas-wanted 60000000 \
+  --chainid gnoland-1 \
+  --remote https://rpc.gno.land \
+  --broadcast \
+  wallet
+```
 ### Edit
 ```
 gnokey maketx call \
