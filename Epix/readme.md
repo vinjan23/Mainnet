@@ -191,6 +191,7 @@ epixd tx staking create-validator $HOME/.epixd/validator.json \
 --chain-id epix_1916-1 \
 --commission-rate=0.036 \
 --from=wallet \
+--keyring-backend file \
 --gas-prices="20000000000aepix" \
 --gas-adjustment=1.5 \
 --gas=auto
