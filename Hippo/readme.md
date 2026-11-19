@@ -185,7 +185,7 @@ echo $(hippod tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.h
 ```
 ### Vote
 ```
-hippod tx gov vote 31 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=1.5 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
+hippod tx gov vote 31 yes --from wallet --chain-id hippo-protocol-1 --gas-adjustment=2 --gas-prices=5000000000000ahp --gas=auto --keyring-backend file
 ```
 ### Delete
 ```
