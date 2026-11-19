@@ -189,7 +189,7 @@ epixd tx staking create-validator $HOME/.epixd/validator.json \
 --website="https://vinjan-inc.com" \
 --details="Staking Provider-IBC Relayer" \
 --chain-id epix_1916-1 \
---commission-rate=0.04 \
+--commission-rate=0.036 \
 --from=wallet \
 --gas-prices="20000000000aepix" \
 --gas-adjustment=1.5 \
