@@ -214,7 +214,7 @@ dungeond tx staking delegate $(dungeond keys show wallet --bech val -a) 900000ud
 ```
 ### Withdraw with Commission
 ```
-dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val -a) --commission --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto --keyring-backend file
+dungeond tx distribution withdraw-rewards $(dungeond keys show wallet --bech val -a --keyring-backend file) --commission --from wallet --chain-id dungeon-1 --gas-adjustment=1.5 --gas-prices=0.05udgn --gas=auto --keyring-backend file
 ```
 
 ### Vote 
