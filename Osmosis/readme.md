@@ -10,7 +10,7 @@ make install
 ```
 
 ```
-wget -O osmosisd https://github.com/osmosis-labs/osmosis/releases/download/v32.0.0/osmosisd-32.0.0-linux-amd64
+wget -O osmosisd https://github.com/osmosis-labs/osmosis/releases/download/v32.0.1/osmosisd-32.0.1-linux-amd64
 mv osmosisd $HOME/go/bin/
 chmod +x $HOME/go/bin/osmosisd
 ```
