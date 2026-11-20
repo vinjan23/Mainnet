@@ -12,6 +12,7 @@ cp $HOME/go/bin/luxad $HOME/.luxa/cosmovisor/genesis/bin
 ln -s $HOME/.luxa/cosmovisor/genesis $HOME/.luxa/cosmovisor/current -f
 sudo ln -s $HOME/.luxa/cosmovisor/current/bin/luxad /usr/local/bin/luxad -f
 ```
+
 ```
 luxad version --long | grep -e commit -e version
 ```
@@ -94,6 +95,9 @@ sudo journalctl -u luxad -f -o cat
 ```
 ```
 luxad status 2>&1 | jq .sync_info
+```
+```
+luxad tx slashing unjail --from wallet --chain-id luxa-1 --gas-adjustment=1.5 --gas=auto --gas-prices=0.0025uluxa --keyring-backend file
 ```
 ```
 luxad q bank balances $(luxad keys show wallet -a --keyring-backend file)
