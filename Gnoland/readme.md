@@ -136,13 +136,12 @@ gnokey maketx call \
 gnokey maketx call \
   --pkgpath gno.land/r/gnops/valopers \
   --func "UpdateDescription" \
-  --args "cancel" \
-  --args "g1zwyzfwxq896jt2yquf34lfqp0p0grsmlxzncvf" \
-  --args "shuttingdown" \
+  --args "g1cm5z4slw83sa3x0gttkvv64nx5dc39n2yxk296" \
+  --args "$(cat /home/vinjan/desc.txt)" \
   --gas-fee 1000000ugnot \
-  --gas-wanted 50000000 \
-  --chainid pearl-1 \
-  --remote https://rpc.topaz.testnets.gno.land \
+  --gas-wanted 15000000 \
+  --chainid gnoland-1 \
+  --remote https://rpc.gno.land \
   --broadcast \
   wallet
 ```
