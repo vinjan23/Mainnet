@@ -110,6 +110,9 @@ lumerad status 2>&1 | jq .sync_info
 ```
 lumerad keys add wallet --recover --keyring-backend file
 ```
+```
+lumerad keys add <key-name> --recover --coin-type 60 --home ~/.lumera
+```
 ### Balances
 ```
 lumerad q bank balances $(lumerad keys show wallet -a --keyring-backend file)
