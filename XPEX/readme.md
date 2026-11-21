@@ -18,7 +18,7 @@ curl -L -o ~/.exampleapp/config/genesis.json https://raw.githubusercontent.com/t
 xpexd version  --long | grep -e version -e commit
 ```
 ```
-sed -i 's|^persistent_peers = .*|persistent_peers = "ab7cea05f45d270ff8b4f94b83fac0286c528beb@altaria.proxy.rlwy.net:46837"|' ~/.exampleapp/config/config.toml
+sed -i 's|^persistent_peers = .*|persistent_peers = "3887d9d589f6ae75d149ed62504a539405dc03aa@95.216.102.220:11356"|' ~/.exampleapp/config/config.toml
 sed -i 's|^minimum-gas-prices = .*|minimum-gas-prices = "0uxpx"|' ~/.exampleapp/config/app.toml
 ```
 ### Port
@@ -56,7 +56,8 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
-
+```
+```
 sudo systemctl daemon-reload
 sudo systemctl enable xpexd
 sudo systemctl restart xpexd
