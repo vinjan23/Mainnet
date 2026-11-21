@@ -123,7 +123,7 @@ xpexd tx distribution withdraw-rewards $(xpexd keys show wallet --bech val -a) -
 ```
 ### Delegate
 ```
-xpexd tx staking delegate $(xpexd keys show wallet --bech val -a) 10000000000uxpx --from wallet --chain-id xpex-2 --gas-prices=0uxpx --gas=auto
+xpexd tx staking delegate $(xpexd keys show wallet --bech val -a) 1000000000uxpx --from wallet --chain-id xpex-2 --gas-prices=0uxpx --gas=auto
 ```
 ### Own Peer
 ```
