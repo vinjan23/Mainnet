@@ -83,10 +83,11 @@ xpexd comet show-validator
 ```
 nano $HOME/.exampleapp/validator.json
 ```
+10000000000
 ```
 {
   "pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"r+JZVxgttqVV60Cc82R+OfqcLISdn+93RO7wf/67/nY="},
-  "amount": "111000000000000000000utac",
+  "amount": "9000000000uxpx",
   "moniker": "Vinjan.Inc",
   "identity": "7C66E36EA2B71F68",
   "website": "https://vinjan-inc.com",
@@ -98,7 +99,6 @@ nano $HOME/.exampleapp/validator.json
   "min-self-delegation": "1"
 }
 ```
-
 ```
 xpexd tx staking create-validator $HOME/.exampleapp/validator.json \
 --from wallet \
