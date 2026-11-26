@@ -1,27 +1,6 @@
 ```
-cd $HOME
-rm -rf mucoin
-git clone https://github.com/dasgrid/mucoin.git
-cd mucoin
-git checkout rewards-v0.9.0
-make install
-```
-```
-mkdir -p $HOME/.mucoin/cosmovisor/genesis/bin
-cp $HOME/go/bin/mucoind $HOME/.mucoin/cosmovisor/genesis/bin/
-```
-```
-ln -s $HOME/.mucoin/cosmovisor/genesis $HOME/.mucoin/cosmovisor/current -f
-sudo ln -s $HOME/.mucoin/cosmovisor/current/bin/mucoind /usr/local/bin/mucoind -f
-```
-```
-mkdir -p $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin
-wget https://github.com/dasgrid/mucoin/releases/download/v0.10.0/mucoind-linux-amd64 -O $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind
-chmod +x $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind
-```
-```
-mkdir -p $HOME/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin
-cp $HOME/go/bin/mucoind /home/vinjan/.mucoin/cosmovisor/upgrades/v0.55.0/bin/
+wget https://github.com/dasgrid/mucoin/releases/download/v0.10.0/mucoind-linux-amd64 -O $HOME/go/bin/mucoind
+chmod +x $HOME/go/bin/mucoind
 ```
 ```
 cat <<EOF >> /home/vinjan/.mucoin/config/config.toml
@@ -31,9 +10,6 @@ EOF
 ```
 ```
 mucoind init Vinjan.Inc --chain-id mucoin-1
-```
-```
-~/.mucoin/cosmovisor/upgrades/server-token-swap-v1/bin/mucoind version --long | grep -e commit -e version -e server_name
 ```
 ```
 mucoind version --long | grep -e commit -e version -e server_name
@@ -66,36 +42,14 @@ sed -i 's|^indexer *=.*|indexer = "null"|' $HOME/.mucoin/config/config.toml
 ```
 sudo tee /etc/systemd/system/mucoind.service > /dev/null <<EOF
 [Unit]
-Description=mucoin
-After=network-online.target
-[Service]
-User=vinjan
-WorkingDirectory=/home/vinjan
-ExecStart=/home/vinjan/go/bin/cosmovisor run start
-Restart=on-failure
-RestartSec=3
-LimitNOFILE=65535
-Environment="DAEMON_NAME=mucoind"
-Environment="DAEMON_HOME=/home/vinjan/.mucoin"
-Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-```
-sudo tee /etc/systemd/system/mucoind.service > /dev/null << EOF
-[Unit]
 Description=Mucoin
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which cosmovisor) run start
+ExecStart=$(which mucoind) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-Environment="DAEMON_HOME=$HOME/.mucoin"
-Environment="DAEMON_NAME=mucoind"
-Environment="UNSAFE_SKIP_BACKUP=true"
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -110,7 +64,7 @@ sudo journalctl -u mucoind -f -o cat
 mucoind status 2>&1 | jq .sync_info
 ```
 ```
-mucoind q bank balances $(mucoind keys show wallet -a --keyring-backend file)
+mucoind q bank balances $(mucoind keys show wallet -a)
 ```
 ```
 mucoind comet show-validator
@@ -154,13 +108,13 @@ mucoind tx staking edit-validator \
 --gas=auto
 ```
 ```
-mucoind tx gov vote 5 yes --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto --keyring-backend file
+mucoind tx gov vote 5 yes --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
 ```
 ```
-mucoind tx distribution withdraw-rewards $(mucoind keys show wallet --bech val -a) --commission --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto --keyring-backend file
+mucoind tx distribution withdraw-rewards $(mucoind keys show wallet --bech val -a) --commission --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
 ```
 ```
-mucoind tx staking delegate $(mucoind keys show wallet --bech val -a) 1000000umuc --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto --keyring-backend file
+mucoind tx staking delegate $(mucoind keys show wallet --bech val -a) 1000000umuc --from wallet --chain-id mucoin-1 --gas-adjustment=1.5 --gas-prices=0.01umuc --gas=auto
 ```
 ```
 echo $(mucoind comet show-node-id)'@'$(curl -s ifconfig.me)':'$(cat $HOME/.mucoin/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
