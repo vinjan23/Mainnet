@@ -29,22 +29,18 @@ mv build/kiichaind $HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/
 rm -rf build
 ```
 ```
-$HOME/.kiichain/cosmovisor/upgrades/v7.3.0/bin/kiichaind version --long | grep -e commit -e version -e name -e server_name
-```
-
-```
 wget https://kiichain-snapshots-public.s3.us-east-2.amazonaws.com/releases/v7.4.1/kiichaind-v7.4.1-linux-amd64
 chmod +x kiichaind-v7.4.1-linux-amd64
 sudo systemctl stop kiichaind
 cp kiichaind-v7.4.1-linux-amd64 $HOME/.kiichain/cosmovisor/current/bin/kiichaind
 ```
 ```
-mkdir -p $HOME/.kiichain/cosmovisor/upgrades/v8.0.0/bin 
-wget https://github.com/KiiChain/kiichain/releases/download/v8.0.2/kiichaind-v8.0.2-linux-amd64 -O $HOME/.kiichain/cosmovisor/upgrades/v8.0.0/bin/kiichaind
-chmod +x $HOME/.kiichain/cosmovisor/upgrades/v8.0.0/bin/kiichaind
+mkdir -p $HOME/.kiichain/cosmovisor/upgrades/v8.0.3/bin 
+wget https://github.com/KiiChain/kiichain/releases/download/v8.0.3/kiichaind-v8.0.3-linux-amd64 -O $HOME/.kiichain/cosmovisor/upgrades/v8.0.3/bin/kiichaind
+chmod +x $HOME/.kiichain/cosmovisor/upgrades/v8.0.3/bin/kiichaind
 ```
 ```
-$HOME/.kiichain/cosmovisor/upgrades/v8.0.0/bin/kiichaind version --long | grep -e commit -e version
+$HOME/.kiichain/cosmovisor/upgrades/v8.0.3/bin/kiichaind version --long | grep -e commit -e version
 ```
 
 
